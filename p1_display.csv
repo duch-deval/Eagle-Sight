@@ -1,0 +1,1024 @@
+Account,Account Title,Organization,Budget Activity,Budget Activity Title,Line Number,BSA,Budget SubActivity (BSA) Title,Budget Line Item,Budget Line Item (BLI) Title,Cost Type,Cost Type Title,FY 2024 Actuals Quantity,FY 2024 Actuals Amount,FY 2025 Enacted Quantity,FY 2025 Enacted Amount,FY 2026 Disc Request Quantity,FY 2026 Disc Request Amount,FY 2026 Reconciliation Request Quantity,FY 2026 Reconciliation Request Amount,FY 2026 Total Quantity,FY 2026 Total Amount
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,2,10,Fixed Wing,9670A00005,MQ-1 UAV,A,Weapon System Cost,,,8,"240,000",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,3,10,Fixed Wing,9672A00510,Future UAS Family,A,Weapon System Cost,,,,"143,182",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,5,10,Fixed Wing,9678A12500,SMALL UNMANNED AIRCRAFT SYSTEMS,A,Weapon System Cost,,"49,969",,"43,514",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,6,10,Fixed Wing,9697A12400,"HADES PLATFORM, PAYLOADS/PED, AND INTEGRATION",A,Weapon System Cost,,,,,,"26,850",,,,"26,850"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,8,20,Rotary,4742A05001,UH-72 LAKOTA LIGHT UTILITY HELICOPTER,A,Weapon System Cost,1,"10,000",,"10,000",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,9,20,Rotary,5757A05111,AH-64 Apache Block IIIA Reman,A,Weapon System Cost,37,"818,535",31,"667,759",,"1,669",,,,"1,669"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,9,20,Rotary,5757A05111,AH-64 Apache Block IIIA Reman,B,Less: Advance Procurement (PY),,"-169,218",,"-110,360",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,10,20,Rotary,5757A05111,AH-64 Apache Block IIIA Reman,C,Advance Procurement (CY),,"110,360",,,,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,13,20,Rotary,6771AA0005,UH-60 Blackhawk M Model (MYP),A,Weapon System Cost,26,"796,405",26,"861,548",24,"790,230",,,24,"790,230"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,13,20,Rotary,6771AA0005,UH-60 Blackhawk M Model (MYP),B,Less: Advance Procurement (PY),,"-68,147",,"-92,494",,"-58,170",,,,"-58,170"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,14,20,Rotary,6771AA0005,UH-60 Blackhawk M Model (MYP),C,Advance Procurement (CY),,"92,494",,"58,170",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,16,20,Rotary,6773A05009,UH-60 Black Hawk L and V Models,A,Weapon System Cost,26,"153,196",,,,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,17,20,Rotary,6775A05101,CH-47 Helicopter,A,Weapon System Cost,9,"442,636",10,"718,634",11,"618,798",,,11,"618,798"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,17,20,Rotary,6775A05101,CH-47 Helicopter,B,Less: Advance Procurement (PY),,"-18,749",,"-18,936",,,,,,
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,18,20,Rotary,6775A05101,CH-47 Helicopter,C,Advance Procurement (CY),,"18,936",,,,"61,421",,,,"61,421"
+2031A,"Aircraft Procurement, Army",A,01,Aircraft,20,20,Rotary,9990A19900,Spectrum Army SUAS,A,Weapon System Cost,,"1,741",,,,,,,,
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,23,10,Modification of Aircraft,0023A01001,MQ-1 PAYLOAD,A,Weapon System Cost,,"13,650",,"14,086",,,,,,
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,25,10,Modification of Aircraft,0756AA6601,Gray Eagle Mods2,A,Weapon System Cost,,"82,959",,"23,865",,,,,,
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,27,10,Modification of Aircraft,2706AA6605,AH-64 MODS,A,Weapon System Cost,,"141,402",,"93,826",,"125,236",,,,"125,236"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,28,10,Modification of Aircraft,2724A12700,SCALABLE CONTROL INTERFACE (SCI),A,Weapon System Cost,,,,,,"1,257",,,,"1,257"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,29,10,Modification of Aircraft,3264AA0252,CH-47 Cargo Helicopter Mods (MYP),A,Weapon System Cost,,"50,689",,"38,925",,"17,709",,,,"17,709"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,34,10,Modification of Aircraft,6949AA0480,Utility Helicopter Mods,A,Weapon System Cost,,"56,379",,"39,565",,"33,659",,,,"33,659"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,36,10,Modification of Aircraft,8658AA0712,Network And Mission Plan,A,Weapon System Cost,,"44,558",,"52,862",,"40,472",,,,"40,472"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,37,10,Modification of Aircraft,8659AA0723,"Comms, Nav Surveillance",A,Weapon System Cost,,"74,912",,"61,362",,"11,566",,,,"11,566"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,38,10,Modification of Aircraft,8660A00713,Degraded Visual Environment,A,Weapon System Cost,,"16,838",,"3,839",,,,,,
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,39,10,Modification of Aircraft,8662A01006,Aviation ASSURED PNT,A,Weapon System Cost,,"67,383",,"69,161",,"49,475",,,,"49,475"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,40,10,Modification of Aircraft,8859AA0711,GATM Rollup,A,Weapon System Cost,,"8,924",,"4,842",,"4,651",,,,"4,651"
+2031A,"Aircraft Procurement, Army",A,02,Modification of aircraft,42,10,Modification of Aircraft,9556A01002,UAS MODS,A,Weapon System Cost,,"2,258",,"2,265",,,,,,
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,45,10,Ground Support Avionics,3632AZ3504,Aircraft Survivability Equipment,A,Weapon System Cost,,"121,562",,"139,331",,"129,167",,,,"129,167"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,46,10,Ground Support Avionics,5044AZ3507,Survivability CM,A,Weapon System Cost,,"6,526",,,,,,,,
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,47,10,Ground Support Avionics,5397AZ3517,CMWS,A,Weapon System Cost,,"71,964",,"51,646",,"38,419",,,,"38,419"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,48,10,Ground Support Avionics,5399AZ3537,Common Infrared Countermeasures (CIRCM),A,Weapon System Cost,125,"251,384",100,"257,854",84,"225,647",,,84,"225,647"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,50,30,Other Support,5212AZ3100,Common Ground Equipment,A,Weapon System Cost,,"27,752",,"31,181",,"29,489",,,,"29,489"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,52,30,Other Support,6380AZ3110,Aircrew Integrated Systems,A,Weapon System Cost,,"22,097",,"14,478",,"14,986",,,,"14,986"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,53,30,Other Support,6818AA0050,Air Traffic Control,A,Weapon System Cost,,"19,216",,"27,428",,"24,213",,,,"24,213"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,54,30,Other Support,9154A50100,"Launcher, 2.75 Rocket",A,Weapon System Cost,,"2,125",,"3,815",,"1,611",,,,"1,611"
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,55,30,Other Support,9157J01200,Launcher Guided Missile: Longbow Hellfire XM2,A,Weapon System Cost,,,,"21,543",,,,,,
+2031A,"Aircraft Procurement, Army",A,04,Support equipment and facilities,56,30,Other Support,9900AZ9999,Closed Account Adjustment,A,Weapon System Cost,,302,,,,,,,,
+2031A,"Aircraft Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,57,10,Agile Portfolio Management,7000I47000,SMALL UNMANNED AERIAL SYSTEMS,A,Weapon System Cost,,,,,,"726,034",,,,"726,034"
+2031A,"Aircraft Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,58,10,Agile Portfolio Management,8000I48000,FUTURE UNMANNED AERIAL SYSTEMS (UAS) FAMILY,A,Weapon System Cost,,,,,,"118,459",,,,"118,459"
+2031A,"Aircraft Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,59,10,Agile Portfolio Management,9000I49000,GRAY EAGLE MODIFICATIONS,A,Weapon System Cost,,,,,,"12,351",,,,"12,351"
+2032A,"Missile Procurement, Army",A,02,Other missiles,2,10,Surface-to-Air Missile System,7265C12000,Lower Tier Air and Missile Defense (AMD)  Sen,A,Weapon System Cost,,"158,799",,"387,629",,"637,473",,"618,000",,"1,255,473"
+2032A,"Missile Procurement, Army",A,02,Other missiles,2,10,Surface-to-Air Missile System,7265C12000,Lower Tier Air and Missile Defense (AMD)  Sen,B,Less: Advance Procurement (PY),,"-9,200",,,,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,4,10,Surface-to-Air Missile System,8082C14300,M-SHORAD - Procurement,A,Weapon System Cost,59,"892,497",,"69,091",44,"679,114",,"50,000",44,"729,114"
+2032A,"Missile Procurement, Army",A,02,Other missiles,6,10,Surface-to-Air Missile System,8260C53101,MSE Missile,A,Weapon System Cost,230,"2,562,908",214,"1,031,060",233,"1,071,905",,"366,000",233,"1,437,905"
+2032A,"Missile Procurement, Army",A,02,Other missiles,6,10,Surface-to-Air Missile System,8260C53101,MSE Missile,B,Less: Advance Procurement (PY),,,,"-126,000",,"-126,000",,,,"-126,000"
+2032A,"Missile Procurement, Army",A,02,Other missiles,7,10,Surface-to-Air Missile System,8260C53101,MSE Missile,C,Advance Procurement (CY),,"252,000",,,,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,9,10,Surface-to-Air Missile System,8540C29600,PRECISION STRIKE MISSILE (PRSM),A,Weapon System Cost,98,"1,048,491",230,"457,509",45,"160,846",,"202,816",45,"363,662"
+2032A,"Missile Procurement, Army",A,02,Other missiles,11,10,Surface-to-Air Missile System,8930C61001,INDIRECT FIRE PROTECTION CAPABILITY INC 2-I,A,Weapon System Cost,,"256,753",,"552,444",,"830,579",,"188,000",,"1,018,579"
+2032A,"Missile Procurement, Army",A,02,Other missiles,12,10,Surface-to-Air Missile System,9214C81200,MID-RANGE CAPABILITY (MRC),A,Weapon System Cost,,"169,519",,"233,037",,"82,407",,,,"82,407"
+2032A,"Missile Procurement, Army",A,02,Other missiles,13,10,Surface-to-Air Missile System,9216C82200,COUNTER SMALL UNMANNED AERIAL SYSTEM INTERCEP,A,Weapon System Cost,,,,"302,261",,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,14,20,Air-To-Surface Missile System,1338C70000,Hellfire Sys Summary,A,Weapon System Cost,,"21,976",,,,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,15,20,Air-To-Surface Missile System,2605C70302,Joint Air-to-Ground MSLS (JAGM),A,Weapon System Cost,"1,137","350,669",23,"47,582",178,"84,667",,,178,"84,667"
+2032A,"Missile Procurement, Army",A,02,Other missiles,16,20,Air-To-Surface Missile System,2607C71300,Long Range Precision Munition,A,Weapon System Cost,,"5,000",,,,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,17,20,Air-To-Surface Missile System,2611C72100,LONG-RANGE HYPERSONIC WEAPON,A,Weapon System Cost,,"62,843",,"669,178",,"353,415",,"85,000",,"438,415"
+2032A,"Missile Procurement, Army",A,02,Other missiles,18,30,Anti-Tank/Assault Missile Sys,0648CC0007,Javelin (AAWS-M) System Summary,A,Weapon System Cost,"1,279","360,745",450,"223,873",649,"329,205",,,649,"329,205"
+2032A,"Missile Procurement, Army",A,02,Other missiles,19,30,Anti-Tank/Assault Missile Sys,2104C59300,TOW 2 System Summary,A,Weapon System Cost,867,"180,764",420,"105,295",,"11,731",,,,"11,731"
+2032A,"Missile Procurement, Army",A,02,Other missiles,20,30,Anti-Tank/Assault Missile Sys,6005C64400,Guided MLRS Rocket (GMLRS),A,Weapon System Cost,"1,854","1,367,173",,"1,199,177",,"1,155,071",,,,"1,155,071"
+2032A,"Missile Procurement, Army",A,02,Other missiles,20,30,Anti-Tank/Assault Missile Sys,6005C64400,Guided MLRS Rocket (GMLRS),B,Less: Advance Procurement (PY),,,,"-30,913",,"-30,000",,,,"-30,000"
+2032A,"Missile Procurement, Army",A,02,Other missiles,21,30,Anti-Tank/Assault Missile Sys,6005C64400,Guided MLRS Rocket (GMLRS),C,Advance Procurement (CY),,"30,913",,"30,000",,"43,156",,,,"43,156"
+2032A,"Missile Procurement, Army",A,02,Other missiles,22,30,Anti-Tank/Assault Missile Sys,6060C65405,MLRS Reduced Range Practice Rockets (RRPR),A,Weapon System Cost,516,"10,334","2,508","30,230","4,002","32,339",,,"4,002","32,339"
+2032A,"Missile Procurement, Army",A,02,Other missiles,23,30,Anti-Tank/Assault Missile Sys,6200C02901,High Mobility Artillery Rocket System (HIMARS,A,Weapon System Cost,22,"187,972",10,"79,387",6,"61,503",,,6,"61,503"
+2032A,"Missile Procurement, Army",A,02,Other missiles,24,30,Anti-Tank/Assault Missile Sys,6472C98510,ARMY TACTICAL MSL SYS (ATACMS) - SYS SUM,A,Weapon System Cost,,"12,307",33,"113,280",,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,25,30,Anti-Tank/Assault Missile Sys,6870C88001,LETHAL MINIATURE AERIAL MISSILE SYSTEM (LMAMS,A,Weapon System Cost,,"134,934",,,,,,,,
+2032A,"Missile Procurement, Army",A,02,Other missiles,26,30,Anti-Tank/Assault Missile Sys,6872C91500,FAMILY OF LOW ALTITUDE UNMANNED SYSTEMS,A,Weapon System Cost,,,,"120,599",,,,,,
+2032A,"Missile Procurement, Army",A,03,Modification of missiles,29,10,Modifications,0962C50700,Patriot Mods,A,Weapon System Cost,,"262,447",,"171,958",,"757,800",,,,"757,800"
+2032A,"Missile Procurement, Army",A,03,Modification of missiles,32,10,Modifications,2684C20000,Stinger Mods,A,Weapon System Cost,,"55,448",,"75,146",,"428,935",,"77,000",,"505,935"
+2032A,"Missile Procurement, Army",A,03,Modification of missiles,33,10,Modifications,2690CE8710,AVENGER MODS,A,Weapon System Cost,,"22,274",,"2,321",,,,,,
+2032A,"Missile Procurement, Army",A,03,Modification of missiles,35,10,Modifications,6552C67500,MLRS Mods,A,Weapon System Cost,,"168,198",,"185,839",,"243,470",,,,"243,470"
+2032A,"Missile Procurement, Army",A,03,Modification of missiles,36,10,Modifications,6580C67501,HIMARS Modifications,A,Weapon System Cost,,"76,266",,"49,581",,"54,005",,,,"54,005"
+2032A,"Missile Procurement, Army",A,04,Spares and repair parts,38,10,Spares and Repair Parts,1242CA0250,Spares And Repair Parts,A,Weapon System Cost,,"6,573",,"6,695",,"6,651",,,,"6,651"
+2032A,"Missile Procurement, Army",A,05,Support equipment and facilities,40,10,Support Equipment & Facilities,1242C93000,Air Defense Targets,A,Weapon System Cost,,"11,701",,"12,034",,"12,801",,,,"12,801"
+2032A,"Missile Procurement, Army",A,06,AGILE PROFILE MANAGEMENT,44,10,Agile Portfolio Management,6000I46000,LAUNCHED EFFECTS FAMILY,A,Weapon System Cost,,,,,,"67,816",,"12,587",,"80,403"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,2,10,Tracked Combat Vehicles,2944G80819,Armored Multi Purpose Vehicle (AMPV),A,Weapon System Cost,57,"592,099",56,"381,510",86,"554,678",,,86,"554,678"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,4,10,Tracked Combat Vehicles,4872G84900,ASSAULT BREACHER VEHICLE (ABV),A,Weapon System Cost,,,,"5,681",,"4,079",,,,"4,079"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,5,10,Tracked Combat Vehicles,7181G80820,M10 BOOKER,A,Weapon System Cost,33,"386,635",32,"439,111",,"64,919",,,,"64,919"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,7,20,Modification of Tracked Combat Vehicles,0230GM0100,Stryker (Mod),A,Weapon System Cost,,,,"52,471",,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,8,20,Modification of Tracked Combat Vehicles,0363G85200,Stryker Upgrade,A,Weapon System Cost,150,"676,121",38,"388,320",,"135,816",,,,"135,816"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,9,20,Modification of Tracked Combat Vehicles,1382GZ3300,BRADLEY FIRE SUPPORT TEAM (BFIST) VEHICLE,A,Weapon System Cost,,"5,232",,"7,255",,"4,684",,,,"4,684"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,10,20,Modification of Tracked Combat Vehicles,1678GZ2400,Bradley Program (MOD),A,Weapon System Cost,,"2,414,131",,"106,937",,"157,183",,,,"157,183"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,11,20,Modification of Tracked Combat Vehicles,2072GA0400,M109 FOV Modifications,A,Weapon System Cost,,"90,986",,"42,574",,"82,537",,,,"82,537"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,12,20,Modification of Tracked Combat Vehicles,2073GZ0410,Paladin Integrated Management (PIM),A,Weapon System Cost,57,"742,349",20,"568,599",10,"250,238",,,10,"250,238"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,13,20,Modification of Tracked Combat Vehicles,3700GA0570,IMPROVED RECOVERY VEHICLE (M88 HERCULES),A,Weapon System Cost,,"41,058",8,"141,657",8,"155,540",,,8,"155,540"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,17,20,Modification of Tracked Combat Vehicles,5225GZ3001,Joint Assault Bridge,A,Weapon System Cost,26,"159,804",28,"174,779",21,"132,637",,,21,"132,637"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,19,20,Modification of Tracked Combat Vehicles,6500GA0750,Abrams Upgrade Program,A,Weapon System Cost,100,"1,137,883",30,"902,185",30,"740,528",,,30,"740,528"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,19,20,Modification of Tracked Combat Vehicles,6500GA0750,Abrams Upgrade Program,B,Less: Advance Procurement (PY),,,,"-102,440",,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,20,20,Modification of Tracked Combat Vehicles,6500GA0750,Abrams Upgrade Program,C,Advance Procurement (CY),,"102,440",,,,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,01,Tracked combat vehicles,21,20,Modification of Tracked Combat Vehicles,6652GM1900,VEHICLE PROTECTION SYSTEMS (VPS),A,Weapon System Cost,,,,,,"107,833",,,,"107,833"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,24,10,Weapons & Other Combat Vehicles,0418GN0003,Personal Defense Weapon (Roll),A,Weapon System Cost,,150,,"4,869",,"1,002",,,,"1,002"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,25,10,Weapons & Other Combat Vehicles,2472G13000,M240 Medium Machine Gun (7.62mm),A,Weapon System Cost,,"17,542",,"5,503",,5,,,,5
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,27,10,Weapons & Other Combat Vehicles,5000GB2000,"Machine Gun, Cal .50 M2 Roll",A,Weapon System Cost,,"3,420",,3,,4,,,,4
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,28,10,Weapons & Other Combat Vehicles,6580G02200,Mortar Systems,A,Weapon System Cost,,"8,013",,"8,353",,"5,807",,,,"5,807"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,29,10,Weapons & Other Combat Vehicles,6659G08100,LOCATION & AZIMUTH DETERMINATION SYSTEM (LADS,A,Weapon System Cost,,"3,174",,"2,543",,"9,477",,,,"9,477"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,30,10,Weapons & Other Combat Vehicles,8181G01501,XM320 Grenade Launcher Module (GLM),A,Weapon System Cost,,"14,143",,"17,747",,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,31,10,Weapons & Other Combat Vehicles,8190G01506,Precision Sniper Rifle,A,Weapon System Cost,,"7,748",,"5,910",,"1,853",,,,"1,853"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,33,10,Weapons & Other Combat Vehicles,8201G13501,Carbine,A,Weapon System Cost,,"8,571",,"8,003",,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,34,10,Weapons & Other Combat Vehicles,8205G14510,Next Generation Squad Weapon,A,Weapon System Cost,,"295,439",,"367,292",,"365,155",,,,"365,155"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,35,10,Weapons & Other Combat Vehicles,8310G04700,Common Remotely Operated Weapons Station,A,Weapon System Cost,,"15,000",,,,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,36,10,Weapons & Other Combat Vehicles,8635G15325,Handgun,A,Weapon System Cost,,32,,34,,7,,,,7
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,37,20,Mod of Weapons and Other Combat Veh,3000GB3000,MK-19 Grenade Machine Gun MODS,A,Weapon System Cost,,"10,000",,"10,531",,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,38,20,Mod of Weapons and Other Combat Veh,3005GZ1700,M777 Mods,A,Weapon System Cost,,"19,878",,"25,998",,"2,429",,,,"2,429"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,42,20,Mod of Weapons and Other Combat Veh,3181GZ1500,Sniper Rifles Modifications,A,Weapon System Cost,,,,,,19,,,,19
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,43,20,Mod of Weapons and Other Combat Veh,3640GC0401,M119 Modifications,A,Weapon System Cost,,"13,097",,"12,823",,"4,642",,,,"4,642"
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,44,20,Mod of Weapons and Other Combat Veh,7054G02100,Mortar Modification,A,Weapon System Cost,,423,,,,,,,,
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,46,30,Support Equipment & Facilities,1862GL3200,Items Less Than $5.0m (WOCV-WTCV),A,Weapon System Cost,,"5,020",,"1,031",,469,,,,469
+2033A,"Procurement of Weapons and Tracked Combat Vehicles, Army",A,02,Weapons and other combat vehicles,47,30,Support Equipment & Facilities,3270GC0050,Production Base Support (WOCV-WTCV),A,Weapon System Cost,,"115,024",,"109,591",,"104,993",,,,"104,993"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,1,30,Small/Medium Cal Ammunition,0132E00700,"CTG, 5.56MM, All Types",A,Weapon System Cost,,"94,230",,"84,090",,"128,283",,,,"128,283"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,2,30,Small/Medium Cal Ammunition,0612E02000,"CTG, 7.62MM, All Types",A,Weapon System Cost,,"228,589",,"41,519",,"62,157",,,,"62,157"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,3,30,Small/Medium Cal Ammunition,1065E06001,NEXT GENERATION SQUAD WEAPON AMMUNITION,A,Weapon System Cost,,"242,897",,"194,889",,"426,177",,,,"426,177"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,4,30,Small/Medium Cal Ammunition,1450EA3000,"CTG, Handgun, All Types",A,Weapon System Cost,,"6,420",,"6,461",,"7,750",,,,"7,750"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,5,30,Small/Medium Cal Ammunition,1722E08000,"CTG, .50 Cal, All Types",A,Weapon System Cost,,"321,652",,"50,002",,"78,199",,,,"78,199"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,6,30,Small/Medium Cal Ammunition,2382E08900,"CTG, 20mm, All Types",A,Weapon System Cost,,"15,425",,"7,012",,"25,773",,,,"25,773"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,7,30,Small/Medium Cal Ammunition,2650E08200,"CTG, 25mm, All Types",A,Weapon System Cost,,"249,612",,"24,246",,"22,324",,,,"22,324"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,8,30,Small/Medium Cal Ammunition,2938ER8120,"CTG, 30mm, All Types",A,Weapon System Cost,,"165,022",,"46,482",,"100,392",,,,"100,392"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,9,30,Small/Medium Cal Ammunition,3222ER8001,"CTG, 40mm, All Types",A,Weapon System Cost,,"551,842",,"150,540",,"131,432",,,,"131,432"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,11,30,Small/Medium Cal Ammunition,8030E80010,"CTG, 50MM, All Types",A,Weapon System Cost,,"28,000",,"20,006",,"42,131",,,,"42,131"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,12,33,Mortar Ammunition,0050E89600,"60MM Mortar, All Types",A,Weapon System Cost,,"35,160",,"29,853",,"38,114",,,,"38,114"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,13,33,Mortar Ammunition,3584E76000,"81MM Mortar, All Types",A,Weapon System Cost,,"40,562",,"40,442",,"41,786",,,,"41,786"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,14,33,Mortar Ammunition,6780E25500,"120MM Mortar, All Types",A,Weapon System Cost,,"110,689",,"111,870",,"123,144",,,,"123,144"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,15,35,Tank Ammunition,1120E22203,"Cartridges, Tank, 105MM And 120MM, All Types",A,Weapon System Cost,,"508,415",,"334,862",,"440,152",,,,"440,152"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,16,37,Artillery Ammunition,0530E15101,"Artillery Cartridges, 75MM & 105MM, All Types",A,Weapon System Cost,,"49,270",,"22,957",,"80,780",,,,"80,780"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,17,37,Artillery Ammunition,3102E89500,"ARTILLERY PROJECTILE, 155MM, All Types",A,Weapon System Cost,,"1,987,520",,"171,657",,"218,877",,,,"218,877"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,19,37,Artillery Ammunition,6635F90100,PRECISION ARTILLERY MUNITIONS,A,Weapon System Cost,,"42,919",,"57,318",,"28,995",,,,"28,995"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,20,37,Artillery Ammunition,8750E27501,"Artillery Propellants, Fuzes and Primers, All",A,Weapon System Cost,,"2,469,375",,"155,365",,"168,737",,,,"168,737"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,21,43,Mines,0442EA0800,"Mines & Clearing Charges, All Types",A,Weapon System Cost,,"70,682",,"56,032",,"42,748",,,,"42,748"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,22,43,Mines,0612E76740,Close Terrain Shaping Obstacle,A,Weapon System Cost,,"17,410",,"15,303",,"7,860",,,,"7,860"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,23,43,Mines,7920E72501,"MINE, AT, VOLCANO, All Types",A,Weapon System Cost,,,,501,,,,,,
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,24,45,Rockets,2348EA4000,"Shoulder Launched Munitions, All Types",A,Weapon System Cost,,"77,815",,833,,"46,089",,,,"46,089"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,25,45,Rockets,3246E37300,"Rocket, Hydra 70, All Types",A,Weapon System Cost,,"166,686",,"34,302",,"34,836",,,,"34,836"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,26,47,Other Ammunition,2420E61000,"CAD/PAD, All Types",A,Weapon System Cost,,"6,564",,"6,571",,"12,543",,,,"12,543"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,27,47,Other Ammunition,2790E55400,"Demolition Munitions, All Types",A,Weapon System Cost,,"24,238",,"17,728",,"21,409",,,,"21,409"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,28,47,Other Ammunition,4582E34000,"Grenades, All Types",A,Weapon System Cost,,"50,874",,"32,623",,"56,530",,,,"56,530"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,29,47,Other Ammunition,6038E46900,"Signals, All Types",A,Weapon System Cost,,"13,489",,"21,510",,"36,846",,,,"36,846"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,30,47,Other Ammunition,8278E51200,"Simulators, All Types",A,Weapon System Cost,,"11,309",,"11,132",,"10,821",,,,"10,821"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,32,50,Miscellaneous,0684EB0016,"Ammo Components, All Types",A,Weapon System Cost,,"3,976",,"4,085",,"4,084",,,,"4,084"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,33,50,Miscellaneous,1430E91901,"Non-Lethal Ammunition, All Types",A,Weapon System Cost,,699,,,,,,,,
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,34,50,Miscellaneous,2624EA0055,Items Less Than $5 Million (AMMO),A,Weapon System Cost,,"17,441",,"16,074",,"16,799",,,,"16,799"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,35,50,Miscellaneous,4370EA0575,Ammunition Peculiar Equipment,A,Weapon System Cost,,"13,133",,"3,283",,"16,219",,,,"16,219"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,36,50,Miscellaneous,4758EA0550,First Destination Transportation (AMMO),A,Weapon System Cost,,"18,128",,"18,677",,"18,600",,,,"18,600"
+2034A,"Procurement of Ammunition, Army",A,01,Ammunition,37,50,Miscellaneous,9615EA8500,Closeout Liabilities,A,Weapon System Cost,,102,,102,,102,,,,102
+2034A,"Procurement of Ammunition, Army",A,02,Ammunition production base support,40,10,Production Base Support,0572EP1000,Industrial Facilities,A,Weapon System Cost,,"2,359,935",,"1,054,260",,"1,084,611",,,,"1,084,611"
+2034A,"Procurement of Ammunition, Army",A,02,Ammunition production base support,41,10,Production Base Support,4099EP1700,Conventional Munitions Demilitarization,A,Weapon System Cost,,"183,753",,"135,649",,"155,050",,,,"155,050"
+2034A,"Procurement of Ammunition, Army",A,02,Ammunition production base support,42,10,Production Base Support,4150EP2500,ARMS Initiative,A,Weapon System Cost,,"4,057",,"4,140",,"3,885",,,,"3,885"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,2,10,Tactical Vehicles,0896D03900,FAMILY OF SEMITRAILERS,A,Weapon System Cost,,,359,"85,734",,"132,793",,,,"132,793"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,3,10,Tactical Vehicles,0930D01001,"Semitrailers, Flatbed:",A,Weapon System Cost,,"26,902",,,,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,4,10,Tactical Vehicles,1400D02001,"Semitrailers, tankers",A,Weapon System Cost,,"35,736",,,,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,5,10,Tactical Vehicles,3446D15400,HI MOB MULTI-PURP WHLD VEH (HMMWV),A,Weapon System Cost,,"25,904",,"55,265",,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,6,10,Tactical Vehicles,3484D15501,Ground Mobility Vehicles (GMV),A,Weapon System Cost,,"97,865",,"44,407",,"308,620",,,,"308,620"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,7,10,Tactical Vehicles,3636D10000,ARNG HMMWV Modernization Program,A,Weapon System Cost,,"140,000",,"90,000",,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,9,10,Tactical Vehicles,5731D15610,JOINT LIGHT TACTICAL VEHICLE FAMILY OF VEHICL,A,Weapon System Cost,,"795,459",,"627,988",,"45,840",,,,"45,840"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,10,10,Tactical Vehicles,5862D16001,"TRUCK, DUMP, 20T (CCE)",A,Weapon System Cost,,"35,075",,"49,086",,"17,000",,,,"17,000"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,11,10,Tactical Vehicles,6866D15500,Family Of Medium Tactical Veh (FMTV),A,Weapon System Cost,,"209,546",,"253,924",,"85,490",,,,"85,490"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,12,10,Tactical Vehicles,6880D15620,Family of Cold Weather All-Terrain Vehicle (C,A,Weapon System Cost,,"80,243",,"69,667",,"38,001",,,,"38,001"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,13,10,Tactical Vehicles,7000D15800,Firetrucks & Associated Firefighting Equip,A,Weapon System Cost,,"55,340",,"36,726",,"39,761",,,,"39,761"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,14,10,Tactical Vehicles,8309DA0500,Family Of Heavy Tactical Vehicles (FHTV),A,Weapon System Cost,,"243,019",,"266,711",,"202,009",,,,"202,009"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,16,10,Tactical Vehicles,8331D16506,PLS ESP,A,Weapon System Cost,,"47,925",,,,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,19,10,Tactical Vehicles,8980D04003,Tactical Wheeled Vehicle Protection Kits,A,Weapon System Cost,,"3,792",,"24,747",,"2,660",,,,"2,660"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,20,10,Tactical Vehicles,8992DA0924,Modification Of In Svc Equip,A,Weapon System Cost,,"131,506",,"152,801",,"98,728",,,,"98,728"
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,22,20,Non-Tactical Vehicles,0358D23000,Passenger Carrying Vehicles,A,Weapon System Cost,,"1,048",,,,,,,,
+2035A,"Other Procurement, Army",A,01,Tactical and support vehicles,23,20,Non-Tactical Vehicles,2450D30000,"NonTactical Vehicles, Other",A,Weapon System Cost,,"2,984",,"14,667",,"8,462",,,,"8,462"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,26,12,Comm - Joint Communications,1981B00010,Signal Modernization Program,A,Weapon System Cost,,"144,857",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,27,12,Comm - Joint Communications,1982B07100,Tactical Network Technology Mod In Svc,A,Weapon System Cost,,"339,344",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,29,12,Comm - Joint Communications,1989B11200,TACTICAL NETWORK COMMUNICATION,A,Weapon System Cost,,,151,"378,645",,"866,347",,,,"866,347"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,30,12,Comm - Joint Communications,2161B47200,Disaster Incident Response Comms Terminal (DI,A,Weapon System Cost,,254,,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,31,12,Comm - Joint Communications,2930BB5777,JCSE Equipment (USRDECOM),A,Weapon System Cost,,"5,097",,"5,504",,"5,389",,,,"5,389"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,32,18,Comm - Satellite Communications,2912B56000,SATELLITE COMMUNICATIONS,A,Weapon System Cost,,,294,"149,921",,"114,770",,,,"114,770"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,35,18,Comm - Satellite Communications,2939B09600,SPECTRUM CBRS,A,Weapon System Cost,,-19,,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,36,18,Comm - Satellite Communications,2948BB8500,Defense Enterprise Wideband Satcom Systems,A,Weapon System Cost,,"101,181",,"87,058",,"65,591",,,,"65,591"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,37,18,Comm - Satellite Communications,2956B85800,Transportable Tactical Command Communications,A,Weapon System Cost,,"57,449",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,38,18,Comm - Satellite Communications,9810BA9350,SHF Term,A,Weapon System Cost,,"41,634",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,39,18,Comm - Satellite Communications,9897K49000,"Assured Positioning, Navigation and Timing",A,Weapon System Cost,,"202,370",,"232,438",,"212,469",,,,"212,469"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,40,18,Comm - Satellite Communications,9903BC4000,EHF SATELLITE COMMUNICATION,A,Weapon System Cost,,"12,976",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,42,18,Comm - Satellite Communications,9915BC4120,Global Brdcst Svc - GBS,A,Weapon System Cost,,"5,831",,534,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,44,18,Comm - Satellite Communications,9923B09900,Spectrum Microwave,A,Weapon System Cost,,"-6,463",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,45,24,Comm - C3 System,8151B70000,COE Tactical Server Infrastructure (TSI),A,Weapon System Cost,,"77,999",,"58,692",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,46,32,Comm - Combat Communications,6458B95004,Handheld Manpack Small Form Fit (HMS),A,Weapon System Cost,,"721,407",,"649,214",,"478,435",,,,"478,435"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,48,32,Comm - Combat Communications,7264B24400,ARMY LINK 16 SYSTEMS,A,Weapon System Cost,,"60,767",,"104,320",,"133,836",,,,"133,836"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,51,32,Comm - Combat Communications,8563B58601,Unified Command Suite,A,Weapon System Cost,,"18,999",,"20,445",,"20,010",,,,"20,010"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,52,32,Comm - Combat Communications,9164BU8100,COTS Communications Equipment,A,Weapon System Cost,,"407,385",,"489,754",,"207,402",,,,"207,402"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,53,32,Comm - Combat Communications,9885MA8000,Family of Med Comm for Combat Casualty Care,A,Weapon System Cost,,"1,374",,"5,000",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,54,32,Comm - Combat Communications,9887B88810,Army Communications & Electronics,A,Weapon System Cost,,"52,485",,"60,611",,"110,678",,,,"110,678"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,56,36,Comm - Intelligence Comm,0250BK5284,CI AUTOMATION ARCHITECTURE-INTEL,A,Weapon System Cost,,"17,640",,"15,512",,"15,290",,,,"15,290"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,58,36,Comm - Intelligence Comm,0287BZ6100,MULTI-DOMAIN INTELLIGENCE,A,Weapon System Cost,,"100,789",,"131,548",,"108,655",,,,"108,655"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,60,64,Information Security,0122TA0600,Information System Security Program-ISSP,A,Weapon System Cost,,701,,337,,826,,,,826
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,61,64,Information Security,0125B96000,Communications Security (COMSEC),A,Weapon System Cost,,"156,821",,"98,005",,"125,970",,,,"125,970"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,62,64,Information Security,0128B63000,Defensive CYBER Operations,A,Weapon System Cost,,"2,399",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,66,64,Information Security,0152B13000,BIOMETRIC ENABLING CAPABILITY (BEC),A,Weapon System Cost,,453,,45,,65,,,,65
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,69,72,Comm - Long Haul Communications,9716BU4160,Base Support Communications,A,Weapon System Cost,,"38,278",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,70,73,Comm - Base Communications,9200BB8650,Information Systems,A,Weapon System Cost,,"32,608",,"48,912",,"209,378",,,,"209,378"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,71,73,Comm - Base Communications,9666BU8000,Emergency Management Modernization Program,A,Weapon System Cost,,"10,949",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,72,73,Comm - Base Communications,9668B74000,BASE EMERGENCY COMMUNICATION,A,Weapon System Cost,,,,"42,402",,"50,177",,,,"50,177"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,74,73,Comm - Base Communications,9700BU0500,Installation Info Infrastructure Mod Program,A,Weapon System Cost,,"243,011",,"138,978",,"439,373",,,,"439,373"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,78,80,Elect Equip - Tact Int Rel Act (TIARA),9398K57300,TITAN,A,Weapon System Cost,,,,,,"236,314",,,,"236,314"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,79,80,Elect Equip - Tact Int Rel Act (TIARA),9522V29600,JTT/CIBS-M,A,Weapon System Cost,,"8,543",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,80,80,Elect Equip - Tact Int Rel Act (TIARA),9546B97600,TERRESTRIAL LAYER SYSTEMS (TLS),A,Weapon System Cost,,"197,230",,"62,762",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,81,80,Elect Equip - Tact Int Rel Act (TIARA),9556B87000,COLLECTION CAPABILITY,A,Weapon System Cost,,,32,"4,851",,"2,935",,,,"2,935"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,82,80,Elect Equip - Tact Int Rel Act (TIARA),9654BU4050,DRUG INTERDICTION PROGRAM (DIP) (TIARA),A,Weapon System Cost,,"4,044",,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,83,80,Elect Equip - Tact Int Rel Act (TIARA),9690BZ7316,DCGS-A-INTEL,A,Weapon System Cost,,"2,980",,"4,122",,"1,087",,,,"1,087"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,85,80,Elect Equip - Tact Int Rel Act (TIARA),9704BA0326,TROJAN,A,Weapon System Cost,,"30,649",,"39,344",,"37,968",,,,"37,968"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,86,80,Elect Equip - Tact Int Rel Act (TIARA),9912BZ9750,MOD OF IN-SVC EQUIP (INTEL SPT),A,Weapon System Cost,,"14,169",,"6,541",,"20,598",,,,"20,598"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,88,80,Elect Equip - Tact Int Rel Act (TIARA),9988BK5300,BIOMETRIC TACTICAL COLLECTION DEVICES,A,Weapon System Cost,,932,,,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,90,83,Elect Equip - Electronic Warfare (EW),8488K00002,EW Planning & Management Tools (EWPMT),A,Weapon System Cost,,"21,188",,"26,327",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,91,83,Elect Equip - Electronic Warfare (EW),8489W60001,AIR VIGILANCE (AV),A,Weapon System Cost,,"6,641",,"9,956",,"9,731",,"3,100",,"12,831"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,92,83,Elect Equip - Electronic Warfare (EW),8491B05000,Multi-Function Electronic Warfare (MFEW) Syst,A,Weapon System Cost,,"15,941",,"17,004",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,93,83,Elect Equip - Electronic Warfare (EW),9926BL5287,FAMILY OF PERSISTENT SURVEILLANCE CAP.,A,Weapon System Cost,,,,"13,225",,"15,382",,,,"15,382"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,94,83,Elect Equip - Electronic Warfare (EW),9996BL5283,COUNTERINTELLIGENCE/SECURITY COUNTERMEASURES,A,Weapon System Cost,,"24,283",,"20,951",,"8,283",,,,"8,283"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,95,83,Elect Equip - Electronic Warfare (EW),9997BL5285,CI MODERNIZATION,A,Weapon System Cost,,433,,260,,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,96,86,Elect Equip - Tactical Surv. (Tac Surv),0125WK5057,Sentinel Mods,A,Weapon System Cost,,"161,886",,"171,436",,"462,010",,,,"462,010"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,97,86,Elect Equip - Tactical Surv. (Tac Surv),0140KA3500,Night Vision Devices,A,Weapon System Cost,,"434,372",,"367,443",,"211,056",,,,"211,056"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,98,86,Elect Equip - Tactical Surv. (Tac Surv),0155K35110,Small Tactical Optical Rifle Mounted MLRF,A,Weapon System Cost,,"15,484",,"10,864",,"2,111",,,,"2,111"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,99,86,Elect Equip - Tactical Surv. (Tac Surv),0169BZ6501,Base Expeditiary Targeting and Surv Sys,A,Weapon System Cost,,,,,,"1,801",,,,"1,801"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,100,86,Elect Equip - Tactical Surv. (Tac Surv),0173BZ0501,Indirect Fire Protection Family Of Systems,A,Weapon System Cost,,,,"63,122",,"27,881",,,,"27,881"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,101,86,Elect Equip - Tactical Surv. (Tac Surv),0177K22001,FAMILY OF WEAPON SIGHTS (FWS),A,Weapon System Cost,,"244,677",,"164,980",,"103,607",,,,"103,607"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,102,86,Elect Equip - Tactical Surv. (Tac Surv),0187AD3260,ENHANCED PORTABLE INDUCTIVE ARTILLERY FUZE SE,A,Weapon System Cost,,"3,652",,"2,971",,"10,456",,,,"10,456"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,104,86,Elect Equip - Tactical Surv. (Tac Surv),0214KA4510,Forward Looking Infrared (IFLIR),A,Weapon System Cost,,"20,438",,"68,504",,"60,765",,,,"60,765"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,105,86,Elect Equip - Tactical Surv. (Tac Surv),0219AD0500,COUNTER SMALL UNMANNED AERIAL SYSTEM (C-SUAS),A,Weapon System Cost,,"628,062",,"288,386",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,106,86,Elect Equip - Tactical Surv. (Tac Surv),0245W61990,JOINT BATTLE COMMAND - PLATFORM (JBC-P),A,Weapon System Cost,,"154,049",,"167,172",,"165,395",,,,"165,395"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,107,86,Elect Equip - Tactical Surv. (Tac Surv),0254K32101,JOINT EFFECTS TARGETING SYSTEM (JETS),A,Weapon System Cost,,"8,932",,"8,826",,"48,715",,,,"48,715"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,109,86,Elect Equip - Tactical Surv. (Tac Surv),5726K99200,Computer Ballistics:  LHMBC XM32,A,Weapon System Cost,,"1,653",,"2,966",,"6,325",,,,"6,325"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,110,86,Elect Equip - Tactical Surv. (Tac Surv),7500K99300,Mortar Fire Control System,A,Weapon System Cost,,"8,024",,"4,660",,"3,657",,,,"3,657"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,111,86,Elect Equip - Tactical Surv. (Tac Surv),7563AD9300,Mortar Fire Control Systems Modifications,A,Weapon System Cost,,"7,399",,"6,098",,"3,262",,,,"3,262"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,112,86,Elect Equip - Tactical Surv. (Tac Surv),8386BA5500,Counterfire Radars,A,Weapon System Cost,,"73,799",,"18,802",,"40,526",,,,"40,526"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,113,89,Elect Equip - Tactical C2 Systems,9042B29810,Army Command Post Integrated Infrastructure (,A,Weapon System Cost,,"78,512",,"5,000",,"723,187",,,,"723,187"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,114,89,Elect Equip - Tactical C2 Systems,9060B28501,Fire Support C2 Family,A,Weapon System Cost,,"10,052",,"16,240",,"3,389",,,,"3,389"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,115,89,Elect Equip - Tactical C2 Systems,9266AD5070,AIR & MSL Defense Planning & Control Sys,A,Weapon System Cost,,"68,892",,"80,011",,"33,103",,,,"33,103"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,116,89,Elect Equip - Tactical C2 Systems,9280BZ5075,IAMD Battle Command System,A,Weapon System Cost,,"418,756",,"347,883",,"546,480",,,,"546,480"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,117,89,Elect Equip - Tactical C2 Systems,9301H37300,AIAMD FAMILY OF SYSTEMS (FOS) COMPONENTS,A,Weapon System Cost,,,,"2,756",,"31,016",,,,"31,016"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,118,89,Elect Equip - Tactical C2 Systems,9442BD3955,Life Cycle Software Support (LCSS),A,Weapon System Cost,,"4,270",,"5,360",,"5,175",,,,"5,175"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,119,89,Elect Equip - Tactical C2 Systems,9705BA9301,Network Management Initialization and Service,A,Weapon System Cost,,"37,194",,"48,994",,"244,403",,,,"244,403"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,121,89,Elect Equip - Tactical C2 Systems,9875W30001,Global Combat Support System-Army (GCSS-A),A,Weapon System Cost,,"1,987",,"3,624",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,122,89,Elect Equip - Tactical C2 Systems,9921B66701,Integrated Personnel and Pay System-Army (IPP,A,Weapon System Cost,,"5,318",,"5,430",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,124,89,Elect Equip - Tactical C2 Systems,9971B99901,MOD of In-Svc Equipment (ENFIRE),A,Weapon System Cost,,"14,997",,"5,017",,"16,595",,,,"16,595"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,125,92,Elect Equip - Automation,3001BE4169,Army Training Modernization,A,Weapon System Cost,,"17,199",,"10,065",,"8,262",,,,"8,262"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,126,92,Elect Equip - Automation,3002BD3000,Automated Data Processing Equip,A,Weapon System Cost,,"58,692",,"78,613",,"93,804",,,,"93,804"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,127,92,Elect Equip - Automation,3003B45000,ACCESSIONS INFORMATION ENVIRONMENT (AIE),A,Weapon System Cost,,"4,198",,"1,303",,,,,,
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,129,92,Elect Equip - Automation,3005B66501,High Perf Computing Mod Pgm (HPCMP),A,Weapon System Cost,,"76,053",,"76,327",,"74,708",,,,"74,708"
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,130,92,Elect Equip - Automation,3009B66001,Contract Writing System,A,Weapon System Cost,,"6,061",,"1,667",,468,,,,468
+2035A,"Other Procurement, Army",A,02,Communications and electronics equipment,131,92,Elect Equip - Automation,3051BD3501,CSS Communications,A,Weapon System Cost,,"56,804",,,,,,,,
+2035A,"Other Procurement, Army",,02,,999,99,Classified Programs,9999999999,Classified Programs,,,,"1,781",,"1,817",,"1,546",,,,"1,546"
+2035A,"Other Procurement, Army",A,03,Other support equipment,138,10,Chemical Defensive Equipment,2300M90101,Base Defense Systems (BDS),A,Weapon System Cost,,"70,781",,"32,879",,143,,,,143
+2035A,"Other Procurement, Army",A,03,Other support equipment,139,10,Chemical Defensive Equipment,4516M01001,CBRN Defense,A,Weapon System Cost,,"57,198",,"57,408",,"69,739",,,,"69,739"
+2035A,"Other Procurement, Army",A,03,Other support equipment,141,15,Bridging Equipment,2831MX0100,Tactical Bridging,A,Weapon System Cost,,"1,157",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,142,15,Bridging Equipment,3542MA8890,"Tactical Bridge, Float-Ribbon",A,Weapon System Cost,,"82,228",,"97,231",,"69,863",,,,"69,863"
+2035A,"Other Procurement, Army",A,03,Other support equipment,143,15,Bridging Equipment,3758G06520,BRIDGE SUPPLEMENTAL SET,A,Weapon System Cost,,"4,414",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,146,20,Engineer (Non-Construction) Equipment,2881R68400,Grnd Standoff Mine Detectn Sysm (GSTAMIDS),A,Weapon System Cost,,"15,000",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,150,20,Engineer (Non-Construction) Equipment,4868W12002,Robotics and Applique Systems,A,Weapon System Cost,,"65,118",,"67,469",,509,,,,509
+2035A,"Other Procurement, Army",A,03,Other support equipment,151,20,Engineer (Non-Construction) Equipment,5913R63610,Render Safe Sets kits Outfits,A,Weapon System Cost,,,,"16,440",,"14,184",,,,"14,184"
+2035A,"Other Procurement, Army",A,03,Other support equipment,152,20,Engineer (Non-Construction) Equipment,8500R12001,Family of Boats and Motors,A,Weapon System Cost,,"4,785",,"1,922",,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,153,25,Combat Service Support Equipment,0100MF9000,Heaters and ECU's,A,Weapon System Cost,,"7,170",,"14,355",,"14,288",,,,"14,288"
+2035A,"Other Procurement, Army",A,03,Other support equipment,155,25,Combat Service Support Equipment,8822G01101,Personnel Recovery Support System (PRSS),A,Weapon System Cost,,"5,356",,"6,503",,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,156,25,Combat Service Support Equipment,8825R80501,Ground Soldier System,A,Weapon System Cost,,"154,262",,"151,613",,"178,850",,,,"178,850"
+2035A,"Other Procurement, Army",A,03,Other support equipment,157,25,Combat Service Support Equipment,8827R80800,Mobile Soldier Power,A,Weapon System Cost,,"13,284",,"19,929",,"15,729",,,,"15,729"
+2035A,"Other Procurement, Army",A,03,Other support equipment,158,25,Combat Service Support Equipment,8860M80200,Force Provider,A,Weapon System Cost,,"75,200",,"20,569",,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,159,25,Combat Service Support Equipment,9120M65800,Field Feeding Equipment,A,Weapon System Cost,,,,,,"4,500",,,,"4,500"
+2035A,"Other Procurement, Army",A,03,Other support equipment,160,25,Combat Service Support Equipment,9140MA7804,Cargo Aerial Del & Personnel Parachute System,A,Weapon System Cost,,"42,279",,"46,312",,"61,224",,,,"61,224"
+2035A,"Other Procurement, Army",A,03,Other support equipment,161,25,Combat Service Support Equipment,9462R70001,Family Of Engr Combat and Construction Sets,A,Weapon System Cost,,"12,118",,"9,217",,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,163,30,Petroleum Equipment,0725MB6400,QUALITY SURVEILLANCE EQUIPMENT,A,Weapon System Cost,,"2,507",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,164,30,Petroleum Equipment,4700MA6000,"Distribution Systems, Petroleum & Water",A,Weapon System Cost,,"41,739",,"44,602",,"96,020",,,,"96,020"
+2035A,"Other Procurement, Army",A,03,Other support equipment,165,40,Medical Equipment,7500MN1000,Combat Support Medical,A,Weapon System Cost,,"86,829",,"72,157",,"99,567",,,,"99,567"
+2035A,"Other Procurement, Army",A,03,Other support equipment,166,45,Maintenance Equipment,0639G05301,Mobile Maintenance Equipment Systems,A,Weapon System Cost,,"137,287",,"126,271",,"63,311",,,,"63,311"
+2035A,"Other Procurement, Army",A,03,Other support equipment,169,50,Construction Equipment,0387R02700,CONSTRUCTION EQUIPMENT,A,Weapon System Cost,,,87,"47,109",,"92,299",,,,"92,299"
+2035A,"Other Procurement, Army",A,03,Other support equipment,173,50,Construction Equipment,4700M05800,"Tractor, Full Tracked",A,Weapon System Cost,,"48,406",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,174,50,Construction Equipment,4734R06701,All Terrain Cranes,A,Weapon System Cost,,"35,725",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,175,50,Construction Equipment,7495R05901,High Mobility Engineer Excavator (HMEE),A,Weapon System Cost,,"50,272",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,176,50,Construction Equipment,9113R07005,Family of Diver Support Equipment,A,Weapon System Cost,,"1,811",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,177,50,Construction Equipment,9120M05500,Const Equip ESP,A,Weapon System Cost,,"6,534",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,179,55,Rail Float Containerization Equipment,3569M11101,Army Watercraft Esp,A,Weapon System Cost,,"30,592",,"55,459",,"57,342",,,,"57,342"
+2035A,"Other Procurement, Army",A,03,Other support equipment,180,55,Rail Float Containerization Equipment,8211R01001,Maneuver Support Vessel (MSV),A,Weapon System Cost,,"149,449",,"88,634",,"33,949",,,,"33,949"
+2035A,"Other Procurement, Army",A,03,Other support equipment,181,55,Rail Float Containerization Equipment,9552ML5355,Items Less Than $5.0M (Float/Rail),A,Weapon System Cost,,,,"20,036",,"18,217",,,,"18,217"
+2035A,"Other Procurement, Army",A,03,Other support equipment,182,60,Generators,0426MA9800,Generators And Associated Equip,A,Weapon System Cost,,"79,509",,"93,591",,"89,073",,,,"89,073"
+2035A,"Other Procurement, Army",A,03,Other support equipment,183,60,Generators,9012R42501,Tactical Electric Power Recapitalization,A,Weapon System Cost,,"19,088",,,,,,,,
+2035A,"Other Procurement, Army",A,03,Other support equipment,184,65,Material Handling Equipment,5558G41001,Family Of Forklifts,A,Weapon System Cost,,"15,115",,"7,849",,"12,576",,,,"12,576"
+2035A,"Other Procurement, Army",A,03,Other support equipment,185,70,Training Equipment,1780MA6600,Combat Training Centers Support,A,Weapon System Cost,,"61,119",,"38,682",,"49,025",,,,"49,025"
+2035A,"Other Procurement, Army",A,03,Other support equipment,186,70,Training Equipment,2062NA0100,"Training Devices, Nonsystem",A,Weapon System Cost,,"216,831",,"174,890",,"189,306",,,,"189,306"
+2035A,"Other Procurement, Army",A,03,Other support equipment,187,70,Training Equipment,2079NA2000,Synthetic Training Environment (STE),A,Weapon System Cost,,"230,197",,"194,009",,"166,402",,,,"166,402"
+2035A,"Other Procurement, Army",A,03,Other support equipment,189,70,Training Equipment,6860NA0176,Gaming Technology In Support of Army Training,A,Weapon System Cost,,"9,698",,"10,172",,"7,320",,,,"7,320"
+2035A,"Other Procurement, Army",A,03,Other support equipment,191,80,Test Measure and Dig Equipment (TMD),0200MB4000,Integrated Family Of Test Equipment (IFTE),A,Weapon System Cost,,"36,149",,"48,329",,"38,784",,,,"38,784"
+2035A,"Other Procurement, Army",A,03,Other support equipment,193,80,Test Measure and Dig Equipment (TMD),0605G02510,Test Equipment Modernization (TEMOD),A,Weapon System Cost,,"32,436",,"46,128",,"51,119",,,,"51,119"
+2035A,"Other Procurement, Army",A,03,Other support equipment,195,90,Other Support Equipment,0050MA0780,Physical Security Systems (OPA3),A,Weapon System Cost,,"128,080",,"138,459",,"136,315",,,,"136,315"
+2035A,"Other Procurement, Army",A,03,Other support equipment,196,90,Other Support Equipment,0312MB7000,Base Level Common Equipment,A,Weapon System Cost,,"28,485",,"29,968",,"19,452",,,,"19,452"
+2035A,"Other Procurement, Army",A,03,Other support equipment,197,90,Other Support Equipment,1110MA4500,Modification Of In-Svc Equipment (OPA-3),A,Weapon System Cost,,"49,319",,"52,487",,"31,452",,,,"31,452"
+2035A,"Other Procurement, Army",A,03,Other support equipment,198,90,Other Support Equipment,1500MA9160,"BUILDING, PRE-FAB, RELOCATABLE",A,Weapon System Cost,,"12,500",,"14,622",,"10,490",,,,"10,490"
+2035A,"Other Procurement, Army",A,03,Other support equipment,200,90,Other Support Equipment,1573MA6820,Special Equipment for Test and Evaluation,A,Weapon System Cost,,"52,481",,"90,705",,"93,777",,,,"93,777"
+2035A,"Other Procurement, Army",A,03,Other support equipment,203,90,Other Support Equipment,9900MA9999,Closed Account Adjustments,A,Weapon System Cost,,103,,,,,,,,
+2035A,"Other Procurement, Army",A,04,Spares and repair parts,205,20,OPA2,0200BS9100,INITIAL SPARES - C&E,A,Weapon System Cost,,"9,169",,"9,810",,"7,254",,,,"7,254"
+2035A,"Other Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,207,10,Agile Portfolio Management,0010I24000,COUNTER-SMALL UNMANNED AERIAL SYSTEM (C-SUAS),A,Weapon System Cost,,,,,,"306,568",,"386,800",,"693,368"
+2035A,"Other Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,208,10,Agile Portfolio Management,1000I31000,ELECTRONIC WARFARE,A,Weapon System Cost,,,,,,"24,547",,,,"24,547"
+2035A,"Other Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,209,10,Agile Portfolio Management,2000I32000,ELECTRONIC WARFARE AGILE,A,Weapon System Cost,,,,,,"54,427",,,,"54,427"
+2035A,"Other Procurement, Army",A,06,AGILE PORTFOLIO MANAGEMENT,210,10,Agile Portfolio Management,2010I42000,SOLDIER BORNE SENSOR,A,Weapon System Cost,,,,,,"21,919",,,,"21,919"
+0390D,"Chemical Agents and Munitions Destruction, Defense",A,01,Operation and maintenance,1,01,Operation & Maintenance,O&M,Chem Demilitarization - O&M,A,Weapon System Cost,,"87,404",,"20,745",,"3,243",,,,"3,243"
+0390D,"Chemical Agents and Munitions Destruction, Defense",A,02,"Research, Development, Test, and Evaluation",3,01,RDT&E,RDT&E,Chem Demilitarization - RDT&E,A,Weapon System Cost,,"1,002,560",,"754,762",,"210,039",,,,"210,039"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,2,01,Combat Aircraft,0145,F/A-18E/F (Fighter) Hornet,A,Weapon System Cost,,"41,329",,"28,554",,"50,607",,,,"50,607"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,4,01,Combat Aircraft,0147,Joint Strike Fighter CV,A,Weapon System Cost,19,"2,634,073",17,"2,473,555",12,"2,127,230",,,12,"2,127,230"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,4,01,Combat Aircraft,0147,Joint Strike Fighter CV,B,Less: Advance Procurement (PY),,"-192,376",,"-158,296",,"-175,601",,,,"-175,601"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,5,01,Combat Aircraft,0147,Joint Strike Fighter CV,C,Advance Procurement (CY),,"158,296",,"196,634",,"401,596",,,,"401,596"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,6,01,Combat Aircraft,0152,JSF STOVL,A,Weapon System Cost,16,"2,371,197",13,"2,130,050",11,"1,940,880",,,11,"1,940,880"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,6,01,Combat Aircraft,0152,JSF STOVL,B,Less: Advance Procurement (PY),,"-210,118",,"-158,363",,"-153,567",,,,"-153,567"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,7,01,Combat Aircraft,0152,JSF STOVL,C,Advance Procurement (CY),,"158,363",,"169,389",,"113,744",,,,"113,744"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,8,01,Combat Aircraft,0158,CH-53K (Heavy Lift),A,Weapon System Cost,15,"2,027,742",20,"2,650,224",12,"2,114,231",,,12,"2,114,231"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,8,01,Combat Aircraft,0158,CH-53K (Heavy Lift),B,Less: Advance Procurement (PY),,"-341,692",,"-456,567",,"-406,630",,,,"-406,630"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,9,01,Combat Aircraft,0158,CH-53K (Heavy Lift),C,Advance Procurement (CY),,"456,567",,"422,972",,"335,352",,,,"335,352"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,10,01,Combat Aircraft,0164,V-22 (Medium Lift),A,Weapon System Cost,5,"694,916",,"30,175",,"47,196",,,,"47,196"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,12,01,Combat Aircraft,0178,H-1 Upgrades (UH-1Y/AH-1Z),A,Weapon System Cost,,"4,275",,"8,701",,"8,305",,,,"8,305"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,14,01,Combat Aircraft,0193,P-8A Poseidon,A,Weapon System Cost,10,"1,831,257",,"12,424",,"13,631",,,,"13,631"
+1506N,"Aircraft Procurement, Navy",N,01,Combat aircraft,15,01,Combat Aircraft,0195,E-2D Adv Hawkeye,A,Weapon System Cost,2,"571,100",,"95,219",4,"1,503,556",,,4,"1,503,556"
+1506N,"Aircraft Procurement, Navy",N,03,Trainer aircraft,18,01,Trainer Aircraft,0343,Multi-Engine Training System (METS),A,Weapon System Cost,26,"297,141",27,"301,303",,,,,,
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,23,01,Other Aircraft,0416,KC-130J,A,Weapon System Cost,3,"389,213",2,"294,406",,"18,017",,,,"18,017"
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,23,01,Other Aircraft,0416,KC-130J,B,Less: Advance Procurement (PY),,"-29,122",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,27,01,Other Aircraft,0442,MQ-4 Triton,A,Weapon System Cost,2,"476,345",,"159,226",,"133,139",,,,"133,139"
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,27,01,Other Aircraft,0442,MQ-4 Triton,B,Less: Advance Procurement (PY),,"-60,335",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,29,01,Other Aircraft,0443,MQ-8 UAV,A,Weapon System Cost,,"1,546",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,31,01,Other Aircraft,0449,MQ-25,A,Weapon System Cost,,"50,016",,"61,979",3,"407,046",,"100,000",3,"507,046"
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,31,01,Other Aircraft,0449,MQ-25,B,Less: Advance Procurement (PY),,"-50,016",,"-11,979",,,,,,
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,32,01,Other Aircraft,0449,MQ-25,C,Advance Procurement (CY),,"11,979",,,,"52,191",,,,"52,191"
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,34,01,Other Aircraft,0452,Marine Group 5 UAS,A,Weapon System Cost,5,"86,063",,"19,081",,"15,162",,,,"15,162"
+1506N,"Aircraft Procurement, Navy",N,04,Other aircraft,36,01,Other Aircraft,0465,Other Support Aircraft,A,Weapon System Cost,3,"57,053",,,1,"19,812",,,1,"19,812"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,39,01,Modification of Aircraft,0502,F-18 A-D Unique,A,Weapon System Cost,,"108,226",,"80,301",,"53,809",,,,"53,809"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,40,01,Modification of Aircraft,0505,F-18E/F and EA-18G Modernization and Sustainm,A,Weapon System Cost,,"602,999",,"483,823",,"576,229",,,,"576,229"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,41,01,Modification of Aircraft,0507,Marine Group 5 UAS Series,A,Weapon System Cost,,"93,063",,"112,672",,"143,695",,,,"143,695"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,42,01,Modification of Aircraft,0513,AEA Systems,A,Weapon System Cost,,"22,396",,"17,460",,"25,848",,,,"25,848"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,43,01,Modification of Aircraft,0514,AV-8 Series,A,Weapon System Cost,,"3,137",,"3,584",,,,,,
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,44,01,Modification of Aircraft,0515,Infrared Search and Track (IRST),A,Weapon System Cost,,"179,193",,"146,876",,"175,351",,,,"175,351"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,45,01,Modification of Aircraft,0522,Adversary,A,Weapon System Cost,,"69,285",,"49,724",,"21,535",,,,"21,535"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,46,01,Modification of Aircraft,0525,F-18 Series,A,Weapon System Cost,,"623,956",,"639,450",,"756,967",,,,"756,967"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,47,01,Modification of Aircraft,0528,H-53 Series,A,Weapon System Cost,,"29,133",,"95,462",,"69,227",,,,"69,227"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,48,01,Modification of Aircraft,0530,MH-60 Series,A,Weapon System Cost,,"104,076",,"97,265",,"115,545",,,,"115,545"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,49,01,Modification of Aircraft,0532,H-1 Series,A,Weapon System Cost,,"124,204",,"146,204",,"149,405",,,,"149,405"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,50,01,Modification of Aircraft,0537,EP-3 Series,A,Weapon System Cost,,"8,548",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,51,01,Modification of Aircraft,0544,E-2 Series,A,Weapon System Cost,,"173,621",,"135,024",,"143,772",,,,"143,772"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,52,01,Modification of Aircraft,0549,Trainer A/C Series,A,Weapon System Cost,,"16,376",,"12,415",,"12,151",,,,"12,151"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,54,01,Modification of Aircraft,0560,C-130 Series,A,Weapon System Cost,,"182,730",,"168,134",,"144,017",,,,"144,017"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,55,01,Modification of Aircraft,0561,FEWSG,A,Weapon System Cost,,651,,663,,5,,,,5
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,56,01,Modification of Aircraft,0562,Cargo/Transport A/C Series,A,Weapon System Cost,,"13,710",,"13,162",,"7,526",,,,"7,526"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,57,01,Modification of Aircraft,0564,E-6 Series,A,Weapon System Cost,,"157,293",,"126,772",,"163,737",,,,"163,737"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,58,01,Modification of Aircraft,0566,Executive Helicopters Series,A,Weapon System Cost,,"60,498",,"69,495",,"66,645",,,,"66,645"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,60,01,Modification of Aircraft,0569,T-45 Series,A,Weapon System Cost,,"162,133",,"149,096",,"173,433",,,,"173,433"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,61,01,Modification of Aircraft,0570,Power Plant Changes,A,Weapon System Cost,,"25,049",,"16,806",,"18,707",,,,"18,707"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,62,01,Modification of Aircraft,0571,JPATS Series,A,Weapon System Cost,,"28,005",,"24,157",,"21,330",,,,"21,330"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,63,01,Modification of Aircraft,0575,Aviation Life Support Mods,A,Weapon System Cost,,,,"3,964",,,,,,
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,64,01,Modification of Aircraft,0576,Common ECM Equipment,A,Weapon System Cost,,"60,363",,"49,354",,"91,553",,,,"91,553"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,65,01,Modification of Aircraft,0577,Common Avionics Changes,A,Weapon System Cost,,"136,149",,"139,113",,"161,376",,,,"161,376"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,66,01,Modification of Aircraft,0581,Common Defensive Weapon System,A,Weapon System Cost,,"13,531",,"10,687",,"8,926",,,,"8,926"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,67,01,Modification of Aircraft,0582,ID Systems,A,Weapon System Cost,,"12,676",,"7,020",,"3,011",,,,"3,011"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,68,01,Modification of Aircraft,0586,P-8 Series,A,Weapon System Cost,,"316,116",,"303,479",,"320,130",,,,"320,130"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,69,01,Modification of Aircraft,0587,MAGTF EW for Aviation,A,Weapon System Cost,,"24,901",,"25,597",,"22,356",,,,"22,356"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,70,01,Modification of Aircraft,0588,MQ-8 Series,A,Weapon System Cost,,"4,514",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,71,01,Modification of Aircraft,0590,V-22 (Tilt/Rotor  ACFT) Osprey,A,Weapon System Cost,,"219,649",,"265,062",,"319,145",,,,"319,145"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,72,01,Modification of Aircraft,0591,Next Generation Jammer (NGJ),A,Weapon System Cost,,"418,852",,"444,761",,"439,493",,,,"439,493"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,73,01,Modification of Aircraft,0592,F-35 STOVL Series,A,Weapon System Cost,,"259,412",,"229,843",,"364,774",,,,"364,774"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,74,01,Modification of Aircraft,0593,F-35 CV Series,A,Weapon System Cost,,"124,990",,"154,235",,"180,533",,,,"180,533"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,75,01,Modification of Aircraft,0595,QRC,A,Weapon System Cost,,"28,206",,"26,957",,"24,893",,,,"24,893"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,76,01,Modification of Aircraft,0596,MQ-4 Series,A,Weapon System Cost,,"67,284",,"79,954",,"180,463",,,,"180,463"
+1506N,"Aircraft Procurement, Navy",N,05,Modification of aircraft,81,01,Modification of Aircraft,5S61,DON Other 6 (TTNT),A,Weapon System Cost,,"47,785",,,,,,,,
+1506N,"Aircraft Procurement, Navy",N,06,Aircraft spares and repair parts,84,01,Aircraft Spares and Repair Parts,0605,Spares and Repair Parts,A,Weapon System Cost,,"2,622,223",,"2,125,592",,"2,562,627",,,,"2,562,627"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,85,01,Aircraft Support Equip & Facilities,0705,Common Ground Equipment,A,Weapon System Cost,,"562,487",,"572,806",,"584,561",,,,"584,561"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,86,01,Aircraft Support Equip & Facilities,0715,Aircraft Industrial Facilities,A,Weapon System Cost,,"137,815",,"105,634",,"112,513",,,,"112,513"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,87,01,Aircraft Support Equip & Facilities,0720,War Consumables,A,Weapon System Cost,,"44,574",,"43,604",,"45,153",,,,"45,153"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,88,01,Aircraft Support Equip & Facilities,0725,Other Production Charges,A,Weapon System Cost,,"46,607",,"73,307",,"70,770",,,,"70,770"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,89,01,Aircraft Support Equip & Facilities,0735,Special Support Equipment,A,Weapon System Cost,,"384,850",,"400,753",,"130,993",,,,"130,993"
+1506N,"Aircraft Procurement, Navy",N,07,Aircraft support equipment and facilities,91,01,Aircraft Support Equip & Facilities,0790,Cancelled Account Adjustments,A,Weapon System Cost,,169,,,,,,,,
+1507N,"Weapons Procurement, Navy",N,01,Ballistic missiles,2,02,Modification of Missiles,1250,Trident II Mods,A,Weapon System Cost,,"1,284,705",,"1,793,867",,"2,582,029",,"62,000",,"2,644,029"
+1507N,"Weapons Procurement, Navy",N,01,Ballistic missiles,3,03,Support Equipment & Facilities,1350,Missile Industrial Facilities,A,Weapon System Cost,,"7,954",,"8,133",,,,,,
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,6,01,Strategic Missiles,2101,Tomahawk,A,Weapon System Cost,,"77,904",,"32,677",,"12,593",57,"193,977",57,"206,570"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,7,02,Tactical Missiles,2206,AMRAAM,A,Weapon System Cost,300,"385,678",181,"191,493",51,"69,913",,,51,"69,913"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,8,02,Tactical Missiles,2209,Sidewinder,A,Weapon System Cost,403,"197,650",157,"86,023",146,"84,713",,,146,"84,713"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,9,02,Tactical Missiles,2210,Joint Advance Tactical Missile (JATM),A,Weapon System Cost,,,,,,"301,858",,,,"301,858"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,10,02,Tactical Missiles,2234,Standard Missile,A,Weapon System Cost,97,"939,327",78,"642,507",10,"295,323",129,"630,000",139,"925,323"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,10,02,Tactical Missiles,2234,Standard Missile,B,Less: Advance Procurement (PY),,,,"-117,547",,"-107,903",,,,"-107,903"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,11,02,Tactical Missiles,2234,Standard Missile,C,Advance Procurement (CY),,"117,620",,"107,830",,,,,,
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,12,02,Tactical Missiles,2238,Small Diameter Bomb II,A,Weapon System Cost,232,"63,035",280,"76,108",273,"86,255",,,273,"86,255"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,13,02,Tactical Missiles,2242,Ram,A,Weapon System Cost,180,"165,221",148,"141,021",123,"122,372",,,123,"122,372"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,14,02,Tactical Missiles,2247,MSE Missile,A,Weapon System Cost,,,,,,,12,"47,000",12,"47,000"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,15,02,Tactical Missiles,2248,Joint Air Ground Missile (JAGM),A,Weapon System Cost,263,"73,924",182,"55,315",277,"74,152",,,277,"74,152"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,16,02,Tactical Missiles,2254,Hellfire,A,Weapon System Cost,40,"6,923",,,,,,,,
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,17,02,Tactical Missiles,2280,Aerial Targets,A,Weapon System Cost,,"174,725",,"180,233",,"182,704",,,,"182,704"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,19,02,Tactical Missiles,2290,Other Missile Support,A,Weapon System Cost,,"3,687",,"3,411",,"3,490",,,,"3,490"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,20,02,Tactical Missiles,2291,LRASM,A,Weapon System Cost,91,"599,636",90,"326,435",56,"243,217",64,"288,225",120,"531,442"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,21,02,Tactical Missiles,2292,Naval Strike Missile (NSM),A,Weapon System Cost,13,"25,551",12,"28,719",16,"36,075",,,16,"36,075"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,21,02,Tactical Missiles,2292,Naval Strike Missile (NSM),B,Less: Advance Procurement (PY),,,,"-3,837",,"-3,837",,,,"-3,837"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,22,02,Tactical Missiles,2292,Naval Strike Missile (NSM),C,Advance Procurement (CY),,"5,755",,"4,412",,"3,059",,,,"3,059"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,25,03,Modification of Missiles,2301,Tomahawk Mods,A,Weapon System Cost,,"494,799",,"296,839",,"6,283",,"473,848",,"480,131"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,26,03,Modification of Missiles,2307,ESSM,A,Weapon System Cost,164,"296,829",350,"622,551",305,"503,381",,,305,"503,381"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,28,03,Modification of Missiles,2327,AARGM-ER,A,Weapon System Cost,86,"167,429",157,"226,486",147,"295,645",,,147,"295,645"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,28,03,Modification of Missiles,2327,AARGM-ER,B,Less: Advance Procurement (PY),,,,"-33,273",,"-34,604",,,,"-34,604"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,29,03,Modification of Missiles,2327,AARGM-ER,C,Advance Procurement (CY),,"33,273",,"34,604",,"24,284",,,,"24,284"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,31,03,Modification of Missiles,2356,Standard Missiles Mods,A,Weapon System Cost,,"80,536",,"61,667",,"32,127",,,,"32,127"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,32,04,Support Equipment & Facilities,2420,Weapons Industrial Facilities,A,Weapon System Cost,,"179,011",,"81,490",,"127,222",,,,"127,222"
+1507N,"Weapons Procurement, Navy",N,02,Other missiles,36,05,Ordnance Support Equipment,2500,Ordnance Support Equipment,A,Weapon System Cost,,"168,654",,"351,488",,"37,059",,,,"37,059"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,39,01,Torpedoes and Related Equip,3113,SSTD,A,Weapon System Cost,,"4,830",,"4,317",,"4,789",,,,"4,789"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,40,01,Torpedoes and Related Equip,3117,MK-48 Torpedo,A,Weapon System Cost,74,"296,347",85,"352,047",,"7,081",63,"261,240",63,"268,321"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,42,01,Torpedoes and Related Equip,3141,ASW Targets,A,Weapon System Cost,,"24,817",,"30,476",,"38,386",,,,"38,386"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,43,02,Mod of Torpedoes and Related Equip,3215,MK-54 Torpedo Mods,A,Weapon System Cost,,"104,086",,"81,614",,"1,692",,"111,821",,"113,513"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,44,02,Mod of Torpedoes and Related Equip,3225,MK-48 Torpedo ADCAP Mods,A,Weapon System Cost,,"20,714",,"17,363",,"31,479",,,,"31,479"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,45,02,Mod of Torpedoes and Related Equip,3231,Maritime Mines,A,Weapon System Cost,,"58,731",,"100,065",,,,"179,351",,"179,351"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,46,03,Support Equipment,3301,Torpedo Support Equipment,A,Weapon System Cost,,"133,187",,"145,655",,"161,218",,,,"161,218"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,47,03,Support Equipment,3302,ASW Range Support,A,Weapon System Cost,,"4,146",,"4,039",,"4,328",,,,"4,328"
+1507N,"Weapons Procurement, Navy",N,03,Torpedoes and related equipment,48,04,Destination Transportation,2410,First Destination Transportation,A,Weapon System Cost,,"5,811",,"5,669",,"5,346",,,,"5,346"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,51,01,Guns and Gun Mounts,4129,Small Arms and Weapons,A,Weapon System Cost,,"16,565",,"12,513",,"9,987",,,,"9,987"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,52,02,Modification of Guns and Gun Mounts,4205,CIWS Mods,A,Weapon System Cost,,"4,088",,"4,266",,"8,122",,,,"8,122"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,53,02,Modification of Guns and Gun Mounts,4206,Coast Guard Weapons,A,Weapon System Cost,,"55,172",,"54,794",,"44,455",,,,"44,455"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,54,02,Modification of Guns and Gun Mounts,4217,Gun Mount Mods,A,Weapon System Cost,,"95,282",,"82,246",,"83,969",,,,"83,969"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,55,02,Modification of Guns and Gun Mounts,4221,LCS Module Weapons,A,Weapon System Cost,18,"3,264",12,"2,463",10,"2,200",,,10,"2,200"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,56,02,Modification of Guns and Gun Mounts,4225,Airborne Mine Neutralization Systems,A,Weapon System Cost,,"14,357",,"11,635",,"14,413",,,,"14,413"
+1507N,"Weapons Procurement, Navy",N,04,Other weapons,57,04,Other,4500,Cancelled Account Adjustments,A,Weapon System Cost,,74,,,,,,,,
+1507N,"Weapons Procurement, Navy",N,06,Spares and repair parts,61,01,Spares and Repair Parts,6120,Spares and Repair Parts,A,Weapon System Cost,,"177,819",,"240,697",,"202,425",,,,"202,425"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",1,01,Navy Ammunition,0145,General Purpose Bombs,A,Weapon System Cost,,"42,360",,"23,327",,"30,915",,,,"30,915"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",2,01,Navy Ammunition,0148,JDAM,A,Weapon System Cost,"1,001","94,874","1,460","51,229",798,"61,119",,,798,"61,119"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",3,01,Navy Ammunition,0151,"Airborne Rockets, All Types",A,Weapon System Cost,,"84,246",,"57,179",,"87,797",,,,"87,797"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",4,01,Navy Ammunition,0155,Machine Gun Ammunition,A,Weapon System Cost,,"11,862",,"11,331",,"17,645",,,,"17,645"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",5,01,Navy Ammunition,0160,Practice Bombs,A,Weapon System Cost,,"44,524",,"33,964",,"45,049",,,,"45,049"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",6,01,Navy Ammunition,0180,Cartridges & Cart Actuated Devices,A,Weapon System Cost,,"72,426",,"73,782",,"74,535",,,,"74,535"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",7,01,Navy Ammunition,0182,Air Expendable Countermeasures,A,Weapon System Cost,,"105,358",,"66,361",,"98,437",,,,"98,437"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",8,01,Navy Ammunition,0194,JATOS,A,Weapon System Cost,,"7,433",,"7,407",,"6,373",,,,"6,373"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",9,01,Navy Ammunition,0250,5 Inch/54 Gun Ammunition,A,Weapon System Cost,,"35,571",,"19,990",,"24,864",,,,"24,864"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",10,01,Navy Ammunition,0266,Intermediate Caliber Gun Ammunition,A,Weapon System Cost,,"27,870",,"34,177",,"40,175",,,,"40,175"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",11,01,Navy Ammunition,0270,Other Ship Gun Ammunition,A,Weapon System Cost,,"39,595",,"35,268",,"43,763",,,,"43,763"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",12,01,Navy Ammunition,0335,Small Arms & Landing Party Ammo,A,Weapon System Cost,,"64,111",,"44,562",,"49,493",,,,"49,493"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",13,01,Navy Ammunition,0340,Pyrotechnic and Demolition,A,Weapon System Cost,,"9,809",,"9,703",,"9,644",,,,"9,644"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",15,01,Navy Ammunition,0400,Ammunition Less Than $5 Million,A,Weapon System Cost,,"1,679",,"1,703",,"1,723",,,,"1,723"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,01,"Procurement of Ammunition, Navy",16,01,Navy Ammunition,1776,Expeditionary Loitering Munitions,A,Weapon System Cost,,"249,575",,"588,005",,,,"125,000",,"125,000"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",18,01,Marine Corps Ammunition,1085,Mortars,A,Weapon System Cost,,"54,851",,"123,474",,"141,135",,,,"141,135"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",19,01,Marine Corps Ammunition,1125,Direct Support Munitions,A,Weapon System Cost,,"136,612",,"31,737",,"26,729",,,,"26,729"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",20,01,Marine Corps Ammunition,1350,Infantry Weapons Ammunition,A,Weapon System Cost,,"285,971",,"261,061",,"180,867",,,,"180,867"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",21,01,Marine Corps Ammunition,1550,Combat Support Munitions,A,Weapon System Cost,,"19,751",,"21,726",,"12,936",,,,"12,936"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",22,01,Marine Corps Ammunition,1630,Ammo Modernization,A,Weapon System Cost,,"17,617",,"18,211",,"18,467",,,,"18,467"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",23,01,Marine Corps Ammunition,1650,Artillery Munitions,A,Weapon System Cost,,"638,050",,"79,222",,"147,473",,,,"147,473"
+1508N,"Procurement of Ammunition, Navy and Marine Corps",N,02,"Ammunition, Marine Corps",24,01,Marine Corps Ammunition,1660,Items Less Than $5 Million,A,Weapon System Cost,,"6,408",,"5,165",,"15,891",,,,"15,891"
+1611N,"Shipbuilding and Conversion, Navy",N,01,Fleet ballistic missile ships,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,A,Weapon System Cost,,,,,1,"10,543,724",,,1,"10,543,724"
+1611N,"Shipbuilding and Conversion, Navy",N,01,Fleet ballistic missile ships,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,B,Less: Advance Procurement (PY),,,,,,"-3,486,442",,,,"-3,486,442"
+1611N,"Shipbuilding and Conversion, Navy",N,01,Fleet ballistic missile ships,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,E,Less: Subsequent Full Funding (FY),,,,,,"-3,128,454",,,,"-3,128,454"
+1611N,"Shipbuilding and Conversion, Navy",N,01,Fleet ballistic missile ships,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,L,Subsequent Full Funding for FY 2024,,,,"3,364,835",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,01,Fleet ballistic missile ships,2,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,C,Advance Procurement (CY),,,,"6,215,939",,"5,065,766",,"1,925,892",,"6,991,658"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,5,01,Other Warships,2001,Carrier Replacement Program,L,Subsequent Full Funding for FY 2018,,"1,104,421",,"1,123,124",,"1,046,700",,,,"1,046,700"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,5,01,Other Warships,2001,Carrier Replacement Program,N,Completion PY Shipbuild for FY 2013,,"624,600",,"236,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,6,01,Other Warships,2001,Carrier Replacement Program,C,Advance Procurement (CY),,,,,,"612,038",,,,"612,038"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,7,01,Other Warships,2004,CVN-81,L,Subsequent Full Funding for FY 2020,,"800,492",,"674,930",,"1,622,935",,,,"1,622,935"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,A,Weapon System Cost,2,"9,427,643",1,"9,500,534",1,"3,465,509",1,"6,518,600",2,"9,984,109"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,B,Less: Advance Procurement (PY),,"-2,297,678",,"-2,143,630",,"-2,648,804",,,,"-2,648,804"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,L,Subsequent Full Funding for FY 2024,,,,"1,950,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,N,Completion PY Shipbuild for FY 2015,,"43,419",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,N,Completion PY Shipbuild for FY 2016,,"100,115",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,N,Completion PY Shipbuild for FY 2017,,"24,646",,"219,370",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,8,01,Other Warships,2013,Virginia Class Submarine,N,Completion PY Shipbuild for FY 2018,,,,"73,634",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,9,01,Other Warships,2013,Virginia Class Submarine,C,Advance Procurement (CY),,"3,358,782",,"3,720,303",,"3,126,816",,"615,908",,"3,742,724"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,10,01,Other Warships,2086,CVN Refueling Overhauls,A,Weapon System Cost,,,1,"6,271,049",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,10,01,Other Warships,2086,CVN Refueling Overhauls,B,Less: Advance Procurement (PY),,,,"-1,201,073",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,10,01,Other Warships,2086,CVN Refueling Overhauls,E,Less: Subsequent Full Funding (FY),,,,"-4,258,833",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,10,01,Other Warships,2086,CVN Refueling Overhauls,L,Subsequent Full Funding for FY 2025,,,,,,"1,779,011",,,,"1,779,011"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,10,01,Other Warships,2086,CVN Refueling Overhauls,N,Completion PY Shipbuild for FY 2020,,"42,422",,"669,171",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,11,01,Other Warships,2086,CVN Refueling Overhauls,C,Advance Procurement (CY),,"488,446",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,12,01,Other Warships,2119,DDG 1000,A,Weapon System Cost,,"392,892",,"61,100",,"52,358",,,,"52,358"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,A,Weapon System Cost,2,"5,492,330",3,"7,858,814",,"306,125",2,"5,400,000",2,"5,706,125"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,B,Less: Advance Procurement (PY),,"-233,588",,"-1,590,295",,"-295,352",,,,"-295,352"
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,E,Less: Subsequent Full Funding (FY),,"-759,563",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,L,Subsequent Full Funding for FY 2023,,,,"923,808",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,L,Subsequent Full Funding for FY 2024,,,,"759,563",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,N,Completion PY Shipbuild for FY 2016,,"104,090",,"10,509",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,N,Completion PY Shipbuild for FY 2017,,"121,827",,"115,600",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,13,01,Other Warships,2122,DDG-51,N,Completion PY Shipbuild for FY 2018,,,,"107,405",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,14,01,Other Warships,2122,DDG-51,C,Advance Procurement (CY),,"1,641,335",,"83,224",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,15,01,Other Warships,2127,Littoral Combat Ship,N,Completion PY Shipbuild for FY 2017,,,,"8,100",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,15,01,Other Warships,2127,Littoral Combat Ship,N,Completion PY Shipbuild for FY 2018,,,,"12,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,15,01,Other Warships,2127,Littoral Combat Ship,N,Completion PY Shipbuild for FY 2019,,"23,000",,"27,900",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,A,Weapon System Cost,2,"2,515,820",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,E,Less: Subsequent Full Funding (FY),,"-233,200",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,G,Less: Future Completion of Shipbuilding (FY),,"-98,759",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,L,Subsequent Full Funding for FY 2024,,,,"233,200",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,N,Completion PY Shipbuild for FY 2020,,,,"105,413",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,N,Completion PY Shipbuild for FY 2021,,,,"76,580",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,N,Completion PY Shipbuild for FY 2022,,,,"64,940",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,N,Completion PY Shipbuild for FY 2023,,,,"54,308",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,02,Other warships,16,01,Other Warships,2128,FFG-Frigate,N,Completion PY Shipbuild for FY 2024,,,,"98,759",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,19,01,Amphibious Ships,3010,LPD Flight II,A,Weapon System Cost,,,1,"2,062,963",,,1,"2,129,963",1,"2,129,963"
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,19,01,Amphibious Ships,3010,LPD Flight II,B,Less: Advance Procurement (PY),,,,"-501,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,19,01,Amphibious Ships,3010,LPD Flight II,L,Subsequent Full Funding for FY 2025,,,,,,,,"195,037",,"195,037"
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,19,01,Amphibious Ships,3010,LPD Flight II,N,Completion PY Shipbuild for FY 2018,,,,"19,158",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,20,01,Amphibious Ships,3010,LPD Flight II,C,Advance Procurement (CY),,"500,000",,,,,,"275,000",,"275,000"
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,21,01,Amphibious Ships,3036,LPD-17,N,Completion PY Shipbuild for FY 2017,,"16,520",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,24,01,Amphibious Ships,3041,LHA Replacement,A,Weapon System Cost,,,,,,,1,"3,895,000",1,"3,895,000"
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,24,01,Amphibious Ships,3041,LHA Replacement,L,Subsequent Full Funding for FY 2023,,"1,830,149",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,24,01,Amphibious Ships,3041,LHA Replacement,N,Completion PY Shipbuild for FY 2017,,,,"115,397",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,25,01,Amphibious Ships,3041,LHA Replacement,C,Advance Procurement (CY),,,,"61,118",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,03,Amphibious ships,27,01,Amphibious Ships,3050,Medium Landing Ship,A,Weapon System Cost,,,,"29,668",,,9,"1,963,941",9,"1,963,941"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",31,01,"Auxiliaries, Craft and Prior Yr Program Cost",5025,TAO Fleet Oiler,A,Weapon System Cost,1,"815,420",,,,"8,346",2,"1,853,359",2,"1,861,705"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",31,01,"Auxiliaries, Craft and Prior Yr Program Cost",5025,TAO Fleet Oiler,N,Completion PY Shipbuild for FY 2019,,"27,060",,"49,995",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",31,01,"Auxiliaries, Craft and Prior Yr Program Cost",5025,TAO Fleet Oiler,N,Completion PY Shipbuild for FY 2020,,"93,250",,"151,837",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",31,01,"Auxiliaries, Craft and Prior Yr Program Cost",5025,TAO Fleet Oiler,N,Completion PY Shipbuild for FY 2022,,"2,585",,"13,222",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",31,01,"Auxiliaries, Craft and Prior Yr Program Cost",5025,TAO Fleet Oiler,N,Completion PY Shipbuild for FY 2023,,,,"12,100",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",34,01,"Auxiliaries, Craft and Prior Yr Program Cost",5030,Tagos Surtass Ships,A,Weapon System Cost,,,,,1,"612,205",,,1,"612,205"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",34,01,"Auxiliaries, Craft and Prior Yr Program Cost",5030,Tagos Surtass Ships,L,Subsequent Full Funding for FY 2022,,"513,466",,,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",35,01,"Auxiliaries, Craft and Prior Yr Program Cost",5035,"Towing, Salvage, and Rescue Ship (ATS)",N,Completion PY Shipbuild for FY 2016,,,,"60,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",35,01,"Auxiliaries, Craft and Prior Yr Program Cost",5035,"Towing, Salvage, and Rescue Ship (ATS)",N,Completion PY Shipbuild for FY 2020,,"1,150",,978,,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",35,01,"Auxiliaries, Craft and Prior Yr Program Cost",5035,"Towing, Salvage, and Rescue Ship (ATS)",N,Completion PY Shipbuild for FY 2021,,"21,809",,"17,375",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",35,01,"Auxiliaries, Craft and Prior Yr Program Cost",5035,"Towing, Salvage, and Rescue Ship (ATS)",N,Completion PY Shipbuild for FY 2022,,,,"4,234",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",37,01,"Auxiliaries, Craft and Prior Yr Program Cost",5087,Oceanographic Ships,N,Completion PY Shipbuild for FY 2018,,,,"18,000",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",39,01,"Auxiliaries, Craft and Prior Yr Program Cost",5100,LCU 1700,A,Weapon System Cost,2,"62,532",,,,,9,"295,000",9,"295,000"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",40,01,"Auxiliaries, Craft and Prior Yr Program Cost",5104,Strategic Sealift,A,Weapon System Cost,,,,,,,1,"600,000",1,"600,000"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",41,01,"Auxiliaries, Craft and Prior Yr Program Cost",5110,Outfitting,A,Weapon System Cost,,"512,019",,"585,967",,"863,846",,"23,449",,"887,295"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",42,01,"Auxiliaries, Craft and Prior Yr Program Cost",5112,Ship to Shore Connector,A,Weapon System Cost,4,"585,000",3,"480,000",,,1,"239,095",1,"239,095"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",42,01,"Auxiliaries, Craft and Prior Yr Program Cost",5112,Ship to Shore Connector,N,Completion PY Shipbuild for FY 2018,,"43,600",,"14,694",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",42,01,"Auxiliaries, Craft and Prior Yr Program Cost",5112,Ship to Shore Connector,N,Completion PY Shipbuild for FY 2019,,,,"33,345",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",43,01,"Auxiliaries, Craft and Prior Yr Program Cost",5113,Service Craft,A,Weapon System Cost,,"93,815",,"41,426",,"34,602",,,,"34,602"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",44,01,"Auxiliaries, Craft and Prior Yr Program Cost",5114,Auxiliary Personnel Lighter,A,Weapon System Cost,,"72,000",,"76,168",,,,,,
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",47,01,"Auxiliaries, Craft and Prior Yr Program Cost",5139,LCAC SLEP,A,Weapon System Cost,1,"15,286",2,"45,087",,,1,"37,390",1,"37,390"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",48,01,"Auxiliaries, Craft and Prior Yr Program Cost",5201,Auxiliary Vessels (Used Sealift),A,Weapon System Cost,1,"142,008",2,"204,939",1,"45,000",,"100,000",1,"145,000"
+1611N,"Shipbuilding and Conversion, Navy",N,05,"Auxiliaries, craft, and prior-year program costs",49,01,"Auxiliaries, Craft and Prior Yr Program Cost",5300,Completion of PY Shipbuilding Programs,A,Weapon System Cost,,,,,,"1,214,295",,"476,551",,"1,690,846"
+1612N,National Sea-Based Det Fd,N,01,Fleet Ballistic Missile SHIPS,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,A,Weapon System Cost,1,"9,306,676",,,,,,,,
+1612N,National Sea-Based Det Fd,N,01,Fleet Ballistic Missile SHIPS,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,B,Less: Advance Procurement (PY),,"-3,498,243",,,,,,,,
+1612N,National Sea-Based Det Fd,N,01,Fleet Ballistic Missile SHIPS,1,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,E,Less: Subsequent Full Funding (FY),,"-3,364,835",,,,,,,,
+1612N,National Sea-Based Det Fd,N,01,Fleet Ballistic Missile SHIPS,2,01,Fleet Ballistic Missile Ships,1045,COLUMBIA Class Submarine,C,Advance Procurement (CY),,"5,345,734",,,,,,,,
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,1,01,Ship Propulsion Equipment,0131,Surface Power Equipment,A,Weapon System Cost,,"12,855",,"20,840",,"9,978",,,,"9,978"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,2,02,Generators,0200,Surface Combatant HM&E,A,Weapon System Cost,,"92,449",,"77,592",,"62,004",,,,"62,004"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,3,06,Navigation Equipment,0670,Other Navigation Equipment,A,Weapon System Cost,,"103,852",,"97,206",,"96,945",,,,"96,945"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,4,09,Other Shipboard Equipment,0840,"Sub Periscope, Imaging and Supt Equip Prog",A,Weapon System Cost,,"272,778",,"290,575",,"135,863",,"141,550",,"277,413"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,5,09,Other Shipboard Equipment,0900,DDG Mod,A,Weapon System Cost,,"641,676",,"861,066",,"686,787",,"310,698",,"997,485"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,6,09,Other Shipboard Equipment,0910,Firefighting Equipment,A,Weapon System Cost,,"33,532",,"38,521",,"36,488",,,,"36,488"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,7,09,Other Shipboard Equipment,0925,Command and Control Switchboard,A,Weapon System Cost,,"2,456",,"2,402",,"2,417",,,,"2,417"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,8,09,Other Shipboard Equipment,0933,LHA/LHD Midlife,A,Weapon System Cost,,"102,334",,"81,602",,"86,884",,"36,500",,"123,384"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,9,09,Other Shipboard Equipment,0934,LCC 19/20 Extended Service Life Program,A,Weapon System Cost,,"10,522",,"7,352",,"19,276",,,,"19,276"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,10,09,Other Shipboard Equipment,0935,Pollution Control Equipment,A,Weapon System Cost,,"22,757",,"23,440",,"22,477",,,,"22,477"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,11,09,Other Shipboard Equipment,0941,Submarine Support Equipment,A,Weapon System Cost,,"210,652",,"293,766",,"383,062",,,,"383,062"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,12,09,Other Shipboard Equipment,0942,Virginia Class Support Equipment,A,Weapon System Cost,,"32,055",,"43,565",,"52,039",,,,"52,039"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,13,09,Other Shipboard Equipment,0944,LCS Class Support Equipment,A,Weapon System Cost,,"17,816",,"7,318",,"2,551",,,,"2,551"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,14,09,Other Shipboard Equipment,0945,Submarine Batteries,A,Weapon System Cost,,"31,202",,"30,470",,"28,169",,,,"28,169"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,15,09,Other Shipboard Equipment,0946,LPD Class Support Equipment,A,Weapon System Cost,,"80,933",,"38,115",,"101,042",,"24,500",,"125,542"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,16,09,Other Shipboard Equipment,0947,DDG 1000 Class Support Equipment,A,Weapon System Cost,,"220,771",,"340,668",,"115,267",,,,"115,267"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,17,09,Other Shipboard Equipment,0950,Strategic Platform Support Equip,A,Weapon System Cost,,"23,756",,"53,931",,"38,039",,"15,701",,"53,740"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,19,09,Other Shipboard Equipment,0955,DSSP Equipment,A,Weapon System Cost,,"4,620",,"4,586",,"5,849",,,,"5,849"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,20,09,Other Shipboard Equipment,0960,CG Modernization,A,Weapon System Cost,,"30,000",,,,,,,,
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,21,09,Other Shipboard Equipment,0970,LCAC,A,Weapon System Cost,,"10,239",,"11,013",,,,"20,321",,"20,321"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,22,09,Other Shipboard Equipment,0977,Underwater EOD Equipment,A,Weapon System Cost,,"19,536",,"16,650",,"22,355",,,,"22,355"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,23,09,Other Shipboard Equipment,0981,Items Less Than $5 Million,A,Weapon System Cost,,"85,944",,"66,351",,"11,691",,"75,203",,"86,894"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,24,09,Other Shipboard Equipment,0989,Chemical Warfare Detectors,A,Weapon System Cost,,"3,286",,"3,254",,"2,607",,12,,"2,619"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,26,10,Reactor Plant Equipment,1000,"Ship Maintenance, Repair and Modernization",A,Weapon System Cost,,"2,839,179",,"2,392,190",,"2,392,620",,,,"2,392,620"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,27,10,Reactor Plant Equipment,1010,Reactor Power Units,A,Weapon System Cost,,"2,016",,,,,,,,
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,28,10,Reactor Plant Equipment,1020,Reactor Components,A,Weapon System Cost,,"389,890",,"445,974",,"399,603",,,,"399,603"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,29,11,Ocean Engineering,1130,Diving and Salvage Equipment,A,Weapon System Cost,,"17,754",,"17,499",,"7,842",,"5,387",,"13,229"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,30,12,Small Boats,0954,Medium Unmanned Surface Vehicle (MUSVs),A,Weapon System Cost,,,,,,,,"1,094,000",,"1,094,000"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,31,12,Small Boats,1210,Standard Boats,A,Weapon System Cost,,"223,529",,"422,832",,"51,546",,"814,969",,"866,515"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,32,14,Production Facilities Equipment,1445,Operating Forces Ipe,A,Weapon System Cost,,"210,764",,"222,304",,"208,998",,,,"208,998"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,33,15,Other Ship Support,1600,LCS Common Mission Modules Equipment,A,Weapon System Cost,,"49,028",,"56,105",,"38,880",,,,"38,880"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,34,15,Other Ship Support,1601,LCS MCM Mission Modules,A,Weapon System Cost,,"87,828",,"118,247",,"91,372",,,,"91,372"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,36,15,Other Ship Support,1603,LCS SUW Mission Modules,A,Weapon System Cost,,"12,094",,"11,101",,"3,790",,,,"3,790"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,37,15,Other Ship Support,1604,LCS In-Service Modernization,A,Weapon System Cost,,"154,561",,"188,254",,"203,442",,"34,286",,"237,728"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,38,15,Other Ship Support,1611,Small & Medium UUV,A,Weapon System Cost,,"56,815",,"48,780",,"54,854",,"66,421",,"121,275"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,39,15,Other Ship Support,1613,Extra Large UUV,A,Weapon System Cost,,,,,,,,"3,313",,"3,313"
+1810N,"Other Procurement, Navy",N,01,Ships support equipment,40,16,Logistic Support,1610,LSD Midlife & Modernization,A,Weapon System Cost,,"3,989",,"56,667",,"4,079",,,,"4,079"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,42,02,Ship Sonars,2026,SPQ-9B Radar,A,Weapon System Cost,,"7,262",,"7,402",,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,43,02,Ship Sonars,2136,AN/SQQ-89 Surf ASW Combat System,A,Weapon System Cost,,"133,803",,"134,637",,"144,425",,,,"144,425"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,44,02,Ship Sonars,2150,SSN Acoustic Equipment,A,Weapon System Cost,,"519,272",,"465,824",,"498,597",,,,"498,597"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,45,02,Ship Sonars,2176,Undersea Warfare Support Equipment,A,Weapon System Cost,,"23,436",,"14,247",,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,46,03,ASW Electronic Equipment,2210,Submarine Acoustic Warfare System,A,Weapon System Cost,,"41,695",,"51,514",,"56,482",,,,"56,482"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,47,03,ASW Electronic Equipment,2213,SSTD,A,Weapon System Cost,,"14,550",,"9,647",,"14,915",,,,"14,915"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,48,03,ASW Electronic Equipment,2225,Fixed Surveillance System,A,Weapon System Cost,,"536,796",,"405,854",,"352,312",,"11,000",,"363,312"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,49,03,ASW Electronic Equipment,2237,SURTASS,A,Weapon System Cost,,"33,887",,"45,975",,"31,169",,,,"31,169"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,50,04,Electronic Warfare Equipment,2312,AN/SLQ-32,A,Weapon System Cost,,"325,996",,"182,011",,"461,380",,,,"461,380"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,51,05,Reconnaissance Equipment,2360,Shipboard IW Exploit,A,Weapon System Cost,,"367,452",,"362,099",,"379,908",,,,"379,908"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,52,05,Reconnaissance Equipment,2361,Maritime Battlespace Awareness,A,Weapon System Cost,,"4,079",,"4,680",,"13,008",,,,"13,008"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,53,07,Other Ship Electronic Equipment,2606,Cooperative Engagement Capability,A,Weapon System Cost,,"37,652",,"26,644",,"26,648",,,,"26,648"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,54,07,Other Ship Electronic Equipment,2611,Naval Tactical Command Support System (NTCSS),A,Weapon System Cost,,"14,105",,"13,614",,"7,972",,,,"7,972"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,55,07,Other Ship Electronic Equipment,2614,ATDLS,A,Weapon System Cost,,"50,115",,"68,458",,"58,739",,,,"58,739"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,56,07,Other Ship Electronic Equipment,2618,Navy Command and Control System (NCCS),A,Weapon System Cost,,"3,915",,"3,645",,"3,489",,,,"3,489"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,57,07,Other Ship Electronic Equipment,2622,Minesweeping System Replacement,A,Weapon System Cost,,"16,803",,"16,812",,"16,426",,,,"16,426"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,59,07,Other Ship Electronic Equipment,2657,Navstar GPS Receivers (SPACE),A,Weapon System Cost,,"37,294",,"37,964",,"45,701",,,,"45,701"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,60,07,Other Ship Electronic Equipment,2666,American Forces Radio and TV Service,A,Weapon System Cost,,"2,748",,"3,803",,304,,,,304
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,61,07,Other Ship Electronic Equipment,2676,Strategic Platform Support Equip,A,Weapon System Cost,,"6,433",,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,62,09,Aviation Electronic Equipment,2820,Ashore ATC Equipment,A,Weapon System Cost,,"88,114",,"90,586",,"97,262",,,,"97,262"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,63,09,Aviation Electronic Equipment,2830,Afloat ATC Equipment,A,Weapon System Cost,,"88,309",,"75,508",,"72,104",,,,"72,104"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,64,09,Aviation Electronic Equipment,2851,ID Systems,A,Weapon System Cost,,"59,195",,"59,602",,"52,171",,,,"52,171"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,65,09,Aviation Electronic Equipment,2867,Joint Precision Approach And Landing System (,A,Weapon System Cost,,"3,341",,"7,287",,"5,105",,,,"5,105"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,66,09,Aviation Electronic Equipment,2876,Naval Mission Planning Systems,A,Weapon System Cost,,"34,724",,"42,326",,"60,058",,,,"60,058"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,67,10,Other Shore Electronic Equipment,2900,Maritime Integrated Broadcast System,A,Weapon System Cost,,"7,905",,"7,809",,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,68,10,Other Shore Electronic Equipment,2906,Tactical/Mobile C4I Systems,A,Weapon System Cost,,"51,415",,"65,113",,"64,901",,,,"64,901"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,69,10,Other Shore Electronic Equipment,2914,Intelligence Surveillance and Reconnaissance (ISR),A,Weapon System Cost,,"16,317",,"16,946",,"12,112",,,,"12,112"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,70,10,Other Shore Electronic Equipment,2915,CANES,A,Weapon System Cost,,"467,278",,"440,207",,"534,324",,,,"534,324"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,71,10,Other Shore Electronic Equipment,2920,RADIAC,A,Weapon System Cost,,"15,903",,"38,688",,"31,289",,,,"31,289"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,72,10,Other Shore Electronic Equipment,2925,CANES-Intell,A,Weapon System Cost,,"48,175",,"50,654",,"46,281",,,,"46,281"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,73,10,Other Shore Electronic Equipment,2940,GPETE,A,Weapon System Cost,,"25,744",,"32,005",,"33,395",,,,"33,395"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,74,10,Other Shore Electronic Equipment,2950,MASF,A,Weapon System Cost,,"19,757",,"24,361",,"13,205",,,,"13,205"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,75,10,Other Shore Electronic Equipment,2960,Integ Combat System Test Facility,A,Weapon System Cost,,"6,641",,"6,709",,"11,493",,,,"11,493"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,76,10,Other Shore Electronic Equipment,2970,EMI Control Instrumentation,A,Weapon System Cost,,"4,279",,"4,081",,"3,687",,,,"3,687"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,78,10,Other Shore Electronic Equipment,2981,In-Service Radars and Sensors,A,Weapon System Cost,,"279,545",,"222,607",,"249,656",,,,"249,656"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,79,11,Shipboard Communications,2437,Battle Force Tactical Network,A,Weapon System Cost,,"68,327",,"104,119",,"106,583",,,,"106,583"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,80,11,Shipboard Communications,3010,Shipboard Tactical Communications,A,Weapon System Cost,,"28,574",,"24,602",,"20,900",,,,"20,900"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,81,11,Shipboard Communications,3050,Ship Communications Automation,A,Weapon System Cost,,"103,352",,"103,546",,"162,075",,,,"162,075"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,82,11,Shipboard Communications,3057,Communications Items Under $5M,A,Weapon System Cost,,"14,299",,"9,209",,"11,138",,,,"11,138"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,83,12,Submarine Communications,3107,Submarine Broadcast Support,A,Weapon System Cost,,"71,070",,"129,467",,"113,115",,,,"113,115"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,84,12,Submarine Communications,3130,Submarine Communication Equipment,A,Weapon System Cost,,"82,595",,"68,334",,"84,584",,,,"84,584"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,85,13,Satellite Communications,3215,Satellite Communications Systems,A,Weapon System Cost,,"69,855",,"59,745",,"62,943",,,,"62,943"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,86,13,Satellite Communications,3216,Navy Multiband Terminal (NMT),A,Weapon System Cost,,"37,896",,"163,071",,"63,433",,,,"63,433"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,87,13,Satellite Communications,3222,Mobile Advanced EHF Terminal (MAT),A,Weapon System Cost,,,,,,"220,453",,,,"220,453"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,88,14,Shore Communications,3302,Joint Communications Support Element (JCSE),A,Weapon System Cost,,"3,473",,"4,551",,"3,389",,,,"3,389"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,89,15,Cryptographic Equipment,3415,Info Systems Security Program (ISSP),A,Weapon System Cost,,"153,614",,"155,188",,"191,239",,,,"191,239"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,90,15,Cryptographic Equipment,3417,MIO Intel Exploitation Team,A,Weapon System Cost,,"1,078",,"1,100",,"1,122",,,,"1,122"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,91,16,Cryptologic Equipment,3501,Cryptologic Communications Equip,A,Weapon System Cost,,"17,071",,"15,506",,"7,841",,,,"7,841"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,99,17,Other Electronic Support,2S52,DON TRR-1 (Afloat),A,Weapon System Cost,,"10,347",,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,100,17,Other Electronic Support,2S55,DON Robotics,A,Weapon System Cost,,689,,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,102,17,Other Electronic Support,2S60,DON UAS Video 5 (Afloat),A,Weapon System Cost,,"1,857",,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,103,17,Other Electronic Support,2S62,USN Ashore/Shipboard CONOPS Verification and,A,Weapon System Cost,,"6,489",,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,105,17,Other Electronic Support,2S72,USN (SESEF) Test Ranges,A,Weapon System Cost,,8,,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,106,17,Other Electronic Support,2S74,USN Training Ranges - Codify CONOPS/TTPs,A,Weapon System Cost,,"1,375",,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,107,17,Other Electronic Support,2S75,USN Training Ranges - Spectrum Sensing,A,Weapon System Cost,,500,,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,108,17,Other Electronic Support,2S82,USN EME Sensing and Monitoring,A,Weapon System Cost,,60,,,,,,,,
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,109,17,Other Electronic Support,3620,Coast Guard Equipment,A,Weapon System Cost,,"70,678",,"49,523",,"61,512",,,,"61,512"
+1810N,"Other Procurement, Navy",N,02,Communications and electronics equipment,110,19,Drug Interdiction Support,3820,Other Drug Interdiction Support,A,Weapon System Cost,,"15,102",,,,,,,,
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,112,01,Sonobuoys,4048,Sonobuoys - All Types,A,Weapon System Cost,,"310,972",,"353,441",,"249,908",,"80,000",,"329,908"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,113,03,Aircraft Support Equipment,3640,Minotaur,A,Weapon System Cost,,"5,392",,"5,431",,"5,191",,,,"5,191"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,114,03,Aircraft Support Equipment,4204,Weapons Range Support Equipment,A,Weapon System Cost,,"145,685",,"138,062",,"123,435",,,,"123,435"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,115,03,Aircraft Support Equipment,4213,Aircraft Support Equipment,A,Weapon System Cost,,"159,480",,"121,108",,"91,284",,,,"91,284"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,116,03,Aircraft Support Equipment,4217,Advanced Arresting Gear (AAG),A,Weapon System Cost,,"12,376",,"2,244",,"4,484",,,,"4,484"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,117,03,Aircraft Support Equipment,4219,Electromagnetic Aircraft Launch System (EMALS,A,Weapon System Cost,,"17,472",,"14,702",,"16,294",,,,"16,294"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,118,03,Aircraft Support Equipment,4226,Meteorological Equipment,A,Weapon System Cost,,"19,690",,"17,982",,"13,806",,,,"13,806"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,119,03,Aircraft Support Equipment,4248,Airborne MCM,A,Weapon System Cost,,"8,444",,"10,643",,"9,643",,,,"9,643"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,121,03,Aircraft Support Equipment,4268,Aviation Support Equipment,A,Weapon System Cost,,"82,061",,"105,981",,"111,334",,,,"111,334"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,122,03,Aircraft Support Equipment,4269,UMCS-Unman Carrier Aviation(UCA)Mission Cntrl,A,Weapon System Cost,,"143,612",,"119,561",,"189,553",,,,"189,553"
+1810N,"Other Procurement, Navy",N,03,Aviation support equipment,123,03,Aircraft Support Equipment,4604,Architect & Cap for Autonomy in Nav Enter (AR,A,Weapon System Cost,,"1,611",,,,,,,,
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,125,02,Ship Gun System Equipment,5111,Ship Gun Systems Equipment,A,Weapon System Cost,,"16,250",,"6,416",,"7,358",,,,"7,358"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,126,03,Ship Missile Systems Equipment,5227,Harpoon Support Equipment,A,Weapon System Cost,,227,,226,,209,,,,209
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,127,03,Ship Missile Systems Equipment,5231,Ship Missile Support Equipment,A,Weapon System Cost,,"283,972",,"376,830",,"455,822",,,,"455,822"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,128,03,Ship Missile Systems Equipment,5253,Tomahawk Support Equipment,A,Weapon System Cost,,"92,371",,"98,921",,"107,709",,,,"107,709"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,129,04,FBM Support Equipment,5353,CPS Support Equipment,A,Weapon System Cost,,,,,,"67,264",,,,"67,264"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,130,04,FBM Support Equipment,5358,Strategic Missile Systems Equip,A,Weapon System Cost,,"322,524",,"320,691",,"491,179",,"1,820",,"492,999"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,131,05,ASW Support Equipment,5420,SSN Combat Control Systems,A,Weapon System Cost,,"143,975",,"153,237",,"102,954",,,,"102,954"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,132,05,ASW Support Equipment,5429,ASW Support Equipment,A,Weapon System Cost,,"37,301",,"25,362",,"25,721",,,,"25,721"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,133,06,Other Ordnance Support Equipment,5509,Explosive Ordnance Disposal Equip,A,Weapon System Cost,,"25,573",,"26,725",,"24,822",,,,"24,822"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,134,06,Other Ordnance Support Equipment,5510,Directed Energy Systems,A,Weapon System Cost,,,,"3,817",,"2,976",,,,"2,976"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,135,06,Other Ordnance Support Equipment,5543,Items Less Than $5 Million,A,Weapon System Cost,,"4,767",,"3,193",,"3,635",,,,"3,635"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,136,07,Other Expendable Ordnance,5530,Anti-Ship Missile Decoy System,A,Weapon System Cost,,"51,100",,"75,614",,"19,129",,"70,000",,"89,129"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,137,07,Other Expendable Ordnance,5661,Submarine Training Device Mods,A,Weapon System Cost,,"76,903",,"80,248",,"77,889",,,,"77,889"
+1810N,"Other Procurement, Navy",N,04,Ordnance support equipment,138,07,Other Expendable Ordnance,5664,Surface Training Equipment,A,Weapon System Cost,,"207,231",,"179,974",,"186,085",,,,"186,085"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,141,01,Civil Engineering Support Equipment,6003,Passenger Carrying Vehicles,A,Weapon System Cost,,"3,824",,"3,751",,"3,825",,,,"3,825"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,142,01,Civil Engineering Support Equipment,6007,General Purpose Trucks,A,Weapon System Cost,,"3,943",,"5,795",,"5,489",,,,"5,489"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,143,01,Civil Engineering Support Equipment,6024,Construction & Maintenance Equip,A,Weapon System Cost,,"60,792",,"76,983",,"102,592",,,,"102,592"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,144,01,Civil Engineering Support Equipment,6027,Fire Fighting Equipment,A,Weapon System Cost,,"16,572",,"23,006",,"27,675",,,,"27,675"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,145,01,Civil Engineering Support Equipment,6028,Tactical Vehicles,A,Weapon System Cost,,"26,824",,"36,355",,"37,262",,,,"37,262"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,146,01,Civil Engineering Support Equipment,6033,Amphibious Equipment,A,Weapon System Cost,,"4,501",,"6,454",,"38,073",,,,"38,073"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,147,01,Civil Engineering Support Equipment,6058,Pollution Control Equipment,A,Weapon System Cost,,"2,649",,"3,924",,"4,009",,,,"4,009"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,148,01,Civil Engineering Support Equipment,6060,Items less than $5 Million,A,Weapon System Cost,,"66,251",,"103,014",,"127,086",,,,"127,086"
+1810N,"Other Procurement, Navy",N,05,Civil engineering support equipment,149,01,Civil Engineering Support Equipment,6075,Physical Security Vehicles,A,Weapon System Cost,,"1,285",,"1,301",,"1,297",,,,"1,297"
+1810N,"Other Procurement, Navy",N,06,Supply support equipment,151,01,Supply Support Equipment,7025,Supply Equipment,A,Weapon System Cost,,"33,236",,"56,585",,"38,838",,,,"38,838"
+1810N,"Other Procurement, Navy",N,06,Supply support equipment,152,01,Supply Support Equipment,7066,First Destination Transportation,A,Weapon System Cost,,"6,322",,"5,863",,"6,203",,,,"6,203"
+1810N,"Other Procurement, Navy",N,06,Supply support equipment,153,01,Supply Support Equipment,7069,Special Purpose Supply Systems,A,Weapon System Cost,,"659,095",,"1,000,996",,"643,618",,,,"643,618"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,155,01,Training Devices,8081,Training Support Equipment,A,Weapon System Cost,,"2,082",,"5,341",,"3,480",,,,"3,480"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,156,01,Training Devices,8101,Training and Education Equipment,A,Weapon System Cost,,"102,565",,"75,626",,"75,048",,,,"75,048"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,157,02,Command Support Equipment,8106,Command Support Equipment,A,Weapon System Cost,,"45,068",,"29,698",,"34,249",,,,"34,249"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,158,02,Command Support Equipment,8109,Medical Support Equipment,A,Weapon System Cost,,"17,521",,"10,122",,"12,256",,,,"12,256"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,160,02,Command Support Equipment,8114,Naval MIP Support Equipment,A,Weapon System Cost,,"5,404",,"6,590",,"8,810",,,,"8,810"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,161,02,Command Support Equipment,8118,Operating Forces Support Equipment,A,Weapon System Cost,,"10,749",,"17,056",,"16,567",,,,"16,567"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,162,02,Command Support Equipment,8120,C4ISR Equipment,A,Weapon System Cost,,"7,665",,"33,606",,"36,945",,,,"36,945"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,163,02,Command Support Equipment,8126,Environmental Support Equipment,A,Weapon System Cost,,"52,562",,"47,499",,"42,860",,,,"42,860"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,164,02,Command Support Equipment,8128,Physical Security Equipment,A,Weapon System Cost,,"104,901",,"139,684",,"166,577",,"232,000",,"398,577"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,165,02,Command Support Equipment,8161,Enterprise Information Technology,A,Weapon System Cost,,"41,422",,"42,026",,"42,363",,,,"42,363"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,169,05,Other,8150,Cancelled Account Adjustments,A,Weapon System Cost,,28,,,,,,,,
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,170,05,Other,8164,Next Generation Enterprise Service,A,Weapon System Cost,,"178,868",,"130,100",,"185,755",,,,"185,755"
+1810N,"Other Procurement, Navy",N,07,Personnel and command support equipment,171,05,Other,8645,Cyberspace Activities,A,Weapon System Cost,,"14,161",,"2,195",,"5,446",,,,"5,446"
+1810N,"Other Procurement, Navy",,07,,999,99,Classified Programs,9999999999,Classified Programs,,,,"17,990",,"16,134",,"41,991",,,,"41,991"
+1810N,"Other Procurement, Navy",N,08,Spares and repair parts,176,01,Spares and Repair Parts,9020,Spares and Repair Parts,A,Weapon System Cost,,"736,770",,"705,144",,"585,865",,"297,765",,"883,630"
+1810N,"Other Procurement, Navy",N,08,Spares and repair parts,177,01,Spares and Repair Parts,9021,VIRGINIA Class (VACL) Spares and Repair parts,A,Weapon System Cost,,"478,691",,,,,,,,
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,1,01,Tracked Combat Vehicles,2021,AAV7A1 PIP,A,Weapon System Cost,,"3,353",,"2,773",,21,,,,21
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,2,01,Tracked Combat Vehicles,2025,Amphibious Combat Vehicle Family of Vehicles,A,Weapon System Cost,80,"545,109",80,"810,276",91,"790,789",,,91,"790,789"
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,3,01,Tracked Combat Vehicles,2038,LAV PIP,A,Weapon System Cost,,"35,852",,761,,764,,,,764
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,4,02,Artillery and Other Weapons,2185,155mm Lightweight Towed Howitzer,A,Weapon System Cost,,489,,"1,823",,3,,,,3
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,5,02,Artillery and Other Weapons,2212,Artillery Weapons System,A,Weapon System Cost,,"160,060",,"140,893",,"221,897",,,,"221,897"
+1109N,"Procurement, Marine Corps",N,02,Weapons and combat vehicles,6,02,Artillery and Other Weapons,2220,Weapons and Combat Vehicles Under $5 Million,A,Weapon System Cost,,"17,659",,"15,451",,"13,401",,,,"13,401"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,10,01,Guided Missiles,2101,Tomahawk,A,Weapon System Cost,30,"93,648",22,"112,534",,,,,,
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,11,01,Guided Missiles,2292,Naval Strike Missile (NSM),A,Weapon System Cost,90,"169,726",90,"170,845",90,"169,874",,,90,"169,874"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,11,01,Guided Missiles,2292,Naval Strike Missile (NSM),B,Less: Advance Procurement (PY),,,,"-26,163",,"-26,163",,,,"-26,163"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,12,01,Guided Missiles,2292,Naval Strike Missile (NSM),C,Advance Procurement (CY),,"39,244",,"30,087",,"20,930",,,,"20,930"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,13,01,Guided Missiles,3006,Ground Based Air Defense,A,Weapon System Cost,,"266,018",,"363,862",,"620,220",,,,"620,220"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,14,01,Guided Missiles,3011,Anti-Armor Missile-Javelin,A,Weapon System Cost,,"672,570",123,"53,251",56,"32,576",,,56,"32,576"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,15,01,Guided Missiles,3016,Family Anti-Armor Weapon Systems (FOAAWS),A,Weapon System Cost,,"32,610",,"9,521",,107,,,,107
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,16,01,Guided Missiles,3017,Anti-Armor Missile-TOW,A,Weapon System Cost,,"2,007",,"1,868",,"2,173",,,,"2,173"
+1109N,"Procurement, Marine Corps",N,03,Guided missiles and equipment,17,01,Guided Missiles,3025,Guided MLRS Rocket (GMLRS),A,Weapon System Cost,48,"200,003",6,"1,584",6,"61,490",,,6,"61,490"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,21,04,Command and Control Systems,4644,Common Aviation Command and Control System (C,A,Weapon System Cost,,"72,214",,"84,764",,"68,589",,,,"68,589"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,22,07,Repair and Test Equipment,4181,Repair and Test Equipment,A,Weapon System Cost,,"52,090",,"64,290",,"61,264",,,,"61,264"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,23,09,Other Support (Tel),4652,Modification Kits,A,Weapon System Cost,,"1,782",,"1,559",,"1,108",,,,"1,108"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,24,14,Command and Control System (Non-Tel),4620,Items Under $5 Million (Comm & Elec),A,Weapon System Cost,,"120,766",,"221,212",,"202,679",,,,"202,679"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,25,14,Command and Control System (Non-Tel),4640,Air Operations C2 Systems,A,Weapon System Cost,,"18,714",,"20,385",,"15,784",,,,"15,784"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,27,15,Radar + Equipment (Non-Tel),4655,Ground/Air Task Oriented Radar (G/ATOR),A,Weapon System Cost,,"66,291",,"71,941",,"79,542",,,,"79,542"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,29,16,Intell/Comm Equipment (Non-Tel),4367,Electro Magnetic Spectrum Operations (EMSO),A,Weapon System Cost,,"133,117",,,,"35,396",,,,"35,396"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,30,16,Intell/Comm Equipment (Non-Tel),4616,GCSS-MC,A,Weapon System Cost,,"4,144",,"3,282",,"3,303",,,,"3,303"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,31,16,Intell/Comm Equipment (Non-Tel),4733,Fire Support System,A,Weapon System Cost,,"53,008",,"56,710",,"116,304",,,,"116,304"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,32,16,Intell/Comm Equipment (Non-Tel),4747,Intelligence Support Equipment,A,Weapon System Cost,,"135,062",,"102,575",,"67,690",,,,"67,690"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,34,16,Intell/Comm Equipment (Non-Tel),4757,Unmanned Air Systems (Intel),A,Weapon System Cost,,"46,951",,"50,593",,"14,991",,,,"14,991"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,35,16,Intell/Comm Equipment (Non-Tel),4767,DCGS-MC,A,Weapon System Cost,,"66,419",,"70,507",,"42,946",,,,"42,946"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,36,16,Intell/Comm Equipment (Non-Tel),4787,UAS Payloads,A,Weapon System Cost,,"19,088",,"12,225",,"12,232",,,,"12,232"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,39,19,Other Support (Non-Tel),4409,Expeditionary Support Equipment,A,Weapon System Cost,,"2,010",,,,,,,,
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,40,19,Other Support (Non-Tel),4625,Marine Corps Enterprise Network (MCEN),A,Weapon System Cost,,"222,358",,"268,074",,"205,710",,,,"205,710"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,41,19,Other Support (Non-Tel),4630,Common Computer Resources,A,Weapon System Cost,,"27,966",,"17,247",,"21,064",,,,"21,064"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,42,19,Other Support (Non-Tel),4631,Command Post Systems,A,Weapon System Cost,,"69,143",,"51,810",,"50,549",,,,"50,549"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,43,19,Other Support (Non-Tel),4633,Radio Systems,A,Weapon System Cost,,"512,512",,"188,927",,"209,444",,,,"209,444"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,44,19,Other Support (Non-Tel),4634,Comm Switching & Control Systems,A,Weapon System Cost,,"46,276",,"39,390",,"100,712",,,,"100,712"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,45,19,Other Support (Non-Tel),4635,Comm & Elec Infrastructure Support,A,Weapon System Cost,,"27,111",,"16,948",,"16,163",,,,"16,163"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,46,19,Other Support (Non-Tel),4645,Cyberspace Activities,A,Weapon System Cost,,"27,583",,"19,245",,"14,541",,,,"14,541"
+1109N,"Procurement, Marine Corps",N,04,Communications and electronics equipment,48,19,Other Support (Non-Tel),4758,Unmanned Expeditionary Systems,A,Weapon System Cost,,"11,164",,"16,305",,,,,,
+1109N,"Procurement, Marine Corps",,04,,999,99,Classified Programs,9999999999,Classified Programs,,,,"2,799",,"3,266",,"2,145",,,,"2,145"
+1109N,"Procurement, Marine Corps",N,05,Support vehicles,51,01,Administrative Vehicles,5006,Commercial Cargo Vehicles,A,Weapon System Cost,,"34,169",,"26,800",,"24,699",,,,"24,699"
+1109N,"Procurement, Marine Corps",N,05,Support vehicles,52,02,Tactical Vehicles,5050,Motor Transport Modifications,A,Weapon System Cost,,"14,499",,"8,654",,"16,472",,,,"16,472"
+1109N,"Procurement, Marine Corps",N,05,Support vehicles,53,02,Tactical Vehicles,5095,Joint Light Tactical Vehicle,A,Weapon System Cost,396,"262,150",672,"324,058",138,"81,893",,,138,"81,893"
+1109N,"Procurement, Marine Corps",N,05,Support vehicles,55,02,Tactical Vehicles,5132,Trailers,A,Weapon System Cost,,"17,034",,"24,940",,,,,,
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,58,01,Engineer and Other Equipment,6277,Tactical Fuel Systems,A,Weapon System Cost,,"12,956",,"24,837",,"33,611",,,,"33,611"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,59,01,Engineer and Other Equipment,6366,Power Equipment Assorted,A,Weapon System Cost,,"35,234",,"23,411",,"24,558",,,,"24,558"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,60,01,Engineer and Other Equipment,6518,Amphibious Support Equipment,A,Weapon System Cost,,"15,691",,"11,366",,"9,049",,,,"9,049"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,61,01,Engineer and Other Equipment,6520,EOD Systems,A,Weapon System Cost,,"44,200",,"30,166",,"21,069",,,,"21,069"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,62,02,Materials Handling Equipment,6438,Physical Security Equipment,A,Weapon System Cost,,"49,350",,"46,148",,"52,394",,,,"52,394"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,63,03,General Property,6522,Field Medical Equipment,A,Weapon System Cost,,"14,300",,"12,651",,"58,768",,,,"58,768"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,64,03,General Property,6532,Training Devices,A,Weapon System Cost,,"101,577",,"97,577",,"63,133",,,,"63,133"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,65,03,General Property,6544,Family of Construction Equipment,A,Weapon System Cost,,"32,816",,"29,168",,"33,644",,,,"33,644"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,66,03,General Property,6545,Ultra-Light Tactical Vehicle (ULTV),A,Weapon System Cost,,"13,319",,"17,954",,"7,836",,,,"7,836"
+1109N,"Procurement, Marine Corps",N,06,Engineer and other equipment,67,04,Other Support,6670,Items Less Than $5 Million,A,Weapon System Cost,,"47,220",,"26,508",,"35,920",,,,"35,920"
+1109N,"Procurement, Marine Corps",N,07,Spares and repair parts,70,01,Spares and Repair Parts,7000,Spares and Repair Parts,A,Weapon System Cost,,"42,657",,"28,749",,"40,828",,,,"40,828"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,1,01,Strategic Offensive,B02100,B-21 Raider,A,Weapon System Cost,,"1,915,858",,"2,586,868",,"3,311,716",,"2,099,126",,"5,410,842"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,1,01,Strategic Offensive,B02100,B-21 Raider,B,Less: Advance Procurement (PY),,"-353,165",,"-708,000",,"-721,600",,,,"-721,600"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,2,01,Strategic Offensive,B02100,B-21 Raider,C,Advance Procurement (CY),,"708,000",,"721,600",,"862,000",,,,"862,000"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,3,03,Tactical Forces,ATA000,F-35,A,Weapon System Cost,51,"5,493,772",44,"4,808,515",24,"3,965,703",,,24,"3,965,703"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,3,03,Tactical Forces,ATA000,F-35,B,Less: Advance Procurement (PY),,"-246,702",,"-318,585",,"-410,200",,,,"-410,200"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,4,03,Tactical Forces,ATA000,F-35,C,Advance Procurement (CY),,"318,585",,"482,584",,"531,241",,,,"531,241"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,7,03,Tactical Forces,F015EX,F-15EX,A,Weapon System Cost,24,"2,695,261",18,"2,036,472",,,21,"2,480,818",21,"2,480,818"
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,7,03,Tactical Forces,F015EX,F-15EX,B,Less: Advance Procurement (PY),,"-264,000",,"-228,000",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,8,03,Tactical Forces,F015EX,F-15EX,C,Advance Procurement (CY),,"228,000",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,01,Combat aircraft,9,03,Tactical Forces,JSE000,Joint Simulation Environment,A,Weapon System Cost,,,,,,"17,985",,,,"17,985"
+3010F,"Aircraft Procurement, Air Force",F,02,Airlift aircraft,12,02,Tactical Airlift,KC046A,KC-46A MDAP,A,Weapon System Cost,15,"2,783,927",15,"2,779,618",15,"2,799,633",,,15,"2,799,633"
+3010F,"Aircraft Procurement, Air Force",F,02,Airlift aircraft,13,03,Other Airlift,C130J0,C-130J,A,Weapon System Cost,8,"1,153,521",1,"414,005",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,03,Trainer aircraft,17,01,UPT Trainers,APT000,Advanced Pilot Training T-7A,A,Weapon System Cost,,,,"20,780",14,"362,083",,,14,"362,083"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,19,01,Helicopters,H0106O,MH-139A,A,Weapon System Cost,7,"223,201",8,"279,095",2,"4,478",,"150,100",2,"154,578"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,20,01,Helicopters,H060WH,Combat Rescue Helicopter,A,Weapon System Cost,10,"597,408",4,"355,185",,"107,500",,,,"107,500"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,23,04,Mission Support Aircraft,C0400D,C-40 Fleet Expansion,A,Weapon System Cost,,,,"10,000",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,24,04,Mission Support Aircraft,CAPAC0,Civil Air Patrol A/C,A,Weapon System Cost,,"11,900",,"15,000",,"3,131",,,,"3,131"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,25,05,Other Aircraft,10PALE,Pale Ale,A,Weapon System Cost,,"21,443",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,26,05,Other Aircraft,10TRGT,Target Drones,A,Weapon System Cost,20,"34,526",20,"37,581",20,"34,224",,,20,"34,224"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,27,05,Other Aircraft,10ULTA,ULTRA,A,Weapon System Cost,,,4,"35,274",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,29,05,Other Aircraft,E00700,E-7,A,Weapon System Cost,,,,,,"200,000",,,,"200,000"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,29,05,Other Aircraft,E00700,E-7,B,Less: Advance Procurement (PY),,,,,,"-200,000",,,,"-200,000"
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,30,05,Other Aircraft,E00700,E-7,C,Advance Procurement (CY),,,,"200,000",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,31,05,Other Aircraft,E011A1,E-11 BACN/HAG,A,Weapon System Cost,1,"67,367",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,04,Other aircraft,34,05,Other Aircraft,Q020BR,RQ-20B Puma,A,Weapon System Cost,,,6,"11,283",6,"11,437",,,6,"11,437"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,36,01,Strategic Aircraft,B00200,B-2A,A,Weapon System Cost,,"89,738",,"60,707",,"76,906",,,,"76,906"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,37,01,Strategic Aircraft,B01B00,B-1B,A,Weapon System Cost,,"9,782",,"13,406",,"73,893",,,,"73,893"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,38,01,Strategic Aircraft,B05200,B-52,A,Weapon System Cost,,"26,936",,"77,527",,"223,827",,,,"223,827"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,39,01,Strategic Aircraft,LAIRCM,Large Aircraft Infrared Countermeasures,A,Weapon System Cost,,"26,068",,"52,117",,"35,165",,,,"35,165"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,41,02,Tactical Aircraft,CCA00M,Collaborative Combat Aircraft Mods,A,Weapon System Cost,,,,,,"15,048",,,,"15,048"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,42,02,Tactical Aircraft,E011A0,E-11 BACN/HAG,A,Weapon System Cost,,"56,923",,"76,139",,"28,797",,,,"28,797"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,43,02,Tactical Aircraft,F01500,F-15,A,Weapon System Cost,,"28,580",,"39,760",,"120,044",,,,"120,044"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,44,02,Tactical Aircraft,F015EX,F-15EX,A,Weapon System Cost,,"79,800",,,,,,"286,700",,"286,700"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,45,02,Tactical Aircraft,F01600,F-16 Modifications,A,Weapon System Cost,,"250,548",,"194,805",,"448,116",,"50,000",,"498,116"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,46,02,Tactical Aircraft,F02200,F-22A,A,Weapon System Cost,,"309,679",,"818,537",,"977,526",,"100,000",,"1,077,526"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,47,02,Tactical Aircraft,F03500,F-35 Modifications,A,Weapon System Cost,,"329,387",,"394,454",,"380,337",,,,"380,337"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,48,02,Tactical Aircraft,F15EWS,F-15 EPAW,A,Weapon System Cost,,"233,339",,"227,342",,"252,607",,,,"252,607"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,50,02,Tactical Aircraft,KC046A,KC-46A MDAP,A,Weapon System Cost,,,,"24,954",,"19,344",,,,"19,344"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,51,03,Airlift Aircraft,C00500,C-5,A,Weapon System Cost,,"22,187",,"43,370",,"34,939",,,,"34,939"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,52,03,Airlift Aircraft,C01700,C-17A,A,Weapon System Cost,,"120,710",,"85,691",,"9,853",,"64,724",,"74,577"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,54,03,Airlift Aircraft,C03200,C-32A,A,Weapon System Cost,,"19,060",,"6,422",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,55,03,Airlift Aircraft,C03700,C-37A,A,Weapon System Cost,,"13,454",,"9,146",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,56,03,Airlift Aircraft,OSAEA0,OSA-EA Modifications,A,Weapon System Cost,,,,,,"87,515",,,,"87,515"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,57,04,Trainer Aircraft,GLID00,Glider Mods,A,Weapon System Cost,,"5,270",,"2,679",,159,,,,159
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,58,04,Trainer Aircraft,JPAT00,T-6,A,Weapon System Cost,,"2,942",,"49,281",,"247,814",,,,"247,814"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,59,04,Trainer Aircraft,T00100,T-1,A,Weapon System Cost,,"9,850",,"2,205",,137,,,,137
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,60,04,Trainer Aircraft,T03800,T-38,A,Weapon System Cost,,"115,340",,"112,986",,"85,381",,,,"85,381"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,62,05,Other Aircraft,11U200,U-2 Mods,A,Weapon System Cost,,"54,727",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,64,05,Other Aircraft,C01200,C-12,A,Weapon System Cost,,446,,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,66,05,Other Aircraft,C02500,VC-25A Mod,A,Weapon System Cost,,"28,958",,"11,388",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,67,05,Other Aircraft,C04000,C-40,A,Weapon System Cost,,"8,921",,"7,114",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,68,05,Other Aircraft,C13000,C-130,A,Weapon System Cost,,"44,332",,"50,457",,"144,041",,,,"144,041"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,69,05,Other Aircraft,C1300J,C-130J Mods,A,Weapon System Cost,,"102,258",,"151,386",,,,"214,234",,"214,234"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,70,05,Other Aircraft,C13500,C-135,A,Weapon System Cost,,"117,591",,"111,647",,"124,368",,"41,000",,"165,368"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,71,05,Other Aircraft,CALL00,Compass Call,A,Weapon System Cost,,"144,686",,"94,654",,,,"167,369",,"167,369"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,72,05,Other Aircraft,CFIN00,combat flight inspection - CFIN,A,Weapon System Cost,,446,,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,73,05,Other Aircraft,CVR000,CVR (Connon ULF Receiver) Inc 2,A,Weapon System Cost,,,,,,"79,859",,,,"79,859"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,74,05,Other Aircraft,DARP01,RC-135,A,Weapon System Cost,,"220,121",,"242,066",,"231,001",,,,"231,001"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,75,05,Other Aircraft,E00300,E-3,A,Weapon System Cost,,"1,350",,"68,192",,"17,291",,,,"17,291"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,76,05,Other Aircraft,E00400,E-4,A,Weapon System Cost,,"13,055",,"24,828",,"45,232",,,,"45,232"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,80,05,Other Aircraft,H00100,H-1,A,Weapon System Cost,,816,,"2,097",,"17,899",,,,"17,899"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,81,05,Other Aircraft,H01061,MH-139A Mod,A,Weapon System Cost,,,,"5,010",,"4,992",,,,"4,992"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,82,05,Other Aircraft,H06000,H-60,A,Weapon System Cost,,"4,207",,"2,035",,"1,749",,,,"1,749"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,83,05,Other Aircraft,H060WM,HH60W Modifications,A,Weapon System Cost,,,,"18,911",,"9,150",,"32,667",,"41,817"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,85,05,Other Aircraft,HCMC00,HC/MC-130 Modifications,A,Weapon System Cost,,"91,475",,"208,461",,"365,086",,,,"365,086"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,86,05,Other Aircraft,OTHACF,Other Aircraft,A,Weapon System Cost,,"62,884",,"55,122",,"263,902",,,,"263,902"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,87,05,Other Aircraft,OTHACF,Other Aircraft,C,Advance Procurement (CY),,,,"5,216",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,88,05,Other Aircraft,PRDTB2,MQ-9 Mods,A,Weapon System Cost,,"107,643",,"12,351",,"100,923",,,,"100,923"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,90,05,Other Aircraft,SLC3SA,Senior Leader C3 System - Aircraft,A,Weapon System Cost,,"24,347",,"23,501",,"24,414",,,,"24,414"
+3010F,"Aircraft Procurement, Air Force",F,05,Modification of inservice aircraft,91,05,Other Aircraft,V02200,CV-22 Mods,A,Weapon System Cost,,"153,006",,"42,795",,"78,713",,"100,329",,"179,042"
+3010F,"Aircraft Procurement, Air Force",F,06,Aircraft spares and repair parts,94,10,Aircraft Spares and Repair Parts,000999,Initial Spares/Repair Parts,A,Weapon System Cost,,"865,790",,"982,491",,"973,535",,"1,023,806",,"1,997,341"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,99,01,Common Support Equipment,000071,Aircraft Replacement Support Equip,A,Weapon System Cost,,"204,564",,"162,813",,"156,776",,,,"156,776"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,102,02,Post Production Support,B00200,B-2A,A,Weapon System Cost,,"1,838",,"1,885",,,,,,
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,103,02,Post Production Support,B002B0,B-2B,A,Weapon System Cost,,"17,869",,"15,709",,"18,969",,,,"18,969"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,104,02,Post Production Support,B05200,B-52,A,Weapon System Cost,,,,,,111,,,,111
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,106,02,Post Production Support,C01700,C-17A,A,Weapon System Cost,,,,,,"2,672",,,,"2,672"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,107,02,Post Production Support,C0V220,CV-22 Post Production Support,A,Weapon System Cost,,,,"12,025",,,,"7,085",,"7,085"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,108,02,Post Production Support,C130JM,MC-130J,A,Weapon System Cost,,"10,117",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,111,02,Post Production Support,F01500,F-15,A,Weapon System Cost,,,,,,"5,112",,,,"5,112"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,112,02,Post Production Support,F015EX,F-15EX,A,Weapon System Cost,,,,,,,,"95,576",,"95,576"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,114,02,Post Production Support,F0160P,F-16 Post Production Support,A,Weapon System Cost,,"6,984",,"62,368",,"18,402",,,,"18,402"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,115,02,Post Production Support,F02200,F-22A,A,Weapon System Cost,,"38,418",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,116,02,Post Production Support,HCMC00,HC/MC-130 Post Prod,A,Weapon System Cost,,,,"18,604",,"17,986",,,,"17,986"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,117,02,Post Production Support,JSE000,Joint Simulation Environment Post Production Support,A,Weapon System Cost,,,,,,"28,524",,,,"28,524"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,122,03,Industrial Preparedness,000073,Industrial Responsiveness,A,Weapon System Cost,,"18,874",,"20,004",,"19,998",,,,"19,998"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,123,04,War Consumables,000074,War Consumables,A,Weapon System Cost,,"18,146",,"25,908",,"26,323",,,,"26,323"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,124,05,Other Production Charges,000075,Other Production Charges,A,Weapon System Cost,,"1,206,090",,"1,612,819",,"940,190",,,,"940,190"
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,126,05,Other Production Charges,000079,Cancelled Acct Adjustments,A,Weapon System Cost,,"2,455",,,,,,,,
+3010F,"Aircraft Procurement, Air Force",F,07,Aircraft support equipment and facilities,134,05,Other Production Charges,F015EX,F-15EX,A,Weapon System Cost,,,,,,,,"151,300",,"151,300"
+3010F,"Aircraft Procurement, Air Force",,07,,999,99,Classified Programs,9999999999,Classified Programs,,,,"17,165",,"16,359",,"16,006",,,,"16,006"
+3020F,"Missile Procurement, Air Force",F,01,Ballistic missiles,1,03,Missile Replacement Equipment - Ballistic,00099L,Missile Replacement Eq-Ballistic,A,Weapon System Cost,,"59,019",,"37,333",,"35,116",,,,"35,116"
+3020F,"Missile Procurement, Air Force",F,01,Ballistic missiles,2,03,Missile Replacement Equipment - Ballistic,00099L,Missile Replacement Eq-Ballistic,C,Advance Procurement (CY),,,,,,"2,166",,,,"2,166"
+3020F,"Missile Procurement, Air Force",F,01,Ballistic missiles,3,04,Ballistic Missiles,MGBSD0,Ground Based Strategic Deterrent,A,Weapon System Cost,,,,,,742,,,,742
+3020F,"Missile Procurement, Air Force",F,01,Ballistic missiles,3,04,Ballistic Missiles,MGBSD0,Ground Based Strategic Deterrent,B,Less: Advance Procurement (PY),,,,,,-742,,,,-742
+3020F,"Missile Procurement, Air Force",F,01,Ballistic missiles,4,04,Ballistic Missiles,MK21A0,Mk21A Reentry Vehicle,A,Weapon System Cost,,,,"26,156",,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,5,01,Strategic,MLRSO1,Long Range Stand-Off Weapon,A,Weapon System Cost,,"66,816",,"70,335",,"192,409",,,,"192,409"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,6,01,Strategic,MLRSO1,Long Range Stand-Off Weapon,C,Advance Procurement (CY),,,,"140,000",,"250,300",,,,"250,300"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,7,02,Tactical,222000,Replac Equip & War Consumables,A,Weapon System Cost,,"33,844",,"6,533",,"12,436",,,,"12,436"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,8,02,Tactical,APKWS0,Advanced Precision Kill Weapon System (APKWS) Missile,A,Weapon System Cost,,,,,340,"13,428",,,340,"13,428"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,9,02,Tactical,ARRW00,AGM-183A Air-Launched Rapid Response Weapon,A,Weapon System Cost,,,,,,"387,055",,,,"387,055"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,10,02,Tactical,FAMM00,Family of Affordable Mass Missile (FAMM),A,Weapon System Cost,,,,,,,"3,010","656,333","3,010","656,333"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,11,02,Tactical,JASSM0,Joint Air-Surface Standoff Missile,A,Weapon System Cost,"1,140","1,959,580",450,"1,042,469",144,"510,499",245,"490,000",389,"1,000,499"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,11,02,Tactical,JASSM0,Joint Air-Surface Standoff Missile,B,Less: Advance Procurement (PY),,,,"-222,418",,"-182,418",,,,"-182,418"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,12,02,Tactical,JASSM0,Joint Air-Surface Standoff Missile,C,Advance Procurement (CY),,"769,672",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,13,02,Tactical,JATM00,Joint Advanced Tactical Missile,A,Weapon System Cost,,,,,,"368,593",,,,"368,593"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,14,02,Tactical,JSM000,Joint Strike Missile,A,Weapon System Cost,104,"373,511",40,"165,909",,,112,"376,901",112,"376,901"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,15,02,Tactical,LRASM0,LRASM0,A,Weapon System Cost,118,"415,056",115,"379,067",93,"319,369",25,"112,225",118,"431,594"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,15,02,Tactical,LRASM0,LRASM0,B,Less: Advance Procurement (PY),,,,"-24,967",,"-24,968",,,,"-24,968"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,16,02,Tactical,LRASM0,LRASM0,C,Advance Procurement (CY),,"99,871",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,17,02,Tactical,M09HAI,Sidewinder (AIM-9X),A,Weapon System Cost,198,"157,666",136,"101,802",173,"100,352",,,173,"100,352"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,18,02,Tactical,MAMRA0,AMRAAM,A,Weapon System Cost,457,"487,638",290,"442,873",226,"365,125",257,"300,000",483,"665,125"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,18,02,Tactical,MAMRA0,AMRAAM,B,Less: Advance Procurement (PY),,,,"-53,103",,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,19,02,Tactical,MAMRA0,AMRAAM,C,Advance Procurement (CY),,"53,103",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,20,02,Tactical,PRDTA2,Predator Hellfire Missile,A,Weapon System Cost,,"1,049",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,21,02,Tactical,SDB000,Small Diameter Bomb,A,Weapon System Cost,512,"56,174",150,"42,257",511,"41,510",,,511,"41,510"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,22,02,Tactical,SDB002,SMALL DIAMETER BOMB II,A,Weapon System Cost,769,"291,553",868,"322,122",806,"307,743",,,806,"307,743"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,23,02,Tactical,SIAW24,Stand-In Attack Weapon (SIAW),A,Weapon System Cost,14,"41,947",113,"152,646",99,"185,324",,,99,"185,324"
+3020F,"Missile Procurement, Air Force",F,02,Other missiles,24,05,Industrial Facilities,000042,Industrial Preparedness/Pol Prevention,A,Weapon System Cost,,793,,913,,917,,,,917
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,25,01,Class IV,M30FLH,ICBM FUZE MOD,A,Weapon System Cost,,"153,795",,"153,569",,"157,049",,,,"157,049"
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,25,01,Class IV,M30FLH,ICBM FUZE MOD,B,Less: Advance Procurement (PY),,"-43,450",,"-35,507",,"-37,673",,,,"-37,673"
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,26,01,Class IV,M30FLH,ICBM FUZE MOD,C,Advance Procurement (CY),,"40,216",,"26,313",,,,,,
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,27,01,Class IV,M30MLG,MM III Modifications,A,Weapon System Cost,,"23,048",,"24,212",,"14,604",,,,"14,604"
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,28,01,Class IV,M88AAG,AGM-88A Harm,A,Weapon System Cost,,"15,000",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,03,Modification of inservice missiles,29,01,Class IV,MALCBG,Air Launch Cruise Missile (ALCM),A,Weapon System Cost,,"42,430",,"34,019",,"41,393",,,,"41,393"
+3020F,"Missile Procurement, Air Force",F,04,Spares and repair parts,30,10,Missile Spares and Repair Parts,00098A,Msl Sprs/Repair Parts (Initial),A,Weapon System Cost,,"6,840",,"6,956",,"5,824",,,,"5,824"
+3020F,"Missile Procurement, Air Force",F,04,Spares and repair parts,31,10,Missile Spares and Repair Parts,00098K,Msl Sprs/Repair Parts (Replen),A,Weapon System Cost,,"76,873",,"103,543",,"108,249",,,,"108,249"
+3020F,"Missile Procurement, Air Force",F,05,Other support,32,01,Space Programs,CAADJS,Cancelled Accounts,A,Weapon System Cost,,"1,629",,,,,,,,
+3020F,"Missile Procurement, Air Force",F,05,Other support,33,04,Special Programs,MSPPRG,Special Update Programs,A,Weapon System Cost,,"347,904",,"628,436",,"221,199",,,,"221,199"
+3020F,"Missile Procurement, Air Force",,05,,999,99,Classified Programs,9999999999,Classified Programs,,,,"851,718",,"687,204",,"828,275",,,,"828,275"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,2,11,Rockets,351010,Rockets,A,Weapon System Cost,,"18,483",,,,,,,,
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,3,12,Cartridges,352010,Cartridges,A,Weapon System Cost,,"103,206",,"85,738",,"126,077",,,,"126,077"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,5,13,Bombs,353020,General Purpose Bombs,A,Weapon System Cost,,"107,281",,"114,616",,"189,097",,,,"189,097"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,6,13,Bombs,353190,Massive Ordnance Penetrator (MOP),A,Weapon System Cost,,"1,250",,"8,566",,"6,813",,,,"6,813"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,7,13,Bombs,353620,Joint Direct Attack Munition,A,Weapon System Cost,"1,437","110,884","1,500","115,427","1,500","126,389",,,"1,500","126,389"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,9,13,Bombs,354050,B61-12 Trainer,A,Weapon System Cost,,"10,100",,"11,665",,"7,668",,,,"7,668"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,10,15,Other Items,355100,Cad/Pad,A,Weapon System Cost,,"51,487",,"40,487",,"58,454",,,,"58,454"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,11,15,Other Items,355450,Explosive Ordnance Disposal (EOD),A,Weapon System Cost,,"6,707",,"7,076",,"7,297",,,,"7,297"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,12,15,Other Items,355900,Spares And Repair Parts,A,Weapon System Cost,,585,,617,,636,,,,636
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,14,15,Other Items,355980,First Destination Transportation,A,Weapon System Cost,,"2,299",,"2,894",,"2,955",,,,"2,955"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,15,15,Other Items,355990,"Items Less Than $5,000,000",A,Weapon System Cost,,"5,115",,"5,399",,"5,571",,,,"5,571"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,17,16,Flares,356010,Expendable Countermeasures,A,Weapon System Cost,,"80,021",,"83,641",,"101,540",,,,"101,540"
+3011F,"Procurement of Ammunition, Air Force",F,01,Ammunition,18,18,Fuzes,356120,Fuzes,A,Weapon System Cost,,"82,226",,"49,209",,"125,721",,,,"125,721"
+3011F,"Procurement of Ammunition, Air Force",F,02,Weapons,19,01,Small Arms,357010,Small Arms,A,Weapon System Cost,,"29,306",,"25,311",,"26,260",,,,"26,260"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",2,10,"Space Procurement, SF",AFSCOM,AF Satellite Comm System,A,Weapon System Cost,,"64,345",,"90,586",,"68,238",,,,"68,238"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",3,10,"Space Procurement, SF",CANADJ,Cancelled Year Adjustments,A,Weapon System Cost,,147,,,,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",4,10,"Space Procurement, SF",CTRSPC,Counterspace Systems,A,Weapon System Cost,,"50,165",,"4,277",,"2,027",,,,"2,027"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",6,10,"Space Procurement, SF",ESS000,Evolved Strategic SATCOM (ESS),C,Advance Procurement (CY),,,,,,"64,996",,,,"64,996"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",7,10,"Space Procurement, SF",FBLOST,Family of Beyond Line-of-Sight Terminals,A,Weapon System Cost,,"25,057",,"17,264",,"15,404",,,,"15,404"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",8,10,"Space Procurement, SF",FET000,FABT FORCE ELEMENT TERMINAL,A,Weapon System Cost,,"103,184",,"210,155",,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",9,10,"Space Procurement, SF",GAP000,Wideband Gapfiller Satellites(Space),A,Weapon System Cost,,,,"10,020",,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",10,10,"Space Procurement, SF",GNRLIT,General Information Tech - Space,A,Weapon System Cost,,"3,451",,"2,189",,"1,835",,,,"1,835"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",11,10,"Space Procurement, SF",GPS03C,GPSIII Follow On,A,Weapon System Cost,,"53,248",2,"647,165",,"109,944",,,,"109,944"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",12,10,"Space Procurement, SF",GPSIII,GPS III Space Segment,A,Weapon System Cost,,"101,370",,"54,805",,"29,274",,,,"29,274"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",13,10,"Space Procurement, SF",GPSSPC,Global Postioning (Space),A,Weapon System Cost,,893,,835,,870,,,,870
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",16,10,"Space Procurement, SF",JTAGS0,Joint Tactical Ground Stations,A,Weapon System Cost,,580,,,,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",17,10,"Space Procurement, SF",MC0MSE,Spaceborne Equip (Comsec),A,Weapon System Cost,,"50,764",,"83,829",,"84,044",,,,"84,044"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",18,10,"Space Procurement, SF",MILSAT,MILSATCOM,A,Weapon System Cost,,"44,672",,"37,684",,"36,447",,,,"36,447"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",19,10,"Space Procurement, SF",MSSBIR,SBIR High (Space),A,Weapon System Cost,,"124,589",,,,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",20,10,"Space Procurement, SF",MSSPAC,Special Space Activities,A,Weapon System Cost,,"379,578",,"411,697",,"482,653",,"258,350",,"741,003"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",21,10,"Space Procurement, SF",MUOS00,Mobile User Objective System,A,Weapon System Cost,,"111,047",,"64,665",,"48,977",,,,"48,977"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",22,10,"Space Procurement, SF",NSSL00,National Security Space Launch,A,Weapon System Cost,10,"2,097,139",7,"1,769,486",4,"1,466,963",,"6,000",4,"1,472,963"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",24,10,"Space Procurement, SF",PTES00,PTES HUB,A,Weapon System Cost,12,"50,225",12,"56,148",,"29,949",,,,"29,949"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",25,10,"Space Procurement, SF",RSLP00,Rocket Systems Launch Program,A,Weapon System Cost,,"71,757",,,,,,,,
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",26,10,"Space Procurement, SF",SDALCH,Space Development Agency Launch,A,Weapon System Cost,5,"529,468",4,"357,178",7,"648,446",,,7,"648,446"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",27,10,"Space Procurement, SF",SDN000,Space Digital Integrated Network (SDIN),A,Weapon System Cost,,,,,,"4,984",,,,"4,984"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",29,10,"Space Procurement, SF",SPCMOD,Space Mods,A,Weapon System Cost,,"166,596",,"48,152",,"115,498",,,,"115,498"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",30,10,"Space Procurement, SF",SPRNGE,Spacelift Range System Space,A,Weapon System Cost,,"114,358",,"63,798",,"64,321",,,,"64,321"
+3022F,"Procurement, Space Force",F,01,"SPACE PROCUREMENT, SF",31,10,"Space Procurement, SF",WSOMS0,Wideband SATCOM Operational Management Systems,A,Weapon System Cost,,,,,,"92,380",,,,"92,380"
+3022F,"Procurement, Space Force",F,02,SPARES,32,20,Spares,SSPARE,Spares and Repair Parts,A,Weapon System Cost,,906,,722,,938,,,,938
+3022F,"Procurement, Space Force",F,03,Ground Vehicular Equipment,33,30,Non-Tactical Vehicles,SFV000,USSF Vehicles,A,Weapon System Cost,,,,,,"5,000",,,,"5,000"
+3022F,"Procurement, Space Force",F,03,Ground Vehicular Equipment,34,31,Passenger Carrying Vehicles,SFV000,USSF Replacement Vehicles,A,Weapon System Cost,,,,"4,919",,,,,,
+3022F,"Procurement, Space Force",F,04,Other Base Maintenance and Support Equipment,35,41,Support Equipment,POWCON,Power Conditioning Equipment,A,Weapon System Cost,,"3,100",,"3,189",,"20,449",,,,"20,449"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,2,01,Passenger Carrying Vehicles,821800,Passenger Carrying Vehicles,A,Weapon System Cost,,"6,680",,"6,802",,"5,557",,,,"5,557"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,3,02,Cargo and Utility Vehicles,822230,Medium Tactical Vehicle,A,Weapon System Cost,,"3,423",,"4,526",,"3,938",,,,"3,938"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,4,02,Cargo and Utility Vehicles,822910,Cap Vehicles,A,Weapon System Cost,,"2,000",,"2,000",,"1,175",,,,"1,175"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,5,02,Cargo and Utility Vehicles,822990,Cargo and Utility Vehicles,A,Weapon System Cost,,"50,978",,"66,891",,"56,940",,,,"56,940"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,6,03,Special Purpose Vehicles,823210,Joint Light Tactical Vehicle,A,Weapon System Cost,,"42,615",,"59,483",,"62,202",,,,"62,202"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,7,03,Special Purpose Vehicles,823230,Security And Tactical Vehicles,A,Weapon System Cost,,390,,438,,129,,,,129
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,8,03,Special Purpose Vehicles,823990,Special Purpose Vehicles,A,Weapon System Cost,,"79,922",,"94,797",,"68,242",,,,"68,242"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,9,04,Fire Fighting Equipment,824010,Fire Fighting/Crash Rescue Vehicles,A,Weapon System Cost,,"63,670",,"57,234",,"58,416",,,,"58,416"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,10,05,Materials Handling Equipment,825990,Materials Handling Vehicles,A,Weapon System Cost,,"83,742",,"22,949",,"18,552",,,,"18,552"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,11,06,Base Maintenance Support,826210,Runway Snow Remov And Cleaning Equ,A,Weapon System Cost,,"34,976",,"7,476",,"11,045",,,,"11,045"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,12,06,Base Maintenance Support,826990,Base Maintenance Support Vehicles,A,Weapon System Cost,,"217,864",,"91,296",,"25,291",,,,"25,291"
+3080F,"Other Procurement, Air Force",F,02,Vehicular equipment,14,09,Cancelled Account Adjustments,829100,Cancelled Account Adjustments (Bpa,A,Weapon System Cost,,19,,,,,,,,
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,15,01,Comm Security Equipment(Comsec),831010,Comsec Equipment,A,Weapon System Cost,,"101,828",,"63,233",,"169,363",,,,"169,363"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,16,01,Comm Security Equipment(Comsec),831020,STRATEGIC MICROELECTRONIC SUPPLY SYSTEM,A,Weapon System Cost,,,,"328,667",,,,,,
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,17,02,Intelligence Programs,832050,International Intel Tech & Architectures,A,Weapon System Cost,,"5,393",,"5,616",,"5,833",,,,"5,833"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,18,02,Intelligence Programs,832060,Intelligence Training Equipment,A,Weapon System Cost,,"5,012",,"5,146",,"5,273",,,,"5,273"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,19,02,Intelligence Programs,832070,Intelligence Comm Equipment,A,Weapon System Cost,,"40,042",,"36,449",,"42,257",,,,"42,257"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,20,03,Electronics Programs,833010,Air Traffic Control & Landing Sys,A,Weapon System Cost,,"65,578",,"45,820",,"26,390",,,,"26,390"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,21,03,Electronics Programs,833020,National Airspace System,A,Weapon System Cost,,"3,841",,"13,443",,"11,810",,,,"11,810"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,22,03,Electronics Programs,833030,Battle Control System - Fixed,A,Weapon System Cost,,"1,842",,"22,764",,"16,592",,,,"16,592"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,23,03,Electronics Programs,833040,Theater Air Control Sys Improvemen,A,Weapon System Cost,,,,"56,143",,"27,650",,,,"27,650"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,24,03,Electronics Programs,833060,3D Expeditionary Long-Range Radar,A,Weapon System Cost,,"178,723",,"96,022",,"103,226",,,,"103,226"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,25,03,Electronics Programs,833070,Weather Observation Forecast,A,Weapon System Cost,,"27,530",,"31,056",,"31,516",,,,"31,516"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,26,03,Electronics Programs,833140,Strategic Command And Control,A,Weapon System Cost,,"73,893",,"49,991",,"82,912",,,,"82,912"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,27,03,Electronics Programs,833160,Cheyenne Mountain Complex,A,Weapon System Cost,,"8,221",,"8,897",,"22,021",,,,"22,021"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,28,03,Electronics Programs,833170,Mission Planning Systems,A,Weapon System Cost,,"14,254",,"18,474",,"18,722",,,,"18,722"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,31,03,Electronics Programs,833570,Strategic Mission Planning & Execution System,A,Weapon System Cost,,"3,861",,"7,376",,"6,383",,,,"6,383"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,32,04,Spcl Comm-Electronics Projects,834010,General Information Technology,A,Weapon System Cost,,"177,860",,"161,928",,"172,085",,,,"172,085"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,34,04,Spcl Comm-Electronics Projects,834040,Af Global Command & Control Sys,A,Weapon System Cost,,"2,582",,"1,946",,"1,947",,,,"1,947"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,35,04,Spcl Comm-Electronics Projects,834050,Battlefield Airborne Control Node (BACN),A,Weapon System Cost,,,,5,,,,,,
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,36,04,Spcl Comm-Electronics Projects,834070,Mobility Command And Control,A,Weapon System Cost,,"3,768",,"11,435",,"11,648",,,,"11,648"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,37,04,Spcl Comm-Electronics Projects,834130,Air Force Physical Security System,A,Weapon System Cost,,"287,875",,"358,000",,"294,747",,"698,200",,"992,947"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,38,04,Spcl Comm-Electronics Projects,834190,Combat Training Ranges,A,Weapon System Cost,,"333,687",,"286,432",,"231,987",,,,"231,987"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,39,04,Spcl Comm-Electronics Projects,834210,Minimum Essential Emergency Comm N,A,Weapon System Cost,,"74,586",,"60,639",,"94,995",,,,"94,995"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,40,04,Spcl Comm-Electronics Projects,834240,Wide Area Surveillance (WAS),A,Weapon System Cost,,"13,886",,"13,945",,"29,617",,,,"29,617"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,41,04,Spcl Comm-Electronics Projects,834320,C3 Countermeasures,A,Weapon System Cost,,"141,895",,"100,594",,"116,410",,,,"116,410"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,44,04,Spcl Comm-Electronics Projects,834470,Defense Enterprise Accounting & Mgt Sys,A,Weapon System Cost,,,,"1,236",,698,,,,698
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,46,04,Spcl Comm-Electronics Projects,834520,Theater Battle Mgt C2 System,A,Weapon System Cost,,,,433,,442,,,,442
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,47,04,Spcl Comm-Electronics Projects,834530,Air & Space Operations Center (AOC),A,Weapon System Cost,,"5,032",,"21,175",,"22,785",,,,"22,785"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,50,05,Air Force Communications,835060,Base Information Transpt Infrast (BITI) Wired,A,Weapon System Cost,,"309,085",,"181,500",,"79,091",,,,"79,091"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,51,05,Air Force Communications,835080,AFNET,A,Weapon System Cost,,"152,559",,"69,807",,"282,907",,,,"282,907"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,52,05,Air Force Communications,835110,Joint Communications Support Element (JCSE),A,Weapon System Cost,,"5,380",,"5,821",,"5,930",,,,"5,930"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,53,05,Air Force Communications,835140,USCENTCOM,A,Weapon System Cost,,"21,969",,"19,498",,"14,919",,,,"14,919"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,54,05,Air Force Communications,835160,USSTRATCOM,A,Weapon System Cost,,"4,436",,"4,797",,"4,788",,,,"4,788"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,55,05,Air Force Communications,835210,USSPACECOM,A,Weapon System Cost,,"20,773",,"79,783",,"32,633",,,,"32,633"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,56,07,Organization and Base,837100,Tactical C-E Equipment,A,Weapon System Cost,,"214,117",,"139,153",,"143,829",,,,"143,829"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,58,07,Organization and Base,837170,Combat Survivor Evader Locater,A,Weapon System Cost,,,,"2,222",,,,,,
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,59,07,Organization and Base,837190,Radio Equipment,A,Weapon System Cost,,"33,906",,"43,512",,"50,730",,,,"50,730"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,61,07,Organization and Base,837300,Base Comm Infrastructure,A,Weapon System Cost,,"105,145",,"62,095",,"67,015",,"1,400",,"68,415"
+3080F,"Other Procurement, Air Force",F,03,Electronics and telecommunications equipment,62,08,Modifications,838010,Comm Elect Mods,A,Weapon System Cost,,"115,224",,"73,147",,"76,034",,,,"76,034"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,63,02,Personal Safety & Rescue Equip,842990,Personal Safety and Rescue Equipment,A,Weapon System Cost,,"62,953",,"109,562",,"81,782",,,,"81,782"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,64,03,Depot Plant+Mtrls Handling Eq,843040,POWER CONDITIONING EQUIPMENT,A,Weapon System Cost,,"9,235",,"13,443",,"13,711",,,,"13,711"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,65,03,Depot Plant+Mtrls Handling Eq,843050,Mechanized Material Handling Equip,A,Weapon System Cost,,"12,181",,"20,459",,"21,143",,,,"21,143"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,66,05,Base Support Equipment,845010,Base Procured Equipment,A,Weapon System Cost,,"60,526",,"82,513",,"90,654",,,,"90,654"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,67,05,Base Support Equipment,845100,Engineering and EOD Equipment,A,Weapon System Cost,,"307,353",,"203,531",,"253,799",,,,"253,799"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,68,05,Base Support Equipment,845420,Mobility Equipment,A,Weapon System Cost,,"161,338",,"115,880",,"95,584",,,,"95,584"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,69,05,Base Support Equipment,845550,Fuels Support Equipment (FSE),A,Weapon System Cost,,"113,554",,"24,563",,"34,794",,,,"34,794"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,70,05,Base Support Equipment,845990,Base Maintenance and Support Equipment,A,Weapon System Cost,,"58,597",,"69,255",,"59,431",,,,"59,431"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,72,06,Special Support Projects,846070,DARP RC135,A,Weapon System Cost,,"28,882",,"29,524",,"30,136",,,,"30,136"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,73,06,Special Support Projects,846080,DCGS-AF,A,Weapon System Cost,,"150,395",,"51,594",,"87,044",,,,"87,044"
+3080F,"Other Procurement, Air Force",F,04,Other base maintenance and support equipment,77,06,Special Support Projects,846510,Special Update Program,A,Weapon System Cost,,"1,042,833",,"1,503,290",,"1,178,397",,,,"1,178,397"
+3080F,"Other Procurement, Air Force",,04,,999,99,Classified Programs,9999999999,Classified Programs,,,,"29,418,778",,"25,973,514",,"26,920,092",,,,"26,920,092"
+3080F,"Other Procurement, Air Force",F,05,Spare and repair parts,80,01,Spares and Repair Parts,861350,Spares and Repair Parts (Cyber),A,Weapon System Cost,,"1,032",,"1,056",,"1,075",,,,"1,075"
+3080F,"Other Procurement, Air Force",F,05,Spare and repair parts,81,01,Spares and Repair Parts,861900,Spares And Repair Parts,A,Weapon System Cost,,"10,314",,"7,637",,"20,330",,,,"20,330"
+0300D,"Procurement, Defense-Wide",DPAA,01,Major equipment,4,01,"Major Equipment, DPAA",22,"Major Equipment, DPAA",A,Weapon System Cost,10,"1,616",10,518,20,475,,,20,475
+0300D,"Procurement, Defense-Wide",OSD,01,Major equipment,5,01,"Major Equipment, OSD",30,"Major Equipment, OSD",A,Weapon System Cost,,"408,006",,"473,814",,"164,900",,"48,000",,"212,900"
+0300D,"Procurement, Defense-Wide",WHS,01,Major equipment,7,01,"Major Equipment, WHS",31,"Major Equipment, WHS",A,Weapon System Cost,,250,,,,,,,,
+0300D,"Procurement, Defense-Wide",WHS,01,Major equipment,15,04,"Major Equipment, WHS",31,"Major Equipment, WHS",A,Weapon System Cost,,,,374,,403,,,,403
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,16,05,"Major Equipment, DISA",09,Information Systems Security,A,Weapon System Cost,,"10,012",,"25,392",,"6,254",,,,"6,254"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,17,05,"Major Equipment, DISA",14,Teleport Program,A,Weapon System Cost,,"35,199",,"25,848",,"112,517",,,,"112,517"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,19,05,"Major Equipment, DISA",16,Items Less Than $5 Million,A,Weapon System Cost,,"47,538",,"25,499",,"23,673",,,,"23,673"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,20,05,"Major Equipment, DISA",18,Defense Information System Network,A,Weapon System Cost,,"64,549",,"68,786",,"252,370",,,,"252,370"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,21,05,"Major Equipment, DISA",90,White House Communication Agency,A,Weapon System Cost,,"111,123",,"100,587",,"125,292",,,,"125,292"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,22,05,"Major Equipment, DISA",92,Senior Leadership Enterprise,A,Weapon System Cost,,"94,591",,"54,278",,"175,264",,,,"175,264"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,23,05,"Major Equipment, DISA",96,Joint Regional Security Stacks (JRSS),A,Weapon System Cost,,"14,254",,"17,213",,"1,496",,,,"1,496"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,24,05,"Major Equipment, DISA",97,Joint Service Provider,A,Weapon System Cost,,"82,304",,"57,964",,"54,186",,,,"54,186"
+0300D,"Procurement, Defense-Wide",DISA,01,Major equipment,25,05,"Major Equipment, DISA",98,Fourth Estate Network Optimization (4ENO),A,Weapon System Cost,,"29,677",,"24,482",,"75,386",,,,"75,386"
+0300D,"Procurement, Defense-Wide",DLA,01,Major equipment,37,07,"Major Equipment, DLA",500,Major Equipment,A,Weapon System Cost,,"105,943",,"53,777",,"79,251",,,,"79,251"
+0300D,"Procurement, Defense-Wide",DCSA,01,Major equipment,38,09,"Major Equipment, DCSA",20,Major Equipment,A,Weapon System Cost,,"2,135",,"2,191",,"2,230",,,,"2,230"
+0300D,"Procurement, Defense-Wide",DEFW,01,Major equipment,40,10,Equipment,RECONCIL1,Homeland Defense Initiatives,A,Weapon System Cost,,,,,,,,"5,212,657",,"5,212,657"
+0300D,"Procurement, Defense-Wide",DEFW,01,Major equipment,41,10,Equipment,RECONCIL2,Maritime Industrial Base Initiatives,A,Weapon System Cost,,,,,,,,"438,360",,"438,360"
+0300D,"Procurement, Defense-Wide",TJS,01,Major equipment,42,15,"Major Equipment, TJS",10,"Major Equipment, TJS",A,Weapon System Cost,,"19,199",,"14,711",,"33,090",,,,"33,090"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,44,17,"Major Equipment, Missile Defense Agency",MD07,THAAD,A,Weapon System Cost,11,"216,782",12,"246,995",25,"523,125",12,"317,000",37,"840,125"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,45,17,"Major Equipment, Missile Defense Agency",MD08,Ground Based Midcourse,A,Weapon System Cost,,,,"20,796",,,,,,
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,46,17,"Major Equipment, Missile Defense Agency",MD09,Aegis BMD,A,Weapon System Cost,36,"601,506",6,"195,000",,,,,,
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,48,17,"Major Equipment, Missile Defense Agency",MD11,BMDS AN/TPY-2 Radars,A,Weapon System Cost,,"29,108",,"55,965",,"36,530",,,,"36,530"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,49,17,"Major Equipment, Missile Defense Agency",MD14,SM-3 IIAs,A,Weapon System Cost,12,"440,824",12,"406,370",12,"444,835",,,12,"444,835"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,50,17,"Major Equipment, Missile Defense Agency",MD26,Arrow 3 Upper Tier Systems,A,Weapon System Cost,1,"80,000",1,"50,000",1,"100,000",,,1,"100,000"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,51,17,"Major Equipment, Missile Defense Agency",MD34,Short Range Ballistic Missile Defense (SRBMD),A,Weapon System Cost,1,"1,040,000",1,"40,000",1,"40,000",,,1,"40,000"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,52,17,"Major Equipment, Missile Defense Agency",MD65,Defense of Guam Procurement,A,Weapon System Cost,1,"161,627",,"22,602",,"11,351",,"56,500",,"67,851"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,53,17,"Major Equipment, Missile Defense Agency",MD73,Aegis Ashore Phase III,A,Weapon System Cost,,"2,390",,,,,,,,
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,56,17,"Major Equipment, Missile Defense Agency",MD83,Iron Dome,A,Weapon System Cost,1,"3,080,000",1,"110,000",1,"60,000",,,1,"60,000"
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,57,17,"Major Equipment, Missile Defense Agency",MD84,Iron Beam,A,Weapon System Cost,1,"1,200,000",,,,,,,,
+0300D,"Procurement, Defense-Wide",MDA,01,Major equipment,58,17,"Major Equipment, Missile Defense Agency",MD90,Aegis BMD Hardware and Software,A,Weapon System Cost,,"27,825",,"32,040",,"17,211",,,,"17,211"
+0300D,"Procurement, Defense-Wide",DHRA,01,Major equipment,59,20,"Major Equipment, DHRA",500,Personnel Administration,A,Weapon System Cost,,"4,445",,"3,717",,"3,797",,,,"3,797"
+0300D,"Procurement, Defense-Wide",DTRA,01,Major equipment,62,23,"Major Equipment, Defense Threat Reduction Agency",20,Vehicles,A,Weapon System Cost,,356,,"2,754",,911,,,,911
+0300D,"Procurement, Defense-Wide",DTRA,01,Major equipment,63,23,"Major Equipment, Defense Threat Reduction Agency",30,Other Major Equipment,A,Weapon System Cost,,"12,787",,"8,783",,"12,023",,,,"12,023"
+0300D,"Procurement, Defense-Wide",DTRA,01,Major equipment,65,23,"Major Equipment, Defense Threat Reduction Agency",50,DTRA Cyber Activities,A,Weapon System Cost,,"19,964",,"3,429",,"1,800",,,,"1,800"
+0300D,"Procurement, Defense-Wide",DODEA,01,Major equipment,68,26,"Major Equipment, DODEA",30,Automation/Educational Support & Logistics,A,Weapon System Cost,,"1,358",,"1,360",,,,,,
+0300D,"Procurement, Defense-Wide",DMACT,01,Major equipment,70,55,"Major Equipment, DMACT",30,Major Equipment,A,Weapon System Cost,,"13,012",,"7,332",,"7,258",,,,"7,258"
+0300D,"Procurement, Defense-Wide",CYBER,01,Major equipment,71,56,"Major Equipment, USCYBERCOM",CY01,Cyberspace Operations,A,Weapon System Cost,,"93,980",,"109,687",,"73,358",,,,"73,358"
+0300D,"Procurement, Defense-Wide",DEFW,01,Major equipment,74,99,Undistributed,UNDISTRIB,Undistributed,A,Weapon System Cost,,"4,746",,,,,,,,
+0300D,"Procurement, Defense-Wide",,01,,999,99,Classified Programs,9999999999,Classified Programs,,,,"692,974",,"565,253",,"1,129,183",,"1,024,000",,"2,153,183"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,91,01,Aviation Programs,0201ARMOWT,Armed Overwatch/Targeting,A,Weapon System Cost,12,"264,688",12,"313,105",6,"156,606",,,6,"156,606"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,92,01,Aviation Programs,0201MANISR,Manned ISR,A,Weapon System Cost,,"6,000",,"2,500",,,,,,
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,93,01,Aviation Programs,0201MC12,MC-12,A,Weapon System Cost,,600,,400,,,,,,
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,94,01,Aviation Programs,0201MH60,MH-60 Blackhawk,A,Weapon System Cost,,,,"22,773",,,,,,
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,95,01,Aviation Programs,0201RWUPGR,Rotary Wing Upgrades and Sustainment,A,Weapon System Cost,,"270,366",,"214,561",,"189,059",,,,"189,059"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,96,01,Aviation Programs,0201UMNISR,Unmanned ISR,A,Weapon System Cost,,"29,497",,"33,917",,"6,858",,,,"6,858"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,97,01,Aviation Programs,0207NSAV,Non-Standard Aviation,A,Weapon System Cost,,"20,782",,"5,471",,"7,849",,,,"7,849"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,98,01,Aviation Programs,0607U28,U-28,A,Weapon System Cost,,"5,915",,"5,259",,"2,031",,,,"2,031"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,99,01,Aviation Programs,0610MH47,MH-47 Chinook,A,Weapon System Cost,,"224,283",,"147,002",,"156,934",,,,"156,934"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,100,01,Aviation Programs,1000CV2200,CV-22 Modification,A,Weapon System Cost,,"75,981",,"40,764",,"19,692",,,,"19,692"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,101,01,Aviation Programs,1108MQ9,MQ-9 Unmanned Aerial Vehicle,A,Weapon System Cost,,"17,684",,"13,543",,"12,890",,"11,990",,"24,880"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,102,01,Aviation Programs,1202PSP,Precision Strike Package,A,Weapon System Cost,,"104,380",,"57,650",,"61,595",,,,"61,595"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,103,01,Aviation Programs,2012C130J,AC/MC-130J,A,Weapon System Cost,,"312,921",,"286,263",,"236,312",,,,"236,312"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,104,01,Aviation Programs,5000C13000,C-130 Modifications,A,Weapon System Cost,,"18,796",,,,,,,,
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,105,02,Shipbuilding,2010US,Underwater Systems,A,Weapon System Cost,,"78,353",,"63,850",,,,"66,025",,"66,025"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,106,03,Ammunition Programs,0203ORD,ORDNANCE ITEMS <$5M,A,Weapon System Cost,,"147,033",,"130,702",,"116,972",,,,"116,972"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,107,04,Other Procurement Programs,020400INTL,Intelligence Systems,A,Weapon System Cost,,"205,316",,"178,184",,"227,073",,250,,"227,323"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,108,04,Other Procurement Programs,020401INTL,Distributed Common Ground/Surface Systems,A,Weapon System Cost,,"5,718",,"3,918",,"2,824",,,,"2,824"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,109,04,Other Procurement Programs,0204OTHER,Other Items <$5M,A,Weapon System Cost,,"108,431",,"75,776",,"95,685",,,,"95,685"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,110,04,Other Procurement Programs,0204SCCS,Combatant Craft Systems,A,Weapon System Cost,,"65,870",,"66,455",,,,"36,440",,"36,440"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,111,04,Other Procurement Programs,0204SPCPRG,Special Programs,A,Weapon System Cost,,"20,412",,"20,822",,"30,418",,"25,400",,"55,818"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,112,04,Other Procurement Programs,0204TACVEH,Tactical Vehicles,A,Weapon System Cost,,"68,061",,"58,016",,"54,100",,,,"54,100"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,113,04,Other Procurement Programs,0204WARSYS,Warrior Systems <$5M,A,Weapon System Cost,,"600,690",,"402,712",,"303,991",,"80,055",,"384,046"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,114,04,Other Procurement Programs,0206CMR,Combat Mission Requirements,A,Weapon System Cost,,"4,987",,"4,988",,"4,985",,,,"4,985"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,116,04,Other Procurement Programs,0607OEI,Operational Enhancements Intelligence,A,Weapon System Cost,,"23,639",,"23,715",,"21,339",,,,"21,339"
+0300D,"Procurement, Defense-Wide",SOCOM,02,Special Operations Command,117,04,Other Procurement Programs,2143369000,Operational Enhancements,A,Weapon System Cost,,"322,341",,"331,592",,"352,100",,"42,901",,"395,001"
+0300D,"Procurement, Defense-Wide",CBDP,03,Chemical/Biological Defense,120,01,CBDP,7001SA1000,Chemical Biological Situational Awareness,A,Weapon System Cost,,"148,640",,"186,841",,"208,051",,,,"208,051"
+0300D,"Procurement, Defense-Wide",CBDP,03,Chemical/Biological Defense,121,01,CBDP,8001PH1000,CB Protection & Hazard Mitigation,A,Weapon System Cost,,"217,255",,"201,011",,"213,330",,,,"213,330"
+0350D,National Guard and Reserve Equipment,A,01,Reserve equipment,1,30,Army Reserve,013005,Misc Equipment - Army Reserve,A,Weapon System Cost,,"155,000",,"131,750",,,,,,
+0350D,National Guard and Reserve Equipment,N,01,Reserve equipment,7,40,Navy Reserve,014005,Misc Equipment - Navy Reserve,A,Weapon System Cost,,"57,000",,"48,450",,,,,,
+0350D,National Guard and Reserve Equipment,N,01,Reserve equipment,9,50,Marine Corps Reserve,015005,Misc Equipment - Marine Corps Reserve,A,Weapon System Cost,,"23,000",,"19,550",,,,,,
+0350D,National Guard and Reserve Equipment,F,01,Reserve equipment,11,60,Air Force Reserve,016005,Misc Equipment - AF Reserve,A,Weapon System Cost,,"155,000",,"131,750",,,,,,
+0350D,National Guard and Reserve Equipment,A,02,National Guard equipment,12,10,Army National Guard,021005,Misc Equipment - Army National Guard,A,Weapon System Cost,,"310,000",,"263,500",,,,,,
+0350D,National Guard and Reserve Equipment,F,02,National Guard equipment,16,20,Air National Guard,022005,Misc Equipment - Air Force National Guard,A,Weapon System Cost,,"300,000",,"255,000",,,,,,
+0360D,Defense Production Act Purchases,OSD,01,Defense Production Act Purchases,2,10,Defense Production Act Purchases,TITLE3,Defense Production Act Purchases,A,Weapon System Cost,,"929,105",,"463,377",,"236,923",,"29,000",,"265,923"
+0362D,Defense Strategic Capital Credit Program,OSD,01,DIRECT LOAN SUBSIDY,1,10,Defense Strategic Capital Credit Program,OSCLOANS,Office of Strategic Capital Loan Program,A,Weapon System Cost,,,,"138,249",,,,"249,640",,"249,640"
+,,,,,,,,,,,,,,,,,,,,,
