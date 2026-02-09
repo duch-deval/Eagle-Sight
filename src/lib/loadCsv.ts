@@ -1,21 +1,15 @@
 import Papa from "papaparse";
 
 const loadCsv = async (filePath: string): Promise<any[]> => {
-  console.log("📂 Trying to fetch CSV:", filePath);
-
+  // Always prefix with base to work on GitHub Pages
+  const fullPath = `${import.meta.env.BASE_URL}${filePath.replace(/^\//, "")}`;
   return new Promise<any[]>((resolve, reject) => {
-    Papa.parse(filePath, {
+    Papa.parse(fullPath, {
       download: true,
       header: true,
       skipEmptyLines: true,
-      complete: (result) => {
-        console.log("✅ CSV fetch success", result);
-        resolve(result.data as any[]);
-      },
-      error: (err) => {
-        console.error("❌ CSV fetch failed", err);
-        reject(err);
-      },
+      complete: (result) => resolve(result.data as any[]),
+      error: (err) => reject(err),
     });
   });
 };

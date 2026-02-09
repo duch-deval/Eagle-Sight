@@ -1,8 +1,11 @@
+/* App.css - Global app styles */
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* Remove max-width to allow full-width corporate layout */
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
 }
 
 .logo {

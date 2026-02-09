@@ -57,6 +57,9 @@ export default {
 					light: 'hsl(var(--navy-light))',
 					dark: 'hsl(var(--navy-dark))'
 				},
+				// Corporate colors for the new UI
+				'corporate-navy': 'hsl(var(--corporate-navy))',
+				'corporate-blue': 'hsl(var(--corporate-blue))',
 				slate: {
 					DEFAULT: 'hsl(var(--slate))',
 					light: 'hsl(var(--slate-light))'

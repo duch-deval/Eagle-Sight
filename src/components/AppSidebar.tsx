@@ -9,9 +9,12 @@ import {
   Shield, 
   Target, 
   TrendingUp,
+  Download,
   Award,
   Users,
-  Globe
+  Globe,
+  FolderOpen,
+  MessageSquare
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -29,23 +32,15 @@ import {
 } from "@/components/ui/sidebar";
 
 const mainItems = [
-  { title: "Dashboard", url: "/", icon: Home },
-  { title: "Contract Search", url: "/contracts", icon: Search },
-  { title: "Contractors", url: "/contractors", icon: Building2 },
-  { title: "Opportunities", url: "/opportunities", icon: Target },
-];
-
-const analyticsItems = [
-  { title: "Market Intelligence", url: "/intelligence", icon: BarChart3 },
-  { title: "Trends & Forecasting", url: "/trends", icon: TrendingUp },
-  { title: "Geographic Analysis", url: "/geographic", icon: Map },
-  { title: "Agency Analysis", url: "/agencies", icon: Shield },
+  { title: "Home", url: "/", icon: Home },
+  { title: "Award Analysis", url: "/awards", icon: Search },
+  { title: "Export Data", url: "/export", icon: Download },
+  { title: "Watch List", url: "/AwardWatchlist", icon: FolderOpen },
+  { title: "Points of Contact", url: "/points-of-contact", icon: FileText },
 ];
 
 const platformItems = [
   { title: "Weapons Platforms", url: "/platforms", icon: Award },
-  { title: "Prime Contractors", url: "/primes", icon: Users },
-  { title: "Global Defense", url: "/global", icon: Globe },
 ];
 
 export function AppSidebar() {
@@ -62,30 +57,29 @@ export function AppSidebar() {
   };
 
   const getNavCls = (path: string) =>
-    isActive(path) 
-      ? "bg-navy/10 text-navy font-medium border-r-2 border-navy" 
-      : "hover:bg-muted/50 text-muted-foreground hover:text-foreground";
+    isActive(path)
+      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium border-r-2 border-sidebar-primary"
+      : "hover:bg-sidebar-accent text-[hsl(var(--sidebar-foreground))] hover:text-sidebar-primary";
+
+
 
   return (
     <Sidebar
-      className={collapsed ? "w-14" : "w-64"}
+      className={`${collapsed ? "w-14" : "w-64"} bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))]`}
       collapsible="icon"
     >
-      <div className="p-4 border-b">
-        <div className="flex items-center gap-2">
-          <Shield className="h-6 w-6 text-navy" />
-          {!collapsed && (
-            <div>
-              <h2 className="font-bold text-sm">Defense Funding</h2>
-              <p className="text-xs text-muted-foreground">Analyzer</p>
-            </div>
-          )}
-        </div>
+
+      <div className="flex items-center border-b pl-10 h-28">
+        <img
+          src={`${import.meta.env.BASE_URL}eagle.png`}
+          alt="Parts Life"
+          className="h-full w-auto object-contain"
+        />
       </div>
+
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Main Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainItems.map((item) => (
@@ -101,25 +95,6 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Analytics & Intelligence</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {analyticsItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className={getNavCls(item.url)}>
-                      <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
         <SidebarGroup>
           <SidebarGroupLabel>Defense Systems</SidebarGroupLabel>
           <SidebarGroupContent>

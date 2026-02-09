@@ -1,11 +1,36 @@
-import { useState, useEffect } from "react";
-import { Treemap, ResponsiveContainer, Tooltip } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React, { useState, useEffect, useMemo } from "react";
 import { ChevronLeft, Building2, Calendar, Tags, User, FileText } from "lucide-react";
-import loadCsv from "@/lib/loadCsv";
-import { csvFiles } from "@/data/contractsData";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import supabase from "@/lib/supabaseClient";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { fetchAwardsByOffice } from "@/lib/supabaseData";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { 
+  Treemap, 
+  ResponsiveContainer, 
+  Tooltip,
+  PieChart,   
+  Pie,       
+  Cell        
+} from "recharts";
+import AwardTable from "@/components/AwardTable";
 
+// ============================================
+// Types
+// ============================================
 interface TreemapNode {
   name: string;
   size: number;
@@ -26,7 +51,67 @@ interface TreemapNode {
   rows?: any[];
 }
 
-// --- add helpers ---
+// ============================================
+// Constants
+// ============================================
+const officeDictionary: Record<string, string> = {
+  N00019: "NAVAL AIR SYSTEMS COMMAND",
+  N68335: "NAVAIR WARFARE CTR AIRCRAFT DIV",
+  N00104: "NAVSUP WEAPON SYSTEMS SUPPORT MECH",
+  SPE8EF: "DLA TROOP SUPPORT",
+  SP4701: "DCSO PHILADELPHIA",
+};
+
+const freshColors = [
+  "hsl(142 76% 36%)", "hsl(346 77% 49%)", "hsl(38 92% 50%)",
+  "hsl(262 83% 58%)", "hsl(188 94% 42%)", "hsl(330 81% 60%)",
+  "hsl(239 84% 67%)", "hsl(173 58% 39%)", "hsl(25 95% 53%)",
+  "hsl(291 47% 51%)", "hsl(217 91% 59%)"
+];
+
+const statusColors: Record<string, string> = {
+  "1-14": "#ef4444",
+  "15-29": "#d4592b",
+  "30-44": "#eab308",
+  "45-60": "#00b9ff",
+  ">60": "#50af70",
+  Ended: "#5b5b5bff",
+  Unknown: "#6b7280"
+};
+
+// ============================================
+// Helper Functions
+// ============================================
+function getFiscalYear(dateStr: string): string {
+  if (!dateStr) return "Unknown";
+  const d = new Date(dateStr);
+  return d.getMonth() + 1 >= 10 ? (d.getFullYear() + 1).toString() : d.getFullYear().toString();
+}
+
+function computePoP(start: string, end: string) {
+  if (!start || !end) return { duration: "—", daysLeft: null, status: "Unknown" };
+  const s = new Date(start), e = new Date(end), today = new Date();
+  const duration = Math.round((e.getTime() - s.getTime()) / (1000 * 60 * 60 * 24));
+  const daysLeft = Math.round((e.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  let status = "Unknown";
+  if (daysLeft < 0) status = "Ended";
+  else if (daysLeft <= 14) status = "1-14";
+  else if (daysLeft <= 29) status = "15-29";
+  else if (daysLeft <= 44) status = "30-44";
+  else if (daysLeft <= 60) status = "45-60";
+  else status = ">60";
+  return { duration, daysLeft, status };
+}
+
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+
 const findNodeById = (root: TreemapNode, targetId: string): TreemapNode | null => {
   if (root.id === targetId) return root;
   if (root.children) {
@@ -55,226 +140,273 @@ const buildBreadcrumbPath = (root: TreemapNode, targetId: string): TreemapNode[]
   return path;
 };
 
-const getLevelInfo = (level: number) => {
-  const levels = [
-    { name: "Overview", icon: Building2 },
-    { name: "Contracting Office", icon: Building2 },
-    { name: "Fiscal Year", icon: Calendar },
-    { name: "FSC Code", icon: Tags },
-    { name: "Recipient", icon: User },
-    { name: "Award ID", icon: FileText },
-  ];
-  return levels[level] || levels[0];
-};
-const statusColors: Record<string, string> = {
-  "1-14": "#ef4444",   
-  "15-29": "#d4592b", 
-  "30-44": "#eab308",  
-  "45-60": "#00b9ff",  
-  ">60":  "#50af70",   
-  "Ended": "#5b5b5bff", 
-  "Unknown": "#6d7686ff"
-};
-
+// ============================================
+// Sub-Components
+// ============================================
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const raw = payload[0].payload;
     const data = raw?._fullNode ?? raw;
 
-    const formatCurrency = (value: number) =>
-      new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        notation: "compact",
-        maximumFractionDigits: 1,
-      }).format(value);
-
     return (
       <div className="bg-card p-3 rounded-lg shadow-lg border border-border">
         <p className="font-semibold text-card-foreground">{data.name}</p>
-        <p className="text-sm text-muted-foreground">
-          Value: {formatCurrency(data.size)}
-        </p>
-
-        {data.metadata && (
-          <>
-            {data.metadata.awardAmount && (
-              <p className="text-sm text-muted-foreground">
-                Award: {formatCurrency(data.metadata.awardAmount)}
-              </p>
-            )}
-            {data.metadata.awardDate && (
-              <p className="text-sm text-muted-foreground">
-                Award Date: {new Date(data.metadata.awardDate).toLocaleDateString()}
-              </p>
-            )}
-            {data.metadata.periodOfPerformance && (
-              <p className="text-sm text-muted-foreground">
-                PoP: {data.metadata.periodOfPerformance}
-              </p>
-            )}
-            {typeof data.metadata.daysTillEnd === "number" && (
-              <p className="text-sm text-muted-foreground">
-                Days Till End: {data.metadata.daysTillEnd >= 0 ? data.metadata.daysTillEnd : "Ended"}
-              </p>
-            )}
-            {data.metadata.popStatus && (
-              <p className="text-sm text-muted-foreground">
-                PoP Status: {data.metadata.popStatus}
-              </p>
-            )}
-            {data.metadata.contractType && (
-              <p className="text-sm text-muted-foreground">
-                Type: {data.metadata.contractType}
-              </p>
-            )}
-            {data.metadata.description && (
-              <p className="text-sm text-muted-foreground">
-                {data.metadata.description}
-              </p>
-            )}
-            {typeof data.metadata.offersReceived === "number" && (
-              <p className="text-sm text-muted-foreground">
-                Offers Received: {data.metadata.offersReceived}
-              </p>
-            )}
-          </>
-        )}
+        <p className="text-sm text-muted-foreground">Value: {formatCurrency(data.size)}</p>
       </div>
     );
   }
   return null;
 };
 
+const SetAsideChart = ({ rows }: { rows: any[] }) => {
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!rows || rows.length === 0) {
+      setData([]);
+      return;
+    }
+
+    const grouped: Record<string, number> = {};
+    rows.forEach((r) => {
+      const type = r.set_aside_type || "None";
+      const amt = parseFloat(r.awarded_amount) || 0;
+      grouped[type] = (grouped[type] || 0) + amt;
+    });
+
+    const total = Object.values(grouped).reduce((a, b) => a + b, 0);
+    const processed = Object.entries(grouped).map(([name, value]) => ({
+      name,
+      value,
+      percent: total ? (value / total) * 100 : 0,
+    }));
+
+    setData(processed);
+  }, [rows]);
+
+  const renderCustomLabel = ({
+    cx, cy, midAngle, innerRadius, outerRadius, percent, name,
+  }: any) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 1.7;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const isDark = document.documentElement.classList.contains("dark");
+    const textColor = isDark ? "white" : "black";
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill={textColor}
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
+        fontSize={12}
+      >
+        {`${name} ${percent.toFixed(1)}%`}
+      </text>
+    );
+  };
+
+  if (!data.length) return null;
+
+  return (
+    <Card className="p-6 mt-6">
+      <h3 className="text-lg font-medium mb-4">Set Aside Distribution</h3>
+      <div className="h-[600px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={50}
+              outerRadius={180}
+              paddingAngle={2}
+              dataKey="value"
+              labelLine={true}
+              label={renderCustomLabel}
+            >
+              {data.map((entry, idx) => (
+                <Cell
+                  key={idx}
+                  fill={["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#6366F1"][idx % 6]}
+                />
+              ))}
+            </Pie>
+            <Tooltip
+              formatter={(val: number, name: string) =>
+                [`$${(val as number).toLocaleString()}`, name]
+              }
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    </Card>
+  );
+};
+
+// ============================================
+// Main Component
+// ============================================
 const TreemapChart = () => {
   const [rootData, setRootData] = useState<TreemapNode | null>(null);
   const [currentNode, setCurrentNode] = useState<TreemapNode | null>(null);
   const [breadcrumb, setBreadcrumb] = useState<TreemapNode[]>([]);
+  const [selectedOffice, setSelectedOffice] = useState<string>("");
+  const [recipientSearch, setRecipientSearch] = useState<string>("");
+  const [selectedAward, setSelectedAward] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProfile, setSelectedProfile] = useState<string>("");
+  const [profiles, setProfiles] = useState<any[]>([]);
 
+  const availableOffices = Object.keys(officeDictionary);
+
+  // Load profiles for watchlist
   useEffect(() => {
-    async function buildTree() {
+    const loadProfiles = async () => {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, name, created_at");
+
+      if (error) {
+        console.error("❌ error loading profiles:", error);
+        return;
+      }
+      setProfiles(data || []);
+    };
+    loadProfiles();
+  }, []);
+
+  // Build hierarchy tree whenever office changes
+  useEffect(() => {
+    if (!selectedOffice) return;
+
+    const loadData = async () => {
+      const rows = await fetchAwardsByOffice(selectedOffice, 2000);
+
       const root: TreemapNode = {
-        name: "All Contracts",
+        name: officeDictionary[selectedOffice],
         size: 0,
-        id: "root",
+        id: selectedOffice,
         level: 0,
         children: [],
         rows: [],
       };
 
-      for (const [year, filePath] of Object.entries(csvFiles)) {
-        const rows = await loadCsv(filePath);
+      rows.forEach(r => {
+        const officeCode = r.funding_office_code?.trim() || "Unknown";
+        const fsc = (r.fsc || "Unknown FSC").split(" ")[0].trim();
+        const recipient = r.recipient_name?.trim() || "Unknown Recipient";
+        const awardId = r.award_id?.trim() || "Unknown Award";
+        const amount = Number(r.awarded_amount);
+        if (!awardId || isNaN(amount)) return;
+        const fy = getFiscalYear(r.award_date);
 
-        rows.forEach((r: any) => {
-          const office = r["Funding Office Name"] || "Unknown Office";
-          const fscRaw = r["FSC"] || "Unknown FSC";
-          const fsc = fscRaw.split(" ")[0].trim();
-          const recipient = r["Recipient Name"] || "Unknown Recipient";
-          const awardId = r["Award ID"] || "Unknown Award";
-          const rawAmount = parseFloat(r["Awarded$"]);
-          const safeAmount = isNaN(rawAmount) ? 0 : rawAmount;
-
-          // --- Office Node ---
-          let officeNode = root.children!.find((c) => c.name === office);
-          if (!officeNode) {
-            officeNode = {
-              name: office,
-              size: 0,
-              id: office,
-              level: 1,
-              parent: root.id,
-              children: [],
-              rows: [],
-            };
-            root.children!.push(officeNode);
-          }
-          officeNode.rows!.push(r);
-
-          // --- Year Node ---
-          let yearNode = officeNode.children!.find((c) => c.name === `FY ${year}`);
-          if (!yearNode) {
-            yearNode = {
-              name: `FY ${year}`,
-              size: 0,
-              id: `${office}-${year}`,
-              level: 2,
-              parent: officeNode.id,
-              children: [],
-              rows: [],
-            };
-            officeNode.children!.push(yearNode);
-          }
-          yearNode.rows!.push(r);
-
-          // --- FSC Node ---
-          let fscNode = yearNode.children!.find((c) => c.name === fsc);
-          if (!fscNode) {
-            fscNode = {
-              name: fsc,
-              size: 0,
-              id: `${office}-${year}-${fsc}`,
-              level: 3,
-              parent: yearNode.id,
-              children: [],
-              rows: [],
-            };
-            yearNode.children!.push(fscNode);
-          }
-          fscNode.rows!.push(r);
-
-          // --- Recipient Node ---
-          let recipientNode = fscNode.children!.find((c) => c.name === recipient);
-          if (!recipientNode) {
-            recipientNode = {
-              name: recipient,
-              size: 0,
-              id: `${office}-${year}-${fsc}-${recipient}`,
-              level: 4,
-              parent: fscNode.id,
-              children: [],
-              rows: [],
-            };
-            fscNode.children!.push(recipientNode);
-          }
-          recipientNode.rows!.push(r);
-
-          // --- Award Leaf ---
-          const awardNode: TreemapNode = {
-            name: awardId,
-            size: safeAmount,
-            id: `${office}-${year}-${fsc}-${recipient}-${awardId}`,
-            level: 5,
-            parent: recipientNode.id,
-            metadata: {
-              awardAmount: safeAmount,
-              awardDate: r["Award Date"],
-              contractType: r["Contract Pricing Type"],
-              description: r["Award Description"],
-              periodOfPerformance: `${r["PoP Start Date"] || "?"} – ${r["PoP End Date"] || "?"}`,
-              daysTillEnd: r["Days Till End"] ? parseInt(r["Days Till End"], 10) : null,
-              popStatus: r["PoP Status"],
-              offersReceived: r["Offers Received"] ? parseInt(r["Offers Received"], 10) : null,
-            },
-            rows: [r],
+        // Office level
+        let officeNode = root.children!.find(c => c.id === `office-${officeCode}`);
+        if (!officeNode) {
+          officeNode = {
+            name: officeCode,
+            size: 0,
+            id: `office-${officeCode}`,
+            level: 1,
+            parent: root.id,
+            children: [],
+            rows: [],
           };
-          recipientNode.children!.push(awardNode);
+          root.children!.push(officeNode);
+        }
+        officeNode.rows!.push(r);
 
-          // --- Roll up totals ---
-          recipientNode.size += safeAmount;
-          fscNode.size += safeAmount;
-          yearNode.size += safeAmount;
-          officeNode.size += safeAmount;
-          root.size += safeAmount;
-        });
-      }
+        // Year level
+        let yearNode = officeNode.children!.find(c => c.id === `year-${officeCode}-${fy}`);
+        if (!yearNode) {
+          yearNode = {
+            name: `FY ${fy}`,
+            size: 0,
+            id: `year-${officeCode}-${fy}`,
+            level: 2,
+            parent: officeNode.id,
+            children: [],
+            rows: [],
+          };
+          officeNode.children!.push(yearNode);
+        }
+        yearNode.rows!.push(r);
+
+        // FSC level
+        let fscNode = yearNode.children!.find(c => c.id === `fsc-${officeCode}-${fy}-${fsc}`);
+        if (!fscNode) {
+          fscNode = {
+            name: fsc,
+            size: 0,
+            id: `fsc-${officeCode}-${fy}-${fsc}`,
+            level: 3,
+            parent: yearNode.id,
+            children: [],
+            rows: [],
+          };
+          yearNode.children!.push(fscNode);
+        }
+        fscNode.rows!.push(r);
+
+        // Recipient level
+        let recipientNode = fscNode.children!.find(c => c.id === `recipient-${officeCode}-${fy}-${fsc}-${recipient}`);
+        if (!recipientNode) {
+          recipientNode = {
+            name: recipient,
+            size: 0,
+            id: `recipient-${officeCode}-${fy}-${fsc}-${recipient}`,
+            level: 4,
+            parent: fscNode.id,
+            children: [],
+            rows: [],
+          };
+          fscNode.children!.push(recipientNode);
+        }
+        recipientNode.rows!.push(r);
+
+        // Award level
+        const awardNode: TreemapNode = {
+          name: awardId,
+          size: amount,
+          id: `award-${officeCode}-${fy}-${fsc}-${recipient}-${awardId}`,
+          level: 5,
+          parent: recipientNode.id,
+          metadata: {
+            awardAmount: amount,
+            awardDate: r.award_date,
+            contractType: r.contract_pricing_type,
+            description: r.award_description,
+            periodOfPerformance: `${r.pop_start_date || "?"} – ${r.pop_end_date || "?"}`,
+            ...computePoP(r.pop_start_date, r.pop_end_date),
+            offersReceived: r.offers_received ? parseInt(r.offers_received, 10) : null,
+          },
+          rows: [r],
+        };
+        recipientNode.children!.push(awardNode);
+
+        // Bubble up sizes
+        recipientNode.size += amount;
+        fscNode.size += amount;
+        yearNode.size += amount;
+        officeNode.size += amount;
+        root.size += amount;
+      });
 
       setRootData(root);
-      setCurrentNode(root);
-      setBreadcrumb([root]);
-    }
+      if (root.children?.length) {
+        setCurrentNode(root.children[0]);
+        setBreadcrumb([root, root.children[0]]);
+      } else {
+        setCurrentNode(root);
+        setBreadcrumb([root]);
+      }
+    };
 
-    buildTree();
-  }, []);
+    loadData();
+  }, [selectedOffice]);
 
   const handleCellClick = (node: TreemapNode) => {
     if (node.children && node.children.length > 0 && rootData) {
@@ -287,45 +419,61 @@ const TreemapChart = () => {
   };
 
   const handleDrillUp = (targetNode: TreemapNode) => {
-    if (rootData) {
-      const actualNode = findNodeById(rootData, targetNode.id);
-      if (actualNode) {
-        setCurrentNode(actualNode);
-        setBreadcrumb(buildBreadcrumbPath(rootData, actualNode.id));
-      }
+    if (!rootData) return;
+
+    if (targetNode.id === rootData.id) {
+      setSelectedOffice("");
+      setRootData(null);
+      setCurrentNode(null);
+      setBreadcrumb([]);
+      return;
+    }
+
+    const actualNode = findNodeById(rootData, targetNode.id);
+    if (actualNode) {
+      setCurrentNode(actualNode);
+      setBreadcrumb(buildBreadcrumbPath(rootData, actualNode.id));
     }
   };
 
-  if (!currentNode) return null;
+  const handleRowDoubleClick = (award: any) => {
+    setSelectedAward(award);
+    setIsModalOpen(true);
+  };
 
-  const layerData = (currentNode.children || []).map((child) => ({
+  // Recipient filter
+  let filteredChildren = currentNode?.children ?? [];
+  if (currentNode?.level === 3 && recipientSearch) {
+    filteredChildren = filteredChildren.filter((child) =>
+      child.name.toLowerCase().includes(recipientSearch.toLowerCase())
+    );
+  }
+
+  const layerData = filteredChildren.map((child, idx) => ({
     name: child.name,
     size: child.size,
     id: child.id,
     level: child.level,
     parent: child.parent,
     payload: { _fullNode: child },
+    fill:
+      child.level === 5 && child.metadata?.popStatus
+        ? statusColors[child.metadata.popStatus] || "hsl(var(--primary))"
+        : freshColors[idx % freshColors.length],
   }));
 
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      notation: "compact",
-      maximumFractionDigits: 1,
-    }).format(value);
-
-  const currentLevelInfo = getLevelInfo(currentNode.level);
-  const Icon = currentLevelInfo.icon;
-
   return (
-    <Card className="col-span-2">
+    <Card>
       <CardHeader className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Icon className="h-5 w-5 text-primary" />
-            <CardTitle>Contract Funding Treemap</CardTitle>
+            <Building2 className="h-5 w-5 text-primary" />
+            <CardTitle>
+              Contract Funding Treemap
+              {selectedOffice && ` (${officeDictionary[selectedOffice]})`}
+            </CardTitle>
           </div>
+
           {breadcrumb.length > 1 && (
             <Button
               variant="outline"
@@ -339,147 +487,183 @@ const TreemapChart = () => {
           )}
         </div>
 
-        {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm">
-          {breadcrumb.map((node, index) => (
-            <div key={node.id} className="flex items-center space-x-2">
-              {index > 0 && <span className="text-muted-foreground">›</span>}
-              <button
-                onClick={() => handleDrillUp(node)}
-                className={`hover:text-primary transition-colors ${
-                  index === breadcrumb.length - 1
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {node.name}
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-sm text-muted-foreground">
-          Current Level: {currentLevelInfo.name}
-          {currentNode.size > 0 && (
-            <span className="ml-2 font-medium">Total Value: {formatCurrency(currentNode.size)}</span>
-          )}
+        {/* Office Selector */}
+        <div className="flex gap-4 mt-2">
+          <Select value={selectedOffice} onValueChange={setSelectedOffice}>
+            <SelectTrigger className="w-full sm:w-64">
+              <SelectValue placeholder="Choose an office" />
+            </SelectTrigger>
+            <SelectContent>
+              {availableOffices.map((code) => (
+                <SelectItem key={code} value={code}>
+                  {code} — {officeDictionary[code]}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </CardHeader>
 
       <CardContent>
-        <ResponsiveContainer width="100%" height={1000}>
-          <Treemap
-            data={layerData}
-            dataKey="size"
-            stroke="hsl(var(--border))"
-            content={({ x, y, width, height, name, size, payload }) => {
-              const node = payload?._fullNode;
-              if (!node) return null;
-
-              const fontSize = Math.max(8, Math.min(14, Math.min(width, height) / 6));
-
-              // pick fill color
-              let fillColor = "hsl(var(--primary))";
-              if (node.level === 5 && node.metadata?.popStatus) {
-                fillColor = statusColors[node.metadata.popStatus] || "hsl(var(--primary))";
-              }
-
-              return (
-                <g onClick={() => handleCellClick(node)}>
-                  <rect
-                    x={x}
-                    y={y}
-                    width={width}
-                    height={height}
-                    style={{
-                      fill: fillColor,
-                      stroke: "hsl(var(--border))",
-                      strokeWidth: 1,
-                      cursor: "pointer",
-                    }}
-                  />
-                  {width > 30 && height > 20 && (
-                    <>
-                      <text
-                        x={x + width / 2}
-                        y={y + height / 2 - 5}
-                        textAnchor="middle"
-                        fill="hsl(var(--primary-foreground))"
-                        fontSize={fontSize}
-                        fontWeight="500"
-                      >
-                        {name}
-                      </text>
-                      <text
-                        x={x + width / 2}
-                        y={y + height / 2 + 10}
-                        textAnchor="middle"
-                        fill="hsl(var(--primary-foreground))"
-                        fontSize={fontSize - 2}
-                        opacity="0.8"
-                      >
-                        {typeof size === "number" ? formatCurrency(size) : "—"}
-                      </text>
-                    </>
-                  )}
-                </g>
-              );
-            }}
-          >
-            <Tooltip content={<CustomTooltip />} />
-          </Treemap>
-
-          {/* Table beneath the treemap */}
-          <div className="mt-6 overflow-x-auto">
-            {currentNode?.rows && currentNode.rows.length > 0 && (
-              <table className="min-w-full text-sm border">
-                <thead>
-                  <tr className="bg-muted">
-                    <th className="px-4 py-2 text-left">Award ID</th>
-                    <th className="px-4 py-2">Award Date</th>
-                    <th className="px-4 py-2">Award Description</th>
-                    <th className="px-4 py-2">Recipient</th>
-                    <th className="px-4 py-2">FSC</th>
-                    <th className="px-4 py-2 text-right">Awarded $</th>
-                    <th className="px-4 py-2">PoP Duration</th>
-                    <th className="px-4 py-2">Days Till End</th>
-                    <th className="px-4 py-2">PoP Status</th>
-                    <th className="px-4 py-2">Offers</th>
-                  </tr>
-                </thead>
-                  <tbody>
-                    {currentNode.rows.map((row: any, idx: number) => {
-                      const status = row["PoP Status"] || "Unknown";
-                      const bgColor = statusColors[status] || "#ffffff"; 
+        {(!selectedOffice || !currentNode) ? (
+          <div className="h-[300px] sm:h-[500px] lg:h-[600px]">
+            Select a contracting office to view treemap data.
+            <ResponsiveContainer width="100%" height={400}>
+              <Treemap
+                data={[]}
+                dataKey="size"
+                stroke="hsl(var(--border))"
+              />
+            </ResponsiveContainer>
+          </div>
+        ) : (
+          <>
+            {/* Treemap */}
+            <div className="chart-container">
+              <ResponsiveContainer width="100%" height="100%">
+                <Treemap
+                  data={layerData}
+                  dataKey="size"
+                  stroke="hsl(var(--border))"
+                  content={({ x, y, width, height, name, size, payload, fill }) => {
+                    const node = payload?._fullNode;
+                    if (!node) return null;
+                    const fontSize = Math.max(8, Math.min(14, Math.min(width, height) / 6));
 
                     return (
-                      <tr
-                        key={idx}
-                        className="border-t hover:bg-accent"
-                        style={{ backgroundColor: bgColor, color: "white" }}  
-                      >
-                      <td className="px-4 py-2">{row["Award ID"]}</td>
-                      <td className="px-4 py-2">
-                        {row["Award Date"] ? new Date(row["Award Date"]).toLocaleDateString() : ""}
-                      </td>
-                      <td className="px-4 py-2">{row["Award Description"]}</td>
-                      <td className="px-4 py-2">{row["Recipient Name"]}</td>
-                      <td className="px-4 py-2">{row["FSC"]}</td>
-                      <td className="px-4 py-2 text-right">
-                        {formatCurrency(parseFloat(row["Awarded$"] || 0))}
-                      </td>
-                      <td className="px-4 py-2">{row["PoP Duration"]}</td>
-                      <td className="px-4 py-2">{row["Days Till End"]}</td>
-                      <td className="px-4 py-2">{row["PoP Status"]}</td>
-                      <td className="px-4 py-2">{row["Offers Received"]}</td>
-                    </tr>
+                      <g onClick={() => handleCellClick(node)} style={{ cursor: "pointer" }}>
+                        <rect
+                          x={x}
+                          y={y}
+                          width={width}
+                          height={height}
+                          fill={fill}
+                          stroke="hsl(var(--border))"
+                          strokeWidth={2}
+                          className="hover:opacity-90 transition-opacity"
+                        />
+                        {width > 40 && height > 20 && (
+                          <>
+                            <text
+                              x={x + width / 2}
+                              y={y + height / 2 - 5}
+                              textAnchor="middle"
+                              fill="white"
+                              stroke="black"
+                              strokeWidth={0.8}
+                              paintOrder="stroke"
+                              fontSize={fontSize}
+                              fontWeight="600"
+                            >
+                              {name}
+                            </text>
+                            <text
+                              x={x + width / 2}
+                              y={y + height / 2 + 10}
+                              textAnchor="middle"
+                              fill="white"
+                              stroke="black"
+                              strokeWidth={0.8}
+                              paintOrder="stroke"
+                              fontSize={fontSize - 2}
+                            >
+                              {typeof size === "number" ? formatCurrency(size) : "—"}
+                            </text>
+                          </>
+                        )}
+                      </g>
                     );
-                  })}
-                </tbody>
-              </table>
+                  }}
+                >
+                  <Tooltip content={<CustomTooltip />} />
+                </Treemap>
+              </ResponsiveContainer>
+            </div>
+
+            {/* Set Aside Chart */}
+            {currentNode?.rows && (
+              <div className="mt-6">
+                <SetAsideChart rows={currentNode.rows} />
+              </div>
             )}
-          </div>
-        </ResponsiveContainer>
+
+            {/* Award Table - Using shared component */}
+            {currentNode?.rows && currentNode.rows.length > 0 && (
+              <div className="mt-6">
+                <AwardTable 
+                  awards={currentNode.rows} 
+                  onRowDoubleClick={handleRowDoubleClick}
+                  showSearch
+                  showLegend
+                />
+              </div>
+            )}
+
+            {/* Add to Profile Dialog */}
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add Award to Profile</DialogTitle>
+                </DialogHeader>
+
+                {selectedAward && (
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Award ID:</strong> {selectedAward.award_id}</p>
+                    <p><strong>Description:</strong> {selectedAward.award_description}</p>
+                    <p><strong>Recipient:</strong> {selectedAward.recipient_name}</p>
+                    <p><strong>Value:</strong> {formatCurrency(Number(selectedAward.awarded_amount) || 0)}</p>
+                  </div>
+                )}
+
+                <div className="mt-4">
+                  <label className="block text-sm font-medium mb-1">Assign to Profile</label>
+                  <Select value={selectedProfile} onValueChange={setSelectedProfile}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Choose a profile" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {profiles.map((profile) => (
+                        <SelectItem key={profile.id} value={profile.id}>
+                          {profile.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <DialogFooter>
+                  <Button variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                  <Button
+                    onClick={async () => {
+                      if (!selectedProfile || !selectedAward) return;
+
+                      const { error } = await supabase
+                        .from("watchlist_awards")
+                        .insert([
+                          {
+                            profile_id: selectedProfile,
+                            award_db_id: selectedAward.id,
+                          },
+                        ]);
+
+                      if (error) {
+                        console.error("❌ Failed to save award to watchlist:", error);
+                      } else {
+                        console.log("✅ Award saved to profile:", selectedProfile);
+                      }
+
+                      setIsModalOpen(false);
+                      setSelectedProfile("");
+                    }}
+                    disabled={!selectedProfile}
+                  >
+                    Save
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </>
+        )}
       </CardContent>
     </Card>
   );

@@ -5,9 +5,21 @@ import * as path from "node:path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
+  // ✅ only set base in production build
+  base: mode === "production" ? "/Eagle-Sight/" : "/",
   server: {
     host: "::",
     port: 8080,
+    hmr: {
+      clientPort: 8080, // 👈 ensures websocket connects correctly
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
   plugins: [
     react(),
@@ -19,6 +31,4 @@ export default defineConfig(({ mode }) => ({
     },
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
   },
-  // 👇 This is key for GitHub Pages
-  base: "/Eagle-Sight/",
 }));

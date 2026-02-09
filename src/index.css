@@ -5,6 +5,52 @@
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
+@layer utilities {
+  /* Prevent horizontal scroll on small screens */
+  .no-x-scroll {
+    overflow-x: hidden;
+  }
+
+  /* Make tables scrollable on mobile */
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile typography adjustments */
+  .text-responsive {
+    font-size: 0.9rem;         /* base for mobile */
+  }
+
+  @media (min-width: 640px) {
+    .text-responsive {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .text-responsive {
+      font-size: 1.125rem;
+    }
+  }
+}
+@layer utilities {
+  .chart-container {
+    height: 300px;  /* default for phones */
+  }
+  @media (min-width: 640px) {
+    .chart-container {
+      height: 500px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .chart-container {
+      height: 700px;
+    }
+  }
+}
 
 @layer base {
   :root {
@@ -45,6 +91,10 @@ All colors MUST be HSL.
     --success: 142 71% 45%;
     --warning: 38 92% 50%;
     --info: 199 89% 48%;
+
+    /* Corporate colors for Gemini UI */
+    --corporate-navy: 222 47% 11%;    /* #0f172a - very dark navy */
+    --corporate-blue: 217 91% 60%;    /* #3b82f6 - bright blue accent */
     
     /* Gradients */
     --gradient-navy: linear-gradient(135deg, hsl(220 91% 18%), hsl(220 60% 45%));
@@ -57,69 +107,57 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
+    --sidebar-background: 210 85% 15%;       /* deep navy */
+    --sidebar-foreground: 0 0% 98%;          /* white text */
+    --sidebar-primary: 0 0% 98%;             /* white highlights */
+    --sidebar-primary-foreground: 210 85% 15%;
+    --sidebar-accent: 210 60% 25%;           /* lighter navy accent */
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 210 40% 30%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 220 91% 12%;
-    --foreground: 210 40% 98%;
+    --background: 240 6% 10%;        /* ~#181a1b dark gray background */
+    --foreground: 0 0% 98%;          /* white text */
 
-    --card: 220 84% 15%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 5% 15%;              /* slightly lighter gray for cards */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 84% 15%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 5% 15%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 220 91% 18%;
+    --primary: 217 91% 60%;          /* accent blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 20%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 4% 20%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217 33% 20%;
+    --muted: 240 4% 20%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 217 33% 20%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 4% 20%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 212 27% 84%;
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 217 91% 60%;
 
-    /* Dark mode custom colors */
-    --navy: 210 40% 98%;
-    --navy-light: 220 40% 70%;
-    --navy-dark: 210 40% 98%;
-    --slate: 210 6% 46%;
-    --slate-light: 217 33% 20%;
-    
-    /* Dark gradients */
-    --gradient-navy: linear-gradient(135deg, hsl(220 91% 18%), hsl(220 60% 25%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220 84% 15%), hsl(220 91% 12%));
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    /* Corporate colors stay the same in dark mode */
+    --corporate-navy: 222 47% 11%;
+    --corporate-blue: 217 91% 60%;
+
+    /* Keep sidebar consistent */
+    --sidebar-background: 210 85% 12%;       /* darker navy */
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 210 85% 12%;
+    --sidebar-accent: 210 60% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 210 40% 22%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -154,11 +192,56 @@ All colors MUST be HSL.
   .bg-gradient-subtle {
     background: var(--gradient-subtle);
   }
+  .bg-sidebar {
+    background-color: hsl(var(--sidebar-background));
+  }
+  .text-sidebar {
+    color: hsl(var(--sidebar-foreground));
+  }
+  .text-sidebar-primary {
+    color: hsl(var(--sidebar-primary));
+  }
 
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Animation utilities for the corporate UI */
+  .animate-in {
+    animation: animateIn 0.3s ease-out forwards;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

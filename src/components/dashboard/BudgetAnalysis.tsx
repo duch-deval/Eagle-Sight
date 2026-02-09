@@ -1,266 +1,240 @@
+import { useState, useEffect } from "react";
+import loadCsv from "@/lib/loadCsv";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  Rocket, 
-  Plane, 
-  Ship, 
-  Zap, 
-  Target,
-  Shield,
-  Radio,
-  Satellite,
-  TrendingUp,
-  Info
-} from "lucide-react";
+import { Info } from "lucide-react";
+
+interface Program {
+  name: string;
+  description: string;
+  agency: string;
+  increase: number;
+  total: number;
+}
+
+function parseAmt(val: any) {
+  const num = parseFloat((val || "0").toString().replace(/,/g, ""));
+  return isNaN(num) ? 0 : num * 1000; // values in thousands
+}
+
+// ✅ Agency normalization (merge Space Force into Air Force, Marine Corps into Navy)
+function normalizeAgency(org: string, accountTitle: string): string {
+  if (!org) return "Defense-Wide";
+
+  const code = org.trim().toUpperCase();
+
+  if (code === "A") return "Army";
+  if (code === "N") return "Navy"; // includes Marine Corps
+  if (code === "F") {
+    if (accountTitle.includes("Space Force")) return "Space Force";
+    return "Air Force";
+  }
+  return "Defense-Wide";
+}
+
+
 
 const BudgetAnalysis = () => {
-  const budgetWinnersData = {
-    all: [
-      {
-        name: "Sea-Launched Cruise Missile (SLCM-N)",
-        description: "Nuclear-capable cruise missile",
-        increase: 1.93,
-        total: 1.93,
-        icon: Rocket,
-      },
-      {
-        name: "E-2D Advanced Hawkeye",
-        description: "Airborne early warning aircraft",
-        increase: 1.47,
-        total: 1.85,
-        icon: Plane,
-      },
-      {
-        name: "Medium Unmanned Surface Vessel (MUSV)",
-        description: "Autonomous surface warfare",
-        increase: 1.03,
-        total: 1.13,
-        icon: Ship,
-      },
-      {
-        name: "MQ-25 Stingray",
-        description: "Carrier-based refueling drone",
-        increase: 0.63,
-        total: 1.05,
-        icon: Target,
-      },
-      {
-        name: "E-6 Mercury TACAMO",
-        description: "Strategic communications aircraft",
-        increase: 0.53,
-        total: 1.41,
-        icon: Radio,
-      },
-    ],
-    navy: [
-      {
-        name: "Sea-Launched Cruise Missile (SLCM-N)",
-        description: "Nuclear-capable cruise missile",
-        increase: 1.93,
-        total: 1.93,
-        icon: Rocket,
-      },
-      {
-        name: "E-2D Advanced Hawkeye",
-        description: "Airborne early warning aircraft",
-        increase: 1.47,
-        total: 1.85,
-        icon: Plane,
-      },
-      {
-        name: "Medium Unmanned Surface Vessel (MUSV)",
-        description: "Autonomous surface warfare",
-        increase: 1.03,
-        total: 1.13,
-        icon: Ship,
-      },
-      {
-        name: "MQ-25 Stingray",
-        description: "Carrier-based refueling drone",
-        increase: 0.63,
-        total: 1.05,
-        icon: Target,
-      },
-    ],
-    army: [
-      {
-        name: "Precision Strike Missile (PrSM)",
-        description: "Long-range precision fires",
-        increase: 0.82,
-        total: 1.24,
-        icon: Rocket,
-      },
-      {
-        name: "Extended Range Cannon Artillery (ERCA)",
-        description: "Next-generation artillery system",
-        increase: 0.67,
-        total: 0.89,
-        icon: Target,
-      },
-      {
-        name: "Integrated Air & Missile Defense (IAMD)",
-        description: "Multi-layer defense system",
-        increase: 0.54,
-        total: 2.1,
-        icon: Shield,
-      },
-    ],
-    airforce: [
-      {
-        name: "B-21 Raider",
-        description: "Next-generation stealth bomber",
-        increase: 2.8,
-        total: 5.1,
-        icon: Plane,
-      },
-      {
-        name: "Next Generation Air Dominance (NGAD)",
-        description: "6th generation fighter program",
-        increase: 1.2,
-        total: 2.9,
-        icon: Plane,
-      },
-      {
-        name: "Sentinel ICBM (LGM-35A)",
-        description: "Ground-based strategic deterrent",
-        increase: 0.95,
-        total: 3.6,
-        icon: Rocket,
-      },
-    ],
-    spaceforce: [
-      {
-        name: "Next Generation Overhead Persistent Infrared (Next Gen OPIR)",
-        description: "Missile warning satellite constellation",
-        increase: 0.89,
-        total: 2.4,
-        icon: Satellite,
-      },
-      {
-        name: "GPS III Follow On (GPS IIIF)",
-        description: "Enhanced navigation satellites",
-        increase: 0.71,
-        total: 1.8,
-        icon: Satellite,
-      },
-      {
-        name: "Protected Tactical SATCOM (PTS)",
-        description: "Anti-jam communications satellites",
-        increase: 0.45,
-        total: 1.2,
-        icon: Radio,
-      },
-    ],
+  const [winners, setWinners] = useState<Record<string, Program[]>>({});
+  const [losers, setLosers] = useState<Record<string, Program[]>>({});
+
+  useEffect(() => {
+    async function fetchData() {
+      const p1Rows = await loadCsv("/p1_display.csv");
+      const o1Rows = await loadCsv("/o1_display.csv");
+      const allRows = [...p1Rows, ...o1Rows];
+
+      // --- Group by platform (BLI Title) ---
+      const groupedByPlatform: Record<string, any[]> = {};
+      allRows.forEach(r => {
+        const key =
+          r["Budget Line Item (BLI) Title"] || // P-1
+          r["SAG/Budget Line Item (BLI) Title"] || // O-1
+          "Unnamed Program";
+
+        if (!groupedByPlatform[key]) groupedByPlatform[key] = [];
+        groupedByPlatform[key].push(r);
+      });
+
+      // --- Rollup each platform ---
+      const programs: Program[] = Object.entries(groupedByPlatform).map(
+        ([name, rows]) => {
+          const r0: any = rows[0];
+          const accountTitle = r0["Account Title"] || "";
+          const org = r0["Organization"] || "";
+          const agency = normalizeAgency(org, accountTitle);
+          const description = r0["Budget Activity Title"] || "—";
+
+          let fy25Enacted = 0,
+            fy26Req = 0,
+            fy26Rec = 0,
+            fy26Total = 0;
+
+          rows.forEach((r: any) => {
+            fy25Enacted +=
+              parseAmt(r["FY 2025 Enacted Amount"]) ||
+              parseAmt(r["FY 2025 Enacted"]);
+            fy26Req +=
+              parseAmt(r["FY 2026 Disc Request Amount"]) ||
+              parseAmt(r["FY 2026 Disc Request"]);
+            fy26Rec +=
+              parseAmt(r["FY 2026 Reconciliation Request Amount"]) ||
+              parseAmt(r["FY 2026 Reconciliation Request"]);
+            fy26Total +=
+              parseAmt(r["FY 2026 Total Amount"]) ||
+              parseAmt(r["FY 2026 Total"]);
+          });
+
+          const fy26Combined = fy26Req + fy26Rec || fy26Total;
+
+          return {
+            name,
+            description,
+            agency,
+            increase: fy26Combined - fy25Enacted,
+            total: fy26Combined,
+          };
+        }
+      );
+
+      // --- Group by agency: Winners & Losers ---
+      const groupedWinners: Record<string, Program[]> = {
+        all: programs
+          .filter((p) => p.increase > 0)
+          .sort((a, b) => b.increase - a.increase)
+          .slice(0, 10),
+      };
+
+      const groupedLosers: Record<string, Program[]> = {
+        all: programs
+          .filter((p) => p.increase < 0)
+          .sort((a, b) => a.increase - b.increase)
+          .slice(0, 10),
+      };
+
+      ["Army", "Navy", "Air Force", "Space Force", "Defense-Wide"].forEach(
+        (branch) => {
+          let agencies: string[] = [branch];
+
+          // 👇 Merge Marine Corps into Navy
+          if (branch === "Navy") agencies.push("Marine Corps");
+
+          // 👇 Merge Space Force into Air Force
+          if (branch === "Air Force") agencies.push("Space Force");
+
+          groupedWinners[branch.toLowerCase()] = programs
+            .filter((p) => agencies.includes(p.agency) && p.increase > 0)
+            .sort((a, b) => b.increase - a.increase)
+            .slice(0, 10);
+
+          groupedLosers[branch.toLowerCase()] = programs
+            .filter((p) => agencies.includes(p.agency) && p.increase < 0)
+            .sort((a, b) => a.increase - b.increase)
+            .slice(0, 10);
+        }
+      );
+
+
+      setWinners(groupedWinners);
+      setLosers(groupedLosers);
+    }
+
+    fetchData();
+  }, []);
+
+  const formatCurrency = (value: number) => {
+    const billions = value / 1e9;
+    return `${billions >= 0 ? "+" : ""}$${Math.abs(billions).toFixed(2)}B`;
   };
 
-  const formatCurrency = (value: number) => `+$${value.toFixed(2)}B`;
-  const formatTotal = (value: number) => `Total: $${value.toFixed(2)}B`;
+  const formatTotal = (value: number) =>
+    `Total: $${(value / 1e9).toFixed(2)}B`;
 
-  const renderProgramList = (programs: any[]) => (
+  const renderProgramList = (programs: Program[] = [], isLoser = false) => (
     <div className="space-y-3">
-      {programs.map((program, index) => {
-        const Icon = program.icon;
-        return (
-          <div
-            key={index}
-            className="flex items-center justify-between p-4 bg-gradient-to-r from-card to-card/50 rounded-lg border border-border hover:shadow-medium transition-all duration-200"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-card-foreground">{program.name}</h4>
-                <p className="text-sm text-muted-foreground">{program.description}</p>
-              </div>
+      {programs.map((p, idx) => (
+        <div
+          key={idx}
+          className={`flex items-center justify-between p-4 bg-gradient-to-r from-card to-card/50 rounded-lg border border-border hover:shadow-medium transition-all ${
+            isLoser ? "border-red-200" : ""
+          }`}
+        >
+          <div>
+            <h4 className="font-semibold">{p.name}</h4>
+            <p className="text-sm text-muted-foreground">{p.description}</p>
+          </div>
+          <div className="text-right">
+            <div
+              className={`text-lg font-bold ${
+                isLoser ? "text-red-600" : "text-green-600"
+              }`}
+            >
+              {formatCurrency(p.increase)}
             </div>
-            <div className="text-right">
-              <div className="text-lg font-bold text-success">
-                {formatCurrency(program.increase)}
-              </div>
-              <div className="text-xs text-muted-foreground">
-                {formatTotal(program.total)}
-              </div>
+            <div className="text-xs text-muted-foreground">
+              {formatTotal(p.total)}
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 
   return (
     <Card className="shadow-medium">
       <CardHeader className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-success rounded-full"></div>
-          <CardTitle className="text-2xl font-bold">
-            FY 2026 Budget Transformation: Winners & Losers
-          </CardTitle>
-        </div>
+        <CardTitle className="text-2xl font-bold">
+          FY 2026 Budget Transformation: Winners & Losers
+        </CardTitle>
         <p className="text-muted-foreground text-lg">
-          Comprehensive analysis of the biggest program increases and decreases across all defense agencies
+          Biggest platform increases and decreases by agency (FY26 vs FY25 Enacted)
         </p>
-        
         <Alert className="bg-warning/10 border-warning/20">
           <Info className="h-4 w-4 text-warning" />
           <AlertDescription className="text-sm text-warning-foreground">
-            <strong>Analysis Methodology:</strong> Rankings exclude shipbuilding programs due to timing-based procurement fluctuations that do not reflect strategic priorities. 
-            Analysis is based on currently available DoD budget documents and administration announcements. This analysis will be updated as additional budget materials are released.
+            Analysis compares FY25 Enacted vs FY26 Total (Disc + Reconciliation).
+            Shipbuilding excluded due to timing spikes.
           </AlertDescription>
         </Alert>
       </CardHeader>
-
       <CardContent>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <TrendingUp className="h-5 w-5 text-success" />
-              <h3 className="text-xl font-semibold">Biggest Budget Winners: Top 5 Program Increases</h3>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              Comparing FY26 (base + reconciliation) vs FY25 enacted<br />
-              <span className="text-xs">*Shipbuilding programs excluded from overall rankings (timing-based fluctuations)</span>
-            </div>
-          </div>
+        <Tabs defaultValue="all" className="w-full">
+          <TabsList className="grid w-full grid-cols-7">
+            <TabsTrigger value="all">All</TabsTrigger>
+            <TabsTrigger value="army">Army</TabsTrigger>
+            <TabsTrigger value="navy">Navy</TabsTrigger>
+            <TabsTrigger value="air force">Air Force</TabsTrigger>
+            <TabsTrigger value="defense-wide">Defense-Wide</TabsTrigger>
+          </TabsList>
 
-          <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid w-full grid-cols-6">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="army">Army</TabsTrigger>
-              <TabsTrigger value="marinecorps">Marine Corps</TabsTrigger>
-              <TabsTrigger value="navy" className="bg-primary/20 data-[state=active]:bg-primary">Navy</TabsTrigger>
-              <TabsTrigger value="airforce">Air Force</TabsTrigger>
-              <TabsTrigger value="spaceforce">Space Force</TabsTrigger>
-            </TabsList>
+          {/* 🔵 All Tab */}
+          <TabsContent value="all">
+            <h3 className="text-lg font-semibold mb-2 text-green-700">
+              Biggest Budget Winners: Top 10 Increases
+            </h3>
+            {renderProgramList(winners.all)}
+            <h3 className="text-lg font-semibold mt-6 mb-2 text-red-700">
+              Biggest Budget Losers: Top 10 Cuts
+            </h3>
+            {renderProgramList(losers.all, true)}
+          </TabsContent>
 
-            <TabsContent value="all" className="mt-4">
-              {renderProgramList(budgetWinnersData.all)}
+          {/* 🔵 Specific Agencies */}
+          {["army", "navy", "air force", "space force", "defense-wide"].map(branch => (
+            <TabsContent key={branch} value={branch}>
+              <h3 className="text-lg font-semibold mb-2 text-green-700">
+                Biggest Budget Winners: Top 10 Increases
+              </h3>
+              {renderProgramList(winners[branch])}
+              <h3 className="text-lg font-semibold mt-6 mb-2 text-red-700">
+                Biggest Budget Losers: Top 10 Cuts
+              </h3>
+              {renderProgramList(losers[branch], true)}
             </TabsContent>
+          ))}
+        </Tabs>
 
-            <TabsContent value="navy" className="mt-4">
-              {renderProgramList(budgetWinnersData.navy)}
-            </TabsContent>
-
-            <TabsContent value="army" className="mt-4">
-              {renderProgramList(budgetWinnersData.army)}
-            </TabsContent>
-
-            <TabsContent value="marinecorps" className="mt-4">
-              <div className="text-center py-8 text-muted-foreground">
-                <p>Marine Corps budget data will be available soon.</p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="airforce" className="mt-4">
-              {renderProgramList(budgetWinnersData.airforce)}
-            </TabsContent>
-
-            <TabsContent value="spaceforce" className="mt-4">
-              {renderProgramList(budgetWinnersData.spaceforce)}
-            </TabsContent>
-          </Tabs>
-        </div>
       </CardContent>
     </Card>
   );

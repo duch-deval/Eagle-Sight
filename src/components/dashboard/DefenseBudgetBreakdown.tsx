@@ -1,13 +1,10 @@
 import { useState, useMemo, useEffect } from "react";
-import { Search, ChevronDown, ChevronRight, Filter, Download, Plane, Ship, Shield, Zap } from "lucide-react";
+import { Search, ChevronDown, ChevronRight, Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
 import loadCsv from "@/lib/loadCsv";
-
 
 interface BudgetItem {
   id: string;
@@ -26,13 +23,14 @@ interface BudgetItem {
   level: number;
 }
 
+const agencies = ["All", "Army", "Navy", "Air Force", "Space Force", "Defense-Wide", "Marine Corps"];
 
-const agencies = ["All", "Army", "Navy", "Air Force", "Space Force", "OSD", "Marines"];
 function parseAmt(val: any) {
   const num = parseFloat((val || "0").toString().replace(/,/g, ""));
   return isNaN(num) ? 0 : num * 1000; // values in thousands
 }
 
+// ----------------- PROCUREMENT -----------------
 function buildProcurementHierarchy(rows: any[]): BudgetItem[] {
   const root: BudgetItem = {
     id: "procurement",
@@ -61,15 +59,17 @@ function buildProcurementHierarchy(rows: any[]): BudgetItem[] {
 
     const fy25Enacted = parseAmt(r["FY 2025 Enacted Amount"]);
     const fy25Supp = parseAmt(r["FY 2025 Supplemental Amount"]);
+    const fy26Req = parseAmt(r["FY 2026 Disc Request Amount"]);
+    const fy26Rec = parseAmt(r["FY 2026 Reconciliation Request Amount"]);
 
     const amounts = {
       fy24: parseAmt(r["FY 2024 Actuals Amount"]),
       fy25Enacted,
       fy25Supp,
-      fy25Total: fy25Enacted + fy25Supp,   // <-- FIX: combine enacted + supplemental
-      fy26Req: parseAmt(r["FY 2026 Disc Request Amount"]),
-      fy26Rec: parseAmt(r["FY 2026 Reconciliation Request Amount"]),
-      fy26Tot: parseAmt(r["FY 2026 Total Amount"]),
+      fy25Total: fy25Enacted + fy25Supp, // ✅ recompute
+      fy26Req,
+      fy26Rec,
+      fy26Tot: fy26Req + fy26Rec // ✅ recompute
     };
 
     addToHierarchy(root, accountTitle, account, baTitle, ba, bliTitle, bli, agency, amounts);
@@ -78,7 +78,7 @@ function buildProcurementHierarchy(rows: any[]): BudgetItem[] {
   return [root];
 }
 
-
+// ----------------- RDT&E -----------------
 function buildRDTEHierarchy(rows: any[]): BudgetItem[] {
   const root: BudgetItem = {
     id: "rdte",
@@ -105,14 +105,19 @@ function buildRDTEHierarchy(rows: any[]): BudgetItem[] {
     const bliTitle = r["Program Element/Budget Line Item (BLI) Title"];
     const bli = r["PE/BLI"];
 
+    const fy25Enacted = parseAmt(r["FY 2025 Enacted"]);
+    const fy25Supp = parseAmt(r["FY 2025 Supplemental"]);
+    const fy26Req = parseAmt(r["FY 2026 Disc Request"]);
+    const fy26Rec = parseAmt(r["FY 2026 Reconciliation Request"]);
+
     const amounts = {
       fy24: parseAmt(r["FY 2024 Actuals"]),
-      fy25Enacted: parseAmt(r["FY 2025 Enacted"]),
-      fy25Total: parseAmt(r["FY 2025 Total"]),
-      fy25Supp: parseAmt(r["FY 2025 Supplemental"]),
-      fy26Req: parseAmt(r["FY 2026 Disc Request"]),
-      fy26Rec: parseAmt(r["FY 2026 Reconciliation Request"]),
-      fy26Tot: parseAmt(r["FY 2026 Total"]),
+      fy25Enacted,
+      fy25Supp,
+      fy25Total: fy25Enacted + fy25Supp, // ✅ recompute
+      fy26Req,
+      fy26Rec,
+      fy26Tot: fy26Req + fy26Rec // ✅ recompute
     };
 
     addToHierarchy(root, accountTitle, account, baTitle, ba, bliTitle, bli, agency, amounts);
@@ -120,6 +125,8 @@ function buildRDTEHierarchy(rows: any[]): BudgetItem[] {
 
   return [root];
 }
+
+// ----------------- O&M -----------------
 function buildOMHierarchy(rows: any[]): BudgetItem[] {
   const root: BudgetItem = {
     id: "om",
@@ -146,14 +153,19 @@ function buildOMHierarchy(rows: any[]): BudgetItem[] {
     const bliTitle = r["SAG/Budget Line Item (BLI) Title"];
     const bli = r["SAG/BLI"];
 
+    const fy25Enacted = parseAmt(r["FY 2025 Enacted"]);
+    const fy25Supp = parseAmt(r["FY 2025 Supplemental"]);
+    const fy26Req = parseAmt(r["FY 2026 Disc Request"]);
+    const fy26Rec = parseAmt(r["FY 2026 Reconciliation Request"]);
+
     const amounts = {
       fy24: parseAmt(r["FY 2024 Actuals"]),
-      fy25Enacted: parseAmt(r["FY 2025 Enacted"]),
-      fy25Total: parseAmt(r["FY 2025 Total"]),
-      fy25Supp: parseAmt(r["FY 2025 Supplemental"]),
-      fy26Req: parseAmt(r["FY 2026 Disc Request"]),
-      fy26Rec: parseAmt(r["FY 2026 Reconciliation Request"]),
-      fy26Tot: parseAmt(r["FY 2026 Total"]),
+      fy25Enacted,
+      fy25Supp,
+      fy25Total: fy25Enacted + fy25Supp, // ✅ recompute
+      fy26Req,
+      fy26Rec,
+      fy26Tot: fy26Req + fy26Rec // ✅ recompute
     };
 
     addToHierarchy(root, accountTitle, account, baTitle, ba, bliTitle, bli, agency, amounts);
@@ -162,32 +174,98 @@ function buildOMHierarchy(rows: any[]): BudgetItem[] {
   return [root];
 }
 
-// Shared roll-up logic
-function addToHierarchy(root: BudgetItem, accountTitle: string, account: string, baTitle: string, ba: string, bliTitle: string, bli: string, agency: string, amounts: any) {
+// ----------------- HIERARCHY BUILDER -----------------
+function addToHierarchy(
+  root: BudgetItem,
+  accountTitle: string,
+  account: string,
+  baTitle: string,
+  ba: string,
+  bliTitle: string,
+  bli: string,
+  agency: string,
+  amounts: any
+) {
+  const hasAnyAmount =
+    amounts.fy24 ||
+    amounts.fy25Enacted ||
+    amounts.fy25Total ||
+    amounts.fy25Supp ||
+    amounts.fy26Req ||
+    amounts.fy26Rec ||
+    amounts.fy26Tot;
+
+  if ((!accountTitle && !baTitle && !bliTitle) || !hasAnyAmount) {
+    return;
+  }
+
+  // Account
   let acctNode = root.children!.find(c => c.name === accountTitle);
   if (!acctNode) {
-    acctNode = { id: account, name: accountTitle, category: root.category, agency, programElement: account,
-      fy24Actuals: 0, fy25Enacted: 0, fy25Total: 0, fy25Supplemental: 0,
-      fy26Request: 0, fy26Reconciliation: 0, fy26Total: 0, level: 1, children: [] };
+    acctNode = {
+      id: account,
+      name: accountTitle,
+      category: root.category,
+      agency,
+      programElement: account,
+      fy24Actuals: 0,
+      fy25Enacted: 0,
+      fy25Total: 0,
+      fy25Supplemental: 0,
+      fy26Request: 0,
+      fy26Reconciliation: 0,
+      fy26Total: 0,
+      level: 1,
+      children: []
+    };
     root.children!.push(acctNode);
   }
 
+  // Budget Activity
   let baNode = acctNode.children!.find(c => c.name === baTitle);
   if (!baNode) {
-    baNode = { id: `${account}-${ba}`, name: baTitle, category: root.category, agency, programElement: `#${ba}`,
-      fy24Actuals: 0, fy25Enacted: 0, fy25Total: 0, fy25Supplemental: 0,
-      fy26Request: 0, fy26Reconciliation: 0, fy26Total: 0, level: 2, children: [] };
+    baNode = {
+      id: `${account}-${ba}`,
+      name: baTitle,
+      category: root.category,
+      agency,
+      programElement: `#${ba}`,
+      fy24Actuals: 0,
+      fy25Enacted: 0,
+      fy25Total: 0,
+      fy25Supplemental: 0,
+      fy26Request: 0,
+      fy26Reconciliation: 0,
+      fy26Total: 0,
+      level: 2,
+      children: []
+    };
     acctNode.children!.push(baNode);
   }
 
+  // BLI
   let bliNode = baNode.children!.find(c => c.name === bliTitle);
   if (!bliNode) {
-    bliNode = { id: bli, name: bliTitle, category: root.category, agency, programElement: bli,
-      fy24Actuals: 0, fy25Enacted: 0, fy25Total: 0, fy25Supplemental: 0,
-      fy26Request: 0, fy26Reconciliation: 0, fy26Total: 0, level: 3, children: [] };
+    bliNode = {
+      id: bli,
+      name: bliTitle,
+      category: root.category,
+      agency,
+      programElement: bli,
+      fy24Actuals: 0,
+      fy25Enacted: 0,
+      fy25Total: 0,
+      fy25Supplemental: 0,
+      fy26Request: 0,
+      fy26Reconciliation: 0,
+      fy26Total: 0,
+      level: 3,
+      children: []
+    };
     baNode.children!.push(bliNode);
   }
 
+  // Bubble up
   [bliNode, baNode, acctNode, root].forEach(node => {
     node.fy24Actuals += amounts.fy24;
     node.fy25Enacted += amounts.fy25Enacted;
@@ -214,40 +292,54 @@ const getCategoryColor = (category: string) => {
 };
 
 
+// --- Agency normalization ---
+function normalizeAgency(org: string, accountTitle: string): string {
+  if (!org) return "Defense-Wide";
+  const code = org.trim().toUpperCase();
+
+  if (code === "A") return "Army";
+  if (code === "N") {
+    if (accountTitle.toLowerCase().includes("marine corps")) return "Marine Corps";
+    return "Navy";
+  }
+  if (code === "F") {
+    if (accountTitle.toLowerCase().includes("space force")) return "Space Force";
+    return "Air Force";
+  }
+  return "Defense-Wide";
+}
+
+// --- Agency icons ---
 const getAgencyIcon = (agency: string) => {
   switch (agency) {
-    // --- Core branches ---
-    case 'Air Force':
+    case "Air Force":
       return <img src="/Air_Force.png" alt="Air Force" className="h-4 w-4 object-contain" />;
-    case 'Army':
+    case "Space Force":
+      return <img src="/Space_Force.png" alt="Space Force" className="h-4 w-4 object-contain" />;
+    case "Army":
       return <img src="/Army.png" alt="Army" className="h-4 w-4 object-contain" />;
-    case 'Navy':
+    case "Navy":
       return <img src="/Navy.png" alt="Navy" className="h-4 w-4 object-contain" />;
-    case 'Marine Corps':
-      return <img src="/Marine Corps.png" alt="Marine Corps" className="h-4 w-4 object-contain" />;
-    case 'Space Force':
-      return <img src="/Space Force.png" alt="Space Force" className="h-4 w-4 object-contain" />;
-
-    // --- Guard / Reserve ---
-    case 'Army Reserve':
+    case "Marine Corps":
+      return <img src="/Marine_Corps.png" alt="Marine Corps" className="h-4 w-4 object-contain" />;
+    case "Army Reserve":
       return <img src="/Army_Reserve.png" alt="Army Reserve" className="h-4 w-4 object-contain" />;
-    case 'Army National Guard':
-      return <img src="/Army National Guard.png" alt="Army National Guard" className="h-4 w-4 object-contain" />;
-    case 'Navy Reserve':
-      return <img src="/Navy Reserve.png" alt="Navy Reserve" className="h-4 w-4 object-contain" />;
-    case 'Marine Corps Reserve':
-      return <img src="/Marine Corps Reserve.png" alt="Marine Corps Reserve" className="h-4 w-4 object-contain" />;
-    case 'Air Force Reserve':
-      return <img src="/Air Force Reserve.png" alt="Air Force Reserve" className="h-4 w-4 object-contain" />;
-    case 'Air National Guard':
-      return <img src="/Air National Guard.png" alt="Air National Guard" className="h-4 w-4 object-contain" />;
-    case 'OSD':
+    case "Army National Guard":
+      return <img src="/Army_National_Guard.png" alt="Army National Guard" className="h-4 w-4 object-contain" />;
+    case "Navy Reserve":
+      return <img src="/Navy_Reserve.png" alt="Navy Reserve" className="h-4 w-4 object-contain" />;
+    case "Marine Corps Reserve":
+      return <img src="/Marine_Corps_Reserve.png" alt="Marine Corps Reserve" className="h-4 w-4 object-contain" />;
+    case "Air Force Reserve":
+      return <img src="/Air_Force_Reserve.png" alt="Air Force Reserve" className="h-4 w-4 object-contain" />;
+    case "Air National Guard":
+      return <img src="/Air_National_Guard.png" alt="Air National Guard" className="h-4 w-4 object-contain" />;
+    case "OSD":
       return <img src="/Office_of_the_Secretary_of_Defense.png" alt="OSD" className="h-4 w-4 object-contain" />;
-    case 'United States Court of Appeals for the Armed Forces':
-      return <img src="/Court_of_Appeals.png" alt="United States Court of Appeals for the Armed Forces" className="h-4 w-4 object-contain" />;
-    case 'Defense Health Program':
+    case "United States Court of Appeals for the Armed Forces":
+      return <img src="/Court_of_Appeals.png" alt="Court of Appeals" className="h-4 w-4 object-contain" />;
+    case "Defense Health Program":
       return <img src="/Military_Health_System.png" alt="Defense Health Program" className="h-4 w-4 object-contain" />;
-
     default:
       return null;
   }
@@ -255,39 +347,71 @@ const getAgencyIcon = (agency: string) => {
 
 
 
-const DefenseBudgetBreakdown = () => {
-  const [csvRows, setCsvRows] = useState<any[]>([]);  
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedAgency, setSelectedAgency] = useState("All Agencies");
+interface DefenseBudgetBreakdownProps {
+  platformName?: string;   // keyword to auto-filter BLIs
+  hideSearch?: boolean;    // hide search UI when in detail view
+}
+
+// --- Component ---
+const DefenseBudgetBreakdown = ({ platformName, hideSearch }: { platformName?: string; hideSearch?: boolean }) => {
+  const [csvRows, setCsvRows] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState(platformName || "");
+  const [selectedAgency, setSelectedAgency] = useState("All");
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [compareFrom, setCompareFrom] = useState("FY24 Actuals");
   const [compareTo, setCompareTo] = useState("FY26 Request");
   const [showColumnSelector, setShowColumnSelector] = useState(false);
-  const [visibleColumns, setVisibleColumns] = useState<Set<string>>(new Set([
-    "fy24Actuals", "fy25Enacted", "fy25Total", "fy25Supplemental", "fy26Request", "fy26Reconciliation", "fy26Total"
-  ]));
+  const [visibleColumns, setVisibleColumns] = useState<Set<string>>(
+    new Set(["fy24Actuals", "fy25Enacted", "fy25Total", "fy25Supplemental", "fy26Request", "fy26Reconciliation", "fy26Total"])
+  );
   const [compareMode, setCompareMode] = useState(false);
   
 
   useEffect(() => {
     async function fetchData() {
-        const p1Rows = await loadCsv("/p1_display.csv");
-        const r1Rows = await loadCsv("/r1_display.csv");
-        const o1Rows = await loadCsv("/o1_display.csv");
+      const p1Rows = await loadCsv("/p1_display.csv");
+      const r1Rows = await loadCsv("/r1_display.csv");
+      const o1Rows = await loadCsv("/o1_display.csv");
 
-        const procurementData = buildProcurementHierarchy(p1Rows);
-        const rdteData = buildRDTEHierarchy(r1Rows);
-        const omData = buildOMHierarchy(o1Rows);
+      const filterRows = (rows: any[]) => {
+        let result = rows;
 
-        setCsvRows([...procurementData, ...rdteData, ...omData]);
+        if (selectedAgency !== "All") {
+          result = result.filter(r => {
+            const org = r["Organization"] || "";
+            const accountTitle = r["Account Title"] || "";
+            const agency = normalizeAgency(org, accountTitle);
+            return agency === selectedAgency;
+          });
+        }
+
+
+
+        // platform filter (match across all book types)
+        if (platformName) {
+          const keyword = platformName.toLowerCase();
+          result = result.filter(r =>
+            (r["Budget Line Item (BLI) Title"] || "").toLowerCase().includes(keyword) ||
+            (r["Program Element/Budget Line Item (BLI) Title"] || "").toLowerCase().includes(keyword) ||
+            (r["SAG/Budget Line Item (BLI) Title"] || "").toLowerCase().includes(keyword)
+          );
+        }
+
+        return result;
+      };
+
+
+      const procurementData = buildProcurementHierarchy(filterRows(p1Rows));
+      const rdteData = buildRDTEHierarchy(filterRows(r1Rows));
+      const omData = buildOMHierarchy(filterRows(o1Rows));
+
+      setCsvRows([...procurementData, ...rdteData, ...omData]);
     }
-    fetchData();
-    }, []);
 
+    fetchData();
+  }, [selectedAgency, platformName]);
 
   const budgetData = useMemo(() => csvRows, [csvRows]);
-
-
   const fiscalYearOptions = [
     "FY24 Actuals",
     "FY25 Enacted", 
@@ -356,15 +480,19 @@ const DefenseBudgetBreakdown = () => {
     setExpandedItems(newExpanded);
   };
 
-  const formatCurrency = (value: number) => {
-    if (!value || value === 0) return "—";
-    return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        notation: "compact",
-        maximumFractionDigits: 2,
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      notation: "compact",
+      minimumFractionDigits: 2,   // 👈 force at least 2
+      maximumFractionDigits: 2,   // 👈 round to 2
     }).format(value);
-    };
+
+  const formatDisplay = (value: number) => {
+    if (!value || value === 0) return "—";  
+    return formatCurrency(value);
+  };
 
 
 
@@ -411,35 +539,33 @@ const DefenseBudgetBreakdown = () => {
 
 
   const filteredData = useMemo(() => {
-    const filterItems = (items: BudgetItem[]): BudgetItem[] => {
-      return items.filter(item => {
-        const matchesSearch = !searchQuery || 
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.programElement?.toLowerCase().includes(searchQuery.toLowerCase());
-        
-        const matchesAgency = selectedAgency === "All Agencies" || 
-                      item.agency === selectedAgency || 
-                      item.agency === "All";
+    const filterItems = (items: BudgetItem[], level = 0): BudgetItem[] => {
+      return items
+        .filter(item => {
+          const matchesSearch =
+            (!searchQuery && !platformName) ||
+            item.name.toLowerCase().includes((searchQuery || platformName || "").toLowerCase()) ||
+            item.programElement?.toLowerCase().includes((searchQuery || platformName || "").toLowerCase());
 
-        if (matchesSearch && matchesAgency) {
-          return true;
-        }
+          if (matchesSearch) return true;
 
-        // Check if any children match
-        if (item.children) {
-          const filteredChildren = filterItems(item.children);
-          return filteredChildren.length > 0;
-        }
+          if (item.children) {
+            const filteredChildren = filterItems(item.children, level + 1);
+            return filteredChildren.length > 0;
+          }
 
-        return false;
-      }).map(item => ({
-        ...item,
-        children: item.children ? filterItems(item.children) : undefined
-      }));
+          return false;
+        })
+        .map(item => ({
+          ...item,
+          children: item.children ? filterItems(item.children, level + 1) : undefined
+        }));
     };
 
-    return filterItems(budgetData);
-  }, [searchQuery, selectedAgency]);
+    return filterItems(csvRows, 0);
+  }, [csvRows, searchQuery, platformName]);
+
+
 
   const renderBudgetItem = (item: BudgetItem) => {
     const hasChildren = item.children && item.children.length > 0;
@@ -499,10 +625,7 @@ const DefenseBudgetBreakdown = () => {
             {visibleCols.map((column, colIndex) => (
               <div key={column.key} className={`flex-1 p-3 text-center text-sm ${colIndex > 0 ? 'border-l border-border' : ''}`}>
                 <div className="font-medium">
-                  {column.key === "fy25Supplemental" && column.value(item) === undefined 
-                    ? "—" 
-                    : formatCurrency(column.value(item) || 0)
-                  }
+                  {formatDisplay(column.value(item) || 0)}
                 </div>
               </div>
             ))}
@@ -613,24 +736,26 @@ const DefenseBudgetBreakdown = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search programs (e.g., CH-53K)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8"
-              />
+          {!hideSearch && (
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search programs (e.g., CH-53K)..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-8"
+                />
+              </div>
             </div>
-          </div>
+          )}
+
           <div className="md:w-48">
             <Select value={selectedAgency} onValueChange={setSelectedAgency}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="All Agencies">All Agencies</SelectItem>
                 {agencies.map(agency => (
                   <SelectItem key={agency} value={agency}>
                     {agency}
@@ -681,10 +806,9 @@ const DefenseBudgetBreakdown = () => {
           </div>
 
           {/* Data Rows */}
-          <div className="min-h-[400px]">
+          <div>
             {filteredData.map(item => renderBudgetItem(item))}
           </div>
-
           {filteredData.length === 0 && (
             <div className="text-center py-12 text-muted-foreground">
               No budget items found matching your search criteria.

@@ -3,19 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Defense Funding Analyzer</title>
+    <title>Astra</title>
     <meta name="description" content="Analyze historical funding data for government defense programs and weapon systems" />
-    <meta name="author" content="Lovable" />
+    <meta name="author" content="Parts Life, Inc." />
 
-    <meta property="og:title" content="Defense Funding Analyzer" />
+    <!-- Favicon -->
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/Eagle-Sight/partslife.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/Eagle-Sight/partslife.png" sizes="192x192" />
+    <link rel="shortcut icon" href="/Eagle-Sight/eagle-icon.ico" />
+
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Astra" />
     <meta property="og:description" content="Analyze historical funding data for government defense programs and weapon systems" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://duch-deval.github.io/Eagle-Sight/" />
+    <meta property="og:image" content="https://duch-deval.github.io/Eagle-Sight/eagle-icon.ico" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="Astra" />
+    <meta name="twitter:description" content="Analyze historical funding data for government defense programs and weapon systems" />
+    <meta name="twitter:image" content="https://duch-deval.github.io/Eagle-Sight/eagle-icon.ico" />
   </head>
+
+  <script>
+  (function() {
+    if (sessionStorage.redirect) {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      window.history.replaceState(null, null, redirect);
+    }
+  })();
+</script>
 
   <body>
     <div id="root"></div>
