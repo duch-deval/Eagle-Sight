@@ -275,7 +275,7 @@ const DepotDetail = () => {
               subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
             />
             <FunctionalTreeMap
-              rootLabel="CH-53K Depot Work @ FRCE"
+              rootLabel="CH-53K"
               rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
               lanes={[
                 {
