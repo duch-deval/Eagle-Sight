@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -55,7 +56,7 @@ const PointsOfContact = () => {
 
         const contactsArray = allData.map(row => ({
           email: row.email,
-          roles: new Set(row.roles),
+          roles: new Set<string>(row.roles as string[]),
           awardCount: row.total_awards,
           fundingOffices: row.funding_offices || []
         }));
@@ -124,7 +125,16 @@ const PointsOfContact = () => {
         </CardHeader>
         <CardContent>
           {loading ? (
-            <p>Loading contacts...</p>
+            <div className="space-y-3">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <Skeleton className="h-4 w-48" />
+                  <Skeleton className="h-4 w-24" />
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-4 w-16 ml-auto" />
+                </div>
+              ))}
+            </div>
           ) : filteredContacts.length === 0 ? (
             <p>No matching contacts found.</p>
           ) : (

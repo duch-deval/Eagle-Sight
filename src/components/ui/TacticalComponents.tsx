@@ -46,7 +46,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const CorporateInput: React.FC<InputProps> = ({ label, icon, className = '', ...props }) => {
   return (
     <div className="w-full">
-      {label && <label className="block text-xs font-bold text-slate-500 uppercase mb-1.5 tracking-wider">{label}</label>}
+      {label && <label className="block text-xs font-bold text-muted-foreground uppercase mb-1.5 tracking-wider">{label}</label>}
       <div className="relative group">
         {icon && (
           <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-corporate-blue transition-colors">
@@ -54,7 +54,7 @@ export const CorporateInput: React.FC<InputProps> = ({ label, icon, className = 
           </div>
         )}
         <input
-          className={`w-full bg-white border border-slate-300 text-slate-800 text-sm font-sans placeholder:text-slate-400 focus:border-corporate-blue focus:ring-1 focus:ring-corporate-blue focus:outline-none py-2.5 rounded-sm ${icon ? 'pl-9' : 'pl-3'} pr-3 transition-all shadow-sm ${className}`}
+          className={`w-full bg-card border border-border text-foreground text-sm font-sans placeholder:text-muted-foreground focus:border-corporate-blue focus:ring-1 focus:ring-corporate-blue focus:outline-none py-2.5 rounded-sm ${icon ? 'pl-9' : 'pl-3'} pr-3 transition-all shadow-sm ${className}`}
           {...props}
         />
       </div>
@@ -70,10 +70,10 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 export const CorporateSelect: React.FC<SelectProps> = ({ label, children, className = '', ...props }) => {
   return (
     <div className="w-full">
-      {label && <label className="block text-xs font-bold text-slate-500 uppercase mb-1.5 tracking-wider">{label}</label>}
+      {label && <label className="block text-xs font-bold text-muted-foreground uppercase mb-1.5 tracking-wider">{label}</label>}
       <div className="relative">
         <select
-          className={`appearance-none w-full bg-white border border-slate-300 text-slate-800 text-sm font-sans focus:border-corporate-blue focus:ring-1 focus:ring-corporate-blue focus:outline-none py-2.5 pl-3 pr-8 rounded-sm cursor-pointer shadow-sm ${className}`}
+          className={`appearance-none w-full bg-card border border-border text-foreground text-sm font-sans focus:border-corporate-blue focus:ring-1 focus:ring-corporate-blue focus:outline-none py-2.5 pl-3 pr-8 rounded-sm cursor-pointer shadow-sm ${className}`}
           {...props}
         >
           {children}
@@ -99,7 +99,7 @@ export const CorporateCard: React.FC<CorporateCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white border border-slate-200 shadow-sm rounded-sm overflow-hidden flex flex-col ${hoverEffect ? 'hover:shadow-md hover:border-slate-300 transition-all duration-300' : ''} ${className}`}
+      className={`bg-card border border-border shadow-sm rounded-sm overflow-hidden flex flex-col transition-all duration-200 ${hoverEffect ? 'hover:shadow-lg hover:-translate-y-0.5 hover:border-primary/30' : ''} ${className}`}
       {...props}
     >
       {children}
@@ -111,12 +111,12 @@ export const CorporateCard: React.FC<CorporateCardProps> = ({
 export const SectionHeader: React.FC<{ title: string; subtitle?: string; align?: 'left' | 'center' }> = ({ title, subtitle, align = 'left' }) => {
   return (
     <div className={`mb-8 ${align === 'center' ? 'text-center' : ''}`}>
-      <h2 className="text-2xl font-bold text-corporate-navy mb-2 uppercase tracking-tight flex items-center gap-3">
+      <h2 className="text-2xl font-extrabold text-foreground mb-2 uppercase tracking-tight flex items-center gap-3">
         {title}
-        {align !== 'center' && <div className="h-px flex-1 bg-slate-200"></div>}
+        {align !== 'center' && <div className="h-px flex-1 bg-border"></div>}
       </h2>
       {subtitle && (
-        <p className="text-sm text-slate-500 max-w-3xl leading-relaxed">{subtitle}</p>
+        <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed">{subtitle}</p>
       )}
     </div>
   );

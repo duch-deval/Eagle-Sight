@@ -48,8 +48,8 @@ export function AppSidebar() {
 
   const getNavCls = (path: string) =>
     isActive(path)
-      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium border-r-2 border-sidebar-primary"
-      : "hover:bg-sidebar-accent text-[hsl(var(--sidebar-foreground))] hover:text-sidebar-primary";
+      ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold border-l-[3px] border-l-blue-400 pl-3"
+      : "hover:bg-sidebar-accent/50 text-[hsl(var(--sidebar-foreground))] hover:text-sidebar-primary transition-all duration-200";
 
 
 

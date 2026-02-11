@@ -23,7 +23,7 @@ export const WeaponPlatformCard: React.FC<WeaponPlatformCardProps> = ({
     const navigate = useNavigate();
 
     return (
-        <CorporateCard className="group h-full border-t-4 border-t-slate-200 hover:border-t-corporate-blue flex flex-col">
+        <CorporateCard className="group h-full border-t-4 border-t-border hover:border-t-corporate-blue flex flex-col transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <div
                 className="h-48 bg-slate-200 relative overflow-hidden cursor-pointer"
                 onClick={() => navigate(`/platforms/${id}`)}
@@ -37,12 +37,12 @@ export const WeaponPlatformCard: React.FC<WeaponPlatformCardProps> = ({
                         e.currentTarget.nextElementSibling?.classList.remove("hidden");
                     }}
                 />
-                <div className="absolute inset-0 bg-slate-800 flex items-center justify-center hidden">
-                    <div className="text-white opacity-10 text-8xl font-bold tracking-tighter select-none">
+                <div className="absolute inset-0 bg-muted flex items-center justify-center hidden">
+                    <div className="text-muted-foreground opacity-10 text-8xl font-bold tracking-tighter select-none">
                         {name.substring(0, 2)}
                     </div>
                 </div>
-                <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-corporate-navy text-[10px] font-bold px-3 py-1 uppercase tracking-wider shadow-sm">
+                <div className="absolute top-2 right-2 bg-card/90 backdrop-blur-sm text-foreground text-[10px] font-bold px-3 py-1 uppercase tracking-wider shadow-sm">
                     {category}
                 </div>
             </div>
@@ -58,11 +58,11 @@ export const WeaponPlatformCard: React.FC<WeaponPlatformCardProps> = ({
                         </h3>
                         <FileBarChart className="h-5 w-5 text-slate-300 group-hover:text-corporate-blue transition-colors" />
                     </div>
-                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 border-b border-slate-100 pb-3">
+                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-3 border-b border-border pb-3">
                         Prime: {contractors?.[0] || "Unknown"}
                     </div>
                     {description && (
-                        <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
+                        <p className="text-muted-foreground text-xs leading-relaxed line-clamp-3">
                             {description}
                         </p>
                     )}

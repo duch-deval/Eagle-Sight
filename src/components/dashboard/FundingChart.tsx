@@ -32,6 +32,8 @@ import {
 interface FundingRow {
   year: string;
   month?: string;
+  calYear?: number | string;
+  fy?: string;
   [fscCode: string]: number | string | undefined;
 }
 const colors = [
@@ -76,7 +78,7 @@ const FundingChart = () => {
     }
 
     const load = async () => {
-      const data = await fetchFundingByOffice(activeOffice, 20000);
+      const data = await fetchFundingByOffice(activeOffice);
 
       setRows(data);
     };
@@ -95,7 +97,7 @@ const FundingChart = () => {
     const allYears: string[] = [];
 
     const yearlyTotals: Record<string, Record<string, number>> = {};
-    const monthlyTotals: Record<string, Record<string, number>> = {};
+    const monthlyTotals: Record<string, Record<string, number | string>> = {};
 
     rows.forEach((r: any) => {
       const rawFsc = r.fsc || "Unknown";
@@ -115,7 +117,7 @@ const FundingChart = () => {
       const calYear = awardDate.getFullYear();
       const ym = `${year}-${month}`;
       if (!monthlyTotals[ym]) monthlyTotals[ym] = { year, fy: year, calYear, month };
-      monthlyTotals[ym][fsc] = (monthlyTotals[ym][fsc] || 0) + amount;
+      monthlyTotals[ym][fsc] = ((monthlyTotals[ym][fsc] as number) || 0) + amount;
     });
 
     Object.entries(yearlyTotals).forEach(([year, fscAmounts]) => {

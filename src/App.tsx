@@ -29,13 +29,13 @@ const App = () => (
             <AppSidebar />
 
             <div className="flex-1 flex flex-col">
-              <header className="h-12 flex items-center border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 px-4">
+              <header className="h-12 flex items-center border-b border-border/60 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 px-4 shadow-sm">
                 <SidebarTrigger />
                 <ThemeToggle />
               </header>
 
 
-              <main className="flex-1">
+              <main className="flex-1 animate-in">
                 <Routes>
                   <Route path="/" element={<Homepage />} />
                   <Route path="/platforms" element={<WeaponsPlatforms />} />
