@@ -55,7 +55,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      className={`${collapsed ? "w-12" : "w-48"} bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))]`}
+      className="bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))]"
       collapsible="icon"
     >
 
