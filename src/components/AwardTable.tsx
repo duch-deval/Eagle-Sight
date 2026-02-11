@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { ArrowUpDown, Search, Filter, X, Check } from "lucide-react";
 
 // ============================================

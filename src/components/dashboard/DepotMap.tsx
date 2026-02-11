@@ -6,6 +6,7 @@ import {
   Marker,
 } from "react-simple-maps";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface DepotMapProps {
   depots: DepotLocation[];
@@ -16,6 +17,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 export const DepotMap = ({ depots }: DepotMapProps) => {
   const [hoveredDepot, setHoveredDepot] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-6">
@@ -68,6 +70,14 @@ export const DepotMap = ({ depots }: DepotMapProps) => {
                 coordinates={[depot.coordinates.lon, depot.coordinates.lat]}
                 onMouseEnter={() => setHoveredDepot(depot.name)}
                 onMouseLeave={() => setHoveredDepot(null)}
+                onClick={() => {
+                  if (depot.id) navigate(`/depots/${depot.id}`);
+                }}
+                style={{
+                  default: { cursor: "pointer" },
+                  hover: { cursor: "pointer" },
+                  pressed: { cursor: "pointer" },
+                }}
               >
                 {/* Pulse ring animation */}
                 <circle
@@ -125,8 +135,8 @@ export const DepotMap = ({ depots }: DepotMapProps) => {
                       fill="#94a3b8"
                       style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}
                     >
-                      {depot.name.length > 28 
-                        ? depot.name.substring(0, 28) + "..." 
+                      {depot.name.length > 28
+                        ? depot.name.substring(0, 28) + "..."
                         : depot.name}
                     </text>
 

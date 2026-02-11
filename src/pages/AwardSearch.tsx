@@ -1,6 +1,5 @@
 import FundingChart from "@/components/dashboard/FundingChart";
 import TreemapChart from "@/components/dashboard/TreemapChart";
-import SetAsideDashboard from "@/components/dashboard/SetAsideDashboard";
 
 const AwardSearch = () => {
   return (

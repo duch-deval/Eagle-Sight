@@ -126,6 +126,7 @@ export function usePlatformById(id: string | undefined) {
       const depots: DepotLocation[] = (depotsRes.data || [])
         .filter((link: any) => link.depots)
         .map((link: any) => ({
+          id: link.depots.id,
           name: link.depots.name,
           base: link.depots.base,
           roles: link.roles || [],
@@ -143,6 +144,7 @@ export function usePlatformById(id: string | undefined) {
         title: c.title,
         organization: c.organization,
         email: c.email,
+        phone: c.phone,
       }));
 
       // Build full platform object
@@ -270,7 +272,7 @@ export function useSearchPlatforms(query: string, category?: string) {
         // Fetch all
         setLoading(true);
         const { data } = await supabase.from("platforms").select("*").order("name");
-        
+
         const transformed = (data || []).map((row) => ({
           id: row.id,
           name: row.name,
@@ -449,4 +451,115 @@ export function useCategories() {
   }, []);
 
   return categories;
+}
+
+// ============================================================
+// FETCH DEPOT BY ID
+// ============================================================
+export interface DepotDetail {
+  id: string;
+  name: string;
+  base: string;
+  lat?: number;
+  lon?: number;
+  source?: string;
+  sourceDate?: string;
+  // Aggregated from linked platforms
+  platforms: {
+    id: string;
+    name: string;
+    category: string;
+    status: string;
+    pmaCode?: string;
+    contractingOffices?: string[];
+    description?: string;
+    contractors?: string[];
+  }[];
+}
+
+export function useDepotById(id: string | undefined) {
+  const [depot, setDepot] = useState<DepotDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchDepot = async () => {
+      setLoading(true);
+      setError(null);
+
+      // 1. Fetch Depot Info
+      const { data: depotData, error: depotError } = await supabase
+        .from("depots")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (depotError) {
+        console.error("Error fetching depot:", depotError);
+        setError(depotError.message);
+        setLoading(false);
+        return;
+      }
+
+      // 2. Fetch Linked Platforms with Link Metadata
+      const { data: linksData, error: linksError } = await supabase
+        .from("platform_depot_links")
+        .select(`
+          platform_id,
+          pma_code,
+          contracting_offices,
+          platforms (
+            id,
+            name,
+            category,
+            status,
+            display_data,
+            prime_contractor
+          )
+        `)
+        .eq("depot_id", id);
+
+      if (linksError) {
+        console.error("Error fetching depot links:", linksError);
+      }
+
+      // 3. Transform Data
+      const platforms = (linksData || [])
+        .filter((l: any) => l.platforms)
+        .map((l: any) => ({
+          id: l.platforms.id,
+          name: l.platforms.name,
+          category: l.platforms.category,
+          status: l.platforms.status,
+          pmaCode: l.pma_code,
+          contractingOffices: l.contracting_offices,
+          // Extract card details
+          description: l.platforms.display_data?.description || "",
+          contractors: l.platforms.display_data?.contractors || [l.platforms.prime_contractor].filter(Boolean),
+        }))
+        .sort((a: any, b: any) => a.name.localeCompare(b.name));
+
+      setDepot({
+        id: depotData.id,
+        name: depotData.name,
+        base: depotData.base,
+        lat: depotData.lat,
+        lon: depotData.lon,
+        source: depotData.source,
+        sourceDate: depotData.source_date,
+        platforms,
+      });
+
+      setLoading(false);
+    };
+
+    fetchDepot();
+  }, [id]);
+
+  return { depot, loading, error };
 }

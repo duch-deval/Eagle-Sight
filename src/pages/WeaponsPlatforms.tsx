@@ -6,6 +6,7 @@ import type { DepotLocation } from "@/data/weaponsPlatforms";
 import { usePlatforms, useAllDepots } from "@/hooks/usePlatforms";
 import { CorporateButton, CorporateInput, CorporateSelect, CorporateCard } from "@/components/ui/TacticalComponents";
 import { DepotMap } from "@/components/dashboard/DepotMap";
+import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
 
 const WeaponsPlatforms = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const WeaponsPlatforms = () => {
       const key = `${d.coordinates.lat.toFixed(4)},${d.coordinates.lon.toFixed(4)}`;
       if (!seen.has(key)) {
         seen.set(key, {
+          id: d.depotId,
           name: d.name,
           base: d.base,
           roles: d.roles,
@@ -225,57 +227,15 @@ const WeaponsPlatforms = () => {
         {!loading && !error && viewMode === "grid" && (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredWeapons.map((w) => (
-              <CorporateCard key={w.id} className="group h-full border-t-4 border-t-slate-200 hover:border-t-corporate-blue">
-                <div
-                  className="h-48 bg-slate-200 relative overflow-hidden cursor-pointer"
-                  onClick={() => navigate(`/platforms/${w.id}`)}
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}${w.id}.jpg`}
-                    alt={w.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).style.display = "none";
-                      e.currentTarget.nextElementSibling?.classList.remove("hidden");
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-slate-800 flex items-center justify-center hidden">
-                    <div className="text-white opacity-10 text-8xl font-bold tracking-tighter select-none">
-                      {w.name.substring(0, 2)}
-                    </div>
-                  </div>
-                  <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-corporate-navy text-[10px] font-bold px-3 py-1 uppercase tracking-wider shadow-sm">
-                    {w.category}
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="mb-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3
-                        className="text-xl font-bold text-corporate-navy group-hover:text-corporate-blue transition-colors cursor-pointer"
-                        onClick={() => navigate(`/platforms/${w.id}`)}
-                      >
-                        {w.name}
-                      </h3>
-                      <FileBarChart className="h-5 w-5 text-slate-300 group-hover:text-corporate-blue transition-colors" />
-                    </div>
-                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 border-b border-slate-100 pb-3">
-                      Prime: {w.contractors?.[0] || "Unknown"}
-                    </div>
-                    <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">{w.description}</p>
-                  </div>
-
-                  <div className="mt-auto pt-4 flex justify-between items-center">
-                    <button
-                      onClick={() => navigate(`/platforms/${w.id}`)}
-                      className="text-corporate-blue font-bold text-xs flex items-center group-hover:underline"
-                    >
-                      View Details <ArrowRight className="ml-1 h-3 w-3" />
-                    </button>
-                  </div>
-                </div>
-              </CorporateCard>
+              <WeaponPlatformCard
+                key={w.id}
+                id={w.id}
+                name={w.name}
+                category={w.category}
+                description={w.description}
+                contractors={w.contractors}
+                imagePath={`${import.meta.env.BASE_URL}${w.id}.jpg`}
+              />
             ))}
           </div>
         )}

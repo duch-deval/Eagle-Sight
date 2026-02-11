@@ -1,20 +1,10 @@
-import { useState } from "react";
-import { 
-  Home, 
-  Search, 
-  Building2, 
-  FileText, 
-  BarChart3, 
-  Map, 
-  Shield, 
-  Target, 
-  TrendingUp,
+import {
+  Home,
+  Search,
+  FileText,
   Download,
   Award,
-  Users,
-  Globe,
   FolderOpen,
-  MessageSquare
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 

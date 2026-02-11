@@ -23,6 +23,7 @@ const WeaponPlatformDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
+  const [showAllContacts, setShowAllContacts] = useState(false);
 
   // Fetch from Supabase
   const { platform: weapon, loading, error } = usePlatformById(id);
@@ -97,8 +98,8 @@ const WeaponPlatformDetail = () => {
             className="w-full h-full object-cover"
             alt={weapon.name}
             onError={(e) =>
-              ((e.currentTarget as HTMLImageElement).src =
-                "https://images.unsplash.com/photo-1574587020303-7d2a8622930b?q=80&w=2670")
+            ((e.currentTarget as HTMLImageElement).src =
+              "https://images.unsplash.com/photo-1574587020303-7d2a8622930b?q=80&w=2670")
             }
           />
         </div>
@@ -173,11 +174,10 @@ const WeaponPlatformDetail = () => {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`pb-3 text-xs font-bold uppercase tracking-widest border-b-2 transition-colors ${
-                      activeTab === tab
-                        ? "border-corporate-blue text-corporate-blue"
-                        : "border-transparent text-slate-400 hover:text-slate-600 hover:border-slate-300"
-                    }`}
+                    className={`pb-3 text-xs font-bold uppercase tracking-widest border-b-2 transition-colors ${activeTab === tab
+                      ? "border-corporate-blue text-corporate-blue"
+                      : "border-transparent text-slate-400 hover:text-slate-600 hover:border-slate-300"
+                      }`}
                   >
                     {tab}
                   </button>
@@ -414,7 +414,7 @@ const WeaponPlatformDetail = () => {
                         <Users className="h-4 w-4" /> Program Contacts ({weapon.keyContacts.length})
                       </h3>
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                        {weapon.keyContacts.slice(0, 6).map((contact, i) => (
+                        {weapon.keyContacts.slice(0, showAllContacts ? undefined : 6).map((contact, i) => (
                           <div
                             key={i}
                             className="bg-slate-50 border border-slate-200 p-3 rounded-sm"
@@ -424,23 +424,47 @@ const WeaponPlatformDetail = () => {
                               <div className="text-[10px] text-slate-500">{contact.title}</div>
                             )}
                             {contact.organization && (
-                              <div className="text-[10px] text-slate-400">{contact.organization}</div>
+                              <div className="text-[10px] text-slate-400 mb-2">{contact.organization}</div>
                             )}
-                            {contact.email && (
-                              <Link
-                                to={`/points-of-contact/${encodeURIComponent(contact.email)}`}
-                                className="text-[10px] text-corporate-blue hover:underline flex items-center gap-1 mt-1"
-                              >
-                                View Awards <ExternalLink className="h-2.5 w-2.5" />
-                              </Link>
-                            )}
+
+                            <div className="space-y-1 border-t border-slate-200 pt-2 mt-auto">
+                              {contact.email && (
+                                <div className="flex items-center gap-2 text-[10px] text-slate-500">
+                                  <Mail className="h-3 w-3 text-corporate-blue flex-shrink-0" />
+                                  <a href={`mailto:${contact.email}`} className="hover:text-corporate-blue hover:underline truncate">
+                                    {contact.email}
+                                  </a>
+                                </div>
+                              )}
+
+                              {contact.phone && (
+                                <div className="flex items-center gap-2 text-[10px] text-slate-500">
+                                  <Phone className="h-3 w-3 text-corporate-blue flex-shrink-0" />
+                                  <span>{contact.phone}</span>
+                                </div>
+                              )}
+
+                              {contact.email && (
+                                <Link
+                                  to={`/points-of-contact/${encodeURIComponent(contact.email)}`}
+                                  className="text-[10px] text-corporate-blue hover:underline flex items-center gap-1 mt-1 font-medium"
+                                >
+                                  View Awards <ExternalLink className="h-2.5 w-2.5" />
+                                </Link>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
                       {weapon.keyContacts.length > 6 && (
-                        <p className="text-[10px] text-slate-400 mt-2">
-                          + {weapon.keyContacts.length - 6} more contacts
-                        </p>
+                        <button
+                          onClick={() => setShowAllContacts(!showAllContacts)}
+                          className="text-[10px] text-corporate-blue hover:text-corporate-navy mt-3 font-bold uppercase tracking-wide flex items-center gap-1"
+                        >
+                          {showAllContacts
+                            ? "Show Less"
+                            : `+ ${weapon.keyContacts.length - 6} more contacts`}
+                        </button>
                       )}
                     </div>
                   )}
@@ -556,7 +580,7 @@ const WeaponPlatformDetail = () => {
             {weapon.contractors && weapon.contractors.length > 1 && (
               <div className="bg-slate-50 border border-slate-200 p-5">
                 <h3 className="font-bold uppercase tracking-wide mb-4 text-xs text-corporate-navy border-b border-slate-200 pb-2">
-                  Contractors
+                  OEM/Integrator/Contractors
                 </h3>
                 <ul className="space-y-2">
                   {weapon.contractors.map((contractor, i) => (

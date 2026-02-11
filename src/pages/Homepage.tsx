@@ -2,7 +2,6 @@ import AgencySpendingChart from "@/components/dashboard/AgencySpendingChart";
 import BudgetAnalysis from "@/components/dashboard/BudgetAnalysis";
 import DefenseBudgetBreakdown from "@/components/dashboard/DefenseBudgetBreakdown"; 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PieChart } from "lucide-react";
 
 const Homepage = () => {
   return (

@@ -33,6 +33,7 @@ export interface PlatformKeyContact {
   title?: string;
   organization?: string;
   email?: string;
+  phone?: string;
 }
 
 export interface WeaponPerformance {
@@ -53,6 +54,7 @@ export interface WeaponDimensions {
 }
 
 export interface DepotLocation {
+  id?: string;
   name: string;
   base: string;
   roles: string[];
