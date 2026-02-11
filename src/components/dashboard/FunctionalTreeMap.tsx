@@ -33,17 +33,16 @@ interface FunctionalTreeMapProps {
   disclaimer?: string;
 }
 
-// --- Desktop recursive node (top-down: parent above, children below) ---
+// --- Desktop recursive node (top-down, vertically stacked) ---
 const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth = 0 }) => {
   const [open, setOpen] = useState(true);
   const hasChildren = node.children && node.children.length > 0;
 
   return (
-    <div className="flex flex-col items-center">
-      {/* This node */}
+    <div className="flex flex-col items-center w-full">
       <button
         onClick={() => hasChildren && setOpen(!open)}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-sm border transition-all text-left whitespace-nowrap
+        className={`flex items-center gap-2 px-3 py-1.5 rounded-sm border transition-all text-left w-full
           ${depth === 0 ? "bg-muted/60 border-border shadow-sm" : "bg-card border-border hover:border-primary/30"}
           ${hasChildren ? "cursor-pointer" : "cursor-default"}
         `}
@@ -54,24 +53,23 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
             : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
         )}
         {!hasChildren && <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />}
-        <div className="flex flex-col">
-          <span className="text-xs font-semibold text-foreground leading-tight">{node.label}</span>
+        <div className="flex flex-col min-w-0 flex-1">
+          <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>
           {node.subtitle && (
-            <span className="text-[10px] text-muted-foreground leading-tight max-w-[180px] truncate">{node.subtitle}</span>
+            <span className="text-[10px] text-muted-foreground leading-tight truncate">{node.subtitle}</span>
           )}
         </div>
         {node.badge && (
-          <Badge variant={node.badgeVariant ?? "outline"} className="text-[8px] uppercase tracking-wider font-bold ml-1 shrink-0">
+          <Badge variant={node.badgeVariant ?? "outline"} className="text-[8px] uppercase tracking-wider font-bold shrink-0">
             {node.badge}
           </Badge>
         )}
       </button>
 
-      {/* Connector + children below */}
       {hasChildren && open && (
         <>
-          <div className="w-px h-4 bg-border" />
-          <div className="flex flex-row gap-4 items-start justify-center">
+          <div className="w-px h-3 bg-border" />
+          <div className="flex flex-col items-center gap-1 w-full pl-4 border-l-2 border-border ml-4">
             {node.children!.map((child, i) => (
               <DesktopNode key={i} node={child} depth={depth + 1} />
             ))}
@@ -82,39 +80,38 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
   );
 };
 
-// --- Desktop Lane Branch (top-down) ---
+// --- Desktop Lane Branch ---
 const DesktopLaneBranch: React.FC<{ lane: Lane }> = ({ lane }) => {
   const [open, setOpen] = useState(lane.defaultOpen ?? true);
 
   return (
-    <div className="flex flex-col items-center min-w-[180px] max-w-[280px] flex-1">
+    <div className="flex flex-col items-center flex-1 min-w-0">
+      {/* Vertical connector from horizontal bar */}
+      <div className="w-px h-4 bg-border" />
       {/* Lane header */}
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 px-3 py-2 bg-muted/50 border border-border rounded-sm hover:bg-muted transition-colors w-full justify-center cursor-pointer"
       >
         {open
-          ? <ChevronDown className="h-3 w-3 text-muted-foreground" />
-          : <ChevronRight className="h-3 w-3 text-muted-foreground" />
+          ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
+          : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
         }
         {lane.icon}
-        <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">{lane.title}</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-foreground text-center">{lane.title}</span>
         {lane.badgeLabel && (
-          <Badge variant={lane.badgeVariant ?? "secondary"} className="text-[8px] uppercase tracking-wider font-bold">
+          <Badge variant={lane.badgeVariant ?? "secondary"} className="text-[8px] uppercase tracking-wider font-bold shrink-0">
             {lane.badgeLabel}
           </Badge>
         )}
       </button>
-      {/* Connector + nodes below */}
+      {/* Nodes below */}
       {open && (
-        <>
-          <div className="w-px h-5 bg-border" />
-          <div className="flex flex-col items-center gap-1">
-            {lane.nodes.map((node, i) => (
-              <DesktopNode key={i} node={node} />
-            ))}
-          </div>
-        </>
+        <div className="flex flex-col items-center gap-1 w-full mt-1">
+          {lane.nodes.map((node, i) => (
+            <DesktopNode key={i} node={node} />
+          ))}
+        </div>
       )}
     </div>
   );
@@ -186,7 +183,6 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
   return (
     <div className="space-y-3 animate-in">
       {isMobile ? (
-        /* ===== MOBILE: root on top, stacked accordions below ===== */
         <div className="flex flex-col gap-2">
           <div className="bg-primary/10 border border-primary/20 rounded-sm px-4 py-3">
             <div className="flex items-center justify-between">
@@ -208,7 +204,6 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
           )}
         </div>
       ) : (
-        /* ===== DESKTOP/TABLET: top-down tree with connectors ===== */
         <div className="flex flex-col items-center gap-0">
           {/* Root at top */}
           <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-3 text-center">
@@ -220,13 +215,18 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
           {/* Vertical connector from root */}
           <div className="w-px h-5 bg-border" />
 
-          {/* Horizontal bar spanning branches */}
+          {/* Horizontal bar */}
           <div className="relative w-full flex justify-center">
-            <div className="h-px bg-border" style={{ width: `${Math.min(lanes.length * 25, 80)}%` }} />
+            <div className="h-px bg-border" style={{ width: `${Math.min(lanes.length * 25, 85)}%` }} />
           </div>
 
-          {/* Branches: flex-wrap gives 2×2 on tablet */}
-          <div className="flex flex-wrap justify-center gap-6 items-start w-full mt-0">
+          {/* Branches in a CSS grid: 4 cols on desktop, 2 cols on tablet */}
+          <div
+            className="grid w-full gap-4"
+            style={{
+              gridTemplateColumns: `repeat(${lanes.length}, minmax(0, 1fr))`,
+            }}
+          >
             {lanes.map((lane, i) => (
               <DesktopLaneBranch key={i} lane={lane} />
             ))}
