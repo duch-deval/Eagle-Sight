@@ -6,13 +6,15 @@ import {
     Loader2,
     Plane,
     FileText,
+    Shield,
+    Wrench,
+    Radio,
 } from "lucide-react";
 import { useDepotById } from "@/hooks/usePlatforms";
 import { CorporateButton, SectionHeader, CorporateCard } from "@/components/ui/TacticalComponents";
 import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
 import { EntityCard } from "@/components/dashboard/EntityCard";
 import FunctionalTreeMap from "@/components/dashboard/FunctionalTreeMap";
-import { Shield, Wrench, FileText as FileIcon, Radio } from "lucide-react";
 
 // Helper to map entity names to images
 const getImageForEntity = (name: string) => {
@@ -279,7 +281,7 @@ const DepotDetail = () => {
                                             },
                                             {
                                                 title: "Contracting Offices",
-                                                icon: <FileIcon className="h-3.5 w-3.5 text-primary" />,
+                                                icon: <FileText className="h-3.5 w-3.5 text-primary" />,
                                                 badgeLabel: "Observed",
                                                 badgeVariant: "outline",
                                                 defaultOpen: true,
