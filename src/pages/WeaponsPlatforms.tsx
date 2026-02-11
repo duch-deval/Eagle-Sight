@@ -81,7 +81,7 @@ const WeaponsPlatforms = () => {
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="container mx-auto px-4 py-8">
+      <div className="px-4 py-8 max-w-[1600px]">
         {/* FILTERS BAR */}
         <div className="bg-card p-6 shadow-sm border border-border mb-8 rounded-sm">
           <div className="flex items-center gap-2 mb-6">
