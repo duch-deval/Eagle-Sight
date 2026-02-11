@@ -1,15 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "https://xkwforssmtaeesmkckod.supabase.co";
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhrd2ZvcnNzbXRhZWVzbWtja29kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2OTE5MTYsImV4cCI6MjA3MzI2NzkxNn0.PvMkUqq7vOna9hiTZWaKxhoFrZAdfolLT9j0ES7lyV8";
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn("⚠️ Supabase credentials not configured. Database features will be unavailable.");
-}
-
-// Only create a real client if credentials exist; otherwise create a dummy placeholder
-const supabase = supabaseUrl && supabaseAnonKey
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : createClient("https://placeholder.supabase.co", "placeholder-key");
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default supabase;
