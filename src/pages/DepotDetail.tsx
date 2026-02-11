@@ -276,7 +276,7 @@ const DepotDetail = () => {
             />
             <FunctionalTreeMap
               rootLabel="CH-53K Depot Work @ FRCE"
-              rootImage="/ch-53k.jpg"
+              rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
               lanes={[
                 {
                   title: "Program Ownership",
