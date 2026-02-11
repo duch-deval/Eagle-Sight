@@ -25,10 +25,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <SidebarProvider defaultOpen={true}>
-          <div className="min-h-screen flex w-full">
+            <div className="min-h-screen flex w-full overflow-hidden">
             <AppSidebar />
 
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col min-w-0">
               <header className="h-12 flex items-center border-b border-border/60 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 px-4 shadow-sm">
                 <SidebarTrigger />
                 <ThemeToggle />
