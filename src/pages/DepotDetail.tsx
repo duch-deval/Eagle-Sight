@@ -222,7 +222,7 @@ const DepotDetail = () => {
                                     />
                                     <FunctionalTreeMap
                                         rootLabel="CH-53K Depot Work @ FRCE"
-                                        rootSubtitle="Heavy-lift helicopter depot-level maintenance and repair"
+                                        rootImage="/ch-53k.jpg"
                                         disclaimer="Functional relationships; not a reporting org chart. Connections reflect observed program, contracting, and sustainment associations."
                                         lanes={[
                                             {

@@ -29,6 +29,7 @@ interface Lane {
 interface FunctionalTreeMapProps {
   rootLabel: string;
   rootSubtitle?: string;
+  rootImage?: string;
   lanes: Lane[];
   disclaimer?: string;
 }
@@ -177,20 +178,18 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
 };
 
 // --- Main ---
-const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, lanes, disclaimer }) => {
+const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, rootImage, lanes, disclaimer }) => {
   const isMobile = useIsMobile();
 
   return (
     <div className="space-y-3 animate-in">
       {isMobile ? (
         <div className="flex flex-col gap-2">
-          <div className="bg-primary/10 border border-primary/20 rounded-sm px-4 py-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
-                {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
-              </div>
-              <Badge variant="default" className="text-[9px] uppercase tracking-wider font-bold">ROOT</Badge>
+          <div className="bg-primary/10 border border-primary/20 rounded-sm px-4 py-3 flex items-center gap-3">
+            {rootImage && <img src={rootImage} alt={rootLabel} className="h-10 w-14 object-cover rounded-sm shrink-0" />}
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
+              {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
             </div>
           </div>
           <div className="space-y-2">
@@ -206,10 +205,12 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
       ) : (
         <div className="flex flex-col items-center gap-0">
           {/* Root at top */}
-          <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-3 text-center">
-            <h3 className="text-sm font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
-            {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
-            <Badge variant="default" className="text-[9px] uppercase tracking-wider font-bold mt-1">ROOT</Badge>
+          <div className="bg-primary/10 border border-primary/20 rounded-sm px-5 py-3 flex items-center gap-3">
+            {rootImage && <img src={rootImage} alt={rootLabel} className="h-12 w-16 object-cover rounded-sm shrink-0" />}
+            <div>
+              <h3 className="text-sm font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
+              {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
+            </div>
           </div>
 
           {/* Vertical connector from root */}
