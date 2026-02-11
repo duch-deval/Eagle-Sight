@@ -177,7 +177,7 @@ const DepotDetail = () => {
               </nav>
             </div>
 
-            {/* Tab: OVERVIEW (Platforms + Functional Tree Map) */}
+            {/* Tab: OVERVIEW (Platforms only — tree map moved below) */}
             {activeTab === "overview" && (
               <div className="space-y-12">
                 <div>
@@ -195,116 +195,6 @@ const DepotDetail = () => {
                       />
                     ))}
                   </div>
-                </div>
-
-                {/* Functional Relationship Tree Map */}
-                <div>
-                  <SectionHeader
-                    title="Functional Relationship Map"
-                    subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
-                  />
-                  <FunctionalTreeMap
-                    rootLabel="CH-53K Depot Work @ FRCE"
-                    rootImage="/ch-53k.jpg"
-                    lanes={[
-                      {
-                        title: "Program Ownership",
-                        icon: <Shield className="h-3.5 w-3.5 text-primary" />,
-                        badgeLabel: "Authoritative",
-                        badgeVariant: "default",
-                        defaultOpen: true,
-                        nodes: [
-                          {
-                            label: "PEO(A)",
-                            subtitle: "Program Executive Office, Air",
-                            badge: "PEO",
-                            badgeVariant: "secondary",
-                            children: [
-                              {
-                                label: "PMA-261",
-                                subtitle: "Heavy Lift Helicopters Program Office",
-                                badge: "PMA",
-                                badgeVariant: "secondary",
-                                children: [
-                                  {
-                                    label: "Tahir Shah",
-                                    subtitle: "SME Contact — Sustainment & Logistics",
-                                    badge: "SME",
-                                    badgeVariant: "outline",
-                                  },
-                                ],
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        title: "Sustainment Execution",
-                        icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
-                        badgeLabel: "Stated",
-                        badgeVariant: "secondary",
-                        defaultOpen: true,
-                        nodes: [
-                          {
-                            label: "FRCE",
-                            subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
-                            badge: "Depot",
-                            badgeVariant: "secondary",
-                            children: [
-                              {
-                                label: "COMFRC",
-                                subtitle: "Commander, Fleet Readiness Centers",
-                                badge: "Command",
-                                badgeVariant: "outline",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        title: "Contracting Offices",
-                        icon: <FileText className="h-3.5 w-3.5 text-primary" />,
-                        badgeLabel: "Observed",
-                        badgeVariant: "outline",
-                        defaultOpen: true,
-                        nodes: [
-                          {
-                            label: "NAVAIR Pax River",
-                            subtitle: "Primary contracting activity for CH-53K",
-                            badge: "Contracting",
-                            badgeVariant: "outline",
-                          },
-                          {
-                            label: "NAWCAD Lakehurst",
-                            subtitle: "Support equipment & auxiliary systems",
-                            badge: "Contracting",
-                            badgeVariant: "outline",
-                          },
-                          {
-                            label: "DLA Aviation",
-                            subtitle: "Consumable parts & supply chain",
-                            badge: "Logistics",
-                            badgeVariant: "outline",
-                          },
-                        ],
-                      },
-                      {
-                        title: "Workload Signal",
-                        icon: <Radio className="h-3.5 w-3.5 text-primary" />,
-                        badgeLabel: "Public",
-                        badgeVariant: "outline",
-                        defaultOpen: true,
-                        nodes: [
-                          {
-                            label: "14 CH-53K aircraft in AEPD",
-                            subtitle: "Signal, not capacity — reflects announced depot inductions",
-                            badge: "Signal",
-                            badgeVariant: "outline",
-                          },
-                        ],
-                      },
-                    ]}
-                  />
                 </div>
               </div>
             )}
@@ -376,6 +266,92 @@ const DepotDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* Functional Relationship Tree Map — full width */}
+        {activeTab === "overview" && (
+          <div className="mt-12">
+            <SectionHeader
+              title="Functional Relationship Map"
+              subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
+            />
+            <FunctionalTreeMap
+              rootLabel="CH-53K Depot Work @ FRCE"
+              rootImage="/ch-53k.jpg"
+              lanes={[
+                {
+                  title: "Program Ownership",
+                  icon: <Shield className="h-3.5 w-3.5 text-primary" />,
+                  defaultOpen: true,
+                  nodes: [
+                    {
+                      label: "PEO(A)",
+                      subtitle: "Program Executive Office, Air",
+                      children: [
+                        {
+                          label: "PMA-261",
+                          subtitle: "Heavy Lift Helicopters Program Office",
+                          children: [
+                            {
+                              label: "Tahir Shah",
+                              subtitle: "SME Contact — Sustainment & Logistics",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  title: "Sustainment Execution",
+                  icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
+                  defaultOpen: true,
+                  nodes: [
+                    {
+                      label: "FRCE",
+                      subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
+                      children: [
+                        {
+                          label: "COMFRC",
+                          subtitle: "Commander, Fleet Readiness Centers",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  title: "Contracting Offices",
+                  icon: <FileText className="h-3.5 w-3.5 text-primary" />,
+                  defaultOpen: true,
+                  nodes: [
+                    {
+                      label: "NAVAIR Pax River",
+                      subtitle: "Primary contracting activity for CH-53K",
+                    },
+                    {
+                      label: "NAWCAD Lakehurst",
+                      subtitle: "Support equipment & auxiliary systems",
+                    },
+                    {
+                      label: "DLA Aviation",
+                      subtitle: "Consumable parts & supply chain",
+                    },
+                  ],
+                },
+                {
+                  title: "Workload Signal",
+                  icon: <Radio className="h-3.5 w-3.5 text-primary" />,
+                  defaultOpen: true,
+                  nodes: [
+                    {
+                      label: "14 CH-53K aircraft in AEPD",
+                      subtitle: "Signal, not capacity — reflects announced depot inductions",
+                    },
+                  ],
+                },
+              ]}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
