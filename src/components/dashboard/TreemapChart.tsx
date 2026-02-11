@@ -283,7 +283,7 @@ const TreemapChart = () => {
     if (!selectedOffice) return;
 
     const loadData = async () => {
-      const rows = await fetchAwardsByOffice(selectedOffice, 2000);
+      const rows = await fetchAwardsByOffice(selectedOffice);
 
       const root: TreemapNode = {
         name: officeDictionary[selectedOffice],
@@ -593,8 +593,6 @@ const TreemapChart = () => {
                 <AwardTable 
                   awards={currentNode.rows} 
                   onRowDoubleClick={handleRowDoubleClick}
-                  showSearch
-                  showLegend
                 />
               </div>
             )}

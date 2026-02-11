@@ -80,13 +80,13 @@ const WeaponsPlatforms = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-8">
         {/* FILTERS BAR */}
-        <div className="bg-white p-6 shadow-sm border border-slate-200 mb-8">
+        <div className="bg-card p-6 shadow-sm border border-border mb-8 rounded-sm">
           <div className="flex items-center gap-2 mb-6">
             <Filter className="h-4 w-4 text-corporate-blue" />
-            <h3 className="font-bold text-slate-700 text-xs uppercase tracking-wide">Filter Platforms</h3>
+            <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-wide">Filter Platforms</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
@@ -129,19 +129,19 @@ const WeaponsPlatforms = () => {
               <div className="flex gap-1 border rounded overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 ${viewMode === "grid" ? "bg-corporate-navy text-white" : "bg-white text-slate-500 hover:bg-slate-100"}`}
+                  className={`p-2 transition-colors ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-muted"}`}
                 >
                   <Grid className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 ${viewMode === "list" ? "bg-corporate-navy text-white" : "bg-white text-slate-500 hover:bg-slate-100"}`}
+                  className={`p-2 transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-muted"}`}
                 >
                   <List className="h-4 w-4" />
                 </button>
               </div>
               {(searchQuery || selectedCategory !== "all" || selectedStatus !== "all") && (
-                <button onClick={clearFilters} className="text-[10px] text-slate-400 hover:text-corporate-blue font-bold uppercase tracking-wider">
+                <button onClick={clearFilters} className="text-[10px] text-muted-foreground hover:text-corporate-blue font-bold uppercase tracking-wider">
                   Clear
                 </button>
               )}
@@ -160,10 +160,10 @@ const WeaponsPlatforms = () => {
               </div>
 
               {/* Sidebar filter panel */}
-              <div className="w-full lg:w-56 flex-shrink-0 bg-white border border-slate-200 rounded-lg p-4 self-start">
-                <div className="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+              <div className="w-full lg:w-56 flex-shrink-0 bg-card border border-border rounded-lg p-4 self-start">
+                <div className="flex items-center gap-2 mb-4 border-b border-border pb-3">
                   <MapPin className="h-4 w-4 text-corporate-blue" />
-                  <h3 className="font-bold text-slate-700 text-xs uppercase tracking-wide">
+                  <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-wide">
                     Sustainment Network
                   </h3>
                 </div>
@@ -181,15 +181,15 @@ const WeaponsPlatforms = () => {
                   </CorporateSelect>
                 </div>
 
-                <div className="text-[10px] text-slate-400 space-y-1">
+                <div className="text-[10px] text-muted-foreground space-y-1">
                   <div>
-                    <span className="font-bold text-slate-500">{mapDepots.length}</span> depot{mapDepots.length !== 1 ? "s" : ""}
+                    <span className="font-bold text-foreground">{mapDepots.length}</span> depot{mapDepots.length !== 1 ? "s" : ""}
                   </div>
                   <div>
-                    <span className="font-bold text-slate-500">{allDepots.length}</span> total depot links
+                    <span className="font-bold text-foreground">{allDepots.length}</span> total depot links
                   </div>
                   {mapPlatform !== "all" && (
-                    <div className="pt-2 border-t border-slate-100 mt-2 text-corporate-blue font-medium">
+                    <div className="pt-2 border-t border-border mt-2 text-corporate-blue font-medium">
                       {depotPlatforms.find((p) => p.id === mapPlatform)?.name}
                     </div>
                   )}
@@ -204,7 +204,7 @@ const WeaponsPlatforms = () => {
         {loading && (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="h-8 w-8 animate-spin text-corporate-blue" />
-            <span className="ml-3 text-slate-500">Loading platforms...</span>
+            <span className="ml-3 text-muted-foreground">Loading platforms...</span>
           </div>
         )}
 
@@ -218,7 +218,7 @@ const WeaponsPlatforms = () => {
 
         {/* RESULTS COUNT */}
         {!loading && !error && (
-          <div className="mb-4 text-xs text-slate-500">
+          <div className="mb-4 text-xs text-muted-foreground">
             Showing {filteredWeapons.length} platform{filteredWeapons.length !== 1 ? "s" : ""}
           </div>
         )}
@@ -242,8 +242,8 @@ const WeaponsPlatforms = () => {
 
         {/* LIST VIEW */}
         {!loading && !error && viewMode === "list" && (
-          <div className="bg-white shadow-sm border border-slate-200">
-            <div className="grid grid-cols-12 gap-4 p-3 border-b border-slate-200 bg-slate-50 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+          <div className="bg-card shadow-sm border border-border rounded-sm">
+            <div className="grid grid-cols-12 gap-4 p-3 border-b border-border bg-muted text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
               <div className="col-span-4">Platform</div>
               <div className="col-span-3">Category</div>
               <div className="col-span-2">Status</div>
@@ -253,28 +253,28 @@ const WeaponsPlatforms = () => {
             {filteredWeapons.map((w) => (
               <div
                 key={w.id}
-                className="grid grid-cols-12 gap-4 p-4 border-b border-slate-100 items-center hover:bg-blue-50 transition-colors group cursor-pointer"
+                className="grid grid-cols-12 gap-4 p-4 border-b border-border items-center hover:bg-accent/50 transition-colors group cursor-pointer"
                 onClick={() => navigate(`/platforms/${w.id}`)}
               >
                 <div className="col-span-4">
-                  <div className="font-bold text-corporate-navy text-sm group-hover:text-corporate-blue transition-colors">
+                  <div className="font-bold text-foreground text-sm group-hover:text-corporate-blue transition-colors">
                     {w.name}
                   </div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wide">
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-wide">
                     Prime: {w.contractors?.[0] || "Unknown"}
                   </div>
                 </div>
                 <div className="col-span-3">
-                  <span className="inline-block border border-slate-200 px-2 py-0.5 rounded text-[10px] font-bold text-slate-500 bg-white">
+                  <span className="inline-block border border-border px-2 py-0.5 rounded text-[10px] font-bold text-muted-foreground bg-card">
                     {w.category}
                   </span>
                 </div>
-                <div className="col-span-2 text-xs font-medium text-slate-700">{w.status}</div>
-                <div className="col-span-2 text-right text-xs font-mono text-slate-600">
+                <div className="col-span-2 text-xs font-medium text-foreground">{w.status}</div>
+                <div className="col-span-2 text-right text-xs font-mono text-muted-foreground">
                   {w.totalFunding ? `$${(w.totalFunding / 1_000_000_000).toFixed(1)}B` : "--"}
                 </div>
                 <div className="col-span-1 flex justify-end">
-                  <ChevronRight className="h-4 w-4 text-slate-300 group-hover:text-corporate-blue" />
+                  <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-corporate-blue" />
                 </div>
               </div>
             ))}
@@ -283,8 +283,8 @@ const WeaponsPlatforms = () => {
 
         {/* EMPTY STATE */}
         {!loading && !error && filteredWeapons.length === 0 && (
-          <div className="bg-white border border-slate-200 p-12 text-center">
-            <p className="text-slate-500">No platforms found matching your criteria.</p>
+          <div className="bg-card border border-border p-12 text-center rounded-sm">
+            <p className="text-muted-foreground">No platforms found matching your criteria.</p>
             <button onClick={clearFilters} className="mt-4 text-corporate-blue font-bold text-sm hover:underline">
               Clear all filters
             </button>

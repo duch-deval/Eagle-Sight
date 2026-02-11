@@ -86,8 +86,8 @@ serve(async (req) => {
         "Access-Control-Allow-Origin": "*",
       },
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message, articles: [] }), {
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: (err as Error).message, articles: [] }), {
       status: 500,
       headers: { "Access-Control-Allow-Origin": "*" },
     });
