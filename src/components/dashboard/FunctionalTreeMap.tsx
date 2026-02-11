@@ -43,7 +43,7 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
     <div className="flex flex-col items-center w-full">
       <button
         onClick={() => hasChildren && setOpen(!open)}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-sm border transition-all text-left w-full
+        className={`flex items-center gap-2 px-4 py-2.5 rounded-sm border transition-all text-left w-full
           ${depth === 0 ? "bg-muted/60 border-border shadow-sm" : "bg-card border-border hover:border-primary/30"}
           ${hasChildren ? "cursor-pointer" : "cursor-default"}
         `}
@@ -60,11 +60,6 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
             <span className="text-[10px] text-muted-foreground leading-tight truncate">{node.subtitle}</span>
           )}
         </div>
-        {node.badge && (
-          <Badge variant={node.badgeVariant ?? "outline"} className="text-[8px] uppercase tracking-wider font-bold shrink-0">
-            {node.badge}
-          </Badge>
-        )}
       </button>
 
       {hasChildren && open && (
@@ -92,7 +87,7 @@ const DesktopLaneBranch: React.FC<{ lane: Lane }> = ({ lane }) => {
       {/* Lane header */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-2 bg-muted/50 border border-border rounded-sm hover:bg-muted transition-colors w-full justify-center cursor-pointer"
+        className="flex items-center gap-2 px-4 py-2.5 bg-muted/50 border border-border rounded-sm hover:bg-muted transition-colors w-full justify-center cursor-pointer"
       >
         {open
           ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
@@ -100,11 +95,6 @@ const DesktopLaneBranch: React.FC<{ lane: Lane }> = ({ lane }) => {
         }
         {lane.icon}
         <span className="text-[10px] font-bold uppercase tracking-widest text-foreground text-center">{lane.title}</span>
-        {lane.badgeLabel && (
-          <Badge variant={lane.badgeVariant ?? "secondary"} className="text-[8px] uppercase tracking-wider font-bold shrink-0">
-            {lane.badgeLabel}
-          </Badge>
-        )}
       </button>
       {/* Nodes below */}
       {open && (
@@ -130,9 +120,6 @@ const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth 
           <CollapsibleTrigger className="flex items-center gap-2 w-full text-left group py-1.5">
             {open ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" /> : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />}
             <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{node.label}</span>
-            {node.badge && (
-              <Badge variant={node.badgeVariant ?? "outline"} className="text-[9px] uppercase tracking-wider font-bold ml-auto shrink-0">{node.badge}</Badge>
-            )}
           </CollapsibleTrigger>
           {node.subtitle && <p className="text-[11px] text-muted-foreground ml-5 -mt-0.5 mb-1">{node.subtitle}</p>}
           <CollapsibleContent>
@@ -145,7 +132,6 @@ const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth 
         <div className="flex items-center gap-2 py-1.5">
           <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
           <span className="text-sm text-foreground">{node.label}</span>
-          {node.badge && <Badge variant={node.badgeVariant ?? "outline"} className="text-[9px] uppercase tracking-wider font-bold ml-auto shrink-0">{node.badge}</Badge>}
           {node.subtitle && <span className="text-[10px] text-muted-foreground ml-1 italic hidden sm:inline">— {node.subtitle}</span>}
         </div>
       )}
@@ -165,7 +151,6 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
             {lane.icon}
             <span className="text-[11px] font-bold uppercase tracking-widest text-foreground">{lane.title}</span>
           </div>
-          {lane.badgeLabel && <Badge variant={lane.badgeVariant ?? "secondary"} className="text-[9px] uppercase tracking-wider font-bold">{lane.badgeLabel}</Badge>}
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 py-3 space-y-0.5">
@@ -203,13 +188,13 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
           )}
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-0">
+        <div className="flex flex-col items-center gap-0 w-full">
           {/* Root at top */}
-          <div className="bg-primary/10 border border-primary/20 rounded-sm px-5 py-3 flex items-center gap-3">
-            {rootImage && <img src={rootImage} alt={rootLabel} className="h-12 w-16 object-cover rounded-sm shrink-0" />}
+          <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-4 flex items-center gap-4">
+            {rootImage && <img src={rootImage} alt={rootLabel} className="h-14 w-20 object-cover rounded-sm shrink-0" />}
             <div>
-              <h3 className="text-sm font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
-              {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
+              <h3 className="text-base font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
+              {rootSubtitle && <p className="text-xs text-muted-foreground mt-0.5">{rootSubtitle}</p>}
             </div>
           </div>
 
@@ -223,7 +208,7 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
 
           {/* Branches in a CSS grid: 4 cols on desktop, 2 cols on tablet */}
           <div
-            className="grid w-full gap-4"
+            className="grid w-full gap-6"
             style={{
               gridTemplateColumns: `repeat(${lanes.length}, minmax(0, 1fr))`,
             }}
