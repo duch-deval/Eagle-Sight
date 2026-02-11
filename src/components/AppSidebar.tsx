@@ -48,22 +48,22 @@ export function AppSidebar() {
 
   const getNavCls = (path: string) =>
     isActive(path)
-      ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold border-l-[3px] border-l-blue-400 pl-3"
-      : "hover:bg-sidebar-accent/50 text-[hsl(var(--sidebar-foreground))] hover:text-sidebar-primary transition-all duration-200";
+      ? "bg-sidebar-accent/60 text-sidebar-accent-foreground font-medium border-l-2 border-l-sidebar-ring pl-2 text-xs py-1"
+      : "hover:bg-sidebar-accent/30 text-[hsl(var(--sidebar-foreground))]/80 hover:text-sidebar-primary transition-all duration-200 text-xs py-1";
 
 
 
   return (
     <Sidebar
-      className={`${collapsed ? "w-14" : "w-64"} bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))]`}
+      className={`${collapsed ? "w-12" : "w-48"} bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))]`}
       collapsible="icon"
     >
 
-      <div className="flex items-center border-b pl-10 h-28">
+      <div className="flex items-center justify-center border-b border-sidebar-border h-16 px-2">
         <img
           src={`${import.meta.env.BASE_URL}eagle.png`}
           alt="Parts Life"
-          className="h-full w-auto object-contain"
+          className="h-10 w-auto object-contain"
         />
       </div>
 
@@ -76,8 +76,8 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className={getNavCls(item.url)}>
-                      <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      <item.icon className="h-3.5 w-3.5" />
+                      {!collapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -93,8 +93,8 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className={getNavCls(item.url)}>
-                      <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      <item.icon className="h-3.5 w-3.5" />
+                      {!collapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
