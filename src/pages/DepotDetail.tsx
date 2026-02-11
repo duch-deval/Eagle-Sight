@@ -11,6 +11,8 @@ import { useDepotById } from "@/hooks/usePlatforms";
 import { CorporateButton, SectionHeader, CorporateCard } from "@/components/ui/TacticalComponents";
 import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
 import { EntityCard } from "@/components/dashboard/EntityCard";
+import FunctionalTreeMap from "@/components/dashboard/FunctionalTreeMap";
+import { Shield, Wrench, FileText as FileIcon, Radio } from "lucide-react";
 
 // Helper to map entity names to images
 const getImageForEntity = (name: string) => {
@@ -190,22 +192,135 @@ const DepotDetail = () => {
                             </nav>
                         </div>
 
-                        {/* Tab: OVERVIEW (Platforms) */}
+                        {/* Tab: OVERVIEW (Platforms + Functional Tree Map) */}
                         {activeTab === "overview" && (
-                            <div>
-                                <SectionHeader title="Supported Platforms" />
-                                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                    {depot.platforms.map((p) => (
-                                        <WeaponPlatformCard
-                                            key={p.id}
-                                            id={p.id}
-                                            name={p.name}
-                                            category={p.category}
-                                            description={p.description}
-                                            contractors={p.contractors}
-                                            imagePath={`${import.meta.env.BASE_URL}${p.id}.jpg`}
-                                        />
-                                    ))}
+                            <div className="space-y-12">
+                                <div>
+                                    <SectionHeader title="Supported Platforms" />
+                                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                        {depot.platforms.map((p) => (
+                                            <WeaponPlatformCard
+                                                key={p.id}
+                                                id={p.id}
+                                                name={p.name}
+                                                category={p.category}
+                                                description={p.description}
+                                                contractors={p.contractors}
+                                                imagePath={`${import.meta.env.BASE_URL}${p.id}.jpg`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Functional Relationship Tree Map */}
+                                <div>
+                                    <SectionHeader
+                                        title="Functional Relationship Map"
+                                        subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
+                                    />
+                                    <FunctionalTreeMap
+                                        rootLabel="CH-53K Depot Work @ FRCE"
+                                        rootSubtitle="Heavy-lift helicopter depot-level maintenance and repair"
+                                        disclaimer="Functional relationships; not a reporting org chart. Connections reflect observed program, contracting, and sustainment associations."
+                                        lanes={[
+                                            {
+                                                title: "Program Ownership",
+                                                icon: <Shield className="h-3.5 w-3.5 text-primary" />,
+                                                badgeLabel: "Authoritative",
+                                                badgeVariant: "default",
+                                                defaultOpen: true,
+                                                nodes: [
+                                                    {
+                                                        label: "PEO(A)",
+                                                        subtitle: "Program Executive Office, Air",
+                                                        badge: "PEO",
+                                                        badgeVariant: "secondary",
+                                                        children: [
+                                                            {
+                                                                label: "PMA-261",
+                                                                subtitle: "Heavy Lift Helicopters Program Office",
+                                                                badge: "PMA",
+                                                                badgeVariant: "secondary",
+                                                                children: [
+                                                                    {
+                                                                        label: "Tahir Shah",
+                                                                        subtitle: "SME Contact — Sustainment & Logistics",
+                                                                        badge: "SME",
+                                                                        badgeVariant: "outline",
+                                                                    },
+                                                                ],
+                                                            },
+                                                        ],
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                title: "Sustainment Execution",
+                                                icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
+                                                badgeLabel: "Stated",
+                                                badgeVariant: "secondary",
+                                                defaultOpen: true,
+                                                nodes: [
+                                                    {
+                                                        label: "FRCE",
+                                                        subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
+                                                        badge: "Depot",
+                                                        badgeVariant: "secondary",
+                                                        children: [
+                                                            {
+                                                                label: "COMFRC",
+                                                                subtitle: "Commander, Fleet Readiness Centers",
+                                                                badge: "Command",
+                                                                badgeVariant: "outline",
+                                                            },
+                                                        ],
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                title: "Contracting Offices",
+                                                icon: <FileIcon className="h-3.5 w-3.5 text-primary" />,
+                                                badgeLabel: "Observed",
+                                                badgeVariant: "outline",
+                                                defaultOpen: true,
+                                                nodes: [
+                                                    {
+                                                        label: "NAVAIR Pax River",
+                                                        subtitle: "Primary contracting activity for CH-53K",
+                                                        badge: "Contracting",
+                                                        badgeVariant: "outline",
+                                                    },
+                                                    {
+                                                        label: "NAWCAD Lakehurst",
+                                                        subtitle: "Support equipment & auxiliary systems",
+                                                        badge: "Contracting",
+                                                        badgeVariant: "outline",
+                                                    },
+                                                    {
+                                                        label: "DLA Aviation",
+                                                        subtitle: "Consumable parts & supply chain",
+                                                        badge: "Logistics",
+                                                        badgeVariant: "outline",
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                title: "Workload Signal",
+                                                icon: <Radio className="h-3.5 w-3.5 text-primary" />,
+                                                badgeLabel: "Public",
+                                                badgeVariant: "outline",
+                                                defaultOpen: true,
+                                                nodes: [
+                                                    {
+                                                        label: "14 CH-53K aircraft in AEPD",
+                                                        subtitle: "Signal, not capacity — reflects announced depot inductions",
+                                                        badge: "Signal",
+                                                        badgeVariant: "outline",
+                                                    },
+                                                ],
+                                            },
+                                        ]}
+                                    />
                                 </div>
                             </div>
                         )}
