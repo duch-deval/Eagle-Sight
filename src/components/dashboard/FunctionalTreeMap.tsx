@@ -194,13 +194,13 @@ const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle:
   };
 
   return (
-    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-1'}`}>
+    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-shrink-0'}`} style={!isOpen ? { maxWidth: '160px' } : undefined}>
       <div className="w-px h-4 bg-border" />
       {/* Platform card */}
       <button
         onClick={onToggle}
-        className={`flex items-center gap-3 px-4 py-3 border rounded-sm transition-all duration-200 w-full cursor-pointer
-          ${isOpen ? 'bg-primary/10 border-primary/30 shadow-sm' : 'bg-muted/50 border-border hover:bg-muted'}`}
+        className={`flex items-center gap-2 border rounded-sm transition-all duration-200 w-full cursor-pointer
+          ${isOpen ? 'px-4 py-3 bg-primary/10 border-primary/30 shadow-sm' : 'px-3 py-2 bg-muted/50 border-border hover:bg-muted'}`}
       >
         {isOpen
           ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
@@ -210,16 +210,16 @@ const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle:
           <img
             src={`${import.meta.env.BASE_URL}${node.image}`}
             alt={node.label}
-            className="h-10 w-14 object-cover rounded-sm shrink-0"
+            className={`object-cover rounded-sm shrink-0 ${isOpen ? 'h-10 w-14' : 'h-7 w-10'}`}
           />
         )}
         <div className="flex flex-col min-w-0 flex-1 gap-0.5">
-          <span className="text-xs font-bold uppercase tracking-widest text-foreground">{node.label}</span>
-          {node.subtitle && (
+          <span className={`font-bold uppercase tracking-widest text-foreground ${isOpen ? 'text-xs' : 'text-[10px]'}`}>{node.label}</span>
+          {isOpen && node.subtitle && (
             <span className="text-[10px] text-muted-foreground leading-tight">{node.subtitle}</span>
           )}
         </div>
-        {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
+        {isOpen && node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
       </button>
 
       {/* Expanded: show lanes horizontally */}
