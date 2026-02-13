@@ -286,11 +286,13 @@ const DepotDetail = () => {
                   nodes: [
                     {
                       label: "PEO(A)",
+                      image: "PEO(A).png",
                       subtitle: "Program Executive Office, Air",
                       evidenceLevel: "Authoritative",
                       children: [
                         {
                           label: "PMA-261",
+                          image: "pma_261.png",
                           subtitle: "Heavy Lift Helicopters Program Office",
                           evidenceLevel: "Authoritative",
                           evidenceDetails: [
@@ -318,6 +320,7 @@ const DepotDetail = () => {
                   nodes: [
                     {
                       label: "FRCE",
+                      image: "FRCE.png",
                       subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
                       evidenceLevel: "Public/DoD",
                       children: [
@@ -338,16 +341,19 @@ const DepotDetail = () => {
                   nodes: [
                     {
                       label: "NAVAIR Pax River",
+                      image: "NAVAIR Pax River.jpg",
                       subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
                       evidenceLevel: "Observed",
                     },
                     {
                       label: "NAWCAD Lakehurst",
+                      image: "NAWCAD Lakehurst.jpg",
                       subtitle: "Observed contracting activity — support equipment & auxiliary systems",
                       evidenceLevel: "Observed",
                     },
                     {
                       label: "DLA Aviation",
+                      image: "DLA.svg",
                       subtitle: "Frequently observed (awards) — consumable parts & supply chain",
                       evidenceLevel: "Observed",
                     },
