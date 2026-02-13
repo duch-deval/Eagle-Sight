@@ -286,61 +286,89 @@ const DepotDetail = () => {
                   evidenceLevel: "Public/DoD",
                   children: [
                     {
-                      label: "PEO(A)",
-                      image: "PEO(A).png",
-                      subtitle: "Program Executive Office, Air",
+                      label: "Program Ownership",
+                      subtitle: "Authoritative program chain",
                       evidenceLevel: "Authoritative",
                       children: [
                         {
-                          label: "PMA-261",
-                          image: "pma_261.png",
-                          subtitle: "Heavy Lift Helicopters Program Office",
+                          label: "PEO(A)",
+                          image: "PEO(A).png",
+                          subtitle: "Program Executive Office, Air",
                           evidenceLevel: "Authoritative",
-                          evidenceDetails: [
+                          children: [
                             {
-                              level: "Authoritative",
-                              text: "PMA-261 manages cradle-to-grave procurement, development, support, fielding, and disposal of the H-53 family.",
-                              source: "NAVAIR PMA-261 org page",
-                            },
-                            {
-                              level: "Public/DoD",
-                              text: "CH-53K AEPD induction at FRCE followed years of coordination between FRCE, Fleet Support Team, PMA-261, and USMC.",
-                              source: "DVIDS / FRCE release",
+                              label: "PMA-261",
+                              image: "pma_261.png",
+                              subtitle: "Heavy Lift Helicopters Program Office",
+                              evidenceLevel: "Authoritative",
+                              evidenceDetails: [
+                                {
+                                  level: "Authoritative",
+                                  text: "PMA-261 manages cradle-to-grave procurement, development, support, fielding, and disposal of the H-53 family.",
+                                  source: "NAVAIR PMA-261 org page",
+                                },
+                                {
+                                  level: "Public/DoD",
+                                  text: "CH-53K AEPD induction at FRCE followed years of coordination between FRCE, Fleet Support Team, PMA-261, and USMC.",
+                                  source: "DVIDS / FRCE release",
+                                },
+                              ],
                             },
                           ],
                         },
                       ],
                     },
                     {
-                      label: "NAVAIR Pax River",
-                      image: "NAVAIR Pax River.jpg",
-                      subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
+                      label: "Contracting Offices",
+                      subtitle: "Observed contracting activity associated with CH-53K awards",
                       evidenceLevel: "Observed",
+                      children: [
+                        {
+                          label: "NAVAIR Pax River",
+                          image: "NAVAIR Pax River.jpg",
+                          subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
+                          evidenceLevel: "Observed",
+                        },
+                        {
+                          label: "NAWCAD Lakehurst",
+                          image: "NAWCAD Lakehurst.jpg",
+                          subtitle: "Observed contracting activity — support equipment & auxiliary systems",
+                          evidenceLevel: "Observed",
+                        },
+                        {
+                          label: "DLA Aviation",
+                          image: "DLA.svg",
+                          subtitle: "Frequently observed (awards) — consumable parts & supply chain",
+                          evidenceLevel: "Observed",
+                        },
+                      ],
                     },
                     {
-                      label: "NAWCAD Lakehurst",
-                      image: "NAWCAD Lakehurst.jpg",
-                      subtitle: "Observed contracting activity — support equipment & auxiliary systems",
-                      evidenceLevel: "Observed",
-                    },
-                    {
-                      label: "DLA Aviation",
-                      image: "DLA.svg",
-                      subtitle: "Frequently observed (awards) — consumable parts & supply chain",
-                      evidenceLevel: "Observed",
-                    },
-                    {
-                      label: "14 CH-53K aircraft in AEPD",
-                      subtitle: "Signal, not capacity — reflects announced depot inductions",
+                      label: "Workload Signal",
+                      subtitle: "Public depot induction data",
                       evidenceLevel: "Public/DoD",
+                      children: [
+                        {
+                          label: "14 CH-53K aircraft in AEPD",
+                          subtitle: "Signal, not capacity — reflects announced depot inductions",
+                          evidenceLevel: "Public/DoD",
+                        },
+                      ],
                     },
                     {
-                      label: "Tahir Shah",
-                      image: "Tahir_Shah.jpeg",
-                      link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
-                      subtitle:
-                        "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                      label: "Contacts (SME-validated)",
+                      subtitle: "Internal or self-reported contacts",
                       evidenceLevel: "SME-validated",
+                      children: [
+                        {
+                          label: "Tahir Shah",
+                          image: "Tahir_Shah.jpeg",
+                          link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
+                          subtitle:
+                            "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                          evidenceLevel: "SME-validated",
+                        },
+                      ],
                     },
                   ],
                 },
