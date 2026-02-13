@@ -26,6 +26,7 @@ interface TreeNode {
   evidenceLevel?: EvidenceLevel;
   evidenceDetails?: EvidenceDetail[];
   image?: string;
+  link?: string;
   children?: TreeNode[];
 }
 
@@ -117,7 +118,11 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
         )}
         <div className="flex flex-col min-w-0 flex-1 gap-0.5">
           <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>
+            {node.link ? (
+              <a href={node.link} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary hover:underline leading-tight truncate" onClick={(e) => e.stopPropagation()}>{node.label}</a>
+            ) : (
+              <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>
+            )}
             {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
           </div>
           {node.subtitle && (
