@@ -25,6 +25,7 @@ interface TreeNode {
   badgeVariant?: "default" | "secondary" | "outline" | "destructive";
   evidenceLevel?: EvidenceLevel;
   evidenceDetails?: EvidenceDetail[];
+  image?: string;
   children?: TreeNode[];
 }
 
@@ -106,7 +107,14 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
             ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
             : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
         )}
-        {!hasChildren && <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />}
+        {!hasChildren && !node.image && <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />}
+        {node.image && (
+          <img
+            src={`${import.meta.env.BASE_URL}${node.image}`}
+            alt={node.label}
+            className="h-8 w-8 rounded-full object-cover shrink-0 border border-border"
+          />
+        )}
         <div className="flex flex-col min-w-0 flex-1 gap-0.5">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>

@@ -374,6 +374,7 @@ const DepotDetail = () => {
                   nodes: [
                     {
                       label: "Tahir Shah",
+                      image: "Tahir_Shah.jpeg",
                       subtitle:
                         "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
                       evidenceLevel: "SME-validated",
