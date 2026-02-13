@@ -44,7 +44,8 @@ interface FunctionalTreeMapProps {
   rootLabel: string;
   rootSubtitle?: string;
   rootImage?: string;
-  lanes: Lane[];
+  rootChildren?: TreeNode[];
+  lanes?: Lane[];
   disclaimer?: string;
 }
 
@@ -254,7 +255,7 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
 };
 
 // --- Main ---
-const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, rootImage, lanes, disclaimer }) => {
+const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, rootImage, rootChildren, lanes = [], disclaimer }) => {
   const isMobile = useIsMobile();
   const [activeLane, setActiveLane] = useState<number | null>(null);
 
@@ -273,6 +274,11 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
               {rootSubtitle && <p className="text-[11px] text-muted-foreground mt-0.5">{rootSubtitle}</p>}
             </div>
           </div>
+          {rootChildren && rootChildren.length > 0 && (
+            <div className="space-y-2 pl-4 border-l-2 border-border">
+              {rootChildren.map((node, i) => <MobileNode key={i} node={node} />)}
+            </div>
+          )}
           <div className="space-y-2">
             {lanes.map((lane, i) => <MobileLane key={i} lane={lane} index={i} />)}
           </div>
@@ -294,20 +300,38 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
             </div>
           </div>
 
-          {/* Vertical connector from root */}
-          <div className="w-px h-5 bg-border" />
+          {/* Direct children of root */}
+          {rootChildren && rootChildren.length > 0 && (
+            <>
+              <div className="w-px h-5 bg-border" />
+              <div className="relative w-full flex justify-center">
+                <div className="h-px bg-border" style={{ width: `${Math.min(rootChildren.length * 30, 85)}%` }} />
+              </div>
+              <div className="flex w-full gap-6">
+                {rootChildren.map((node, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center">
+                    <div className="w-px h-4 bg-border" />
+                    <DesktopNode node={node} />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
-          {/* Horizontal bar */}
-          <div className="relative w-full flex justify-center">
-            <div className="h-px bg-border" style={{ width: `${Math.min(lanes.length * 25, 85)}%` }} />
-          </div>
-
-          {/* Branches with flex layout for smooth expand/collapse */}
-          <div className="flex w-full gap-4">
-            {lanes.map((lane, i) => (
-              <DesktopLaneBranch key={i} lane={lane} isOpen={activeLane === i} onToggle={() => handleToggle(i)} />
-            ))}
-          </div>
+          {/* Lanes (if any) */}
+          {lanes.length > 0 && (
+            <>
+              <div className="w-px h-5 bg-border" />
+              <div className="relative w-full flex justify-center">
+                <div className="h-px bg-border" style={{ width: `${Math.min(lanes.length * 25, 85)}%` }} />
+              </div>
+              <div className="flex w-full gap-4">
+                {lanes.map((lane, i) => (
+                  <DesktopLaneBranch key={i} lane={lane} isOpen={activeLane === i} onToggle={() => handleToggle(i)} />
+                ))}
+              </div>
+            </>
+          )}
 
           {/* Disclaimer */}
           {disclaimer && (
