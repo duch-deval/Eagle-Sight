@@ -378,7 +378,7 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
               <div className="relative w-full flex justify-center">
                 <div className="h-px bg-border" style={{ width: `${Math.min(rootChildren.length * 40, 85)}%` }} />
               </div>
-              <div className="flex w-full gap-4">
+              <div className="flex w-full gap-4 justify-center">
                 {rootChildren.map((node, i) => (
                   <DesktopPlatformNode
                     key={i}
