@@ -276,8 +276,7 @@ const DepotDetail = () => {
             />
             <FunctionalTreeMap
               rootLabel="CH-53K"
-             rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
-              disclaimer="Functional relationships; not a reporting org chart."
+              rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
               lanes={[
                 {
                   title: "Program Ownership",
@@ -375,7 +374,8 @@ const DepotDetail = () => {
                   nodes: [
                     {
                       label: "Tahir Shah",
-                      subtitle: "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                      subtitle:
+                        "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
                       evidenceLevel: "SME-validated",
                     },
                   ],
