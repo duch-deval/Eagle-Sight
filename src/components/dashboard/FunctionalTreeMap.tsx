@@ -157,7 +157,7 @@ const DesktopLaneBranch: React.FC<{ lane: Lane; isOpen: boolean; onToggle: () =>
         }
         {lane.icon}
         <span className="text-[10px] font-bold uppercase tracking-widest text-foreground text-center">{lane.title}</span>
-        {lane.evidenceLevel && !isOpen && <EvidenceBadge level={lane.evidenceLevel} />}
+        
       </button>
       {/* Nodes below */}
       {isOpen && (
@@ -227,7 +227,7 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
             {open ? <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" /> : <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />}
             {lane.icon}
             <span className="text-[11px] font-bold uppercase tracking-widest text-foreground">{lane.title}</span>
-            {lane.evidenceLevel && <EvidenceBadge level={lane.evidenceLevel} />}
+            
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent>
