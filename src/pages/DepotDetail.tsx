@@ -275,116 +275,102 @@ const DepotDetail = () => {
               subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
             />
             <FunctionalTreeMap
-              rootLabel="CH-53K"
-              rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
+              rootLabel="FRCE"
+              rootSubtitle="Fleet Readiness Center East — MCAS Cherry Point"
+              rootImage={`${import.meta.env.BASE_URL}FRCE.png`}
               lanes={[
                 {
-                  title: "Program Ownership",
-                  icon: <Shield className="h-3.5 w-3.5 text-primary" />,
-                  evidenceLevel: "Authoritative",
+                  title: "CH-53K King Stallion",
+                  icon: <Plane className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "Public/DoD",
                   defaultOpen: true,
                   nodes: [
                     {
-                      label: "PEO(A)",
-                      image: "PEO(A).png",
-                      subtitle: "Program Executive Office, Air",
-                      evidenceLevel: "Authoritative",
+                      label: "CH-53K",
+                      image: "ch-53k.jpg",
+                      subtitle: "Heavy Lift Helicopter — Depot-level sustainment at FRCE",
+                      evidenceLevel: "Public/DoD",
                       children: [
                         {
-                          label: "PMA-261",
-                          image: "pma_261.png",
-                          subtitle: "Heavy Lift Helicopters Program Office",
+                          label: "PEO(A)",
+                          image: "PEO(A).png",
+                          subtitle: "Program Executive Office, Air",
                           evidenceLevel: "Authoritative",
-                          evidenceDetails: [
+                          children: [
                             {
-                              level: "Authoritative",
-                              text: "PMA-261 manages cradle-to-grave procurement, development, support, fielding, and disposal of the H-53 family.",
-                              source: "NAVAIR PMA-261 org page",
-                            },
-                            {
-                              level: "Public/DoD",
-                              text: "CH-53K AEPD induction at FRCE followed years of coordination between FRCE, Fleet Support Team, PMA-261, and USMC.",
-                              source: "DVIDS / FRCE release",
+                              label: "PMA-261",
+                              image: "pma_261.png",
+                              subtitle: "Heavy Lift Helicopters Program Office",
+                              evidenceLevel: "Authoritative",
+                              evidenceDetails: [
+                                {
+                                  level: "Authoritative",
+                                  text: "PMA-261 manages cradle-to-grave procurement, development, support, fielding, and disposal of the H-53 family.",
+                                  source: "NAVAIR PMA-261 org page",
+                                },
+                                {
+                                  level: "Public/DoD",
+                                  text: "CH-53K AEPD induction at FRCE followed years of coordination between FRCE, Fleet Support Team, PMA-261, and USMC.",
+                                  source: "DVIDS / FRCE release",
+                                },
+                              ],
                             },
                           ],
                         },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  title: "Sustainment Execution",
-                  icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
-                  evidenceLevel: "Public/DoD",
-                  defaultOpen: true,
-                  nodes: [
-                    {
-                      label: "FRCE",
-                      image: "FRCE.png",
-                      subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
-                      evidenceLevel: "Public/DoD",
-                      children: [
                         {
-                          label: "COMFRC",
-                          subtitle: "Commander, Fleet Readiness Centers",
-                          evidenceLevel: "Authoritative",
+                          label: "NAVAIR Pax River",
+                          image: "NAVAIR Pax River.jpg",
+                          subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
+                          evidenceLevel: "Observed",
+                        },
+                        {
+                          label: "NAWCAD Lakehurst",
+                          image: "NAWCAD Lakehurst.jpg",
+                          subtitle: "Observed contracting activity — support equipment & auxiliary systems",
+                          evidenceLevel: "Observed",
+                        },
+                        {
+                          label: "DLA Aviation",
+                          image: "DLA.svg",
+                          subtitle: "Frequently observed (awards) — consumable parts & supply chain",
+                          evidenceLevel: "Observed",
+                        },
+                        {
+                          label: "14 CH-53K aircraft in AEPD",
+                          subtitle: "Signal, not capacity — reflects announced depot inductions",
+                          evidenceLevel: "Public/DoD",
+                        },
+                        {
+                          label: "Tahir Shah",
+                          image: "Tahir_Shah.jpeg",
+                          link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
+                          subtitle:
+                            "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                          evidenceLevel: "SME-validated",
                         },
                       ],
                     },
                   ],
                 },
                 {
-                  title: "Contracting Offices",
-                  icon: <FileText className="h-3.5 w-3.5 text-primary" />,
-                  evidenceLevel: "Observed",
-                  defaultOpen: true,
-                  nodes: [
-                    {
-                      label: "NAVAIR Pax River",
-                      image: "NAVAIR Pax River.jpg",
-                      subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
-                      evidenceLevel: "Observed",
-                    },
-                    {
-                      label: "NAWCAD Lakehurst",
-                      image: "NAWCAD Lakehurst.jpg",
-                      subtitle: "Observed contracting activity — support equipment & auxiliary systems",
-                      evidenceLevel: "Observed",
-                    },
-                    {
-                      label: "DLA Aviation",
-                      image: "DLA.svg",
-                      subtitle: "Frequently observed (awards) — consumable parts & supply chain",
-                      evidenceLevel: "Observed",
-                    },
-                  ],
-                },
-                {
-                  title: "Workload Signal",
-                  icon: <Radio className="h-3.5 w-3.5 text-primary" />,
+                  title: "F-35 Lightning II",
+                  icon: <Plane className="h-3.5 w-3.5 text-primary" />,
                   evidenceLevel: "Public/DoD",
-                  defaultOpen: true,
+                  defaultOpen: false,
                   nodes: [
                     {
-                      label: "14 CH-53K aircraft in AEPD",
-                      subtitle: "Signal, not capacity — reflects announced depot inductions",
+                      label: "F-35",
+                      image: "f-35.jpg",
+                      subtitle: "Joint Strike Fighter — Depot-level sustainment at FRCE",
                       evidenceLevel: "Public/DoD",
-                    },
-                  ],
-                },
-                {
-                  title: "Contacts (SME-validated)",
-                  icon: <User className="h-3.5 w-3.5 text-primary" />,
-                  evidenceLevel: "SME-validated",
-                  defaultOpen: true,
-                  nodes: [
-                    {
-                      label: "Tahir Shah",
-                      image: "Tahir_Shah.jpeg",
-                      link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
-                      subtitle:
-                        "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
-                      evidenceLevel: "SME-validated",
+                      children: [
+                        {
+                          label: "F-35 JPO",
+                          image: "f35jpo.png",
+                          subtitle: "F-35 Joint Program Office",
+                          evidenceLevel: "Authoritative",
+                        },
+                      ],
                     },
                   ],
                 },
