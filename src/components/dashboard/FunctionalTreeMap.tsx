@@ -8,12 +8,23 @@ import {
 } from "@/components/ui/collapsible";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+// --- Evidence classification types ---
+type EvidenceLevel = "Authoritative" | "Public/DoD" | "Observed" | "SME-validated";
+
+interface EvidenceDetail {
+  level: EvidenceLevel;
+  text: string;
+  source?: string;
+}
+
 // --- Types ---
 interface TreeNode {
   label: string;
   subtitle?: string;
   badge?: string;
   badgeVariant?: "default" | "secondary" | "outline" | "destructive";
+  evidenceLevel?: EvidenceLevel;
+  evidenceDetails?: EvidenceDetail[];
   children?: TreeNode[];
 }
 
@@ -22,6 +33,7 @@ interface Lane {
   icon?: React.ReactNode;
   badgeLabel?: string;
   badgeVariant?: "default" | "secondary" | "outline" | "destructive";
+  evidenceLevel?: EvidenceLevel;
   nodes: TreeNode[];
   defaultOpen?: boolean;
 }
@@ -33,6 +45,47 @@ interface FunctionalTreeMapProps {
   lanes: Lane[];
   disclaimer?: string;
 }
+
+// --- Evidence badge color map ---
+const evidenceBadgeClass: Record<EvidenceLevel, string> = {
+  "Authoritative": "bg-emerald-100 text-emerald-800 border-emerald-200",
+  "Public/DoD": "bg-sky-100 text-sky-800 border-sky-200",
+  "Observed": "bg-amber-100 text-amber-800 border-amber-200",
+  "SME-validated": "bg-violet-100 text-violet-800 border-violet-200",
+};
+
+const EvidenceBadge: React.FC<{ level: EvidenceLevel }> = ({ level }) => (
+  <span className={`inline-flex items-center text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border ${evidenceBadgeClass[level]}`}>
+    {level}
+  </span>
+);
+
+// --- Expandable evidence details ---
+const EvidenceBlock: React.FC<{ details: EvidenceDetail[] }> = ({ details }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="w-full mt-1">
+      <button
+        onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
+        className="flex items-center gap-1 text-[9px] text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {open ? <ChevronDown className="h-2.5 w-2.5" /> : <ChevronRight className="h-2.5 w-2.5" />}
+        <span className="font-semibold uppercase tracking-wider">Evidence</span>
+      </button>
+      {open && (
+        <div className="mt-1.5 space-y-1.5 pl-3 border-l-2 border-border animate-in fade-in slide-in-from-top-1 duration-150">
+          {details.map((d, i) => (
+            <div key={i} className="flex flex-col gap-0.5">
+              <EvidenceBadge level={d.level} />
+              <p className="text-[10px] text-muted-foreground leading-snug">{d.text}</p>
+              {d.source && <p className="text-[9px] text-muted-foreground/70 italic">— {d.source}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 // --- Desktop recursive node (top-down, vertically stacked) ---
 const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth = 0 }) => {
@@ -54,13 +107,23 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
             : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
         )}
         {!hasChildren && <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />}
-        <div className="flex flex-col min-w-0 flex-1">
-          <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>
+        <div className="flex flex-col min-w-0 flex-1 gap-0.5">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-xs font-semibold text-foreground leading-tight truncate">{node.label}</span>
+            {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
+          </div>
           {node.subtitle && (
-            <span className="text-[10px] text-muted-foreground leading-tight truncate">{node.subtitle}</span>
+            <span className="text-[10px] text-muted-foreground leading-tight">{node.subtitle}</span>
           )}
         </div>
       </button>
+
+      {/* Evidence details expandable */}
+      {node.evidenceDetails && node.evidenceDetails.length > 0 && (
+        <div className="w-full px-4">
+          <EvidenceBlock details={node.evidenceDetails} />
+        </div>
+      )}
 
       {hasChildren && open && (
         <>
@@ -94,6 +157,7 @@ const DesktopLaneBranch: React.FC<{ lane: Lane; isOpen: boolean; onToggle: () =>
         }
         {lane.icon}
         <span className="text-[10px] font-bold uppercase tracking-widest text-foreground text-center">{lane.title}</span>
+        {lane.evidenceLevel && !isOpen && <EvidenceBadge level={lane.evidenceLevel} />}
       </button>
       {/* Nodes below */}
       {isOpen && (
@@ -119,8 +183,14 @@ const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth 
           <CollapsibleTrigger className="flex items-center gap-2 w-full text-left group py-1.5">
             {open ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" /> : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />}
             <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{node.label}</span>
+            {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
           </CollapsibleTrigger>
           {node.subtitle && <p className="text-[11px] text-muted-foreground ml-5 -mt-0.5 mb-1">{node.subtitle}</p>}
+          {node.evidenceDetails && node.evidenceDetails.length > 0 && (
+            <div className="ml-5 mb-1">
+              <EvidenceBlock details={node.evidenceDetails} />
+            </div>
+          )}
           <CollapsibleContent>
             {node.children!.map((child, i) => (
               <MobileNode key={i} node={child} depth={depth + 1} />
@@ -128,10 +198,18 @@ const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth 
           </CollapsibleContent>
         </Collapsible>
       ) : (
-        <div className="flex items-center gap-2 py-1.5">
-          <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-          <span className="text-sm text-foreground">{node.label}</span>
-          {node.subtitle && <span className="text-[10px] text-muted-foreground ml-1 italic hidden sm:inline">— {node.subtitle}</span>}
+        <div className="flex flex-col gap-0.5 py-1.5">
+          <div className="flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+            <span className="text-sm text-foreground">{node.label}</span>
+            {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
+          </div>
+          {node.subtitle && <span className="text-[10px] text-muted-foreground ml-4 italic">{node.subtitle}</span>}
+          {node.evidenceDetails && node.evidenceDetails.length > 0 && (
+            <div className="ml-4">
+              <EvidenceBlock details={node.evidenceDetails} />
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -149,6 +227,7 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
             {open ? <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" /> : <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />}
             {lane.icon}
             <span className="text-[11px] font-bold uppercase tracking-widest text-foreground">{lane.title}</span>
+            {lane.evidenceLevel && <EvidenceBadge level={lane.evidenceLevel} />}
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent>

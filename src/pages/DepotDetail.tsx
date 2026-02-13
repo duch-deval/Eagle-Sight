@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, MapPin, Loader2, Plane, FileText, Shield, Wrench, Radio } from "lucide-react";
+import { ArrowLeft, MapPin, Loader2, Plane, FileText, Shield, Wrench, Radio, User } from "lucide-react";
 import { useDepotById } from "@/hooks/usePlatforms";
 import { CorporateButton, SectionHeader, CorporateCard } from "@/components/ui/TacticalComponents";
 import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
@@ -276,24 +276,34 @@ const DepotDetail = () => {
             />
             <FunctionalTreeMap
               rootLabel="CH-53K"
-              rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
+             rootImage={`${import.meta.env.BASE_URL}ch-53k.jpg`}
+              disclaimer="Functional relationships; not a reporting org chart."
               lanes={[
                 {
                   title: "Program Ownership",
                   icon: <Shield className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "Authoritative",
                   defaultOpen: true,
                   nodes: [
                     {
                       label: "PEO(A)",
                       subtitle: "Program Executive Office, Air",
+                      evidenceLevel: "Authoritative",
                       children: [
                         {
                           label: "PMA-261",
                           subtitle: "Heavy Lift Helicopters Program Office",
-                          children: [
+                          evidenceLevel: "Authoritative",
+                          evidenceDetails: [
                             {
-                              label: "Tahir Shah",
-                              subtitle: "SME Contact — Sustainment & Logistics",
+                              level: "Authoritative",
+                              text: "PMA-261 manages cradle-to-grave procurement, development, support, fielding, and disposal of the H-53 family.",
+                              source: "NAVAIR PMA-261 org page",
+                            },
+                            {
+                              level: "Public/DoD",
+                              text: "CH-53K AEPD induction at FRCE followed years of coordination between FRCE, Fleet Support Team, PMA-261, and USMC.",
+                              source: "DVIDS / FRCE release",
                             },
                           ],
                         },
@@ -304,15 +314,18 @@ const DepotDetail = () => {
                 {
                   title: "Sustainment Execution",
                   icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "Public/DoD",
                   defaultOpen: true,
                   nodes: [
                     {
                       label: "FRCE",
                       subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
+                      evidenceLevel: "Public/DoD",
                       children: [
                         {
                           label: "COMFRC",
                           subtitle: "Commander, Fleet Readiness Centers",
+                          evidenceLevel: "Authoritative",
                         },
                       ],
                     },
@@ -321,30 +334,49 @@ const DepotDetail = () => {
                 {
                   title: "Contracting Offices",
                   icon: <FileText className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "Observed",
                   defaultOpen: true,
                   nodes: [
                     {
                       label: "NAVAIR Pax River",
-                      subtitle: "Primary contracting activity for CH-53K",
+                      subtitle: "Observed contracting activity (associated with CH-53K-related awards)",
+                      evidenceLevel: "Observed",
                     },
                     {
                       label: "NAWCAD Lakehurst",
-                      subtitle: "Support equipment & auxiliary systems",
+                      subtitle: "Observed contracting activity — support equipment & auxiliary systems",
+                      evidenceLevel: "Observed",
                     },
                     {
                       label: "DLA Aviation",
-                      subtitle: "Consumable parts & supply chain",
+                      subtitle: "Frequently observed (awards) — consumable parts & supply chain",
+                      evidenceLevel: "Observed",
                     },
                   ],
                 },
                 {
                   title: "Workload Signal",
                   icon: <Radio className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "Public/DoD",
                   defaultOpen: true,
                   nodes: [
                     {
                       label: "14 CH-53K aircraft in AEPD",
                       subtitle: "Signal, not capacity — reflects announced depot inductions",
+                      evidenceLevel: "Public/DoD",
+                    },
+                  ],
+                },
+                {
+                  title: "Contacts (SME-validated)",
+                  icon: <User className="h-3.5 w-3.5 text-primary" />,
+                  evidenceLevel: "SME-validated",
+                  defaultOpen: true,
+                  nodes: [
+                    {
+                      label: "Tahir Shah",
+                      subtitle: "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                      evidenceLevel: "SME-validated",
                     },
                   ],
                 },
