@@ -77,19 +77,18 @@ const DesktopNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth
 };
 
 // --- Desktop Lane Branch ---
-const DesktopLaneBranch: React.FC<{ lane: Lane }> = ({ lane }) => {
-  const [open, setOpen] = useState(lane.defaultOpen ?? true);
-
+const DesktopLaneBranch: React.FC<{ lane: Lane; isOpen: boolean; onToggle: () => void }> = ({ lane, isOpen, onToggle }) => {
   return (
-    <div className="flex flex-col items-center flex-1 min-w-0">
+    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-[0.6]'}`}>
       {/* Vertical connector from horizontal bar */}
       <div className="w-px h-4 bg-border" />
       {/* Lane header */}
       <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-muted/50 border border-border rounded-sm hover:bg-muted transition-colors w-full justify-center cursor-pointer"
+        onClick={onToggle}
+        className={`flex items-center gap-2 px-4 py-2.5 border rounded-sm transition-all duration-200 w-full justify-center cursor-pointer
+          ${isOpen ? 'bg-primary/10 border-primary/30 shadow-sm' : 'bg-muted/50 border-border hover:bg-muted'}`}
       >
-        {open
+        {isOpen
           ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
           : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
         }
@@ -97,8 +96,8 @@ const DesktopLaneBranch: React.FC<{ lane: Lane }> = ({ lane }) => {
         <span className="text-[10px] font-bold uppercase tracking-widest text-foreground text-center">{lane.title}</span>
       </button>
       {/* Nodes below */}
-      {open && (
-        <div className="flex flex-col items-center gap-1 w-full mt-1">
+      {isOpen && (
+        <div className="flex flex-col items-center gap-1 w-full mt-1 animate-in fade-in slide-in-from-top-2 duration-200">
           {lane.nodes.map((node, i) => (
             <DesktopNode key={i} node={node} />
           ))}
@@ -165,6 +164,11 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
 // --- Main ---
 const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, rootImage, lanes, disclaimer }) => {
   const isMobile = useIsMobile();
+  const [activeLane, setActiveLane] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setActiveLane(prev => prev === index ? null : index);
+  };
 
   return (
     <div className="space-y-3 animate-in">
@@ -206,15 +210,10 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
             <div className="h-px bg-border" style={{ width: `${Math.min(lanes.length * 25, 85)}%` }} />
           </div>
 
-          {/* Branches in a CSS grid: 4 cols on desktop, 2 cols on tablet */}
-          <div
-            className="grid w-full gap-6"
-            style={{
-              gridTemplateColumns: `repeat(${lanes.length}, minmax(0, 1fr))`,
-            }}
-          >
+          {/* Branches with flex layout for smooth expand/collapse */}
+          <div className="flex w-full gap-4">
             {lanes.map((lane, i) => (
-              <DesktopLaneBranch key={i} lane={lane} />
+              <DesktopLaneBranch key={i} lane={lane} isOpen={activeLane === i} onToggle={() => handleToggle(i)} />
             ))}
           </div>
 
