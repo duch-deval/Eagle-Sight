@@ -28,6 +28,7 @@ interface TreeNode {
   image?: string;
   link?: string;
   children?: TreeNode[];
+  lanes?: Lane[];
 }
 
 interface Lane {
@@ -185,17 +186,75 @@ const DesktopLaneBranch: React.FC<{ lane: Lane; isOpen: boolean; onToggle: () =>
   );
 };
 
+// --- Desktop Platform Node (rootChild with lanes that expand horizontally) ---
+const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle: () => void }> = ({ node, isOpen, onToggle }) => {
+  const [activeLane, setActiveLane] = useState<number | null>(null);
+  const handleLaneToggle = (index: number) => {
+    setActiveLane(prev => prev === index ? null : index);
+  };
+
+  return (
+    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-1'}`}>
+      <div className="w-px h-4 bg-border" />
+      {/* Platform card */}
+      <button
+        onClick={onToggle}
+        className={`flex items-center gap-3 px-4 py-3 border rounded-sm transition-all duration-200 w-full cursor-pointer
+          ${isOpen ? 'bg-primary/10 border-primary/30 shadow-sm' : 'bg-muted/50 border-border hover:bg-muted'}`}
+      >
+        {isOpen
+          ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
+          : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
+        }
+        {node.image && (
+          <img
+            src={`${import.meta.env.BASE_URL}${node.image}`}
+            alt={node.label}
+            className="h-10 w-14 object-cover rounded-sm shrink-0"
+          />
+        )}
+        <div className="flex flex-col min-w-0 flex-1 gap-0.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-foreground">{node.label}</span>
+          {node.subtitle && (
+            <span className="text-[10px] text-muted-foreground leading-tight">{node.subtitle}</span>
+          )}
+        </div>
+        {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
+      </button>
+
+      {/* Expanded: show lanes horizontally */}
+      {isOpen && node.lanes && node.lanes.length > 0 && (
+        <div className="flex flex-col items-center w-full animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="w-px h-4 bg-border" />
+          <div className="relative w-full flex justify-center">
+            <div className="h-px bg-border" style={{ width: `${Math.min(node.lanes.length * 25, 95)}%` }} />
+          </div>
+          <div className="flex w-full gap-3">
+            {node.lanes.map((lane, i) => (
+              <DesktopLaneBranch key={i} lane={lane} isOpen={activeLane === i} onToggle={() => handleLaneToggle(i)} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 // --- Mobile accordion node ---
 const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth = 0 }) => {
   const [open, setOpen] = useState(true);
   const hasChildren = node.children && node.children.length > 0;
+  const hasLanes = node.lanes && node.lanes.length > 0;
 
   return (
     <div className={`${depth > 0 ? "ml-5 border-l-2 border-border pl-4" : ""}`}>
-      {hasChildren ? (
+      {hasChildren || hasLanes ? (
         <Collapsible open={open} onOpenChange={setOpen}>
           <CollapsibleTrigger className="flex items-center gap-2 w-full text-left group py-1.5">
             {open ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" /> : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />}
+            {node.image && (
+              <img src={`${import.meta.env.BASE_URL}${node.image}`} alt={node.label} className="h-8 w-8 rounded-full object-cover shrink-0 border border-border" />
+            )}
             <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{node.label}</span>
             {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
           </CollapsibleTrigger>
@@ -206,15 +265,22 @@ const MobileNode: React.FC<{ node: TreeNode; depth?: number }> = ({ node, depth 
             </div>
           )}
           <CollapsibleContent>
-            {node.children!.map((child, i) => (
+            {node.children && node.children.map((child, i) => (
               <MobileNode key={i} node={child} depth={depth + 1} />
+            ))}
+            {node.lanes && node.lanes.map((lane, i) => (
+              <MobileLane key={`lane-${i}`} lane={lane} index={i} />
             ))}
           </CollapsibleContent>
         </Collapsible>
       ) : (
         <div className="flex flex-col gap-0.5 py-1.5">
           <div className="flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+            {node.image ? (
+              <img src={`${import.meta.env.BASE_URL}${node.image}`} alt={node.label} className="h-6 w-6 rounded-full object-cover shrink-0 border border-border" />
+            ) : (
+              <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+            )}
             <span className="text-sm text-foreground">{node.label}</span>
             {node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
           </div>
@@ -258,9 +324,14 @@ const MobileLane: React.FC<{ lane: Lane; index: number }> = ({ lane, index }) =>
 const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSubtitle, rootImage, rootChildren, lanes = [], disclaimer }) => {
   const isMobile = useIsMobile();
   const [activeLane, setActiveLane] = useState<number | null>(null);
+  const [activePlatform, setActivePlatform] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setActiveLane(prev => prev === index ? null : index);
+  };
+
+  const handlePlatformToggle = (index: number) => {
+    setActivePlatform(prev => prev === index ? null : index);
   };
 
   return (
@@ -300,25 +371,27 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
             </div>
           </div>
 
-          {/* Direct children of root */}
+          {/* Platform children with accordion + horizontal lanes */}
           {rootChildren && rootChildren.length > 0 && (
             <>
               <div className="w-px h-5 bg-border" />
               <div className="relative w-full flex justify-center">
-                <div className="h-px bg-border" style={{ width: `${Math.min(rootChildren.length * 30, 85)}%` }} />
+                <div className="h-px bg-border" style={{ width: `${Math.min(rootChildren.length * 40, 85)}%` }} />
               </div>
-              <div className="flex w-full gap-6">
+              <div className="flex w-full gap-4">
                 {rootChildren.map((node, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center">
-                    <div className="w-px h-4 bg-border" />
-                    <DesktopNode node={node} />
-                  </div>
+                  <DesktopPlatformNode
+                    key={i}
+                    node={node}
+                    isOpen={activePlatform === i}
+                    onToggle={() => handlePlatformToggle(i)}
+                  />
                 ))}
               </div>
             </>
           )}
 
-          {/* Lanes (if any) */}
+          {/* Lanes (if any, top-level) */}
           {lanes.length > 0 && (
             <>
               <div className="w-px h-5 bg-border" />
