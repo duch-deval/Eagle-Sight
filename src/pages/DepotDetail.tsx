@@ -284,12 +284,13 @@ const DepotDetail = () => {
                   image: "ch-53k.jpg",
                   subtitle: "Heavy Lift Helicopter — Depot-level sustainment at FRCE",
                   evidenceLevel: "Public/DoD",
-                  children: [
+                  lanes: [
                     {
-                      label: "Program Ownership",
-                      subtitle: "Authoritative program chain",
+                      title: "Program Ownership",
+                      icon: <Shield className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "Authoritative",
-                      children: [
+                      defaultOpen: true,
+                      nodes: [
                         {
                           label: "PEO(A)",
                           image: "PEO(A).png",
@@ -319,10 +320,32 @@ const DepotDetail = () => {
                       ],
                     },
                     {
-                      label: "Contracting Offices",
-                      subtitle: "Observed contracting activity associated with CH-53K awards",
+                      title: "Sustainment Execution",
+                      icon: <Wrench className="h-3.5 w-3.5 text-primary" />,
+                      evidenceLevel: "Public/DoD",
+                      defaultOpen: true,
+                      nodes: [
+                        {
+                          label: "FRCE",
+                          image: "FRCE.png",
+                          subtitle: "Fleet Readiness Center East, MCAS Cherry Point",
+                          evidenceLevel: "Public/DoD",
+                          children: [
+                            {
+                              label: "COMFRC",
+                              subtitle: "Commander, Fleet Readiness Centers",
+                              evidenceLevel: "Authoritative",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      title: "Contracting Offices",
+                      icon: <FileText className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "Observed",
-                      children: [
+                      defaultOpen: true,
+                      nodes: [
                         {
                           label: "NAVAIR Pax River",
                           image: "NAVAIR Pax River.jpg",
@@ -344,10 +367,11 @@ const DepotDetail = () => {
                       ],
                     },
                     {
-                      label: "Workload Signal",
-                      subtitle: "Public depot induction data",
+                      title: "Workload Signal",
+                      icon: <Radio className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "Public/DoD",
-                      children: [
+                      defaultOpen: true,
+                      nodes: [
                         {
                           label: "14 CH-53K aircraft in AEPD",
                           subtitle: "Signal, not capacity — reflects announced depot inductions",
@@ -356,10 +380,11 @@ const DepotDetail = () => {
                       ],
                     },
                     {
-                      label: "Contacts (SME-validated)",
-                      subtitle: "Internal or self-reported contacts",
+                      title: "Contacts (SME-validated)",
+                      icon: <User className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "SME-validated",
-                      children: [
+                      defaultOpen: true,
+                      nodes: [
                         {
                           label: "Tahir Shah",
                           image: "Tahir_Shah.jpeg",
@@ -377,12 +402,20 @@ const DepotDetail = () => {
                   image: "f-35.jpg",
                   subtitle: "Joint Strike Fighter — Depot-level sustainment at FRCE",
                   evidenceLevel: "Public/DoD",
-                  children: [
+                  lanes: [
                     {
-                      label: "F-35 JPO",
-                      image: "f35jpo.png",
-                      subtitle: "F-35 Joint Program Office",
+                      title: "Program Ownership",
+                      icon: <Shield className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "Authoritative",
+                      defaultOpen: true,
+                      nodes: [
+                        {
+                          label: "F-35 JPO",
+                          image: "f35jpo.png",
+                          subtitle: "F-35 Joint Program Office",
+                          evidenceLevel: "Authoritative",
+                        },
+                      ],
                     },
                   ],
                 },
