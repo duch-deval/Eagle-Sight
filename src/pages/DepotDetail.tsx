@@ -282,7 +282,7 @@ const DepotDetail = () => {
                 {
                   label: "CH-53K King Stallion",
                   image: "ch-53k.jpg",
-                  subtitle: "Heavy Lift Helicopter — Depot-level sustainment at FRCE",
+                  
                   evidenceLevel: "Public/DoD",
                   lanes: [
                     {
@@ -400,7 +400,7 @@ const DepotDetail = () => {
                 {
                   label: "F-35 Lightning II",
                   image: "f-35.jpg",
-                  subtitle: "Joint Strike Fighter — Depot-level sustainment at FRCE",
+                  
                   evidenceLevel: "Public/DoD",
                   lanes: [
                     {
