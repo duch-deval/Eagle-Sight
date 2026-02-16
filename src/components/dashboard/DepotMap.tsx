@@ -111,41 +111,43 @@ export const DepotMap = ({ depots }: DepotMapProps) => {
                 />
 
                 {/* Tooltip card on hover */}
-                {isHovered && (
-                  <g style={{ pointerEvents: "none" }}>
-                    {/* Card background */}
-                    <rect
-                      x={12}
-                      y={-50}
-                      width={150}
-                      height={46}
-                      fill="white"
-                      stroke="#e2e8f0"
-                      strokeWidth={1}
-                      rx={4}
-                      filter="drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))"
-                    />
+                {isHovered && (() => {
+                  // Flip tooltip left when marker is on the right side of the map
+                  const flipLeft = depot.coordinates!.lon > -85;
+                  const cardX = flipLeft ? -162 : 12;
+                  const textX = flipLeft ? -154 : 20;
 
-                    {/* Depot name (small label) */}
-                    <text
-                      x={20}
-                      y={-32}
-                      fontSize={8}
-                      fontWeight="700"
-                      fill="#94a3b8"
-                      style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}
-                    >
-                      {depot.name.length > 28
-                        ? depot.name.substring(0, 28) + "..."
-                        : depot.name}
-                    </text>
-
-                    {/* Base name (prominent) */}
-                    <text x={20} y={-14} fontSize={12} fontWeight="700" fill="#1e293b">
-                      {depot.base}
-                    </text>
-                  </g>
-                )}
+                  return (
+                    <g style={{ pointerEvents: "none" }}>
+                      <rect
+                        x={cardX}
+                        y={-50}
+                        width={150}
+                        height={46}
+                        fill="white"
+                        stroke="#e2e8f0"
+                        strokeWidth={1}
+                        rx={4}
+                        filter="drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))"
+                      />
+                      <text
+                        x={textX}
+                        y={-32}
+                        fontSize={8}
+                        fontWeight="700"
+                        fill="#94a3b8"
+                        style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}
+                      >
+                        {depot.name.length > 28
+                          ? depot.name.substring(0, 28) + "..."
+                          : depot.name}
+                      </text>
+                      <text x={textX} y={-14} fontSize={12} fontWeight="700" fill="#1e293b">
+                        {depot.base}
+                      </text>
+                    </g>
+                  );
+                })()}
               </Marker>
             );
           })}
