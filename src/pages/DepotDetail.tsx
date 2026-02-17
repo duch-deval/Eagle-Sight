@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, MapPin, Loader2, Plane, FileText, Shield, Wrench, Radio, User } from "lucide-react";
 import { useDepotById } from "@/hooks/usePlatforms";
+import supabase from "@/lib/supabaseClient";
 import { CorporateButton, SectionHeader, CorporateCard } from "@/components/ui/TacticalComponents";
 import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
 import { EntityCard } from "@/components/dashboard/EntityCard";
@@ -28,8 +29,33 @@ const DepotDetail = () => {
   // Fetch from Supabase
   const { depot, loading, error } = useDepotById(id);
 
+  // Fetch contacts for all platforms linked to this depot
+  const [platformContacts, setPlatformContacts] = useState<Record<string, any[]>>({});
+
+  useEffect(() => {
+    if (!depot?.platforms?.length) return;
+
+    const fetchContacts = async () => {
+      const platformIds = depot.platforms.map((p) => p.id);
+      const { data } = await supabase
+        .from("platform_contacts")
+        .select("*")
+        .in("platform_id", platformIds)
+        .order("name");
+
+      // Group by platform_id
+      const grouped: Record<string, any[]> = {};
+      (data || []).forEach((c) => {
+        if (!grouped[c.platform_id]) grouped[c.platform_id] = [];
+        grouped[c.platform_id].push(c);
+      });
+      setPlatformContacts(grouped);
+    };
+
+    fetchContacts();
+  }, [depot]);
+
   // Extract unique PMAs
-  // We need to handle this conditionally or use a memo, but here is fine
   const platformPmas = depot
     ? (Array.from(new Set(depot.platforms.map((p) => p.pmaCode).filter(Boolean))) as string[])
     : [];
@@ -379,22 +405,19 @@ const DepotDetail = () => {
                         },
                       ],
                     },
-                    {
-                      title: "Contacts (SME-validated)",
+                    // Dynamic contacts lane from Supabase
+                    ...(platformContacts["ch-53k"]?.length ? [{
+                      title: `Contacts (${platformContacts["ch-53k"].length})`,
                       icon: <User className="h-3.5 w-3.5 text-primary" />,
-                      evidenceLevel: "SME-validated",
+                      evidenceLevel: "SME-validated" as const,
                       defaultOpen: true,
-                      nodes: [
-                        {
-                          label: "Tahir Shah",
-                          image: "Tahir_Shah.jpeg",
-                          link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
-                          subtitle:
-                            "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
-                          evidenceLevel: "SME-validated",
-                        },
-                      ],
-                    },
+                      nodes: platformContacts["ch-53k"].map((c: any) => ({
+                        label: c.name,
+                        subtitle: [c.title, c.organization].filter(Boolean).join(" — "),
+                        link: c.email ? `/points-of-contact/${encodeURIComponent(c.email)}` : undefined,
+                        evidenceLevel: "SME-validated" as const,
+                      })),
+                    }] : []),
                   ],
                 },
                 {
@@ -417,6 +440,19 @@ const DepotDetail = () => {
                         },
                       ],
                     },
+                    // Dynamic contacts lane from Supabase
+                    ...(platformContacts["f-35"]?.length ? [{
+                      title: `Contacts (${platformContacts["f-35"].length})`,
+                      icon: <User className="h-3.5 w-3.5 text-primary" />,
+                      evidenceLevel: "SME-validated" as const,
+                      defaultOpen: true,
+                      nodes: platformContacts["f-35"].map((c: any) => ({
+                        label: c.name,
+                        subtitle: [c.title, c.organization].filter(Boolean).join(" — "),
+                        link: c.email ? `/points-of-contact/${encodeURIComponent(c.email)}` : undefined,
+                        evidenceLevel: "SME-validated" as const,
+                      })),
+                    }] : []),
                   ],
                 },
               ]}
