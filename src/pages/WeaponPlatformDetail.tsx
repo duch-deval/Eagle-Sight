@@ -452,6 +452,15 @@ const WeaponPlatformDetail = () => {
                                   View Awards <ExternalLink className="h-2.5 w-2.5" />
                                 </Link>
                               )}
+
+                              {weapon.depots && weapon.depots.length > 0 && (
+                                <Link
+                                  to={`/depots/${weapon.depots[0].id}#contacts-map`}
+                                  className="text-[10px] text-corporate-blue hover:underline flex items-center gap-1 mt-1 font-medium"
+                                >
+                                  View in Relationship Map <ExternalLink className="h-2.5 w-2.5" />
+                                </Link>
+                              )}
                             </div>
                           </div>
                         ))}

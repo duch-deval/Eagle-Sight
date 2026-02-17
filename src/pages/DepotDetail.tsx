@@ -269,7 +269,7 @@ const DepotDetail = () => {
 
         {/* Functional Relationship Tree Map — full width */}
         {activeTab === "overview" && (
-          <div className="mt-12">
+          <div className="mt-12" id="contacts-map">
             <SectionHeader
               title="Functional Relationship Map"
               subtitle="Visualize program ownership, sustainment execution, contracting, and workload signals for this depot node."
