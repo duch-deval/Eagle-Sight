@@ -199,24 +199,24 @@ const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle:
       {/* Platform card */}
       <button
         onClick={onToggle}
-        className={`flex items-center gap-2 border rounded-sm transition-all duration-200 w-full cursor-pointer
-          ${isOpen ? 'px-4 py-3 bg-primary/10 border-primary/30 shadow-sm' : 'px-3 py-2 bg-muted/50 border-border hover:bg-muted'}`}
+        className={`flex items-center gap-3 border rounded-sm transition-all duration-200 w-full cursor-pointer
+          ${isOpen ? 'px-6 py-4 bg-primary/10 border-primary/30 shadow-sm' : 'px-4 py-3 bg-muted/50 border-border hover:bg-muted'}`}
       >
         {isOpen
-          ? <ChevronDown className="h-3 w-3 text-muted-foreground shrink-0" />
-          : <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
+          ? <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
+          : <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
         }
         {node.image && (
           <img
             src={`${import.meta.env.BASE_URL}${node.image}`}
             alt={node.label}
-            className={`object-cover rounded-sm shrink-0 ${isOpen ? 'h-10 w-14' : 'h-7 w-10'}`}
+            className={`object-cover rounded-sm shrink-0 ${isOpen ? 'h-14 w-20' : 'h-10 w-14'}`}
           />
         )}
         <div className="flex flex-col min-w-0 flex-1 gap-0.5">
-          <span className={`font-bold uppercase tracking-widest text-foreground ${isOpen ? 'text-xs' : 'text-[10px]'}`}>{node.label}</span>
+          <span className={`font-bold uppercase tracking-widest text-foreground ${isOpen ? 'text-sm' : 'text-xs'}`}>{node.label}</span>
           {isOpen && node.subtitle && (
-            <span className="text-[10px] text-muted-foreground leading-tight">{node.subtitle}</span>
+            <span className="text-xs text-muted-foreground leading-tight">{node.subtitle}</span>
           )}
         </div>
         {isOpen && node.evidenceLevel && <EvidenceBadge level={node.evidenceLevel} />}
