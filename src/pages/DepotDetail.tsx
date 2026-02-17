@@ -405,19 +405,28 @@ const DepotDetail = () => {
                         },
                       ],
                     },
-                    // Dynamic contacts lane from Supabase
-                    ...(platformContacts["ch-53k"]?.length ? [{
-                      title: `Contacts (${platformContacts["ch-53k"].length})`,
+                    // Contacts lane: hardcoded + dynamic from Supabase
+                    {
+                      title: `Contacts${platformContacts["ch-53k"]?.length ? ` (${platformContacts["ch-53k"].length + 1})` : ""}`,
                       icon: <User className="h-3.5 w-3.5 text-primary" />,
                       evidenceLevel: "SME-validated" as const,
                       defaultOpen: true,
-                      nodes: platformContacts["ch-53k"].map((c: any) => ({
-                        label: c.name,
-                        subtitle: [c.title, c.organization].filter(Boolean).join(" — "),
-                        link: c.email ? `/points-of-contact/${encodeURIComponent(c.email)}` : undefined,
-                        evidenceLevel: "SME-validated" as const,
-                      })),
-                    }] : []),
+                      nodes: [
+                        {
+                          label: "Tahir Shah",
+                          image: "Tahir_Shah.jpeg",
+                          link: "https://www.linkedin.com/in/tahir-shah-86b87a13b",
+                          subtitle: "SME-validated (internal). Public sources confirm NAVAIR Program Manager + CH-53K posts, but PMA-261 assignment not publicly confirmed.",
+                          evidenceLevel: "SME-validated" as const,
+                        },
+                        ...(platformContacts["ch-53k"] || []).map((c: any) => ({
+                          label: c.name,
+                          subtitle: [c.title, c.organization].filter(Boolean).join(" — "),
+                          link: c.email ? `/points-of-contact/${encodeURIComponent(c.email)}` : undefined,
+                          evidenceLevel: "SME-validated" as const,
+                        })),
+                      ],
+                    },
                   ],
                 },
                 {
