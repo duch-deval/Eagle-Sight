@@ -194,13 +194,13 @@ const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle:
   };
 
   return (
-    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-shrink-0'}`} style={!isOpen ? { maxWidth: '160px' } : undefined}>
+    <div className={`flex flex-col items-center min-w-0 transition-all duration-300 ${isOpen ? 'flex-[3]' : 'flex-shrink-0'}`} style={!isOpen ? { maxWidth: '220px', minWidth: '180px' } : undefined}>
       <div className="w-px h-4 bg-border" />
       {/* Platform card */}
       <button
         onClick={onToggle}
         className={`flex items-center gap-3 border rounded-sm transition-all duration-200 w-full cursor-pointer
-          ${isOpen ? 'px-6 py-4 bg-primary/10 border-primary/30 shadow-sm' : 'px-4 py-3 bg-muted/50 border-border hover:bg-muted'}`}
+          ${isOpen ? 'px-6 py-4 bg-primary/10 border-primary/30 shadow-sm' : 'px-5 py-4 bg-muted/50 border-border hover:bg-muted'}`}
       >
         {isOpen
           ? <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
@@ -214,7 +214,7 @@ const DesktopPlatformNode: React.FC<{ node: TreeNode; isOpen: boolean; onToggle:
           />
         )}
         <div className="flex flex-col min-w-0 flex-1 gap-0.5">
-          <span className={`font-bold uppercase tracking-widest text-foreground ${isOpen ? 'text-sm' : 'text-xs'}`}>{node.label}</span>
+          <span className={`font-bold uppercase tracking-widest text-foreground ${isOpen ? 'text-sm' : 'text-sm'}`}>{node.label}</span>
           {isOpen && node.subtitle && (
             <span className="text-xs text-muted-foreground leading-tight">{node.subtitle}</span>
           )}
