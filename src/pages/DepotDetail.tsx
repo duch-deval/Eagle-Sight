@@ -203,79 +203,9 @@ const DepotDetail = () => {
               </nav>
             </div>
 
-            {/* Tab: OVERVIEW (Platforms only — tree map moved below) */}
+            {/* Tab: OVERVIEW — Map first, then Supported Platforms */}
             {activeTab === "overview" && (
               <div className="space-y-12">
-                <div>
-                  <SectionHeader title="Supported Platforms" />
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {depot.platforms.map((p) => (
-                      <WeaponPlatformCard
-                        key={p.id}
-                        id={p.id}
-                        name={p.name}
-                        category={p.category}
-                        description={p.description}
-                        contractors={p.contractors}
-                        imagePath={`${import.meta.env.BASE_URL}${p.id}.jpg`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Tab: CONTRACTING */}
-            {activeTab === "contracting" && (
-              <div>
-                <SectionHeader title="Contracting Offices by Platform" />
-                <div className="space-y-8">
-                  {depot.platforms.map(
-                    (p) =>
-                      p.contractingOffices &&
-                      p.contractingOffices.length > 0 && (
-                        <div key={p.id} className="bg-white border border-slate-200 rounded-lg overflow-hidden">
-                          <div className="bg-slate-50 px-4 py-3 border-b border-slate-200 flex justify-between items-center">
-                            <div className="font-bold text-slate-700 text-sm flex items-center gap-2">
-                              <Plane className="h-4 w-4 text-slate-400" />
-                              {p.name}
-                            </div>
-                          </div>
-                          <div className="p-6">
-                            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                              {p.contractingOffices.map((office) => (
-                                <EntityCard
-                                  key={`${p.id}-${office}`}
-                                  name={office}
-                                  imagePath={getImageForEntity(office)}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      ),
-                  )}
-                  {depot.platforms.every((p) => !p.contractingOffices || p.contractingOffices.length === 0) && (
-                    <div className="p-8 text-center text-slate-500 italic">
-                      No contracting office data available for supported platforms.
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Tab: PROGRAM MANAGEMENT */}
-            {activeTab === "program management" && (
-              <div>
-                <SectionHeader title="Program Management Activities (PMAs)" />
-                <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
-                  {platformPmas.map((pma) => (
-                    <EntityCard key={pma} name={pma} type="Program Office" imagePath={getImageForEntity(pma)} />
-                  ))}
-                  {platformPmas.length === 0 && (
-                    <div className="col-span-full text-slate-400 italic">No PMA data available for this depot.</div>
-                  )}
-                </div>
               </div>
             )}
           </div>
@@ -293,7 +223,7 @@ const DepotDetail = () => {
           </div>
         </div>
 
-        {/* Functional Relationship Tree Map — full width */}
+        {/* Functional Relationship Tree Map — full width, FIRST */}
         {activeTab === "overview" && (
           <div className="mt-12" id="contacts-map">
             <SectionHeader
@@ -405,7 +335,6 @@ const DepotDetail = () => {
                         },
                       ],
                     },
-                    // Contacts lane: hardcoded + dynamic from Supabase
                     {
                       title: `Contacts${platformContacts["ch-53k"]?.length ? ` (${platformContacts["ch-53k"].length + 1})` : ""}`,
                       icon: <User className="h-3.5 w-3.5 text-primary" />,
@@ -449,7 +378,6 @@ const DepotDetail = () => {
                         },
                       ],
                     },
-                    // Dynamic contacts lane from Supabase
                     ...(platformContacts["f-35"]?.length ? [{
                       title: `Contacts (${platformContacts["f-35"].length})`,
                       icon: <User className="h-3.5 w-3.5 text-primary" />,
@@ -466,6 +394,26 @@ const DepotDetail = () => {
                 },
               ]}
             />
+          </div>
+        )}
+
+        {/* Supported Platforms — below the map */}
+        {activeTab === "overview" && (
+          <div className="mt-12">
+            <SectionHeader title="Supported Platforms" />
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {depot.platforms.map((p) => (
+                <WeaponPlatformCard
+                  key={p.id}
+                  id={p.id}
+                  name={p.name}
+                  category={p.category}
+                  description={p.description}
+                  contractors={p.contractors}
+                  imagePath={`${import.meta.env.BASE_URL}${p.id}.jpg`}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
