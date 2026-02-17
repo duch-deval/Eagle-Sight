@@ -1,30 +1,24 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ArrowRight, Filter, Grid, List, ChevronRight, FileBarChart, Loader2 } from "lucide-react";
-import { weaponCategories } from "@/data/weaponsPlatforms";
+import { Search, Filter, Grid, List, ChevronRight, Loader2 } from "lucide-react";
 import type { DepotLocation } from "@/data/weaponsPlatforms";
 import { usePlatforms, useAllDepots } from "@/hooks/usePlatforms";
-import { CorporateButton, CorporateInput, CorporateSelect, CorporateCard } from "@/components/ui/TacticalComponents";
+import { CorporateInput } from "@/components/ui/TacticalComponents";
 import { DepotMap } from "@/components/dashboard/DepotMap";
 import { WeaponPlatformCard } from "@/components/dashboard/WeaponPlatformCard";
 
 const WeaponsPlatforms = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedStatus, setSelectedStatus] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [mapPlatform, setMapPlatform] = useState<string>("all");
 
   // Fetch from Supabase
   const { platforms, loading, error } = usePlatforms();
-  const { depots: allDepots, platformNames: depotPlatforms, loading: depotsLoading } = useAllDepots();
+  const { depots: allDepots, loading: depotsLoading } = useAllDepots();
 
   // Convert filtered depot data â†’ DepotLocation[] for existing DepotMap
   const mapDepots: DepotLocation[] = useMemo(() => {
-    const filtered = mapPlatform === "all"
-      ? allDepots
-      : allDepots.filter((d) => d.platformId === mapPlatform);
+    const filtered = allDepots;
 
     // Deduplicate by coordinates so the same physical depot doesn't stack markers
     const seen = new Map<string, DepotLocation>();
@@ -44,7 +38,7 @@ const WeaponsPlatforms = () => {
       }
     });
     return Array.from(seen.values());
-  }, [allDepots, mapPlatform]);
+  }, [allDepots]);
 
   // Client-side filtering
   const filteredWeapons = useMemo(() => {
@@ -62,21 +56,11 @@ const WeaponsPlatforms = () => {
       );
     }
 
-    if (selectedCategory !== "all") {
-      results = results.filter((w) => w.category === selectedCategory);
-    }
-
-    if (selectedStatus !== "all") {
-      results = results.filter((w) => w.status === selectedStatus);
-    }
-
     return results;
-  }, [platforms, searchQuery, selectedCategory, selectedStatus]);
+  }, [platforms, searchQuery]);
 
   const clearFilters = () => {
     setSearchQuery("");
-    setSelectedCategory("all");
-    setSelectedStatus("all");
   };
 
   return (
@@ -89,55 +73,17 @@ const WeaponsPlatforms = () => {
             <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-wide">Filter Platforms</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-14 gap-6 items-end">
-            <div className="md:col-span-4">
+          <div className="flex items-end gap-6">
+            <div className="flex-1">
               <CorporateInput
                 label="Search"
-                placeholder="Search by name or keyword..."
+                placeholder="Search by platform name or keyword..."
                 icon={<Search className="h-4 w-4" />}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <div className="md:col-span-3">
-              <CorporateSelect
-                label="Category"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                <option value="all">All Categories</option>
-                {weaponCategories.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </CorporateSelect>
-            </div>
-            <div className="md:col-span-2">
-              <CorporateSelect
-                label="Status"
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-              >
-                <option value="all">Any Status</option>
-                <option value="Active">Active</option>
-                <option value="Development">Development</option>
-                <option value="Retired">Retired</option>
-              </CorporateSelect>
-            </div>
-            <div className="md:col-span-3">
-              <CorporateSelect
-                label="Depot Network"
-                value={mapPlatform}
-                onChange={(e) => setMapPlatform(e.target.value)}
-              >
-                <option value="all">All Platforms</option>
-                {depotPlatforms.map((p) => (
-                  <option key={p.id} value={p.id}>{p.name}</option>
-                ))}
-              </CorporateSelect>
-            </div>
-            <div className="md:col-span-2 flex justify-end items-center h-full pb-1 gap-4">
+            <div className="flex items-center h-full pb-1 gap-4">
               <div className="flex gap-1 border rounded overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
@@ -152,7 +98,7 @@ const WeaponsPlatforms = () => {
                   <List className="h-4 w-4" />
                 </button>
               </div>
-              {(searchQuery || selectedCategory !== "all" || selectedStatus !== "all") && (
+              {searchQuery && (
                 <button onClick={clearFilters} className="text-[10px] text-muted-foreground hover:text-corporate-blue font-bold uppercase tracking-wider">
                   Clear
                 </button>
