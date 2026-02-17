@@ -363,11 +363,11 @@ const FunctionalTreeMap: React.FC<FunctionalTreeMapProps> = ({ rootLabel, rootSu
       ) : (
         <div className="flex flex-col items-center gap-0 w-full">
           {/* Root at top */}
-          <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-4 flex items-center gap-4">
-            {rootImage && <img src={rootImage} alt={rootLabel} className="h-14 w-20 object-cover rounded-sm shrink-0" />}
+          <div className="bg-primary/10 border border-primary/20 rounded-sm px-9 py-6 flex items-center gap-6">
+            {rootImage && <img src={rootImage} alt={rootLabel} className="h-[84px] w-[120px] object-cover rounded-sm shrink-0" />}
             <div>
-              <h3 className="text-base font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
-              {rootSubtitle && <p className="text-xs text-muted-foreground mt-0.5">{rootSubtitle}</p>}
+              <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground">{rootLabel}</h3>
+              {rootSubtitle && <p className="text-sm text-muted-foreground mt-1">{rootSubtitle}</p>}
             </div>
           </div>
 
