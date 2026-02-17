@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ArrowRight, Filter, Grid, List, ChevronRight, FileBarChart, Loader2, MapPin } from "lucide-react";
+import { Search, ArrowRight, Filter, Grid, List, ChevronRight, FileBarChart, Loader2 } from "lucide-react";
 import { weaponCategories } from "@/data/weaponsPlatforms";
 import type { DepotLocation } from "@/data/weaponsPlatforms";
 import { usePlatforms, useAllDepots } from "@/hooks/usePlatforms";
@@ -89,8 +89,8 @@ const WeaponsPlatforms = () => {
             <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-wide">Filter Platforms</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
-            <div className="md:col-span-5">
+          <div className="grid grid-cols-1 md:grid-cols-14 gap-6 items-end">
+            <div className="md:col-span-4">
               <CorporateInput
                 label="Search"
                 placeholder="Search by name or keyword..."
@@ -125,6 +125,18 @@ const WeaponsPlatforms = () => {
                 <option value="Retired">Retired</option>
               </CorporateSelect>
             </div>
+            <div className="md:col-span-3">
+              <CorporateSelect
+                label="Depot Network"
+                value={mapPlatform}
+                onChange={(e) => setMapPlatform(e.target.value)}
+              >
+                <option value="all">All Platforms</option>
+                {depotPlatforms.map((p) => (
+                  <option key={p.id} value={p.id}>{p.name}</option>
+                ))}
+              </CorporateSelect>
+            </div>
             <div className="md:col-span-2 flex justify-end items-center h-full pb-1 gap-4">
               <div className="flex gap-1 border rounded overflow-hidden">
                 <button
@@ -153,49 +165,7 @@ const WeaponsPlatforms = () => {
         {/* DEPOT MAP */}
         {!depotsLoading && allDepots.length > 0 && (
           <div className="mb-8">
-            <div className="flex flex-col lg:flex-row gap-4">
-              {/* Map */}
-              <div className="flex-1 min-w-0">
-                <DepotMap depots={mapDepots} />
-              </div>
-
-              {/* Sidebar filter panel */}
-              <div className="w-full lg:w-56 flex-shrink-0 bg-card border border-border rounded-lg p-4 self-start">
-                <div className="flex items-center gap-2 mb-4 border-b border-border pb-3">
-                  <MapPin className="h-4 w-4 text-corporate-blue" />
-                  <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-wide">
-                    Sustainment Network
-                  </h3>
-                </div>
-
-                <div className="mb-4">
-                  <CorporateSelect
-                    label="Platform"
-                    value={mapPlatform}
-                    onChange={(e) => setMapPlatform(e.target.value)}
-                  >
-                    <option value="all">All Platforms</option>
-                    {depotPlatforms.map((p) => (
-                      <option key={p.id} value={p.id}>{p.name}</option>
-                    ))}
-                  </CorporateSelect>
-                </div>
-
-                <div className="text-[10px] text-muted-foreground space-y-1">
-                  <div>
-                    <span className="font-bold text-foreground">{mapDepots.length}</span> depot{mapDepots.length !== 1 ? "s" : ""}
-                  </div>
-                  <div>
-                    <span className="font-bold text-foreground">{allDepots.length}</span> total depot links
-                  </div>
-                  {mapPlatform !== "all" && (
-                    <div className="pt-2 border-t border-border mt-2 text-corporate-blue font-medium">
-                      {depotPlatforms.find((p) => p.id === mapPlatform)?.name}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+            <DepotMap depots={mapDepots} />
           </div>
         )}
 
