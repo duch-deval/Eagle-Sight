@@ -116,27 +116,27 @@ const RecipientAnalysis = () => {
         {filtered.map((entry, idx) => (
           <Card
             key={`${entry.fsc_code}-${idx}`}
-            className="flex flex-col overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-200"
+            className="flex flex-col overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-200 border-border/60"
           >
-            <CardHeader className="px-4 py-3 border-b border-border bg-muted/30 space-y-0.5">
+            <CardHeader className="px-4 py-3 border-b border-border bg-primary space-y-0.5">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-foreground tracking-wide uppercase">
+                <span className="text-sm font-bold text-primary-foreground tracking-wide uppercase">
                   FSC {entry.fsc_code}
                 </span>
-                <span className="text-xs font-semibold text-primary">
+                <span className="text-xs font-semibold text-primary-foreground/80">
                   {fmt(entry.total_volume)}
                 </span>
               </div>
-              <p className="text-xs text-muted-foreground truncate" title={entry.fsc_description}>
+              <p className="text-xs text-primary-foreground/60 truncate" title={entry.fsc_description}>
                 {entry.fsc_description}
               </p>
             </CardHeader>
 
-            <CardContent className="p-0 flex-1">
+            <CardContent className="p-0 flex-1 bg-card">
               <ScrollArea className="h-56">
                 <Table>
                   <TableHeader>
-                    <TableRow className="border-b border-border">
+                    <TableRow className="border-b border-border bg-muted/50">
                       <TableHead className="h-7 px-3 text-xs w-8">#</TableHead>
                       <TableHead className="h-7 px-2 text-xs">Company</TableHead>
                       <TableHead className="h-7 px-3 text-xs text-right">Amount</TableHead>
@@ -147,7 +147,7 @@ const RecipientAnalysis = () => {
                     {entry.top_recipients.map((r) => (
                       <TableRow
                         key={r.name}
-                        className="cursor-pointer"
+                        className="cursor-pointer hover:bg-accent/50 border-border/40"
                         onClick={() =>
                           navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)
                         }
@@ -156,12 +156,12 @@ const RecipientAnalysis = () => {
                           {r.rank}
                         </TableCell>
                         <TableCell
-                          className="px-2 py-1.5 text-xs truncate max-w-[140px]"
+                          className="px-2 py-1.5 text-xs truncate max-w-[140px] text-foreground"
                           title={r.name}
                         >
                           {r.name}
                         </TableCell>
-                        <TableCell className="px-3 py-1.5 text-xs text-right font-semibold whitespace-nowrap">
+                        <TableCell className="px-3 py-1.5 text-xs text-right font-semibold text-foreground whitespace-nowrap">
                           {fmt(r.total_awarded)}
                         </TableCell>
                         <TableCell className="px-3 py-1.5 text-xs text-right text-muted-foreground">
