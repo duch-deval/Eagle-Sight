@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, TrendingUp, Hash, SortAsc } from "lucide-react";
+import { Search, TrendingUp, Hash, SortAsc, Calendar } from "lucide-react";
 import { SectionHeader } from "@/components/ui/TacticalComponents";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
@@ -43,7 +43,10 @@ const fmt = (n: number) =>
 const RecipientAnalysis = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortMode>("volume");
+  const [fy, setFy] = useState<string>("FY2026");
   const navigate = useNavigate();
+
+  const fyOptions = ["FY2023", "FY2024", "FY2025", "FY2026"];
 
   const data = mockData as FSCEntry[];
 
@@ -105,10 +108,28 @@ const RecipientAnalysis = () => {
             </button>
           ))}
         </div>
+
+        {/* FY Filter */}
+        <div className="flex items-center gap-1 bg-muted/50 rounded-sm p-0.5 border border-border">
+          <Calendar className="h-3 w-3 text-muted-foreground ml-2" />
+          {fyOptions.map((year) => (
+            <button
+              key={year}
+              onClick={() => setFy(year)}
+              className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-sm transition-all ${
+                fy === year
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
       </div>
 
       <p className="text-xs text-muted-foreground">
-        Showing {filtered.length} of {data.length} FSC categories
+        Showing {filtered.length} of {data.length} FSC categories · <span className="font-semibold text-foreground">{fy}</span>
       </p>
 
       {/* Grid */}
