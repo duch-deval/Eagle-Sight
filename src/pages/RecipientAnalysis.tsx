@@ -1,74 +1,69 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, TrendingUp, Hash, SortAsc } from "lucide-react";
-import { fetchAllRecipientsWithFSC, type RecipientRow } from "@/lib/supabaseRecipientData";
 import { SectionHeader } from "@/components/ui/TacticalComponents";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/table";
+import mockData from "@/data/mockFscLeaderboard.json";
 
 type SortMode = "code" | "volume" | "alpha";
 
-interface FSCCard {
-  fsc: string;
-  totalVolume: number;
-  recipients: { rank: number; name: string; total: number; count: number }[];
+interface Recipient {
+  rank: number;
+  name: string;
+  total_awarded: number;
+  award_count: number;
+}
+
+interface FSCEntry {
+  fsc_code: string;
+  fsc_description: string;
+  total_volume: number;
+  top_recipients: Recipient[];
 }
 
 const fmt = (n: number) =>
-  n >= 1_000_000
-    ? `$${(n / 1_000_000).toFixed(1)}M`
-    : n >= 1_000
-      ? `$${(n / 1_000).toFixed(0)}K`
-      : `$${n.toFixed(0)}`;
+  n >= 1_000_000_000
+    ? `$${(n / 1_000_000_000).toFixed(1)}B`
+    : n >= 1_000_000
+      ? `$${(n / 1_000_000).toFixed(1)}M`
+      : n >= 1_000
+        ? `$${(n / 1_000).toFixed(0)}K`
+        : `$${n.toFixed(0)}`;
 
 const RecipientAnalysis = () => {
-  const [rows, setRows] = useState<RecipientRow[]>([]);
-  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortMode>("volume");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchAllRecipientsWithFSC().then((d) => {
-      setRows(d);
-      setLoading(false);
-    });
-  }, []);
+  const data = mockData as FSCEntry[];
 
-  const cards: FSCCard[] = useMemo(() => {
-    const map = new Map<string, Map<string, { total: number; count: number }>>();
-    for (const r of rows) {
-      if (!r.fsc) continue;
-      if (!map.has(r.fsc)) map.set(r.fsc, new Map());
-      const recMap = map.get(r.fsc)!;
-      const name = r.recipient_name || "Unknown";
-      const prev = recMap.get(name) || { total: 0, count: 0 };
-      prev.total += Number(r.awarded_amount) || 0;
-      prev.count += 1;
-      recMap.set(name, prev);
-    }
-
-    const result: FSCCard[] = [];
-    for (const [fsc, recMap] of map) {
-      const sorted = [...recMap.entries()]
-        .sort((a, b) => b[1].total - a[1].total)
-        .slice(0, 25)
-        .map(([name, d], i) => ({ rank: i + 1, name, total: d.total, count: d.count }));
-      const totalVolume = sorted.reduce((s, r) => s + r.total, 0);
-      result.push({ fsc, totalVolume, recipients: sorted });
-    }
-
-    if (sort === "volume") result.sort((a, b) => b.totalVolume - a.totalVolume);
-    else result.sort((a, b) => a.fsc.localeCompare(b.fsc));
-
-    return result;
-  }, [rows, sort]);
+  const sorted = useMemo(() => {
+    const copy = [...data];
+    if (sort === "volume") copy.sort((a, b) => b.total_volume - a.total_volume);
+    else if (sort === "code") copy.sort((a, b) => a.fsc_code.localeCompare(b.fsc_code));
+    else copy.sort((a, b) => a.fsc_description.localeCompare(b.fsc_description));
+    return copy;
+  }, [data, sort]);
 
   const filtered = useMemo(() => {
-    if (!search.trim()) return cards;
+    if (!search.trim()) return sorted;
     const q = search.toLowerCase();
-    return cards.filter((c) => c.fsc.toLowerCase().includes(q));
-  }, [cards, search]);
+    return sorted.filter(
+      (c) =>
+        c.fsc_code.toLowerCase().includes(q) ||
+        c.fsc_description.toLowerCase().includes(q)
+    );
+  }, [sorted, search]);
 
   const sortOptions: { key: SortMode; label: string; icon: typeof TrendingUp }[] = [
     { key: "volume", label: "Volume", icon: TrendingUp },
@@ -87,9 +82,9 @@ const RecipientAnalysis = () => {
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
         <div className="relative flex-1 w-full sm:max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <input
-            className="w-full bg-card border border-border text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none py-2.5 pl-9 pr-3 rounded-sm shadow-sm transition-all"
-            placeholder="Filter by FSC code…"
+          <Input
+            className="pl-9"
+            placeholder="Filter by FSC code or description…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -112,79 +107,77 @@ const RecipientAnalysis = () => {
         </div>
       </div>
 
-      {/* Loading */}
-      {loading && (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <Skeleton key={i} className="h-72 rounded-sm" />
-          ))}
-        </div>
-      )}
+      <p className="text-xs text-muted-foreground">
+        Showing {filtered.length} of {data.length} FSC categories
+      </p>
 
       {/* Grid */}
-      {!loading && (
-        <>
-          <p className="text-xs text-muted-foreground">
-            Showing {filtered.length} of {cards.length} FSC categories
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((card) => (
-              <div
-                key={card.fsc}
-                className="bg-card border border-border rounded-sm shadow-sm flex flex-col overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-200"
-              >
-                {/* Card Header */}
-                <div className="px-4 py-3 border-b border-border bg-muted/30">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-foreground tracking-wide uppercase">
-                      FSC {card.fsc}
-                    </span>
-                    <span className="text-xs font-semibold text-primary">
-                      {fmt(card.totalVolume)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Scrollable Table */}
-                <ScrollArea className="h-56">
-                  <table className="w-full text-xs">
-                    <thead className="sticky top-0 bg-card z-10">
-                      <tr className="border-b border-border">
-                        <th className="text-left px-3 py-1.5 text-muted-foreground font-semibold w-8">#</th>
-                        <th className="text-left px-2 py-1.5 text-muted-foreground font-semibold">Company</th>
-                        <th className="text-right px-3 py-1.5 text-muted-foreground font-semibold">Amount</th>
-                        <th className="text-right px-3 py-1.5 text-muted-foreground font-semibold w-10">Ct</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {card.recipients.map((r) => (
-                        <tr
-                          key={r.name}
-                          className="border-b border-border/50 hover:bg-muted/40 cursor-pointer transition-colors"
-                          onClick={() =>
-                            navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)
-                          }
-                        >
-                          <td className="px-3 py-1.5 text-muted-foreground font-mono">{r.rank}</td>
-                          <td className="px-2 py-1.5 text-foreground truncate max-w-[140px]" title={r.name}>
-                            {r.name}
-                          </td>
-                          <td className="px-3 py-1.5 text-right font-semibold text-foreground whitespace-nowrap">
-                            {fmt(r.total)}
-                          </td>
-                          <td className="px-3 py-1.5 text-right text-muted-foreground">{r.count}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </ScrollArea>
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {filtered.map((entry, idx) => (
+          <Card
+            key={`${entry.fsc_code}-${idx}`}
+            className="flex flex-col overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-200"
+          >
+            <CardHeader className="px-4 py-3 border-b border-border bg-muted/30 space-y-0.5">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-bold text-foreground tracking-wide uppercase">
+                  FSC {entry.fsc_code}
+                </span>
+                <span className="text-xs font-semibold text-primary">
+                  {fmt(entry.total_volume)}
+                </span>
               </div>
-            ))}
-          </div>
-        </>
-      )}
+              <p className="text-xs text-muted-foreground truncate" title={entry.fsc_description}>
+                {entry.fsc_description}
+              </p>
+            </CardHeader>
 
-      {!loading && filtered.length === 0 && (
+            <CardContent className="p-0 flex-1">
+              <ScrollArea className="h-56">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="border-b border-border">
+                      <TableHead className="h-7 px-3 text-xs w-8">#</TableHead>
+                      <TableHead className="h-7 px-2 text-xs">Company</TableHead>
+                      <TableHead className="h-7 px-3 text-xs text-right">Amount</TableHead>
+                      <TableHead className="h-7 px-3 text-xs text-right w-10">Ct</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {entry.top_recipients.map((r) => (
+                      <TableRow
+                        key={r.name}
+                        className="cursor-pointer"
+                        onClick={() =>
+                          navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)
+                        }
+                      >
+                        <TableCell className="px-3 py-1.5 text-xs text-muted-foreground font-mono">
+                          {r.rank}
+                        </TableCell>
+                        <TableCell
+                          className="px-2 py-1.5 text-xs truncate max-w-[140px]"
+                          title={r.name}
+                        >
+                          {r.name}
+                        </TableCell>
+                        <TableCell className="px-3 py-1.5 text-xs text-right font-semibold whitespace-nowrap">
+                          {fmt(r.total_awarded)}
+                        </TableCell>
+                        <TableCell className="px-3 py-1.5 text-xs text-right text-muted-foreground">
+                          {r.award_count}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
         <div className="text-center py-16 text-muted-foreground">
           No FSC categories match "<span className="font-semibold">{search}</span>"
         </div>
