@@ -5,6 +5,7 @@ import {
   Download,
   Award,
   FolderOpen,
+  Users,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -27,6 +28,7 @@ const mainItems = [
   { title: "Export Data", url: "/export", icon: Download },
   { title: "Watch List", url: "/AwardWatchlist", icon: FolderOpen },
   { title: "Points of Contact", url: "/points-of-contact", icon: FileText },
+  { title: "Recipient Analysis", url: "/recipient-analysis", icon: Users },
 ];
 
 const platformItems = [
