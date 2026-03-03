@@ -16,6 +16,7 @@ import WeaponPlatformDetail from "./pages/WeaponPlatformDetail";
 import DepotDetail from "./pages/DepotDetail";
 import AwardWatchlist from "./pages/AwardWatchlist";
 import AwardSearch from "./pages/AwardSearch";
+import RecipientAnalysis from "./pages/RecipientAnalysis";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -39,6 +40,7 @@ const App = () => (
                   <Route path="/platforms" element={<WeaponsPlatforms />} />
                   <Route path="/platforms/:id" element={<WeaponPlatformDetail />} />
                   <Route path="/awards" element={<AwardSearch />} />
+                  <Route path="/recipient-analysis" element={<RecipientAnalysis />} />
                   <Route path="/export" element={<ExportData />} />
                   <Route path="/AwardWatchlist" element={<AwardWatchlist />} />
                   <Route path="/points-of-contact" element={<PointsOfContact />} />
