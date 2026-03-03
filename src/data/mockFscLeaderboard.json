@@ -1,0 +1,715 @@
+[
+  {
+    "fsc_code": "1560",
+    "fsc_description": "Airframe Structural Components",
+    "total_volume": 284500000,
+    "top_recipients": [
+      { "rank": 1, "name": "LOCKHEED MARTIN CORP", "total_awarded": 95000000, "award_count": 42 },
+      { "rank": 2, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 62000000, "award_count": 35 },
+      { "rank": 3, "name": "BOEING CO", "total_awarded": 41000000, "award_count": 28 },
+      { "rank": 4, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 22500000, "award_count": 19 },
+      { "rank": 5, "name": "GENERAL DYNAMICS CORP", "total_awarded": 18000000, "award_count": 15 },
+      { "rank": 6, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 12000000, "award_count": 12 },
+      { "rank": 7, "name": "BAE SYSTEMS PLC", "total_awarded": 9500000, "award_count": 10 },
+      { "rank": 8, "name": "TEXTRON INC", "total_awarded": 7200000, "award_count": 8 },
+      { "rank": 9, "name": "SPIRIT AEROSYSTEMS INC", "total_awarded": 5800000, "award_count": 7 },
+      { "rank": 10, "name": "DUCOMMUN INC", "total_awarded": 4200000, "award_count": 6 },
+      { "rank": 11, "name": "HEICO CORP", "total_awarded": 3100000, "award_count": 5 },
+      { "rank": 12, "name": "TRIUMPH GROUP INC", "total_awarded": 2800000, "award_count": 4 },
+      { "rank": 13, "name": "CURTISS-WRIGHT CORP", "total_awarded": 1400000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "1680",
+    "fsc_description": "Aircraft Air Conditioning & Heating Equipment",
+    "total_volume": 98200000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 32000000, "award_count": 22 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 24000000, "award_count": 18 },
+      { "rank": 3, "name": "PARKER HANNIFIN CORP", "total_awarded": 15500000, "award_count": 14 },
+      { "rank": 4, "name": "SAFRAN SA", "total_awarded": 10200000, "award_count": 9 },
+      { "rank": 5, "name": "LIEBHERR-AEROSPACE", "total_awarded": 8000000, "award_count": 7 },
+      { "rank": 6, "name": "DUKES AEROSPACE INC", "total_awarded": 4500000, "award_count": 5 },
+      { "rank": 7, "name": "AEROJET ROCKETDYNE", "total_awarded": 2200000, "award_count": 3 },
+      { "rank": 8, "name": "MOOG INC", "total_awarded": 1800000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1615",
+    "fsc_description": "Helicopter Rotor Blades & Drive Components",
+    "total_volume": 312000000,
+    "top_recipients": [
+      { "rank": 1, "name": "SIKORSKY AIRCRAFT CORP", "total_awarded": 110000000, "award_count": 55 },
+      { "rank": 2, "name": "BELL TEXTRON INC", "total_awarded": 78000000, "award_count": 40 },
+      { "rank": 3, "name": "BOEING CO", "total_awarded": 45000000, "award_count": 30 },
+      { "rank": 4, "name": "LEONARDO DRS INC", "total_awarded": 28000000, "award_count": 20 },
+      { "rank": 5, "name": "GE AVIATION", "total_awarded": 19000000, "award_count": 15 },
+      { "rank": 6, "name": "LOCKHEED MARTIN CORP", "total_awarded": 12000000, "award_count": 10 },
+      { "rank": 7, "name": "KAMAN AEROSPACE CORP", "total_awarded": 8500000, "award_count": 8 },
+      { "rank": 8, "name": "SAFRAN HELICOPTER ENGINES", "total_awarded": 5500000, "award_count": 5 },
+      { "rank": 9, "name": "CURTISS-WRIGHT CORP", "total_awarded": 3200000, "award_count": 4 },
+      { "rank": 10, "name": "TRIUMPH GROUP INC", "total_awarded": 2800000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "2840",
+    "fsc_description": "Gas Turbine & Jet Engine Components",
+    "total_volume": 520000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PRATT & WHITNEY", "total_awarded": 180000000, "award_count": 72 },
+      { "rank": 2, "name": "GE AVIATION", "total_awarded": 145000000, "award_count": 60 },
+      { "rank": 3, "name": "ROLLS-ROYCE NORTH AMERICA", "total_awarded": 68000000, "award_count": 35 },
+      { "rank": 4, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 42000000, "award_count": 28 },
+      { "rank": 5, "name": "SAFRAN SA", "total_awarded": 30000000, "award_count": 20 },
+      { "rank": 6, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 18000000, "award_count": 14 },
+      { "rank": 7, "name": "STANDARD AERO", "total_awarded": 12000000, "award_count": 10 },
+      { "rank": 8, "name": "CHROMALLOY GAS TURBINE", "total_awarded": 9500000, "award_count": 8 },
+      { "rank": 9, "name": "HEICO CORP", "total_awarded": 7000000, "award_count": 6 },
+      { "rank": 10, "name": "BARNES GROUP INC", "total_awarded": 4500000, "award_count": 4 },
+      { "rank": 11, "name": "PRECISION CASTPARTS CORP", "total_awarded": 2500000, "award_count": 3 },
+      { "rank": 12, "name": "AEROJET ROCKETDYNE", "total_awarded": 1500000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5821",
+    "fsc_description": "Radio & Television Communication Equipment",
+    "total_volume": 195000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 65000000, "award_count": 38 },
+      { "rank": 2, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 45000000, "award_count": 25 },
+      { "rank": 3, "name": "GENERAL DYNAMICS CORP", "total_awarded": 32000000, "award_count": 20 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 22000000, "award_count": 15 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 14000000, "award_count": 10 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 8000000, "award_count": 7 },
+      { "rank": 7, "name": "THALES GROUP", "total_awarded": 5000000, "award_count": 5 },
+      { "rank": 8, "name": "MOTOROLA SOLUTIONS INC", "total_awarded": 4000000, "award_count": 4 }
+    ]
+  },
+  {
+    "fsc_code": "1270",
+    "fsc_description": "Aircraft Bomb & Torpedo Components",
+    "total_volume": 176000000,
+    "top_recipients": [
+      { "rank": 1, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 72000000, "award_count": 30 },
+      { "rank": 2, "name": "LOCKHEED MARTIN CORP", "total_awarded": 48000000, "award_count": 22 },
+      { "rank": 3, "name": "BOEING CO", "total_awarded": 25000000, "award_count": 15 },
+      { "rank": 4, "name": "GENERAL DYNAMICS CORP", "total_awarded": 14000000, "award_count": 10 },
+      { "rank": 5, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 9000000, "award_count": 7 },
+      { "rank": 6, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 5000000, "award_count": 4 },
+      { "rank": 7, "name": "BAE SYSTEMS PLC", "total_awarded": 3000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "5826",
+    "fsc_description": "Electronic Countermeasures & Warfare Equipment",
+    "total_volume": 410000000,
+    "top_recipients": [
+      { "rank": 1, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 140000000, "award_count": 48 },
+      { "rank": 2, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 95000000, "award_count": 35 },
+      { "rank": 3, "name": "BAE SYSTEMS PLC", "total_awarded": 62000000, "award_count": 25 },
+      { "rank": 4, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 45000000, "award_count": 20 },
+      { "rank": 5, "name": "LOCKHEED MARTIN CORP", "total_awarded": 28000000, "award_count": 14 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 7, "name": "GENERAL DYNAMICS CORP", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 8, "name": "MERCURY SYSTEMS INC", "total_awarded": 6000000, "award_count": 5 },
+      { "rank": 9, "name": "CURTISS-WRIGHT CORP", "total_awarded": 4000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "5841",
+    "fsc_description": "Radar Equipment",
+    "total_volume": 380000000,
+    "top_recipients": [
+      { "rank": 1, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 130000000, "award_count": 50 },
+      { "rank": 2, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 88000000, "award_count": 38 },
+      { "rank": 3, "name": "LOCKHEED MARTIN CORP", "total_awarded": 55000000, "award_count": 25 },
+      { "rank": 4, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 40000000, "award_count": 18 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 25000000, "award_count": 12 },
+      { "rank": 6, "name": "GENERAL DYNAMICS CORP", "total_awarded": 16000000, "award_count": 9 },
+      { "rank": 7, "name": "LEONARDO DRS INC", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 8, "name": "SAAB INC", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 9, "name": "THALES GROUP", "total_awarded": 5000000, "award_count": 4 },
+      { "rank": 10, "name": "MERCURY SYSTEMS INC", "total_awarded": 4000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "1650",
+    "fsc_description": "Aircraft Hydraulic, Vacuum & De-icing Systems",
+    "total_volume": 142000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PARKER HANNIFIN CORP", "total_awarded": 48000000, "award_count": 30 },
+      { "rank": 2, "name": "EATON CORP", "total_awarded": 32000000, "award_count": 22 },
+      { "rank": 3, "name": "MOOG INC", "total_awarded": 22000000, "award_count": 15 },
+      { "rank": 4, "name": "COLLINS AEROSPACE", "total_awarded": 16000000, "award_count": 10 },
+      { "rank": 5, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 10000000, "award_count": 8 },
+      { "rank": 6, "name": "CURTISS-WRIGHT CORP", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 7, "name": "LIEBHERR-AEROSPACE", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 8, "name": "CRANE CO", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "6110",
+    "fsc_description": "Electrical Control Equipment",
+    "total_volume": 88000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 28000000, "award_count": 18 },
+      { "rank": 2, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 18000000, "award_count": 12 },
+      { "rank": 3, "name": "EATON CORP", "total_awarded": 14000000, "award_count": 10 },
+      { "rank": 4, "name": "CURTISS-WRIGHT CORP", "total_awarded": 10000000, "award_count": 8 },
+      { "rank": 5, "name": "AMETEK INC", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 6, "name": "MOOG INC", "total_awarded": 5500000, "award_count": 4 },
+      { "rank": 7, "name": "CRANE CO", "total_awarded": 3500000, "award_count": 3 },
+      { "rank": 8, "name": "TE CONNECTIVITY", "total_awarded": 2000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5895",
+    "fsc_description": "Miscellaneous Communication Equipment",
+    "total_volume": 225000000,
+    "top_recipients": [
+      { "rank": 1, "name": "GENERAL DYNAMICS CORP", "total_awarded": 72000000, "award_count": 32 },
+      { "rank": 2, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 55000000, "award_count": 28 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 38000000, "award_count": 20 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 25000000, "award_count": 14 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 15000000, "award_count": 9 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 7, "name": "THALES GROUP", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 8, "name": "MOTOROLA SOLUTIONS INC", "total_awarded": 4000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "1520",
+    "fsc_description": "Aircraft Fixed-Wing Structural Components",
+    "total_volume": 350000000,
+    "top_recipients": [
+      { "rank": 1, "name": "LOCKHEED MARTIN CORP", "total_awarded": 120000000, "award_count": 55 },
+      { "rank": 2, "name": "BOEING CO", "total_awarded": 85000000, "award_count": 42 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 52000000, "award_count": 28 },
+      { "rank": 4, "name": "BAE SYSTEMS PLC", "total_awarded": 32000000, "award_count": 18 },
+      { "rank": 5, "name": "SPIRIT AEROSYSTEMS INC", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 6, "name": "TEXTRON INC", "total_awarded": 15000000, "award_count": 9 },
+      { "rank": 7, "name": "DUCOMMUN INC", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 8, "name": "TRIUMPH GROUP INC", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 9, "name": "HEICO CORP", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 10, "name": "CURTISS-WRIGHT CORP", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1660",
+    "fsc_description": "Aircraft Landing Gear Components",
+    "total_volume": 165000000,
+    "top_recipients": [
+      { "rank": 1, "name": "SAFRAN SA", "total_awarded": 55000000, "award_count": 28 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 38000000, "award_count": 20 },
+      { "rank": 3, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 25000000, "award_count": 15 },
+      { "rank": 4, "name": "PARKER HANNIFIN CORP", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 5, "name": "CRANE CO", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 6, "name": "TRIUMPH GROUP INC", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 7, "name": "DUCOMMUN INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 8, "name": "HEICO CORP", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1680",
+    "fsc_description": "Miscellaneous Aircraft Accessories & Components",
+    "total_volume": 198000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 62000000, "award_count": 35 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 42000000, "award_count": 25 },
+      { "rank": 3, "name": "PARKER HANNIFIN CORP", "total_awarded": 30000000, "award_count": 18 },
+      { "rank": 4, "name": "MOOG INC", "total_awarded": 22000000, "award_count": 14 },
+      { "rank": 5, "name": "EATON CORP", "total_awarded": 15000000, "award_count": 10 },
+      { "rank": 6, "name": "CURTISS-WRIGHT CORP", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 7, "name": "HEICO CORP", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 8, "name": "AMETEK INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 9, "name": "CRANE CO", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "2810",
+    "fsc_description": "Gasoline Reciprocating Engines & Components",
+    "total_volume": 72000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PRATT & WHITNEY", "total_awarded": 25000000, "award_count": 15 },
+      { "rank": 2, "name": "GE AVIATION", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 3, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 4, "name": "STANDARD AERO", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 5, "name": "HEICO CORP", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 6, "name": "CHROMALLOY GAS TURBINE", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5820",
+    "fsc_description": "Radio Navigation Equipment",
+    "total_volume": 155000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 50000000, "award_count": 25 },
+      { "rank": 2, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 35000000, "award_count": 18 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 28000000, "award_count": 14 },
+      { "rank": 4, "name": "BAE SYSTEMS PLC", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 5, "name": "GENERAL DYNAMICS CORP", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 7, "name": "SAAB INC", "total_awarded": 5000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "1730",
+    "fsc_description": "Aircraft Ground Servicing Equipment",
+    "total_volume": 45000000,
+    "top_recipients": [
+      { "rank": 1, "name": "JBT CORP", "total_awarded": 15000000, "award_count": 12 },
+      { "rank": 2, "name": "TRONAIR INC", "total_awarded": 10000000, "award_count": 8 },
+      { "rank": 3, "name": "SNAP-ON INC", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 4, "name": "HYDRO SYSTEMS CO", "total_awarded": 5000000, "award_count": 4 },
+      { "rank": 5, "name": "ALLIED PRODUCTS CORP", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 6, "name": "MALABAR INTERNATIONAL INC", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "2915",
+    "fsc_description": "Engine Fuel System Components",
+    "total_volume": 128000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PARKER HANNIFIN CORP", "total_awarded": 42000000, "award_count": 22 },
+      { "rank": 2, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 28000000, "award_count": 15 },
+      { "rank": 3, "name": "COLLINS AEROSPACE", "total_awarded": 20000000, "award_count": 12 },
+      { "rank": 4, "name": "SAFRAN SA", "total_awarded": 14000000, "award_count": 8 },
+      { "rank": 5, "name": "EATON CORP", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 6, "name": "WOODWARD INC", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 7, "name": "CRANE CO", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 8, "name": "TRIUMPH GROUP INC", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5998",
+    "fsc_description": "Electrical & Electronic Assemblies",
+    "total_volume": 205000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 60000000, "award_count": 30 },
+      { "rank": 2, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 45000000, "award_count": 22 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 35000000, "award_count": 18 },
+      { "rank": 4, "name": "BAE SYSTEMS PLC", "total_awarded": 25000000, "award_count": 12 },
+      { "rank": 5, "name": "LEONARDO DRS INC", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 6, "name": "MERCURY SYSTEMS INC", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 7, "name": "CURTISS-WRIGHT CORP", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 8, "name": "AMETEK INC", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 9, "name": "TE CONNECTIVITY", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "4920",
+    "fsc_description": "Aircraft Maintenance & Repair Shop Equipment",
+    "total_volume": 62000000,
+    "top_recipients": [
+      { "rank": 1, "name": "SNAP-ON INC", "total_awarded": 18000000, "award_count": 14 },
+      { "rank": 2, "name": "STANLEY BLACK & DECKER", "total_awarded": 12000000, "award_count": 10 },
+      { "rank": 3, "name": "LOCKHEED MARTIN CORP", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 4, "name": "BOEING CO", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 5, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 6, "name": "TRONAIR INC", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 7, "name": "ALLIED PRODUCTS CORP", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "6625",
+    "fsc_description": "Electrical & Electronic Test Equipment",
+    "total_volume": 115000000,
+    "top_recipients": [
+      { "rank": 1, "name": "KEYSIGHT TECHNOLOGIES", "total_awarded": 35000000, "award_count": 20 },
+      { "rank": 2, "name": "NATIONAL INSTRUMENTS CORP", "total_awarded": 22000000, "award_count": 14 },
+      { "rank": 3, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 4, "name": "LOCKHEED MARTIN CORP", "total_awarded": 14000000, "award_count": 8 },
+      { "rank": 5, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 6, "name": "FLUKE CORP", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 7, "name": "TEKTRONIX INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 8, "name": "AMETEK INC", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5985",
+    "fsc_description": "Antennas, Waveguides & Related Equipment",
+    "total_volume": 175000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 55000000, "award_count": 28 },
+      { "rank": 2, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 40000000, "award_count": 20 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 30000000, "award_count": 15 },
+      { "rank": 4, "name": "BAE SYSTEMS PLC", "total_awarded": 20000000, "award_count": 10 },
+      { "rank": 5, "name": "COBHAM ADVANCED ELECTRONIC SOLUTIONS", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 6, "name": "ANTENNA RESEARCH ASSOCIATES", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 7, "name": "CHELTON INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 8, "name": "BALL AEROSPACE", "total_awarded": 5000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1680",
+    "fsc_description": "Aircraft Air Conditioning Equipment",
+    "total_volume": 78000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 25000000, "award_count": 15 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 3, "name": "LIEBHERR-AEROSPACE", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 4, "name": "PARKER HANNIFIN CORP", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 5, "name": "SAFRAN SA", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 6, "name": "DUKES AEROSPACE INC", "total_awarded": 6000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "5865",
+    "fsc_description": "Electronic Warfare Expendables",
+    "total_volume": 92000000,
+    "top_recipients": [
+      { "rank": 1, "name": "CHEMRING GROUP PLC", "total_awarded": 32000000, "award_count": 18 },
+      { "rank": 2, "name": "BAE SYSTEMS PLC", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 5, "name": "KILGORE FLARES CO", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 6, "name": "ALLOY SURFACES CO", "total_awarded": 6000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "6130",
+    "fsc_description": "Aircraft Electrical Power Generation Equipment",
+    "total_volume": 108000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 35000000, "award_count": 18 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 25000000, "award_count": 14 },
+      { "rank": 3, "name": "GE AVIATION", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 4, "name": "SAFRAN SA", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 5, "name": "AMETEK INC", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 6, "name": "EATON CORP", "total_awarded": 6000000, "award_count": 3 },
+      { "rank": 7, "name": "CURTISS-WRIGHT CORP", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1550",
+    "fsc_description": "Unmanned Aircraft Systems Components",
+    "total_volume": 295000000,
+    "top_recipients": [
+      { "rank": 1, "name": "GENERAL ATOMICS AERONAUTICAL", "total_awarded": 95000000, "award_count": 38 },
+      { "rank": 2, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 72000000, "award_count": 30 },
+      { "rank": 3, "name": "LOCKHEED MARTIN CORP", "total_awarded": 48000000, "award_count": 22 },
+      { "rank": 4, "name": "BOEING CO", "total_awarded": 32000000, "award_count": 15 },
+      { "rank": 5, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 20000000, "award_count": 10 },
+      { "rank": 6, "name": "TEXTRON INC", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 7, "name": "AEROVIRONMENT INC", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 8, "name": "SHIELD AI", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 9, "name": "KRATOS DEFENSE", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5831",
+    "fsc_description": "Intercommunication & Public Address Systems",
+    "total_volume": 48000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 15000000, "award_count": 10 },
+      { "rank": 2, "name": "BOSE CORP", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 3, "name": "DAVID CLARK CO", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 4, "name": "PLANTRONICS INC", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 5, "name": "GENERAL DYNAMICS CORP", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "2835",
+    "fsc_description": "Gas Turbine Engine Starters",
+    "total_volume": 55000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 20000000, "award_count": 12 },
+      { "rank": 2, "name": "PRATT & WHITNEY", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 3, "name": "GE AVIATION", "total_awarded": 9000000, "award_count": 5 },
+      { "rank": 4, "name": "SAFRAN SA", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 5, "name": "STANDARD AERO", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 6, "name": "CHROMALLOY GAS TURBINE", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1620",
+    "fsc_description": "Aircraft Landing Gear Components",
+    "total_volume": 135000000,
+    "top_recipients": [
+      { "rank": 1, "name": "SAFRAN SA", "total_awarded": 45000000, "award_count": 22 },
+      { "rank": 2, "name": "BOEING CO", "total_awarded": 30000000, "award_count": 15 },
+      { "rank": 3, "name": "LOCKHEED MARTIN CORP", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 4, "name": "PARKER HANNIFIN CORP", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 5, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 6, "name": "TRIUMPH GROUP INC", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 7, "name": "DUCOMMUN INC", "total_awarded": 6000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "5930",
+    "fsc_description": "Connectors, Electrical",
+    "total_volume": 82000000,
+    "top_recipients": [
+      { "rank": 1, "name": "TE CONNECTIVITY", "total_awarded": 28000000, "award_count": 18 },
+      { "rank": 2, "name": "AMPHENOL CORP", "total_awarded": 20000000, "award_count": 12 },
+      { "rank": 3, "name": "SMITH INTERCONNECT", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 4, "name": "ITT INC", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 5, "name": "EATON CORP", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 6, "name": "MOLEX LLC", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 7, "name": "GLENAIR INC", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1670",
+    "fsc_description": "Parachutes & Aerial Recovery Equipment",
+    "total_volume": 38000000,
+    "top_recipients": [
+      { "rank": 1, "name": "AIRBORNE SYSTEMS NA", "total_awarded": 14000000, "award_count": 10 },
+      { "rank": 2, "name": "MILLS MANUFACTURING CORP", "total_awarded": 8000000, "award_count": 6 },
+      { "rank": 3, "name": "SAFRAN SA", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 4, "name": "ZODIAC AEROSPACE", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 5, "name": "BUTLER PARACHUTE SYSTEMS", "total_awarded": 3000000, "award_count": 2 },
+      { "rank": 6, "name": "STRONG ENTERPRISES", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "7025",
+    "fsc_description": "ADP Input/Output & Storage Devices",
+    "total_volume": 145000000,
+    "top_recipients": [
+      { "rank": 1, "name": "DELL TECHNOLOGIES", "total_awarded": 45000000, "award_count": 25 },
+      { "rank": 2, "name": "HEWLETT PACKARD ENTERPRISE", "total_awarded": 32000000, "award_count": 18 },
+      { "rank": 3, "name": "LEIDOS INC", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 4, "name": "GENERAL DYNAMICS IT", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 5, "name": "CACI INTERNATIONAL", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 6, "name": "BOOZ ALLEN HAMILTON", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 7, "name": "SAIC", "total_awarded": 8000000, "award_count": 4 }
+    ]
+  },
+  {
+    "fsc_code": "1630",
+    "fsc_description": "Aircraft Wheel & Brake Systems",
+    "total_volume": 95000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 32000000, "award_count": 18 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 3, "name": "SAFRAN SA", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 4, "name": "PARKER HANNIFIN CORP", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 5, "name": "CRANE CO", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 6, "name": "TRIUMPH GROUP INC", "total_awarded": 8000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "5961",
+    "fsc_description": "Semiconductor Devices & Transistors",
+    "total_volume": 68000000,
+    "top_recipients": [
+      { "rank": 1, "name": "ANALOG DEVICES INC", "total_awarded": 20000000, "award_count": 14 },
+      { "rank": 2, "name": "TEXAS INSTRUMENTS", "total_awarded": 15000000, "award_count": 10 },
+      { "rank": 3, "name": "MICROCHIP TECHNOLOGY", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 4, "name": "VISHAY INTERTECHNOLOGY", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 5, "name": "COBHAM ADVANCED ELECTRONIC SOLUTIONS", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 6, "name": "BAE SYSTEMS PLC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 7, "name": "MERCURY SYSTEMS INC", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "4130",
+    "fsc_description": "Refrigeration Equipment",
+    "total_volume": 28000000,
+    "top_recipients": [
+      { "rank": 1, "name": "CARRIER GLOBAL CORP", "total_awarded": 10000000, "award_count": 8 },
+      { "rank": 2, "name": "TRANE TECHNOLOGIES", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 3, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 4, "name": "JOHNSON CONTROLS INC", "total_awarded": 4000000, "award_count": 2 },
+      { "rank": 5, "name": "LIEBHERR-AEROSPACE", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "2995",
+    "fsc_description": "Miscellaneous Engine Accessories",
+    "total_volume": 58000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PARKER HANNIFIN CORP", "total_awarded": 18000000, "award_count": 12 },
+      { "rank": 2, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 12000000, "award_count": 8 },
+      { "rank": 3, "name": "WOODWARD INC", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 4, "name": "MOOG INC", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 5, "name": "EATON CORP", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 6, "name": "CURTISS-WRIGHT CORP", "total_awarded": 5000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1710",
+    "fsc_description": "Aircraft Cargo Handling Equipment",
+    "total_volume": 32000000,
+    "top_recipients": [
+      { "rank": 1, "name": "BOEING CO", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 2, "name": "LOCKHEED MARTIN CORP", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 3, "name": "JBT CORP", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 4, "name": "TELAIR INTERNATIONAL", "total_awarded": 4000000, "award_count": 2 },
+      { "rank": 5, "name": "GOODRICH CORP", "total_awarded": 3000000, "award_count": 2 },
+      { "rank": 6, "name": "ALLIED PRODUCTS CORP", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "5962",
+    "fsc_description": "Microcircuits, Electronic",
+    "total_volume": 180000000,
+    "top_recipients": [
+      { "rank": 1, "name": "ANALOG DEVICES INC", "total_awarded": 50000000, "award_count": 28 },
+      { "rank": 2, "name": "TEXAS INSTRUMENTS", "total_awarded": 38000000, "award_count": 20 },
+      { "rank": 3, "name": "MICROCHIP TECHNOLOGY", "total_awarded": 28000000, "award_count": 15 },
+      { "rank": 4, "name": "COBHAM ADVANCED ELECTRONIC SOLUTIONS", "total_awarded": 20000000, "award_count": 10 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 6, "name": "MERCURY SYSTEMS INC", "total_awarded": 12000000, "award_count": 5 },
+      { "rank": 7, "name": "XILINX INC", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 8, "name": "INTEL CORP", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 9, "name": "MICROSEMI CORP", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1640",
+    "fsc_description": "Aircraft Control Surface Components",
+    "total_volume": 158000000,
+    "top_recipients": [
+      { "rank": 1, "name": "LOCKHEED MARTIN CORP", "total_awarded": 52000000, "award_count": 25 },
+      { "rank": 2, "name": "BOEING CO", "total_awarded": 35000000, "award_count": 18 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 25000000, "award_count": 12 },
+      { "rank": 4, "name": "MOOG INC", "total_awarded": 18000000, "award_count": 10 },
+      { "rank": 5, "name": "PARKER HANNIFIN CORP", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 6, "name": "CURTISS-WRIGHT CORP", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 7, "name": "SPIRIT AEROSYSTEMS INC", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 8, "name": "TRIUMPH GROUP INC", "total_awarded": 3000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5810",
+    "fsc_description": "Communications Security Equipment",
+    "total_volume": 240000000,
+    "top_recipients": [
+      { "rank": 1, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 82000000, "award_count": 35 },
+      { "rank": 2, "name": "GENERAL DYNAMICS CORP", "total_awarded": 58000000, "award_count": 25 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 38000000, "award_count": 18 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 25000000, "award_count": 12 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 6, "name": "THALES GROUP", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 7, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 8, "name": "MERCURY SYSTEMS INC", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1510",
+    "fsc_description": "Aircraft, Fixed Wing",
+    "total_volume": 880000000,
+    "top_recipients": [
+      { "rank": 1, "name": "LOCKHEED MARTIN CORP", "total_awarded": 320000000, "award_count": 85 },
+      { "rank": 2, "name": "BOEING CO", "total_awarded": 220000000, "award_count": 65 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 125000000, "award_count": 42 },
+      { "rank": 4, "name": "GENERAL DYNAMICS CORP", "total_awarded": 72000000, "award_count": 28 },
+      { "rank": 5, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 55000000, "award_count": 22 },
+      { "rank": 6, "name": "BAE SYSTEMS PLC", "total_awarded": 35000000, "award_count": 15 },
+      { "rank": 7, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 22000000, "award_count": 10 },
+      { "rank": 8, "name": "TEXTRON INC", "total_awarded": 15000000, "award_count": 7 },
+      { "rank": 9, "name": "LEONARDO DRS INC", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 10, "name": "SPIRIT AEROSYSTEMS INC", "total_awarded": 8000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "1610",
+    "fsc_description": "Aircraft Propellers & Components",
+    "total_volume": 42000000,
+    "top_recipients": [
+      { "rank": 1, "name": "COLLINS AEROSPACE", "total_awarded": 15000000, "award_count": 10 },
+      { "rank": 2, "name": "HARTZELL PROPELLER INC", "total_awarded": 10000000, "award_count": 7 },
+      { "rank": 3, "name": "MCCAULEY PROPELLER SYSTEMS", "total_awarded": 7000000, "award_count": 5 },
+      { "rank": 4, "name": "DOWTY PROPELLERS", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 5, "name": "MT-PROPELLER", "total_awarded": 3000000, "award_count": 2 },
+      { "rank": 6, "name": "SENSENICH PROPELLER", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "5811",
+    "fsc_description": "Other Cryptologic Equipment",
+    "total_volume": 165000000,
+    "top_recipients": [
+      { "rank": 1, "name": "GENERAL DYNAMICS CORP", "total_awarded": 55000000, "award_count": 22 },
+      { "rank": 2, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 42000000, "award_count": 18 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 28000000, "award_count": 12 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 18000000, "award_count": 8 },
+      { "rank": 5, "name": "BAE SYSTEMS PLC", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 6, "name": "THALES GROUP", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 7, "name": "LEIDOS INC", "total_awarded": 5000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "6605",
+    "fsc_description": "Navigational Instruments",
+    "total_volume": 132000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 42000000, "award_count": 22 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 30000000, "award_count": 15 },
+      { "rank": 3, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 22000000, "award_count": 10 },
+      { "rank": 4, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 5, "name": "SAFRAN SA", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 6, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 7000000, "award_count": 4 },
+      { "rank": 7, "name": "THALES GROUP", "total_awarded": 6000000, "award_count": 3 }
+    ]
+  },
+  {
+    "fsc_code": "4710",
+    "fsc_description": "Pipe, Tube & Rigid Tubing",
+    "total_volume": 22000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PARKER HANNIFIN CORP", "total_awarded": 8000000, "award_count": 6 },
+      { "rank": 2, "name": "EATON CORP", "total_awarded": 5000000, "award_count": 4 },
+      { "rank": 3, "name": "SWAGELOK CO", "total_awarded": 4000000, "award_count": 3 },
+      { "rank": 4, "name": "TITEFLEX CORP", "total_awarded": 3000000, "award_count": 2 },
+      { "rank": 5, "name": "PERMASWAGE SAS", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "5340",
+    "fsc_description": "Hardware, Commercial",
+    "total_volume": 35000000,
+    "top_recipients": [
+      { "rank": 1, "name": "PRECISION CASTPARTS CORP", "total_awarded": 10000000, "award_count": 8 },
+      { "rank": 2, "name": "ALCOA CORP", "total_awarded": 8000000, "award_count": 6 },
+      { "rank": 3, "name": "SPS TECHNOLOGIES", "total_awarded": 6000000, "award_count": 4 },
+      { "rank": 4, "name": "LISI AEROSPACE", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 5, "name": "HI-SHEAR CORP", "total_awarded": 4000000, "award_count": 2 },
+      { "rank": 6, "name": "CHERRY AEROSPACE", "total_awarded": 2000000, "award_count": 1 }
+    ]
+  },
+  {
+    "fsc_code": "6615",
+    "fsc_description": "Automatic Pilot Mechanisms & Airborne Gyro Components",
+    "total_volume": 118000000,
+    "top_recipients": [
+      { "rank": 1, "name": "HONEYWELL INTERNATIONAL INC", "total_awarded": 38000000, "award_count": 20 },
+      { "rank": 2, "name": "COLLINS AEROSPACE", "total_awarded": 28000000, "award_count": 14 },
+      { "rank": 3, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 20000000, "award_count": 10 },
+      { "rank": 4, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 12000000, "award_count": 7 },
+      { "rank": 5, "name": "SAFRAN SA", "total_awarded": 8000000, "award_count": 5 },
+      { "rank": 6, "name": "MOOG INC", "total_awarded": 6000000, "award_count": 3 },
+      { "rank": 7, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 6000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "1377",
+    "fsc_description": "Cartridge & Propellant Actuated Devices",
+    "total_volume": 65000000,
+    "top_recipients": [
+      { "rank": 1, "name": "MARTIN-BAKER AIRCRAFT CO", "total_awarded": 22000000, "award_count": 12 },
+      { "rank": 2, "name": "PACIFIC SCIENTIFIC ENERGETIC MATERIALS", "total_awarded": 15000000, "award_count": 8 },
+      { "rank": 3, "name": "CHEMRING GROUP PLC", "total_awarded": 10000000, "award_count": 6 },
+      { "rank": 4, "name": "ORBITAL ATK", "total_awarded": 8000000, "award_count": 4 },
+      { "rank": 5, "name": "ENSIGN-BICKFORD", "total_awarded": 5000000, "award_count": 3 },
+      { "rank": 6, "name": "COBHAM MISSION SYSTEMS", "total_awarded": 5000000, "award_count": 2 }
+    ]
+  },
+  {
+    "fsc_code": "5865",
+    "fsc_description": "Electronic Countermeasure Equipment",
+    "total_volume": 148000000,
+    "top_recipients": [
+      { "rank": 1, "name": "BAE SYSTEMS PLC", "total_awarded": 50000000, "award_count": 22 },
+      { "rank": 2, "name": "NORTHROP GRUMMAN SYSTEMS CORP", "total_awarded": 35000000, "award_count": 15 },
+      { "rank": 3, "name": "RAYTHEON TECHNOLOGIES CORP", "total_awarded": 25000000, "award_count": 12 },
+      { "rank": 4, "name": "L3HARRIS TECHNOLOGIES INC", "total_awarded": 18000000, "award_count": 8 },
+      { "rank": 5, "name": "ELBIT SYSTEMS OF AMERICA", "total_awarded": 10000000, "award_count": 5 },
+      { "rank": 6, "name": "MERCURY SYSTEMS INC", "total_awarded": 6000000, "award_count": 3 },
+      { "rank": 7, "name": "CURTISS-WRIGHT CORP", "total_awarded": 4000000, "award_count": 2 }
+    ]
+  }
+]
