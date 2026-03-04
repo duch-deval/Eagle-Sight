@@ -50,16 +50,18 @@ const RecipientAnalysis = () => {
 
   const data = mockData as FSCEntry[];
 
-  const NUM_COLORS = 7;
+  const NUM_COLORS = 6;
   const GROUP_SIZE = 4;
 
-  // Compute tiers: every 4 FSCs (sorted by volume) share a color, cycling through 7 colors
+  // Compute tiers by index position when sorted by volume, using index as key to handle duplicate FSC codes
   const tierMap = useMemo(() => {
-    const byVolume = [...data].sort((a, b) => b.total_volume - a.total_volume);
-    const map = new Map<string, number>();
+    const byVolume = [...data]
+      .map((entry, origIdx) => ({ ...entry, origIdx }))
+      .sort((a, b) => b.total_volume - a.total_volume);
+    const map = new Map<number, number>();
     byVolume.forEach((entry, i) => {
       const tier = (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1;
-      map.set(entry.fsc_code, tier);
+      map.set(entry.origIdx, tier);
     });
     return map;
   }, [data]);
