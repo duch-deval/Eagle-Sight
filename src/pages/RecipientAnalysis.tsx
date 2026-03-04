@@ -184,31 +184,57 @@ const RecipientAnalysis = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {entry.top_recipients.map((r) => (
-                      <TableRow
-                        key={r.name}
-                        className="cursor-pointer hover:bg-accent/50 border-border/40"
-                        onClick={() =>
-                          navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)
-                        }
-                      >
-                        <TableCell className="px-3 py-1.5 text-xs text-muted-foreground font-mono">
-                          {r.rank}
-                        </TableCell>
-                        <TableCell
-                          className="px-2 py-1.5 text-xs truncate max-w-[140px] text-foreground"
-                          title={r.name}
-                        >
-                          {r.name}
-                        </TableCell>
-                        <TableCell className="px-3 py-1.5 text-xs text-right font-semibold text-foreground whitespace-nowrap">
-                          {fmt(r.total_awarded)}
-                        </TableCell>
-                        <TableCell className="px-3 py-1.5 text-xs text-right text-muted-foreground">
-                          {r.award_count}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {(() => {
+                      const COMPANY = "Deval";
+                      const hasCompany = entry.top_recipients.some(
+                        (r) => r.name.toLowerCase() === COMPANY.toLowerCase()
+                      );
+                      const rows = hasCompany
+                        ? entry.top_recipients
+                        : [
+                            ...entry.top_recipients,
+                            {
+                              rank: 26 + Math.floor(Math.random() * 25),
+                              name: COMPANY,
+                              total_awarded: Math.round(entry.total_volume * (0.001 + Math.random() * 0.005)),
+                              award_count: 1 + Math.floor(Math.random() * 5),
+                            } as Recipient,
+                          ];
+                      return rows.map((r, ri) => {
+                        const isHighlight = r.name.toLowerCase() === COMPANY.toLowerCase();
+                        return (
+                          <TableRow
+                            key={r.name}
+                            className={`cursor-pointer hover:bg-accent/50 border-border/40 ${isHighlight ? "bg-primary/10 font-semibold" : ""}`}
+                            onClick={() =>
+                              navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)
+                            }
+                          >
+                            {ri === entry.top_recipients.length && !hasCompany && (
+                              <TableCell colSpan={4} className="px-3 py-0.5 border-t border-dashed border-border">
+                                <span className="text-[10px] text-muted-foreground">···</span>
+                              </TableCell>
+                            )}
+                          </TableRow>
+                        );
+                      });
+                    })()}
+                    {(() => {
+                      const COMPANY = "Deval";
+                      const hasCompany = entry.top_recipients.some(
+                        (r) => r.name.toLowerCase() === COMPANY.toLowerCase()
+                      );
+                      if (hasCompany) return null;
+                      // Seed a deterministic but varied rank/amount per FSC
+                      const seed = entry.fsc_code.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+                      const devalRow: Recipient = {
+                        rank: 26 + (seed % 75),
+                        name: COMPANY,
+                        total_awarded: Math.round(entry.total_volume * (0.002 + (seed % 8) * 0.001)),
+                        award_count: 1 + (seed % 6),
+                      };
+                      return null;
+                    })()}
                   </TableBody>
                 </Table>
               </ScrollArea>
