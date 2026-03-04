@@ -50,27 +50,27 @@ const RecipientAnalysis = () => {
 
   const data = mockData as FSCEntry[];
 
-  const NUM_COLORS = 7;
+  const NUM_COLORS = 6;
   const GROUP_SIZE = 4;
 
-  // Compute tiers: every 4 FSCs (sorted by volume) share a color, cycling through 7 colors
-  const tierMap = useMemo(() => {
-    const byVolume = [...data].sort((a, b) => b.total_volume - a.total_volume);
-    const map = new Map<string, number>();
+  // Attach original index and compute tier by volume rank
+  const dataWithTier = useMemo(() => {
+    const indexed = data.map((entry, i) => ({ ...entry, _idx: i }));
+    const byVolume = [...indexed].sort((a, b) => b.total_volume - a.total_volume);
+    const tierMap = new Map<number, number>();
     byVolume.forEach((entry, i) => {
-      const tier = (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1;
-      map.set(entry.fsc_code, tier);
+      tierMap.set(entry._idx, (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1);
     });
-    return map;
+    return indexed.map((e) => ({ ...e, _tier: tierMap.get(e._idx) || NUM_COLORS }));
   }, [data]);
 
   const sorted = useMemo(() => {
-    const copy = [...data];
+    const copy = [...dataWithTier];
     if (sort === "volume") copy.sort((a, b) => b.total_volume - a.total_volume);
     else if (sort === "code") copy.sort((a, b) => a.fsc_code.localeCompare(b.fsc_code));
     else copy.sort((a, b) => a.fsc_description.localeCompare(b.fsc_description));
     return copy;
-  }, [data, sort]);
+  }, [dataWithTier, sort]);
 
   const filtered = useMemo(() => {
     if (!search.trim()) return sorted;
@@ -149,7 +149,7 @@ const RecipientAnalysis = () => {
       {/* Grid */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((entry, idx) => {
-          const tier = tierMap.get(entry.fsc_code) || 5;
+          const tier = entry._tier;
           const headerBg = `hsl(var(--tier-${tier}))`;
           const headerFg = `hsl(var(--tier-${tier}-fg))`;
           return (
