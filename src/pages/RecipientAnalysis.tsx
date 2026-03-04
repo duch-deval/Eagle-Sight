@@ -50,6 +50,17 @@ const RecipientAnalysis = () => {
 
   const data = mockData as FSCEntry[];
 
+  // Compute quintile tiers based on total_volume
+  const tierMap = useMemo(() => {
+    const byVolume = [...data].sort((a, b) => b.total_volume - a.total_volume);
+    const map = new Map<string, number>();
+    const tierSize = Math.ceil(byVolume.length / 5);
+    byVolume.forEach((entry, i) => {
+      map.set(entry.fsc_code, Math.floor(i / tierSize) + 1);
+    });
+    return map;
+  }, [data]);
+
   const sorted = useMemo(() => {
     const copy = [...data];
     if (sort === "volume") copy.sort((a, b) => b.total_volume - a.total_volume);
@@ -134,21 +145,26 @@ const RecipientAnalysis = () => {
 
       {/* Grid */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filtered.map((entry, idx) => (
+        {filtered.map((entry, idx) => {
+          const tier = tierMap.get(entry.fsc_code) || 5;
+          const headerBg = `hsl(var(--tier-${tier}))`;
+          const headerFg = `hsl(var(--tier-${tier}-fg))`;
+          return (
           <Card
             key={`${entry.fsc_code}-${idx}`}
-            className="flex flex-col overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-200 border-border/60"
+            className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200 border-border/60"
+            style={{ borderTopColor: headerBg, borderTopWidth: '3px' }}
           >
-            <CardHeader className="px-4 py-3 border-b border-border bg-primary space-y-0.5">
+            <CardHeader className="px-4 py-3 border-b border-border space-y-0.5" style={{ backgroundColor: headerBg }}>
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-primary-foreground tracking-wide uppercase">
+                <span className="text-sm font-bold tracking-wide uppercase" style={{ color: headerFg }}>
                   FSC {entry.fsc_code}
                 </span>
-                <span className="text-xs font-semibold text-primary-foreground/80">
+                <span className="text-xs font-semibold" style={{ color: headerFg, opacity: 0.8 }}>
                   {fmt(entry.total_volume)}
                 </span>
               </div>
-              <p className="text-xs text-primary-foreground/60 truncate" title={entry.fsc_description}>
+              <p className="text-xs truncate" style={{ color: headerFg, opacity: 0.6 }} title={entry.fsc_description}>
                 {entry.fsc_description}
               </p>
             </CardHeader>
@@ -195,7 +211,8 @@ const RecipientAnalysis = () => {
               </ScrollArea>
             </CardContent>
           </Card>
-        ))}
+          );
+        })}
       </div>
 
       {filtered.length === 0 && (
