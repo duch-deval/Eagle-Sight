@@ -105,7 +105,7 @@ All colors MUST be HSL.
     --shadow-medium: 0 4px 16px -4px hsl(220 91% 18% / 0.15);
     --shadow-strong: 0 8px 32px -8px hsl(220 91% 18% / 0.2);
 
-    /* Quintile tier colors for FSC leaderboard */
+    /* Tier colors for FSC leaderboard (groups of 4) */
     --tier-1: 220 91% 18%;
     --tier-1-fg: 0 0% 98%;
     --tier-2: 199 89% 38%;
@@ -114,8 +114,12 @@ All colors MUST be HSL.
     --tier-3-fg: 0 0% 98%;
     --tier-4: 38 92% 45%;
     --tier-4-fg: 0 0% 10%;
-    --tier-5: 210 11% 55%;
+    --tier-5: 280 60% 45%;
     --tier-5-fg: 0 0% 98%;
+    --tier-6: 0 72% 50%;
+    --tier-6-fg: 0 0% 98%;
+    --tier-7: 210 11% 55%;
+    --tier-7-fg: 0 0% 98%;
 
     --radius: 0.5rem;
 
@@ -172,7 +176,7 @@ All colors MUST be HSL.
     --sidebar-border: 210 40% 22%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Quintile tier colors for dark mode */
+    /* Tier colors for dark mode */
     --tier-1: 217 91% 55%;
     --tier-1-fg: 0 0% 100%;
     --tier-2: 199 89% 45%;
@@ -181,8 +185,12 @@ All colors MUST be HSL.
     --tier-3-fg: 0 0% 100%;
     --tier-4: 38 92% 50%;
     --tier-4-fg: 0 0% 10%;
-    --tier-5: 210 11% 45%;
-    --tier-5-fg: 0 0% 98%;
+    --tier-5: 280 60% 55%;
+    --tier-5-fg: 0 0% 100%;
+    --tier-6: 0 72% 55%;
+    --tier-6-fg: 0 0% 100%;
+    --tier-7: 210 11% 45%;
+    --tier-7-fg: 0 0% 98%;
   }
 }
 
