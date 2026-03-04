@@ -65,12 +65,12 @@ const RecipientAnalysis = () => {
   }, [data]);
 
   const sorted = useMemo(() => {
-    const copy = [...data];
+    const copy = [...dataWithTier];
     if (sort === "volume") copy.sort((a, b) => b.total_volume - a.total_volume);
     else if (sort === "code") copy.sort((a, b) => a.fsc_code.localeCompare(b.fsc_code));
     else copy.sort((a, b) => a.fsc_description.localeCompare(b.fsc_description));
     return copy;
-  }, [data, sort]);
+  }, [dataWithTier, sort]);
 
   const filtered = useMemo(() => {
     if (!search.trim()) return sorted;
