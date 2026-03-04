@@ -50,7 +50,7 @@ const RecipientAnalysis = () => {
 
   const data = mockData as FSCEntry[];
 
-  const NUM_COLORS = 6;
+  const NUM_COLORS = 13;
   const GROUP_SIZE = 4;
 
   // Attach original index and compute tier by volume rank
