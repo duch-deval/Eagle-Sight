@@ -1,4 +1,3 @@
-import AgencySpendingChart from "@/components/dashboard/AgencySpendingChart"; 
 import BudgetAnalysis from "@/components/dashboard/BudgetAnalysis";
 import DefenseBudgetBreakdown from "@/components/dashboard/DefenseBudgetBreakdown"; 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -15,8 +14,7 @@ const Homepage = () => {
 
       <Tabs defaultValue="agency" className="w-full">
         <TabsContent value="agency" className="space-y-6 mt-6">
-          <AgencySpendingChart />
-          <DefenseBudgetBreakdown /> 
+          <DefenseBudgetBreakdown />
           <BudgetAnalysis />
         </TabsContent>
       </Tabs>
