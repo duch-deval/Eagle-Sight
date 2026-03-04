@@ -174,19 +174,33 @@ All colors MUST be HSL.
     --sidebar-border: 210 40% 22%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Tier colors for dark mode */
+    /* Tier colors for dark mode — 13 unique tiers */
     --tier-1: 0 72% 55%;
     --tier-1-fg: 0 0% 100%;
     --tier-2: 25 95% 58%;
     --tier-2-fg: 0 0% 10%;
-    --tier-3: 45 96% 55%;
+    --tier-3: 48 96% 55%;
     --tier-3-fg: 0 0% 10%;
-    --tier-4: 217 91% 60%;
-    --tier-4-fg: 0 0% 100%;
-    --tier-5: 280 60% 55%;
-    --tier-5-fg: 0 0% 100%;
-    --tier-6: 210 11% 45%;
-    --tier-6-fg: 0 0% 98%;
+    --tier-4: 142 71% 45%;
+    --tier-4-fg: 0 0% 98%;
+    --tier-5: 173 80% 42%;
+    --tier-5-fg: 0 0% 98%;
+    --tier-6: 217 91% 60%;
+    --tier-6-fg: 0 0% 100%;
+    --tier-7: 245 58% 58%;
+    --tier-7-fg: 0 0% 100%;
+    --tier-8: 280 60% 55%;
+    --tier-8-fg: 0 0% 100%;
+    --tier-9: 330 70% 55%;
+    --tier-9-fg: 0 0% 100%;
+    --tier-10: 20 60% 42%;
+    --tier-10-fg: 0 0% 98%;
+    --tier-11: 0 0% 35%;
+    --tier-11-fg: 0 0% 98%;
+    --tier-12: 210 11% 50%;
+    --tier-12-fg: 0 0% 98%;
+    --tier-13: 160 50% 50%;
+    --tier-13-fg: 0 0% 98%;
   }
 }
 
