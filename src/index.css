@@ -105,19 +105,33 @@ All colors MUST be HSL.
     --shadow-medium: 0 4px 16px -4px hsl(220 91% 18% / 0.15);
     --shadow-strong: 0 8px 32px -8px hsl(220 91% 18% / 0.2);
 
-    /* Tier colors for FSC leaderboard (groups of 4) */
-    --tier-1: 0 72% 50%;
+    /* Tier colors for FSC leaderboard (groups of 4) — 13 unique tiers */
+    --tier-1: 0 72% 50%;            /* Red */
     --tier-1-fg: 0 0% 98%;
-    --tier-2: 25 95% 53%;
+    --tier-2: 25 95% 53%;           /* Orange */
     --tier-2-fg: 0 0% 10%;
-    --tier-3: 45 96% 50%;
+    --tier-3: 48 96% 50%;           /* Yellow */
     --tier-3-fg: 0 0% 10%;
-    --tier-4: 217 91% 50%;
+    --tier-4: 142 71% 38%;          /* Green */
     --tier-4-fg: 0 0% 98%;
-    --tier-5: 280 60% 45%;
+    --tier-5: 173 80% 36%;          /* Teal */
     --tier-5-fg: 0 0% 98%;
-    --tier-6: 210 11% 55%;
+    --tier-6: 217 91% 50%;          /* Blue */
     --tier-6-fg: 0 0% 98%;
+    --tier-7: 245 58% 50%;          /* Indigo */
+    --tier-7-fg: 0 0% 98%;
+    --tier-8: 280 60% 45%;          /* Purple */
+    --tier-8-fg: 0 0% 98%;
+    --tier-9: 330 70% 50%;          /* Pink */
+    --tier-9-fg: 0 0% 98%;
+    --tier-10: 20 60% 35%;          /* Brown */
+    --tier-10-fg: 0 0% 98%;
+    --tier-11: 0 0% 25%;            /* Black/Dark */
+    --tier-11-fg: 0 0% 98%;
+    --tier-12: 210 11% 55%;         /* Grey */
+    --tier-12-fg: 0 0% 98%;
+    --tier-13: 160 50% 45%;         /* Mint */
+    --tier-13-fg: 0 0% 98%;
 
     --radius: 0.5rem;
 
