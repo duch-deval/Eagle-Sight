@@ -149,7 +149,7 @@ const RecipientAnalysis = () => {
       {/* Grid */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((entry, idx) => {
-          const tier = tierMap.get(entry.fsc_code) || 5;
+          const tier = entry._tier;
           const headerBg = `hsl(var(--tier-${tier}))`;
           const headerFg = `hsl(var(--tier-${tier}-fg))`;
           return (
