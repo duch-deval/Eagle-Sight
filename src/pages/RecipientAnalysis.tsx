@@ -160,9 +160,9 @@ const RecipientAnalysis = () => {
           >
             <CardHeader className="px-4 py-3 border-b border-border space-y-0.5" style={{ backgroundColor: headerBg }}>
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold tracking-wide uppercase" style={{ color: headerFg }}>
-                  FSC {entry.fsc_code}
-                </span>
+                 <span className="text-sm font-bold tracking-wide uppercase" style={{ color: headerFg }}>
+                   {entry.fsc_code}
+                 </span>
                 <span className="text-xs font-semibold" style={{ color: headerFg, opacity: 0.8 }}>
                   {fmt(entry.total_volume)}
                 </span>
