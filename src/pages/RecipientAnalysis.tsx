@@ -53,17 +53,15 @@ const RecipientAnalysis = () => {
   const NUM_COLORS = 6;
   const GROUP_SIZE = 4;
 
-  // Compute tiers by index position when sorted by volume, using index as key to handle duplicate FSC codes
-  const tierMap = useMemo(() => {
-    const byVolume = [...data]
-      .map((entry, origIdx) => ({ ...entry, origIdx }))
-      .sort((a, b) => b.total_volume - a.total_volume);
-    const map = new Map<number, number>();
+  // Attach original index and compute tier by volume rank
+  const dataWithTier = useMemo(() => {
+    const indexed = data.map((entry, i) => ({ ...entry, _idx: i }));
+    const byVolume = [...indexed].sort((a, b) => b.total_volume - a.total_volume);
+    const tierMap = new Map<number, number>();
     byVolume.forEach((entry, i) => {
-      const tier = (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1;
-      map.set(entry.origIdx, tier);
+      tierMap.set(entry._idx, (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1);
     });
-    return map;
+    return indexed.map((e) => ({ ...e, _tier: tierMap.get(e._idx) || NUM_COLORS }));
   }, [data]);
 
   const sorted = useMemo(() => {
