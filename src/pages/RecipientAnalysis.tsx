@@ -50,13 +50,16 @@ const RecipientAnalysis = () => {
 
   const data = mockData as FSCEntry[];
 
-  // Compute quintile tiers based on total_volume
+  const NUM_COLORS = 7;
+  const GROUP_SIZE = 4;
+
+  // Compute tiers: every 4 FSCs (sorted by volume) share a color, cycling through 7 colors
   const tierMap = useMemo(() => {
     const byVolume = [...data].sort((a, b) => b.total_volume - a.total_volume);
     const map = new Map<string, number>();
-    const tierSize = Math.ceil(byVolume.length / 5);
     byVolume.forEach((entry, i) => {
-      map.set(entry.fsc_code, Math.floor(i / tierSize) + 1);
+      const tier = (Math.floor(i / GROUP_SIZE) % NUM_COLORS) + 1;
+      map.set(entry.fsc_code, tier);
     });
     return map;
   }, [data]);
