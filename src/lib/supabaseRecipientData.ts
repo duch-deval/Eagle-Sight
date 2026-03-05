@@ -1,33 +1,65 @@
+import { useState, useEffect } from "react";
 import supabase from "@/lib/supabaseClient";
 
-export interface RecipientRow {
-  recipient_name: string;
-  awarded_amount: number;
-  fsc: string;
+// ============================================
+// Types
+// ============================================
+export interface Recipient {
+  rank: number;
+  name: string;
+  total_awarded: number;
+  award_count: number;
 }
 
-export async function fetchAllRecipientsWithFSC(): Promise<RecipientRow[]> {
-  let allRows: RecipientRow[] = [];
-  let from = 0;
-  const pageSize = 1000;
+export interface FSCEntry {
+  fsc_code: string;
+  fsc_description: string;
+  total_volume: number;
+  top_recipients: Recipient[];
+  deval: Recipient | null;
+  partslife: Recipient | null;
+}
 
-  while (true) {
-    const { data, error } = await supabase
-      .from("awards")
-      .select("recipient_name, awarded_amount, fsc")
-      .range(from, from + pageSize - 1);
+// ============================================
+// Hook: useFscLeaderboard
+// ============================================
+export function useFscLeaderboard(fiscalYear: number | null = null) {
+  const [data, setData] = useState<FSCEntry[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    if (error) {
-      console.error("❌ Supabase fetchAllRecipientsWithFSC error:", error);
-      break;
-    }
-    if (!data || data.length === 0) break;
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      setError(null);
 
-    allRows = allRows.concat(data as RecipientRow[]);
+      try {
+        const { data: result, error: rpcError } = await supabase.rpc(
+          "get_fsc_leaderboard",
+          fiscalYear ? { p_fiscal_year: fiscalYear } : {}
+        );
 
-    if (data.length < pageSize) break;
-    from += pageSize;
-  }
+        if (rpcError) {
+          console.error("❌ FSC leaderboard RPC error:", rpcError);
+          setError(rpcError.message);
+          setData([]);
+          return;
+        }
 
-  return allRows;
+        // RPC returns jsonb — Supabase client auto-parses it
+        const parsed: FSCEntry[] = Array.isArray(result) ? result : [];
+        setData(parsed);
+      } catch (err: any) {
+        console.error("❌ FSC leaderboard fetch error:", err);
+        setError(err.message || "Unknown error");
+        setData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    load();
+  }, [fiscalYear]);
+
+  return { data, loading, error };
 }

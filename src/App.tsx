@@ -17,6 +17,7 @@ import DepotDetail from "./pages/DepotDetail";
 import AwardWatchlist from "./pages/AwardWatchlist";
 import AwardSearch from "./pages/AwardSearch";
 import RecipientAnalysis from "./pages/RecipientAnalysis";
+import RecipientAwards from "./pages/RecipientAwards";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -36,6 +37,8 @@ const App = () => (
 
               <main className="flex-1 animate-in">
                 <Routes>
+                  <Route path="/recipient-analysis" element={<RecipientAnalysis />} />
+                  <Route path="/recipient-awards" element={<RecipientAwards />} />
                   <Route path="/" element={<Homepage />} />
                   <Route path="/platforms" element={<WeaponsPlatforms />} />
                   <Route path="/platforms/:id" element={<WeaponPlatformDetail />} />

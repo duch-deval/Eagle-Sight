@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, TrendingUp, Hash, SortAsc, Calendar } from "lucide-react";
+import { Search, TrendingUp, Hash, SortAsc, Calendar, Loader2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/TacticalComponents";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
@@ -13,23 +13,13 @@ import {
   TableHead,
   TableCell,
 } from "@/components/ui/table";
-import mockData from "@/data/mockFscLeaderboard.json";
+import { useFscLeaderboard } from "@/lib/supabaseRecipientData";
+import type { Recipient } from "@/lib/supabaseRecipientData";
 
 type SortMode = "code" | "volume" | "alpha";
 
-interface Recipient {
-  rank: number;
-  name: string;
-  total_awarded: number;
-  award_count: number;
-}
-
-interface FSCEntry {
-  fsc_code: string;
-  fsc_description: string;
-  total_volume: number;
-  top_recipients: Recipient[];
-}
+const COMPANY = "DEVAL";
+const SISTER = "PARTS LIFE";
 
 const fmt = (n: number) =>
   n >= 1_000_000_000
@@ -40,20 +30,24 @@ const fmt = (n: number) =>
         ? `$${(n / 1_000).toFixed(0)}K`
         : `$${n.toFixed(0)}`;
 
+const FY_OPTIONS = [
+  { label: "All", value: null },
+  { label: "FY2024", value: 2024 },
+  { label: "FY2025", value: 2025 },
+  { label: "FY2026", value: 2026 },
+] as const;
+
+const NUM_COLORS = 13;
+const GROUP_SIZE = 4;
+
 const RecipientAnalysis = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortMode>("volume");
-  const [fy, setFy] = useState<string>("FY2026");
+  const [selectedFy, setSelectedFy] = useState<number | null>(null);
   const navigate = useNavigate();
 
-  const fyOptions = ["FY2023", "FY2024", "FY2025", "FY2026"];
+  const { data, loading, error } = useFscLeaderboard(selectedFy);
 
-  const data = mockData as FSCEntry[];
-
-  const NUM_COLORS = 13;
-  const GROUP_SIZE = 4;
-
-  // Attach original index and compute tier by volume rank
   const dataWithTier = useMemo(() => {
     const indexed = data.map((entry, i) => ({ ...entry, _idx: i }));
     const byVolume = [...indexed].sort((a, b) => b.total_volume - a.total_volume);
@@ -88,11 +82,40 @@ const RecipientAnalysis = () => {
     { key: "alpha", label: "A → Z", icon: SortAsc },
   ];
 
+  const fyLabel = FY_OPTIONS.find((o) => o.value === selectedFy)?.label || "All";
+
+  const renderRecipientRow = (r: Recipient, isHighlight: boolean) => (
+    <TableRow
+      key={`${r.name}-${r.rank}`}
+      className={`cursor-pointer hover:bg-accent/50 border-border/40 ${
+        isHighlight ? "bg-primary/10" : ""
+      }`}
+      onClick={() => navigate(`/recipient-awards?recipient=${encodeURIComponent(r.name)}${selectedFy ? `&fy=${selectedFy}` : ''}`)}
+    >
+      <TableCell className="px-3 py-1.5 text-xs text-muted-foreground font-mono">
+        {r.rank}
+      </TableCell>
+      <TableCell
+        className={`px-2 py-1.5 text-xs truncate max-w-[140px] ${
+          isHighlight ? "text-primary font-bold" : "text-foreground"
+        }`}
+        title={r.name}
+      >
+        {r.name}
+      </TableCell>
+      <TableCell className="px-3 py-1.5 text-xs text-right font-semibold text-foreground whitespace-nowrap">
+        {fmt(r.total_awarded)}
+      </TableCell>
+      <TableCell className="px-3 py-1.5 text-xs text-right text-muted-foreground">
+        {r.award_count}
+      </TableCell>
+    </TableRow>
+  );
+
   return (
     <div className="p-4 sm:p-6 space-y-6">
       <SectionHeader
         title="Recipient Analysis"
-        subtitle="FSC Leaderboard — Top 25 recipients by dollar value for each Federal Supply Class"
       />
 
       {/* Search + Sort Bar */}
@@ -126,114 +149,147 @@ const RecipientAnalysis = () => {
         {/* FY Filter */}
         <div className="flex items-center gap-1 bg-muted/50 rounded-sm p-0.5 border border-border">
           <Calendar className="h-3 w-3 text-muted-foreground ml-2" />
-          {fyOptions.map((year) => (
+          {FY_OPTIONS.map((opt) => (
             <button
-              key={year}
-              onClick={() => setFy(year)}
+              key={opt.label}
+              onClick={() => setSelectedFy(opt.value)}
               className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-sm transition-all ${
-                fy === year
+                selectedFy === opt.value
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {year}
+              {opt.label}
             </button>
           ))}
         </div>
       </div>
 
       <p className="text-xs text-muted-foreground">
-        Showing {filtered.length} of {data.length} FSC categories · <span className="font-semibold text-foreground">{fy}</span>
+        {loading
+          ? "Loading…"
+          : error
+            ? `Error: ${error}`
+            : `Showing ${filtered.length} of ${data.length} FSC categories`}
+        {" · "}
+        <span className="font-semibold text-foreground">{fyLabel}</span>
       </p>
 
+      {/* Loading State */}
+      {loading && (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          <span className="ml-3 text-muted-foreground">Loading leaderboard…</span>
+        </div>
+      )}
+
+      {/* Error State */}
+      {error && !loading && (
+        <div className="text-center py-16 text-destructive">
+          Failed to load leaderboard data. Check console for details.
+        </div>
+      )}
+
       {/* Grid */}
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filtered.map((entry, idx) => {
-          const tier = entry._tier;
-          const headerBg = `hsl(var(--tier-${tier}))`;
-          const headerFg = `hsl(var(--tier-${tier}-fg))`;
-          return (
-          <Card
-            key={`${entry.fsc_code}-${idx}`}
-            className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200 border-border/60"
-            style={{ borderTopColor: headerBg, borderTopWidth: '3px' }}
-          >
-            <CardHeader className="px-4 py-3 border-b border-border space-y-0.5" style={{ backgroundColor: headerBg }}>
-              <div className="flex items-center justify-between">
-                 <span className="text-sm font-bold tracking-wide uppercase" style={{ color: headerFg }}>
-                   {entry.fsc_code}
-                 </span>
-                <span className="text-xs font-semibold" style={{ color: headerFg, opacity: 0.8 }}>
-                  {fmt(entry.total_volume)}
-                </span>
-              </div>
-              <p className="text-xs truncate" style={{ color: headerFg, opacity: 0.6 }} title={entry.fsc_description}>
-                {entry.fsc_description}
-              </p>
-            </CardHeader>
+      {!loading && !error && (
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filtered.map((entry, idx) => {
+            const tier = entry._tier;
+            const headerBg = `hsl(var(--tier-${tier}))`;
+            const headerFg = `hsl(var(--tier-${tier}-fg))`;
 
-            <CardContent className="p-0 flex-1 bg-card">
-              <ScrollArea className="h-56">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="border-b border-border bg-muted/50">
-                      <TableHead className="h-7 px-3 text-xs w-8">#</TableHead>
-                      <TableHead className="h-7 px-2 text-xs">Company</TableHead>
-                      <TableHead className="h-7 px-3 text-xs text-right">Amount</TableHead>
-                      <TableHead className="h-7 px-3 text-xs text-right w-10">Ct</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {(() => {
-                      const COMPANY = "Deval";
-                      const hasCompany = entry.top_recipients.some(
-                        (r) => r.name.toLowerCase() === COMPANY.toLowerCase()
-                      );
-                      const seed = entry.fsc_code.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-                      const devalRow: Recipient = {
-                        rank: 26 + (seed % 75),
-                        name: COMPANY,
-                        total_awarded: Math.round(entry.total_volume * (0.002 + (seed % 8) * 0.001)),
-                        award_count: 1 + (seed % 6),
-                      };
-                      const renderRow = (r: Recipient, isHighlight: boolean) => (
-                        <TableRow
-                          key={r.name}
-                          className={`cursor-pointer hover:bg-accent/50 border-border/40 ${isHighlight ? "bg-primary/10" : ""}`}
-                          onClick={() => navigate(`/awards?recipient=${encodeURIComponent(r.name)}`)}
-                        >
-                          <TableCell className="px-3 py-1.5 text-xs text-muted-foreground font-mono">{r.rank}</TableCell>
-                          <TableCell className={`px-2 py-1.5 text-xs truncate max-w-[140px] ${isHighlight ? "text-primary font-bold" : "text-foreground"}`} title={r.name}>{r.name}</TableCell>
-                          <TableCell className="px-3 py-1.5 text-xs text-right font-semibold text-foreground whitespace-nowrap">{fmt(r.total_awarded)}</TableCell>
-                          <TableCell className="px-3 py-1.5 text-xs text-right text-muted-foreground">{r.award_count}</TableCell>
+            const inTop25 = entry.top_recipients?.some(
+              (r) => r.name.toUpperCase().includes(COMPANY)
+            );
+
+            return (
+              <Card
+                key={`${entry.fsc_code}-${idx}`}
+                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200 border-border/60"
+                style={{ borderTopColor: headerBg, borderTopWidth: "3px" }}
+              >
+                <CardHeader
+                  className="px-4 py-3 border-b border-border space-y-0.5"
+                  style={{ backgroundColor: headerBg }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span
+                      className="text-sm font-bold tracking-wide uppercase"
+                      style={{ color: headerFg }}
+                    >
+                      {entry.fsc_code}
+                    </span>
+                    <span
+                      className="text-xs font-semibold"
+                      style={{ color: headerFg, opacity: 0.8 }}
+                    >
+                      {fmt(entry.total_volume)}
+                    </span>
+                  </div>
+                  <p
+                    className="text-xs truncate"
+                    style={{ color: headerFg, opacity: 0.6 }}
+                    title={entry.fsc_description}
+                  >
+                    {entry.fsc_description.replace(/^\d+:?\s*/, '')}
+                  </p>
+                </CardHeader>
+
+                <CardContent className="p-0 flex-1 bg-card">
+                  <ScrollArea className="h-56">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="border-b border-border bg-muted/50">
+                          <TableHead className="h-7 px-3 text-xs w-8">#</TableHead>
+                          <TableHead className="h-7 px-2 text-xs">Company</TableHead>
+                          <TableHead className="h-7 px-3 text-xs text-right">Amount</TableHead>
+                          <TableHead className="h-7 px-3 text-xs text-right w-10">Ct</TableHead>
                         </TableRow>
-                      );
-                      return (
-                        <>
-                          {entry.top_recipients.map((r) => renderRow(r, r.name.toLowerCase() === COMPANY.toLowerCase()))}
-                          {!hasCompany && (
-                            <>
-                              <TableRow className="border-0">
-                                <TableCell colSpan={4} className="px-3 py-0.5 text-center">
-                                  <span className="text-[10px] text-muted-foreground tracking-widest">· · ·</span>
-                                </TableCell>
-                              </TableRow>
-                              {renderRow(devalRow, true)}
-                            </>
-                          )}
-                        </>
-                      );
-                    })()}
-                  </TableBody>
-                </Table>
-              </ScrollArea>
-            </CardContent>
-          </Card>
-          );
-        })}
-      </div>
+                      </TableHeader>
+                      <TableBody>
+                      {entry.top_recipients?.map((r: Recipient) =>
+                        renderRecipientRow(
+                          r,
+                          r.name.toUpperCase().includes(COMPANY) ||
+                          r.name.toUpperCase().includes(SISTER)
+                        )
+                      )}
+                      {(() => {
+                        const devalInTop = entry.top_recipients?.some(
+                          (r) => r.name.toUpperCase().includes(COMPANY)
+                        );
+                        const plInTop = entry.top_recipients?.some(
+                          (r) => r.name.toUpperCase().includes(SISTER)
+                        );
+                        const extras: Recipient[] = [];
+                        if (!devalInTop && entry.deval) extras.push(entry.deval);
+                        if (!plInTop && entry.partslife) extras.push(entry.partslife);
 
-      {filtered.length === 0 && (
+                        if (extras.length === 0) return null;
+                        return (
+                          <>
+                            <TableRow className="border-0">
+                              <TableCell colSpan={4} className="px-3 py-0.5 text-center">
+                                <span className="text-[10px] text-muted-foreground tracking-widest">
+                                  · · ·
+                                </span>
+                              </TableCell>
+                            </TableRow>
+                            {extras.map((r) => renderRecipientRow(r, true))}
+                          </>
+                        );
+                      })()}
+                    </TableBody>
+                    </Table>
+                  </ScrollArea>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      )}
+
+      {!loading && !error && filtered.length === 0 && (
         <div className="text-center py-16 text-muted-foreground">
           No FSC categories match "<span className="font-semibold">{search}</span>"
         </div>
