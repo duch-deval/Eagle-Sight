@@ -76,18 +76,18 @@ function ResultsTable({ data }: { data: any[] }) {
   });
 
   return (
-    <div className="flex flex-col h-full bg-white">
-      <div className="p-3 border-b bg-slate-50 flex items-center justify-between">
+    <div className="flex flex-col h-full bg-card">
+      <div className="p-3 border-b border-border bg-muted/50 flex items-center justify-between">
         <div className="relative w-full max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             placeholder="Filter by Award ID, Recipient, Description..."
             value={filterText}
             onChange={e => setFilterText(e.target.value)}
-            className="w-full pl-9 pr-4 py-1.5 text-xs bg-white border border-slate-200 rounded-sm focus:border-blue-600 focus:outline-none font-medium"
+            className="w-full pl-9 pr-4 py-1.5 text-xs bg-card border border-border rounded-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none font-medium text-foreground placeholder:text-muted-foreground"
           />
         </div>
-        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+        <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
           {sorted.length} / {data.length} records
         </div>
       </div>
@@ -95,26 +95,26 @@ function ResultsTable({ data }: { data: any[] }) {
       <div className="overflow-auto flex-1">
         <table className="w-full text-[11px] border-collapse">
           <thead className="sticky top-0 z-10">
-            <tr className="bg-slate-800 text-white">
-              <th className="px-4 py-3 text-left font-bold uppercase tracking-wider cursor-pointer hover:bg-slate-700" onClick={() => handleSort('award_id')}>Award ID</th>
-              <th className="px-4 py-3 text-left font-bold uppercase tracking-wider cursor-pointer hover:bg-slate-700" onClick={() => handleSort('recipient_name')}>Recipient</th>
+            <tr className="bg-primary text-primary-foreground">
+              <th className="px-4 py-3 text-left font-bold uppercase tracking-wider cursor-pointer hover:bg-primary/80 transition-colors" onClick={() => handleSort('award_id')}>Award ID {sortKey === 'award_id' && (sortDir === 'asc' ? '↑' : '↓')}</th>
+              <th className="px-4 py-3 text-left font-bold uppercase tracking-wider cursor-pointer hover:bg-primary/80 transition-colors" onClick={() => handleSort('recipient_name')}>Recipient {sortKey === 'recipient_name' && (sortDir === 'asc' ? '↑' : '↓')}</th>
               <th className="px-4 py-3 text-left font-bold uppercase tracking-wider">Description</th>
               <th className="px-4 py-3 text-left font-bold uppercase tracking-wider">Set Aside</th>
-              <th className="px-4 py-3 text-right font-bold uppercase tracking-wider cursor-pointer hover:bg-slate-700" onClick={() => handleSort('awarded_amount')}>Amount</th>
+              <th className="px-4 py-3 text-right font-bold uppercase tracking-wider cursor-pointer hover:bg-primary/80 transition-colors" onClick={() => handleSort('awarded_amount')}>Amount {sortKey === 'awarded_amount' && (sortDir === 'asc' ? '↑' : '↓')}</th>
               <th className="px-4 py-3 text-center font-bold uppercase tracking-wider">Days Left</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200">
+          <tbody className="divide-y divide-border">
             {sorted.slice(0, 100).map((r, idx) => {
               const { daysLeft } = computePoP(r.pop_start_date, r.pop_end_date);
               return (
-                <tr key={idx} className="hover:bg-blue-50/50 transition-colors">
-                  <td className="px-4 py-3 font-mono font-bold text-blue-600">{r.award_id || "—"}</td>
-                  <td className="px-4 py-3 font-bold text-slate-700 truncate max-w-[180px]">{r.recipient_name || "—"}</td>
-                  <td className="px-4 py-3 text-slate-500 truncate max-w-[200px]">{r.award_description || "—"}</td>
-                  <td className="px-4 py-3 text-slate-500 truncate max-w-[120px]">{r.set_aside_type || "—"}</td>
-                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-800">{r.awarded_amount ? formatCurrency(r.awarded_amount) : "—"}</td>
-                  <td className={`px-4 py-3 text-center font-bold ${daysLeft !== null && daysLeft < 30 ? 'text-red-500' : 'text-slate-400'}`}>
+                <tr key={idx} className="hover:bg-accent/50 transition-colors">
+                  <td className="px-4 py-3 font-mono font-bold text-primary">{r.award_id || "—"}</td>
+                  <td className="px-4 py-3 font-bold text-foreground truncate max-w-[180px]">{r.recipient_name || "—"}</td>
+                  <td className="px-4 py-3 text-muted-foreground truncate max-w-[200px]">{r.award_description || "—"}</td>
+                  <td className="px-4 py-3 text-muted-foreground truncate max-w-[120px]">{r.set_aside_type || "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono font-bold text-foreground">{r.awarded_amount ? formatCurrency(r.awarded_amount) : "—"}</td>
+                  <td className={`px-4 py-3 text-center font-bold ${daysLeft !== null && daysLeft < 30 ? 'text-destructive' : 'text-muted-foreground'}`}>
                     {daysLeft ?? '—'}
                   </td>
                 </tr>
@@ -125,7 +125,7 @@ function ResultsTable({ data }: { data: any[] }) {
       </div>
       
       {data.length > 100 && (
-        <div className="p-2 border-t bg-slate-50 text-[10px] text-slate-500 text-center">
+        <div className="p-2 border-t border-border bg-muted/50 text-[10px] text-muted-foreground text-center">
           Showing 100 of {data.length} records • Download CSV for complete dataset
         </div>
       )}
