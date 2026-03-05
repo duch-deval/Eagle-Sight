@@ -775,34 +775,51 @@ export default function ExportData() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-16">
-      <div className="p-8 space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div className="bg-background min-h-screen pb-16">
+      <div className="p-6 md:p-8 space-y-6">
+        {/* Page Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-extrabold text-foreground tracking-tight uppercase">Export Data</h1>
+            <p className="text-xs text-muted-foreground mt-1">Query and export federal contract awards from USA Spending</p>
+          </div>
+          <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+            <span className={`w-2 h-2 rounded-full ${loading || exporting ? 'bg-warning animate-pulse' : 'bg-success'}`} />
+            {loading ? 'Querying' : exporting ? 'Exporting' : 'Ready'}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Query Parameters Column */}
-          <div className="lg:col-span-4 space-y-6">
-            <CorporateCard className="p-6 border-t-4 border-t-blue-600 bg-white">
-              <div className="space-y-6">
+          <div className="lg:col-span-4 space-y-4">
+            <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-primary px-5 py-3">
+                <h2 className="text-xs font-bold text-primary-foreground uppercase tracking-widest flex items-center gap-2">
+                  <Search className="h-3.5 w-3.5" /> Query Parameters
+                </h2>
+              </div>
+              <div className="p-5 space-y-5">
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">PSC / FSC Codes</label>
+                  <label className="block text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">PSC / FSC Codes</label>
                   <CorporateInput 
                     placeholder="e.g., 1510, 5340, J015"
                     value={filters.pscCodes}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilters(f => ({ ...f, pscCodes: e.target.value }))}
                   />
-                  <p className="text-[9px] text-slate-400 mt-1">Comma or space separated. Leave empty for all codes.</p>
+                  <p className="text-[9px] text-muted-foreground/70 mt-1.5">Comma or space separated. Leave empty for all codes.</p>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Fiscal Year</label>
+                  <label className="block text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Fiscal Year</label>
                   <div className="grid grid-cols-2 gap-2 mb-3">
                     {FY_PRESETS.map(fy => (
                       <button
                         key={fy.label}
                         onClick={() => applyFyPreset(fy.start, fy.end)}
-                        className={`py-1.5 px-3 text-[10px] font-bold border rounded-sm transition-all ${
+                        className={`py-2 px-3 text-[10px] font-bold border rounded-md transition-all ${
                           filters.startDate === fy.start && filters.endDate === fy.end 
-                            ? 'bg-blue-600 text-white border-blue-600' 
-                            : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400'
+                            ? 'bg-primary text-primary-foreground border-primary shadow-sm' 
+                            : 'bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground'
                         }`}
                       >
                         {fy.label}
@@ -812,13 +829,13 @@ export default function ExportData() {
                   <div className="flex gap-2">
                     <input 
                       type="date" 
-                      className="flex-1 bg-slate-50 border border-slate-200 p-2 text-xs font-mono rounded-sm" 
+                      className="flex-1 bg-muted/50 border border-border p-2 text-xs font-mono rounded-md text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" 
                       value={filters.startDate} 
                       onChange={e => setFilters(f => ({ ...f, startDate: e.target.value }))} 
                     />
                     <input 
                       type="date" 
-                      className="flex-1 bg-slate-50 border border-slate-200 p-2 text-xs font-mono rounded-sm" 
+                      className="flex-1 bg-muted/50 border border-border p-2 text-xs font-mono rounded-md text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" 
                       value={filters.endDate} 
                       onChange={e => setFilters(f => ({ ...f, endDate: e.target.value }))} 
                     />
@@ -826,7 +843,7 @@ export default function ExportData() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Amount Range</label>
+                  <label className="block text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Amount Range</label>
                   <div className="flex gap-2">
                     <CorporateInput 
                       placeholder="Min $" 
@@ -843,66 +860,70 @@ export default function ExportData() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t flex gap-3">
-                  <CorporateButton variant="primary" className="w-full" onClick={fetchData} disabled={loading}>
+                <div className="pt-4 border-t border-border flex gap-3">
+                  <CorporateButton variant="primary" className="w-full rounded-md" onClick={fetchData} disabled={loading}>
                     {loading ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Search className="h-4 w-4 mr-2" />}
                     {loading ? "Querying..." : "Search"}
                   </CorporateButton>
                   <button 
                     onClick={resetFilters} 
-                    className="p-2 border border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-600 rounded-sm transition-colors"
+                    className="p-2.5 border border-border text-muted-foreground hover:text-primary hover:border-primary rounded-md transition-colors"
                   >
                     <RotateCcw className="h-4 w-4" />
                   </button>
                 </div>
               </div>
-            </CorporateCard>
+            </div>
 
             {/* Query Stats */}
             {queryTime !== null && (
-              <CorporateCard className="p-5 bg-slate-900 text-white font-mono border-none shadow-xl">
-                <div className="flex items-center gap-3 mb-4 border-b border-white/10 pb-3">
-                  <Database className="h-4 w-4 text-emerald-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Query Complete</span>
+              <div className="bg-sidebar border border-sidebar-border rounded-lg shadow-lg overflow-hidden">
+                <div className="px-5 py-3 border-b border-sidebar-border flex items-center gap-3">
+                  <Database className="h-4 w-4 text-success" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-success">Query Complete</span>
                 </div>
-                <div className="space-y-2 text-[10px]">
+                <div className="p-5 space-y-2.5 text-[11px] font-mono">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">SOURCE:</span>
-                    <span className="text-blue-400">USA Spending</span>
+                    <span className="text-sidebar-foreground/50">SOURCE</span>
+                    <span className="text-info">USA Spending</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">TIME:</span>
-                    <span className="text-emerald-400">{(queryTime/1000).toFixed(2)}s</span>
+                    <span className="text-sidebar-foreground/50">TIME</span>
+                    <span className="text-success">{(queryTime/1000).toFixed(2)}s</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sidebar-foreground/50">RECORDS</span>
+                    <span className="text-sidebar-foreground">{data.length.toLocaleString()}</span>
                   </div>
                   {data.length < (totalCount || 0) && (
-                    <div className="pt-2 mt-2 border-t border-white/10 text-amber-400 text-[9px]">
-                      ⚠ 50K preview limit. Use "Export All" button for complete dataset.
+                    <div className="pt-2.5 mt-2.5 border-t border-sidebar-border text-warning text-[10px]">
+                      ⚠ Preview limit reached. Use "Export All" for complete dataset.
                     </div>
                   )}
                 </div>
-              </CorporateCard>
+              </div>
             )}
           </div>
 
           {/* Results Column */}
-          <div className="lg:col-span-8 flex flex-col" style={{ height: 'calc(100vh - 280px)', minHeight: '500px' }}>
+          <div className="lg:col-span-8 flex flex-col" style={{ height: 'calc(100vh - 220px)', minHeight: '500px' }}>
             {data.length > 0 ? (
-              <CorporateCard className="flex-1 flex flex-col overflow-hidden border-t-4 border-t-slate-800">
-                <div className="bg-slate-100 p-4 border-b border-slate-200 flex justify-between items-center">
+              <div className="flex-1 flex flex-col overflow-hidden bg-card border border-border rounded-lg shadow-sm">
+                <div className="bg-muted/50 px-5 py-3.5 border-b border-border flex justify-between items-center">
                   <div>
-                    <h3 className="font-bold text-slate-800 text-xs uppercase tracking-widest flex items-center gap-2">
-                      <Database className="h-3 w-3 text-blue-600" /> Query Results
+                    <h3 className="font-bold text-foreground text-xs uppercase tracking-widest flex items-center gap-2">
+                      <Database className="h-3.5 w-3.5 text-primary" /> Query Results
                     </h3>
-                    <div className="text-[10px] text-slate-500 font-mono mt-1">
-                      SOURCE: USA Spending • {data.length.toLocaleString()} RECORDS
+                    <div className="text-[10px] text-muted-foreground font-mono mt-1">
+                      {data.length.toLocaleString()} records loaded
                       {totalCount && totalCount > data.length && (
-                        <span className="text-amber-500 ml-2">({totalCount.toLocaleString()} total)</span>
+                        <span className="text-warning ml-2">({totalCount.toLocaleString()} total available)</span>
                       )}
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <CorporateButton variant="outline" size="sm" onClick={exportToCsv} disabled={data.length === 0}>
-                      <Download className="h-4 w-4 mr-2" /> Download CSV
+                    <CorporateButton variant="outline" size="sm" onClick={exportToCsv} disabled={data.length === 0} className="rounded-md">
+                      <Download className="h-3.5 w-3.5 mr-1.5" /> CSV
                     </CorporateButton>
                     {totalCount && totalCount > data.length && (
                       <CorporateButton 
@@ -910,8 +931,9 @@ export default function ExportData() {
                         size="sm" 
                         onClick={exportAllDirect} 
                         disabled={exporting}
+                        className="rounded-md"
                       >
-                        <Download className="h-4 w-4 mr-2" /> 
+                        <Download className="h-3.5 w-3.5 mr-1.5" /> 
                         {exporting ? "Exporting..." : `Export All ${totalCount.toLocaleString()}`}
                       </CorporateButton>
                     )}
@@ -920,26 +942,16 @@ export default function ExportData() {
                 <div className="flex-1 overflow-hidden">
                   <ResultsTable data={data} />
                 </div>
-              </CorporateCard>
+              </div>
             ) : (
-              <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 bg-white/50 rounded-sm">
-                <div className="p-6 rounded-full bg-slate-100 mb-4">
-                  <FileJson className="h-10 w-10 text-slate-300" />
+              <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-border bg-card/50 rounded-lg">
+                <div className="p-5 rounded-full bg-muted mb-4">
+                  <FileJson className="h-10 w-10 text-muted-foreground/40" />
                 </div>
-                <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm">No Active Dataset</h3>
-                <p className="text-slate-400 text-xs mt-2">Configure parameters and execute query to begin.</p>
+                <h3 className="text-muted-foreground font-bold uppercase tracking-widest text-sm">No Active Dataset</h3>
+                <p className="text-muted-foreground/70 text-xs mt-2 max-w-xs text-center">Configure query parameters and click Search to load contract awards.</p>
               </div>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Status Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-white/10 px-6 py-2 flex justify-between items-center z-50">
-        <div className="flex gap-6 items-center">
-          <div className="flex items-center gap-2 text-[9px] font-bold text-slate-400 uppercase tracking-widest">
-            <span className={`w-2 h-2 rounded-full ${loading || exporting ? 'bg-amber-500 animate-pulse' : 'bg-emerald-500'}`} />
-            {loading ? 'Querying' : exporting ? 'Exporting' : 'Ready'}
           </div>
         </div>
       </div>
