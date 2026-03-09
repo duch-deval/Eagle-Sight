@@ -152,7 +152,7 @@ const ContactDetail = () => {
         .from("sam_notices")
         .select("notice_id, opportunity_title, opportunity_type, contracting_office, sub_tier_name, aac_code, psc, naics, set_aside, response_date, published_date, poc_name, poc_email")
         .eq("poc_email", decodedEmail)
-        .order("published_date", { ascending: false })
+        .order("loaded_at", { ascending: false })
         .limit(25);
       if (error) {
         console.error("Error fetching SAM notices:", error);
@@ -393,54 +393,67 @@ const ContactDetail = () => {
             </TabsList>
           </div>
 
-          {/* Activity Tab */}
+           {/* Activity Tab */}
           <TabsContent value="activity" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
               <div className="p-6 max-w-4xl">
-                {contactData.activities.length === 0 ? (
-                  <p className="text-sm text-muted-foreground py-8 text-center">No activity recorded.</p>
+                {samLoading ? (
+                  <div className="space-y-3">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <Skeleton key={i} className="h-20 w-full" />
+                    ))}
+                  </div>
+                ) : samNotices.length === 0 ? (
+                  <p className="text-sm text-muted-foreground py-8 text-center">
+                    No SAM.gov activity found for this contact.
+                  </p>
                 ) : (
                   <div className="relative">
                     <div className="absolute left-[72px] top-0 bottom-0 w-px bg-border" />
-                    {contactData.activities.map((activity, index) => (
-                      <div key={index} className="flex gap-4 mb-6 relative">
-                        <div className="w-[60px] shrink-0 pt-1 text-right">
-                          <span className="text-xs text-muted-foreground font-medium">
-                            {timeAgo(activity.date)}
-                          </span>
-                        </div>
-                        <div className="relative z-10 shrink-0 mt-1.5">
-                          <div className="h-3 w-3 rounded-full bg-primary/80 ring-2 ring-background" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs text-muted-foreground mb-1.5">
-                            Seen as a Point of Contact for a Federal Contract Award
-                          </p>
-                          <div className="rounded-lg border border-border bg-card p-3.5 hover:bg-accent/30 transition-colors cursor-pointer">
-                            <div className="flex items-start justify-between gap-2 mb-1">
-                              <span className="text-sm font-semibold text-primary truncate">
-                                {activity.award["Award Description"]?.slice(0, 80) || activity.award["Award ID"]}
-                              </span>
-                              <Badge variant="outline" className="shrink-0 text-[10px]">
-                                ${(activity.award["Awarded$"] / 1000).toFixed(0)}K
-                              </Badge>
-                            </div>
-                            <p className="text-xs text-muted-foreground line-clamp-2">
-                              {activity.award["Award Description"]
-                                ? `This is a ${activity.award["Award Type"]?.toLowerCase() || "contract"} award to ${activity.award["Recipient Name"]}. ${activity.award["Award Description"].slice(0, 150)}...`
-                                : `Award ${activity.award["Award ID"]} to ${activity.award["Recipient Name"]}`}
+                    {samNotices.map((notice, index) => {
+                      const pubDate = notice.published_date
+                        ? new Date(notice.published_date)
+                        : null;
+                      return (
+                        <div key={notice.notice_id || index} className="flex gap-4 mb-6 relative">
+                          <div className="w-[60px] shrink-0 pt-1 text-right">
+                            <span className="text-xs text-muted-foreground font-medium">
+                              {pubDate ? timeAgo(pubDate) : "—"}
+                            </span>
+                          </div>
+                          <div className="relative z-10 shrink-0 mt-1.5">
+                            <div className="h-3 w-3 rounded-full bg-primary/80 ring-2 ring-background" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs text-muted-foreground mb-1.5">
+                              Posted a SAM.gov opportunity
                             </p>
-                            <div className="flex gap-3 mt-2 text-[10px] text-muted-foreground">
-                              <span>{activity.award["Funding Office Name"]}</span>
-                              <span>·</span>
-                              <span>{activity.award["Award Type"]}</span>
-                              <span>·</span>
-                              <span>{activity.role}</span>
+                            <div className="rounded-lg border border-border bg-card p-3.5 hover:bg-accent/30 transition-colors">
+                              <div className="flex items-start justify-between gap-2 mb-1">
+                                <span className="text-sm font-semibold text-primary truncate">
+                                  {notice.opportunity_title || notice.notice_id}
+                                </span>
+                                <Badge variant="secondary" className="shrink-0 text-[10px]">
+                                  {notice.opportunity_type}
+                                </Badge>
+                              </div>
+                              <p className="text-xs text-muted-foreground">
+                                {notice.contracting_office}
+                                {notice.psc && <span> · PSC: {notice.psc}</span>}
+                                {notice.set_aside && notice.set_aside !== "No Set aside used" && (
+                                  <span> · {notice.set_aside}</span>
+                                )}
+                              </p>
+                              <div className="flex gap-3 mt-2 text-[10px] text-muted-foreground">
+                                {notice.published_date && <span>Published: {notice.published_date}</span>}
+                                {notice.response_date && <span>Response Due: {notice.response_date}</span>}
+                                <span className="font-mono opacity-50">{notice.notice_id}</span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>
