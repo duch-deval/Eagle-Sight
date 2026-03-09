@@ -369,7 +369,7 @@ const ContactDetail = () => {
 
         {/* Similar Contacts */}
         <div className="px-5 py-4 flex-1">
-          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+          <h3 className="text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider mb-3">
             Similar Contacts
           </h3>
           {similarContacts.length > 0 ? (
