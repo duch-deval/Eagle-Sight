@@ -244,7 +244,7 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
       </div>
 
       {/* TABLE */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-y-auto overflow-x-scroll">
         <table className="w-full border-collapse">
           <thead className="sticky top-0 z-10 bg-white dark:bg-slate-900 shadow-sm">
             <tr>
