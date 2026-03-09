@@ -399,7 +399,7 @@ const ContactDetail = () => {
               })}
             </div>
           ) : (
-            <p className="text-xs text-muted-foreground">No similar contacts found.</p>
+            <p className="text-xs text-sidebar-foreground/50">No similar contacts found.</p>
           )}
         </div>
       </aside>
