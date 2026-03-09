@@ -10,15 +10,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import AwardTable from "@/components/AwardTable";
 import {
   ArrowLeft,
-  User,
   Building2,
   Mail,
-  Calendar,
-  FileText,
   Shield,
   Radio,
-  Clock,
-  Award,
   Briefcase,
 } from "lucide-react";
 import supabase from "@/lib/supabaseClient";
@@ -189,23 +184,30 @@ const ContactDetail = () => {
     fetchSamNotices();
   }, [decodedEmail]);
 
-  // Fetch similar contacts from the same funding office
+  // Similar contacts — triggered when rows load, derives funding office directly
+  // without depending on contactData to avoid use-before-define
   useEffect(() => {
-    if (contactData.fundingOffices.length === 0) return;
+    if (rows.length === 0) return;
+
+    const firstOffice = rows.find(r => r["Funding Office Name"])?.["Funding Office Name"];
+    if (!firstOffice) return;
+
     const fetchSimilar = async () => {
       const { data, error } = await supabase
         .from("contact_summary")
         .select("email, total_awards")
-        .contains("funding_offices", [contactData.fundingOffices[0]])
+        .contains("funding_offices", [firstOffice])
         .neq("email", decodedEmail)
         .order("total_awards", { ascending: false })
         .limit(5);
+
       if (!error && data) {
         setSimilarContacts(data.map(d => ({ email: d.email, total_awards: d.total_awards })));
       }
     };
+
     fetchSimilar();
-  }, [rows]);
+  }, [rows, decodedEmail]);
 
   const contactData = useMemo(() => {
     const activities: Activity[] = [];
@@ -282,7 +284,7 @@ const ContactDetail = () => {
     );
   }
 
-  if (!contactData.activities.length && !samNotices.length) {
+  if (!contactData.activities.length && !samNotices.length && !samLoading) {
     return (
       <div className="p-6">
         <Button variant="ghost" onClick={() => navigate("/points-of-contact")} className="mb-4">
@@ -298,9 +300,8 @@ const ContactDetail = () => {
 
   return (
     <div className="flex h-[calc(100vh-3rem)] overflow-hidden">
-      {/* ─── LEFT SIDEBAR PANEL ─── */}
+      {/* LEFT SIDEBAR */}
       <aside className="w-[280px] shrink-0 border-r border-border bg-sidebar flex flex-col overflow-y-auto">
-        {/* Back button */}
         <div className="px-4 pt-4">
           <Button
             variant="ghost"
@@ -313,7 +314,6 @@ const ContactDetail = () => {
           </Button>
         </div>
 
-        {/* Avatar + Name */}
         <div className="px-6 pt-4 pb-5 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-sidebar-foreground/20">
             <AvatarFallback className="bg-sidebar-accent text-sidebar-foreground text-xl font-bold">
@@ -330,7 +330,6 @@ const ContactDetail = () => {
 
         <Separator className="bg-sidebar-border" />
 
-        {/* Metadata Fields */}
         <div className="px-5 py-4 space-y-4 text-sm">
           <MetadataField icon={Building2} label="Organization" value={contactData.agencies[0] || "Not listed"} />
           <MetadataField icon={Shield} label="Contact Types" value="Federal" />
@@ -349,7 +348,6 @@ const ContactDetail = () => {
 
         <Separator className="bg-sidebar-border" />
 
-        {/* Stat Pills */}
         <div className="px-5 py-4 space-y-2">
           <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
             <span className="text-xs font-medium text-sidebar-foreground">Award POC</span>
@@ -367,7 +365,6 @@ const ContactDetail = () => {
 
         <Separator className="bg-sidebar-border" />
 
-        {/* Similar Contacts */}
         <div className="px-5 py-4 flex-1">
           <h3 className="text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider mb-3">
             Similar Contacts
@@ -404,10 +401,9 @@ const ContactDetail = () => {
         </div>
       </aside>
 
-      {/* ─── MAIN CONTENT AREA ─── */}
+      {/* MAIN CONTENT */}
       <main className="flex-1 flex flex-col overflow-hidden">
         <Tabs defaultValue="activity" className="flex flex-col h-full">
-          {/* Tab Bar */}
           <div className="border-b border-border bg-card px-6 pt-2">
             <TabsList className="bg-transparent h-auto p-0 gap-0">
               <TabsTrigger
@@ -433,7 +429,7 @@ const ContactDetail = () => {
             </TabsList>
           </div>
 
-          {/* ── Activity Tab ── */}
+          {/* Activity Tab */}
           <TabsContent value="activity" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
               <div className="p-6 max-w-4xl">
@@ -441,24 +437,17 @@ const ContactDetail = () => {
                   <p className="text-sm text-muted-foreground py-8 text-center">No activity recorded.</p>
                 ) : (
                   <div className="relative">
-                    {/* Timeline line */}
                     <div className="absolute left-[72px] top-0 bottom-0 w-px bg-border" />
-
                     {contactData.activities.map((activity, index) => (
                       <div key={index} className="flex gap-4 mb-6 relative">
-                        {/* Time label */}
                         <div className="w-[60px] shrink-0 pt-1 text-right">
                           <span className="text-xs text-muted-foreground font-medium">
                             {timeAgo(activity.date)}
                           </span>
                         </div>
-
-                        {/* Dot */}
                         <div className="relative z-10 shrink-0 mt-1.5">
                           <div className="h-3 w-3 rounded-full bg-primary/80 ring-2 ring-background" />
                         </div>
-
-                        {/* Content */}
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-muted-foreground mb-1.5">
                             Seen as a Point of Contact for a Federal Contract Award
@@ -479,9 +468,9 @@ const ContactDetail = () => {
                             </p>
                             <div className="flex gap-3 mt-2 text-[10px] text-muted-foreground">
                               <span>{activity.award["Funding Office Name"]}</span>
-                              <span>•</span>
+                              <span>·</span>
                               <span>{activity.award["Award Type"]}</span>
-                              <span>•</span>
+                              <span>·</span>
                               <span>{activity.role}</span>
                             </div>
                           </div>
@@ -494,7 +483,7 @@ const ContactDetail = () => {
             </ScrollArea>
           </TabsContent>
 
-          {/* ── Awards Tab ── */}
+          {/* Awards Tab */}
           <TabsContent value="awards" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
               <div className="p-6">
@@ -503,7 +492,7 @@ const ContactDetail = () => {
             </ScrollArea>
           </TabsContent>
 
-          {/* ── SAM.gov Tab ── */}
+          {/* SAM.gov Tab */}
           <TabsContent value="sam" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
               <div className="p-6 max-w-4xl space-y-3">
@@ -511,10 +500,9 @@ const ContactDetail = () => {
                   <Radio className="h-4 w-4 text-primary" />
                   <span className="text-sm font-medium">Active SAM.gov Notices</span>
                   <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
-                    Sourced from SAM.gov
+                    Sourced from SAM.gov — opportunities only, not confirmed awards
                   </Badge>
                 </div>
-
                 {samLoading ? (
                   <div className="space-y-3">
                     {Array.from({ length: 4 }).map((_, i) => (
@@ -523,7 +511,7 @@ const ContactDetail = () => {
                   </div>
                 ) : samNotices.length === 0 ? (
                   <p className="text-sm text-muted-foreground py-8 text-center">
-                    No active SAM.gov notices found for this contact.
+                    No active SAM.gov notices found for this contact in the last 90 days.
                   </p>
                 ) : (
                   samNotices.map((notice) => (
@@ -563,7 +551,6 @@ const ContactDetail = () => {
   );
 };
 
-/* ─── Sidebar Metadata Field ─── */
 function MetadataField({
   icon: Icon,
   label,
