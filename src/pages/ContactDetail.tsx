@@ -306,7 +306,7 @@ const ContactDetail = () => {
             variant="ghost"
             size="sm"
             onClick={() => navigate("/points-of-contact")}
-            className="text-xs text-muted-foreground hover:text-foreground -ml-2"
+            className="text-xs text-sidebar-foreground/60 hover:text-sidebar-foreground -ml-2"
           >
             <ArrowLeft className="h-3 w-3 mr-1" />
             All Contacts
@@ -315,20 +315,20 @@ const ContactDetail = () => {
 
         {/* Avatar + Name */}
         <div className="px-6 pt-4 pb-5 text-center">
-          <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-primary/30">
-            <AvatarFallback className="bg-primary/10 text-primary text-xl font-bold">
+          <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-sidebar-foreground/20">
+            <AvatarFallback className="bg-sidebar-accent text-sidebar-foreground text-xl font-bold">
               {initials}
             </AvatarFallback>
           </Avatar>
-          <h1 className="text-lg font-bold text-foreground leading-tight">{contactName}</h1>
+          <h1 className="text-lg font-bold text-sidebar-foreground leading-tight">{contactName}</h1>
           {contactData.lastActive && (
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs text-sidebar-foreground/50 mt-1">
               Last Active {contactData.lastActive.toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "2-digit" })}
             </p>
           )}
         </div>
 
-        <Separator />
+        <Separator className="bg-sidebar-border" />
 
         {/* Metadata Fields */}
         <div className="px-5 py-4 space-y-4 text-sm">
@@ -347,29 +347,29 @@ const ContactDetail = () => {
           />
         </div>
 
-        <Separator />
+        <Separator className="bg-sidebar-border" />
 
         {/* Stat Pills */}
         <div className="px-5 py-4 space-y-2">
-          <div className="flex items-center justify-between rounded-md bg-accent/60 px-3 py-2">
-            <span className="text-xs font-medium text-foreground">Award POC</span>
+          <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
+            <span className="text-xs font-medium text-sidebar-foreground">Award POC</span>
             <Badge variant="default" className="text-xs px-2 py-0.5 min-w-[2rem] justify-center">
               {contactData.activities.length}
             </Badge>
           </div>
-          <div className="flex items-center justify-between rounded-md bg-accent/60 px-3 py-2">
-            <span className="text-xs font-medium text-foreground">SAM.gov Notices</span>
+          <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
+            <span className="text-xs font-medium text-sidebar-foreground">SAM.gov Notices</span>
             <Badge variant="default" className="text-xs px-2 py-0.5 min-w-[2rem] justify-center">
               {samNotices.length}
             </Badge>
           </div>
         </div>
 
-        <Separator />
+        <Separator className="bg-sidebar-border" />
 
         {/* Similar Contacts */}
         <div className="px-5 py-4 flex-1">
-          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+          <h3 className="text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider mb-3">
             Similar Contacts
           </h3>
           {similarContacts.length > 0 ? (
@@ -383,23 +383,23 @@ const ContactDetail = () => {
                   <button
                     key={sc.email}
                     onClick={() => navigate(`/points-of-contact/${encodeURIComponent(sc.email)}`)}
-                    className="flex items-center gap-2 w-full text-left rounded-md px-2 py-1.5 hover:bg-accent/50 transition-colors group"
+                    className="flex items-center gap-2 w-full text-left rounded-md px-2 py-1.5 hover:bg-sidebar-accent transition-colors group"
                   >
-                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary shrink-0">
+                    <div className="h-6 w-6 rounded-full bg-sidebar-accent flex items-center justify-center text-[10px] font-bold text-sidebar-foreground shrink-0">
                       {scName.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase()}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                      <p className="text-xs font-medium text-sidebar-foreground truncate group-hover:text-sidebar-primary transition-colors">
                         {scName}
                       </p>
-                      <p className="text-[10px] text-muted-foreground">{sc.total_awards} awards</p>
+                      <p className="text-[10px] text-sidebar-foreground/50">{sc.total_awards} awards</p>
                     </div>
                   </button>
                 );
               })}
             </div>
           ) : (
-            <p className="text-xs text-muted-foreground">No similar contacts found.</p>
+            <p className="text-xs text-sidebar-foreground/50">No similar contacts found.</p>
           )}
         </div>
       </aside>
@@ -577,10 +577,10 @@ function MetadataField({
 }) {
   return (
     <div>
-      <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">{label}</p>
+      <p className="text-[10px] text-sidebar-foreground/50 uppercase tracking-wider mb-0.5">{label}</p>
       <div className="flex items-center gap-1.5">
-        <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-        <span className={`text-xs text-foreground truncate ${mono ? "font-mono" : ""}`}>{value}</span>
+        <Icon className="h-3.5 w-3.5 text-sidebar-foreground/60 shrink-0" />
+        <span className={`text-xs text-sidebar-foreground truncate ${mono ? "font-mono" : ""}`}>{value}</span>
       </div>
     </div>
   );
