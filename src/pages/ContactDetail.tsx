@@ -383,16 +383,16 @@ const ContactDetail = () => {
                   <button
                     key={sc.email}
                     onClick={() => navigate(`/points-of-contact/${encodeURIComponent(sc.email)}`)}
-                    className="flex items-center gap-2 w-full text-left rounded-md px-2 py-1.5 hover:bg-accent/50 transition-colors group"
+                    className="flex items-center gap-2 w-full text-left rounded-md px-2 py-1.5 hover:bg-sidebar-accent transition-colors group"
                   >
-                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary shrink-0">
+                    <div className="h-6 w-6 rounded-full bg-sidebar-accent flex items-center justify-center text-[10px] font-bold text-sidebar-foreground shrink-0">
                       {scName.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase()}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                      <p className="text-xs font-medium text-sidebar-foreground truncate group-hover:text-sidebar-primary transition-colors">
                         {scName}
                       </p>
-                      <p className="text-[10px] text-muted-foreground">{sc.total_awards} awards</p>
+                      <p className="text-[10px] text-sidebar-foreground/50">{sc.total_awards} awards</p>
                     </div>
                   </button>
                 );
