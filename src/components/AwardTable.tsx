@@ -244,8 +244,9 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
       </div>
 
       {/* TABLE */}
-      <div className="flex-1 overflow-y-auto overflow-x-scroll">
-        <table className="w-full border-collapse">
+      <div className="flex-1 min-h-0 overflow-x-auto">
+        <div className="h-full overflow-y-auto">
+        <table className="min-w-[1400px] border-collapse">
           <thead className="sticky top-0 z-10 bg-white dark:bg-slate-900 shadow-sm">
             <tr>
               <th className="w-1 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky left-0 z-20"></th>
@@ -343,6 +344,7 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
             No records found matching your criteria.
           </div>
         )}
+        </div>
       </div>
       
       {/* FOOTER */}
