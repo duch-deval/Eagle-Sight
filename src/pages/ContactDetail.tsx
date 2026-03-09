@@ -306,7 +306,7 @@ const ContactDetail = () => {
             variant="ghost"
             size="sm"
             onClick={() => navigate("/points-of-contact")}
-            className="text-xs text-muted-foreground hover:text-foreground -ml-2"
+            className="text-xs text-sidebar-foreground/60 hover:text-sidebar-foreground -ml-2"
           >
             <ArrowLeft className="h-3 w-3 mr-1" />
             All Contacts
