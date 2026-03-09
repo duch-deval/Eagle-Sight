@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+﻿import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import AwardTable from "@/components/AwardTable";
+import SamNoticeTable, { SamNoticeRow } from "@/components/SamNoticeTable";
 import {
   ArrowLeft,
   Building2,
@@ -45,17 +46,6 @@ interface Activity {
   award: AwardRow;
 }
 
-interface SamNotice {
-  notice_id: string;
-  opportunity_title: string;
-  opportunity_type: string;
-  contracting_office: string;
-  psc: string | null;
-  set_aside: string | null;
-  response_date: string | null;
-  published_date: string | null;
-}
-
 interface SimilarContact {
   email: string;
   total_awards: number;
@@ -83,7 +73,7 @@ const ContactDetail = () => {
   const decodedEmail = decodeURIComponent(email || "").trim().toLowerCase();
   const [rows, setRows] = useState<AwardRow[]>([]);
   const [loading, setLoading] = useState(true);
-  const [samNotices, setSamNotices] = useState<SamNotice[]>([]);
+  const [samNotices, setSamNotices] = useState<SamNoticeRow[]>([]);
   const [samLoading, setSamLoading] = useState(true);
   const [similarContacts, setSimilarContacts] = useState<SimilarContact[]>([]);
 
@@ -104,23 +94,19 @@ const ContactDetail = () => {
           .select("award_id")
           .eq("last_modified_by", decodedEmail),
       ]);
-
       if (preparedRes.error || approvedRes.error || modifiedRes.error) {
         console.error("Error fetching contact awards:", preparedRes.error || approvedRes.error || modifiedRes.error);
         setLoading(false);
         return;
       }
-
       const awardIds = new Set<string>();
       preparedRes.data?.forEach(r => awardIds.add(r.award_id));
       approvedRes.data?.forEach(r => awardIds.add(r.award_id));
       modifiedRes.data?.forEach(r => awardIds.add(r.award_id));
-
       if (awardIds.size === 0) {
         setLoading(false);
         return;
       }
-
       const { data: awardsData, error: awardsError } = await supabase
         .from("awards")
         .select(`
@@ -131,13 +117,11 @@ const ContactDetail = () => {
           awarded_amount, prepared_user, approved_by, last_modified_by, award_date
         `)
         .in("award_id", Array.from(awardIds));
-
       if (awardsError) {
         console.error("Error fetching award details:", awardsError);
         setLoading(false);
         return;
       }
-
       const mappedRows = awardsData.map((r: any) => ({
         "Award ID": r.award_id,
         "Solicitation ID": r.solicitation_id,
@@ -158,7 +142,6 @@ const ContactDetail = () => {
         "Award Type": r.award_type,
         "Last Modified Date": r.last_modified_date,
       }));
-
       setRows(mappedRows);
       setLoading(false);
     };
@@ -167,11 +150,10 @@ const ContactDetail = () => {
       setSamLoading(true);
       const { data, error } = await supabase
         .from("sam_notices")
-        .select("notice_id, opportunity_title, opportunity_type, contracting_office, psc, set_aside, response_date, published_date")
+        .select("notice_id, opportunity_title, opportunity_type, contracting_office, sub_tier_name, aac_code, psc, naics, set_aside, response_date, published_date, poc_name, poc_email")
         .eq("poc_email", decodedEmail)
         .order("published_date", { ascending: false })
         .limit(25);
-
       if (error) {
         console.error("Error fetching SAM notices:", error);
       } else {
@@ -184,14 +166,10 @@ const ContactDetail = () => {
     fetchSamNotices();
   }, [decodedEmail]);
 
-  // Similar contacts — triggered when rows load, derives funding office directly
-  // without depending on contactData to avoid use-before-define
   useEffect(() => {
     if (rows.length === 0) return;
-
     const firstOffice = rows.find(r => r["Funding Office Name"])?.["Funding Office Name"];
     if (!firstOffice) return;
-
     const fetchSimilar = async () => {
       const { data, error } = await supabase
         .from("contact_summary")
@@ -200,12 +178,10 @@ const ContactDetail = () => {
         .neq("email", decodedEmail)
         .order("total_awards", { ascending: false })
         .limit(5);
-
       if (!error && data) {
         setSimilarContacts(data.map(d => ({ email: d.email, total_awards: d.total_awards })));
       }
     };
-
     fetchSimilar();
   }, [rows, decodedEmail]);
 
@@ -215,14 +191,12 @@ const ContactDetail = () => {
     const fundingOffices = new Set<string>();
     const agencies = new Set<string>();
     let totalValue = 0;
-
     rows.forEach((award) => {
       const emailFields = [
         { email: award.Prepared_User, role: "Prepared" },
         { email: award.Approved_By, role: "Approved" },
         { email: award.Last_Modified_By, role: "Modified" },
       ];
-
       emailFields.forEach(({ email: fieldEmail, role }) => {
         if (!fieldEmail || fieldEmail === "nan" || fieldEmail === "none") return;
         if (fieldEmail === decodedEmail) {
@@ -238,9 +212,7 @@ const ContactDetail = () => {
         }
       });
     });
-
     activities.sort((a, b) => b.date.getTime() - a.date.getTime());
-
     return {
       roles: Array.from(roles),
       fundingOffices: Array.from(fundingOffices),
@@ -255,7 +227,6 @@ const ContactDetail = () => {
     .split("@")[0]
     .replace(/[._]/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
-
   const initials = contactName
     .split(" ")
     .slice(0, 2)
@@ -313,7 +284,6 @@ const ContactDetail = () => {
             All Contacts
           </Button>
         </div>
-
         <div className="px-6 pt-4 pb-5 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-sidebar-foreground/20">
             <AvatarFallback className="bg-sidebar-accent text-sidebar-foreground text-xl font-bold">
@@ -327,9 +297,7 @@ const ContactDetail = () => {
             </p>
           )}
         </div>
-
         <Separator className="bg-sidebar-border" />
-
         <div className="px-5 py-4 space-y-4 text-sm">
           <MetadataField icon={Building2} label="Organization" value={contactData.agencies[0] || "Not listed"} />
           <MetadataField icon={Shield} label="Contact Types" value="Federal" />
@@ -345,9 +313,7 @@ const ContactDetail = () => {
             value={contactData.fundingOffices[0] || "Not listed"}
           />
         </div>
-
         <Separator className="bg-sidebar-border" />
-
         <div className="px-5 py-4 space-y-2">
           <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
             <span className="text-xs font-medium text-sidebar-foreground">Award POC</span>
@@ -362,9 +328,7 @@ const ContactDetail = () => {
             </Badge>
           </div>
         </div>
-
         <Separator className="bg-sidebar-border" />
-
         <div className="px-5 py-4 flex-1">
           <h3 className="text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider mb-3">
             Similar Contacts
@@ -495,52 +459,15 @@ const ContactDetail = () => {
           {/* SAM.gov Tab */}
           <TabsContent value="sam" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
-              <div className="p-6 max-w-4xl space-y-3">
-                <div className="flex items-center gap-2 mb-4">
-                  <Radio className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium">Active SAM.gov Notices</span>
-                  <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
-                    Sourced from SAM.gov — opportunities only, not confirmed awards
-                  </Badge>
-                </div>
+              <div className="p-6">
                 {samLoading ? (
                   <div className="space-y-3">
                     {Array.from({ length: 4 }).map((_, i) => (
                       <Skeleton key={i} className="h-20 w-full" />
                     ))}
                   </div>
-                ) : samNotices.length === 0 ? (
-                  <p className="text-sm text-muted-foreground py-8 text-center">
-                    No active SAM.gov notices found for this contact in the last 90 days.
-                  </p>
                 ) : (
-                  samNotices.map((notice) => (
-                    <div
-                      key={notice.notice_id}
-                      className="rounded-lg border border-border bg-card p-3.5 hover:bg-accent/30 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <span className="text-sm font-semibold text-primary">
-                          {notice.opportunity_title}
-                        </span>
-                        <Badge variant="secondary" className="text-[10px] shrink-0">
-                          {notice.opportunity_type}
-                        </Badge>
-                      </div>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                        <span>{notice.contracting_office}</span>
-                        {notice.psc && <span>PSC: {notice.psc}</span>}
-                        {notice.set_aside && notice.set_aside !== "No Set aside used" && (
-                          <span>{notice.set_aside}</span>
-                        )}
-                      </div>
-                      <div className="flex gap-4 mt-1.5 text-[10px] text-muted-foreground">
-                        {notice.published_date && <span>Published: {notice.published_date}</span>}
-                        {notice.response_date && <span>Response Due: {notice.response_date}</span>}
-                        <span className="font-mono opacity-50">{notice.notice_id}</span>
-                      </div>
-                    </div>
-                  ))
+                  <SamNoticeTable notices={samNotices} />
                 )}
               </div>
             </ScrollArea>
