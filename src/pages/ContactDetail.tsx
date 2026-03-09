@@ -347,7 +347,7 @@ const ContactDetail = () => {
           />
         </div>
 
-        <Separator />
+        <Separator className="bg-sidebar-border" />
 
         {/* Stat Pills */}
         <div className="px-5 py-4 space-y-2">
