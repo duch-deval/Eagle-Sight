@@ -351,8 +351,8 @@ const ContactDetail = () => {
 
         {/* Stat Pills */}
         <div className="px-5 py-4 space-y-2">
-          <div className="flex items-center justify-between rounded-md bg-accent/60 px-3 py-2">
-            <span className="text-xs font-medium text-foreground">Award POC</span>
+          <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
+            <span className="text-xs font-medium text-sidebar-foreground">Award POC</span>
             <Badge variant="default" className="text-xs px-2 py-0.5 min-w-[2rem] justify-center">
               {contactData.activities.length}
             </Badge>
