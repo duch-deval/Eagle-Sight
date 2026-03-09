@@ -1,9 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Skeleton } from "@/components/ui/skeleton";
 import AwardTable from "@/components/AwardTable";
 import {
   ArrowLeft,
@@ -13,8 +16,10 @@ import {
   Calendar,
   FileText,
   Shield,
-  DollarSign,
   Radio,
+  Clock,
+  Award,
+  Briefcase,
 } from "lucide-react";
 import supabase from "@/lib/supabaseClient";
 
@@ -45,7 +50,6 @@ interface Activity {
   award: AwardRow;
 }
 
-// NEW
 interface SamNotice {
   notice_id: string;
   opportunity_title: string;
@@ -57,15 +61,36 @@ interface SamNotice {
   published_date: string | null;
 }
 
+interface SimilarContact {
+  email: string;
+  total_awards: number;
+}
+
+function timeAgo(date: Date): string {
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDays < 1) return "Today";
+  if (diffDays < 7) return `${diffDays} Day${diffDays > 1 ? "s" : ""} Ago`;
+  if (diffDays < 30) {
+    const weeks = Math.floor(diffDays / 7);
+    return `${weeks} Week${weeks > 1 ? "s" : ""} Ago`;
+  }
+  const months = Math.floor(diffDays / 30);
+  if (months < 12) return `${months} Month${months > 1 ? "s" : ""} Ago`;
+  const years = Math.floor(months / 12);
+  return `${years} Year${years > 1 ? "s" : ""} Ago`;
+}
+
 const ContactDetail = () => {
   const { email } = useParams<{ email: string }>();
   const navigate = useNavigate();
   const decodedEmail = decodeURIComponent(email || "").trim().toLowerCase();
   const [rows, setRows] = useState<AwardRow[]>([]);
   const [loading, setLoading] = useState(true);
-  // NEW
   const [samNotices, setSamNotices] = useState<SamNotice[]>([]);
   const [samLoading, setSamLoading] = useState(true);
+  const [similarContacts, setSimilarContacts] = useState<SimilarContact[]>([]);
 
   useEffect(() => {
     const fetchContactAwards = async () => {
@@ -143,7 +168,6 @@ const ContactDetail = () => {
       setLoading(false);
     };
 
-    // NEW — fetch SAM notices for this contact
     const fetchSamNotices = async () => {
       setSamLoading(true);
       const { data, error } = await supabase
@@ -162,8 +186,26 @@ const ContactDetail = () => {
     };
 
     fetchContactAwards();
-    fetchSamNotices(); // NEW
+    fetchSamNotices();
   }, [decodedEmail]);
+
+  // Fetch similar contacts from the same funding office
+  useEffect(() => {
+    if (contactData.fundingOffices.length === 0) return;
+    const fetchSimilar = async () => {
+      const { data, error } = await supabase
+        .from("contact_summary")
+        .select("email, total_awards")
+        .contains("funding_offices", [contactData.fundingOffices[0]])
+        .neq("email", decodedEmail)
+        .order("total_awards", { ascending: false })
+        .limit(5);
+      if (!error && data) {
+        setSimilarContacts(data.map(d => ({ email: d.email, total_awards: d.total_awards })));
+      }
+    };
+    fetchSimilar();
+  }, [rows]);
 
   const contactData = useMemo(() => {
     const activities: Activity[] = [];
@@ -207,246 +249,341 @@ const ContactDetail = () => {
     };
   }, [decodedEmail, rows]);
 
+  const contactName = decodedEmail
+    .split("@")[0]
+    .replace(/[._]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const initials = contactName
+    .split(" ")
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+
   if (loading) {
-    return <div className="p-6"><p>Loading contact details...</p></div>;
+    return (
+      <div className="flex h-full">
+        <div className="w-[280px] border-r border-border bg-sidebar p-6 space-y-4">
+          <Skeleton className="h-20 w-20 rounded-full mx-auto" />
+          <Skeleton className="h-6 w-40 mx-auto" />
+          <Skeleton className="h-4 w-48 mx-auto" />
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Skeleton key={i} className="h-10 w-full" />
+          ))}
+        </div>
+        <div className="flex-1 p-6">
+          <Skeleton className="h-10 w-96 mb-6" />
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Skeleton key={i} className="h-24 w-full mb-4" />
+          ))}
+        </div>
+      </div>
+    );
   }
 
-  if (!contactData.activities.length) {
+  if (!contactData.activities.length && !samNotices.length) {
     return (
       <div className="p-6">
         <Button variant="ghost" onClick={() => navigate("/points-of-contact")} className="mb-4">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Contacts
         </Button>
-        <Card>
-          <CardContent className="py-8 text-center">
-            <p className="text-muted-foreground">No data found for this contact.</p>
-          </CardContent>
-        </Card>
+        <div className="border border-border rounded-lg bg-card p-8 text-center">
+          <p className="text-muted-foreground">No data found for this contact.</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <Button variant="ghost" onClick={() => navigate("/points-of-contact")} className="mb-2">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        All Contacts
-      </Button>
+    <div className="flex h-[calc(100vh-3rem)] overflow-hidden">
+      {/* ─── LEFT SIDEBAR PANEL ─── */}
+      <aside className="w-[280px] shrink-0 border-r border-border bg-sidebar flex flex-col overflow-y-auto">
+        {/* Back button */}
+        <div className="px-4 pt-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/points-of-contact")}
+            className="text-xs text-muted-foreground hover:text-foreground -ml-2"
+          >
+            <ArrowLeft className="h-3 w-3 mr-1" />
+            All Contacts
+          </Button>
+        </div>
 
-      {/* Header */}
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-4">
-          <div className="h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center">
-            <User className="h-8 w-8 text-navy" />
+        {/* Avatar + Name */}
+        <div className="px-6 pt-4 pb-5 text-center">
+          <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-primary/30">
+            <AvatarFallback className="bg-primary/10 text-primary text-xl font-bold">
+              {initials}
+            </AvatarFallback>
+          </Avatar>
+          <h1 className="text-lg font-bold text-foreground leading-tight">{contactName}</h1>
+          {contactData.lastActive && (
+            <p className="text-xs text-muted-foreground mt-1">
+              Last Active {contactData.lastActive.toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "2-digit" })}
+            </p>
+          )}
+        </div>
+
+        <Separator />
+
+        {/* Metadata Fields */}
+        <div className="px-5 py-4 space-y-4 text-sm">
+          <MetadataField icon={Building2} label="Organization" value={contactData.agencies[0] || "Not listed"} />
+          <MetadataField icon={Shield} label="Contact Types" value="Federal" />
+          <MetadataField icon={Mail} label="Email" value={decodedEmail} mono />
+          <MetadataField
+            icon={Briefcase}
+            label="Role"
+            value={contactData.roles.length > 0 ? contactData.roles.join(", ") : "Not listed"}
+          />
+          <MetadataField
+            icon={Building2}
+            label="Funding Office"
+            value={contactData.fundingOffices[0] || "Not listed"}
+          />
+        </div>
+
+        <Separator />
+
+        {/* Stat Pills */}
+        <div className="px-5 py-4 space-y-2">
+          <div className="flex items-center justify-between rounded-md bg-accent/60 px-3 py-2">
+            <span className="text-xs font-medium text-foreground">Award POC</span>
+            <Badge variant="default" className="text-xs px-2 py-0.5 min-w-[2rem] justify-center">
+              {contactData.activities.length}
+            </Badge>
           </div>
-          <div>
-            <h1 className="text-3xl font-bold">
-              {decodedEmail.split("@")[0].toUpperCase()}
-            </h1>
-            <div className="flex items-center gap-2 text-muted-foreground mt-1">
-              <Mail className="h-4 w-4" />
-              <span>{decodedEmail}</span>
-            </div>
-            {contactData.lastActive && (
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                <Calendar className="h-4 w-4" />
-                <span>Last Active: {contactData.lastActive.toLocaleDateString()}</span>
-              </div>
-            )}
+          <div className="flex items-center justify-between rounded-md bg-accent/60 px-3 py-2">
+            <span className="text-xs font-medium text-foreground">SAM.gov Notices</span>
+            <Badge variant="default" className="text-xs px-2 py-0.5 min-w-[2rem] justify-center">
+              {samNotices.length}
+            </Badge>
           </div>
         </div>
-      </div>
 
-      {/* Awards Table */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Awards Linked to This Contact</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <AwardTable awards={rows} />
-        </CardContent>
-      </Card>
+        <Separator />
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Roles</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-1">
-              {contactData.roles.map((role) => (
-                <Badge key={role} variant="secondary">{role}</Badge>
-              ))}
+        {/* Similar Contacts */}
+        <div className="px-5 py-4 flex-1">
+          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+            Similar Contacts
+          </h3>
+          {similarContacts.length > 0 ? (
+            <div className="space-y-2">
+              {similarContacts.map((sc) => {
+                const scName = sc.email
+                  .split("@")[0]
+                  .replace(/[._]/g, " ")
+                  .replace(/\b\w/g, (c) => c.toUpperCase());
+                return (
+                  <button
+                    key={sc.email}
+                    onClick={() => navigate(`/points-of-contact/${encodeURIComponent(sc.email)}`)}
+                    className="flex items-center gap-2 w-full text-left rounded-md px-2 py-1.5 hover:bg-accent/50 transition-colors group"
+                  >
+                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary shrink-0">
+                      {scName.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase()}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                        {scName}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground">{sc.total_awards} awards</p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Total Awards</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-muted-foreground" />
-              <span className="text-2xl font-bold">{contactData.activities.length}</span>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Total Value</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5 text-muted-foreground" />
-              <span className="text-2xl font-bold">
-                ${(contactData.totalValue / 1_000_000).toFixed(1)}M
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Agencies</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-muted-foreground" />
-              <span className="text-2xl font-bold">{contactData.agencies.length}</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Funding Offices */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Building2 className="h-5 w-5" />
-            Funding Offices
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {contactData.fundingOffices.map((office) => (
-              <Badge key={office} variant="outline">{office}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* NEW — SAM.gov Active Notices */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Radio className="h-5 w-5 text-blue-500" />
-            Active SAM.gov Notices
-            <Badge variant="outline" className="ml-auto text-xs font-normal text-muted-foreground">
-              Sourced from SAM.gov — opportunities only, not confirmed awards
-            </Badge>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {samLoading ? (
-            <p className="text-sm text-muted-foreground">Loading notices...</p>
-          ) : samNotices.length === 0 ? (
-            <p className="text-sm text-muted-foreground">
-              No active SAM.gov notices found for this contact in the last 90 days.
-            </p>
           ) : (
-            <div className="space-y-3">
-              {samNotices.map((notice) => (
-                <div
-                  key={notice.notice_id}
-                  className="flex flex-col gap-1 p-3 rounded-md border bg-muted/30"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="font-medium text-sm">{notice.opportunity_title}</span>
-                    <Badge variant="secondary" className="text-xs shrink-0">
-                      {notice.opportunity_type}
-                    </Badge>
-                  </div>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                    <span>{notice.contracting_office}</span>
-                    {notice.psc && <span>PSC: {notice.psc}</span>}
-                    {notice.set_aside && notice.set_aside !== "No Set aside used" && (
-                      <span>{notice.set_aside}</span>
-                    )}
-                  </div>
-                  <div className="flex gap-4 text-xs text-muted-foreground">
-                    {notice.published_date && <span>Published: {notice.published_date}</span>}
-                    {notice.response_date && <span>Response Due: {notice.response_date}</span>}
-                    <span className="font-mono text-muted-foreground/60">{notice.notice_id}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-xs text-muted-foreground">No similar contacts found.</p>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </aside>
 
-      {/* Activity Timeline */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Activity Timeline</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-6">
-            {contactData.activities.map((activity, index) => (
-              <div key={index} className="relative">
-                {index !== contactData.activities.length - 1 && (
-                  <div className="absolute left-3 top-8 bottom-0 w-0.5 bg-border" />
-                )}
-                <div className="flex gap-4">
+      {/* ─── MAIN CONTENT AREA ─── */}
+      <main className="flex-1 flex flex-col overflow-hidden">
+        <Tabs defaultValue="activity" className="flex flex-col h-full">
+          {/* Tab Bar */}
+          <div className="border-b border-border bg-card px-6 pt-2">
+            <TabsList className="bg-transparent h-auto p-0 gap-0">
+              <TabsTrigger
+                value="activity"
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
+              >
+                Activity
+              </TabsTrigger>
+              <TabsTrigger
+                value="awards"
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
+              >
+                Federal Contract Awards
+                <Badge variant="secondary" className="ml-2 text-[10px] px-1.5 py-0">{rows.length}</Badge>
+              </TabsTrigger>
+              <TabsTrigger
+                value="sam"
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
+              >
+                SAM.gov Notices
+                <Badge variant="secondary" className="ml-2 text-[10px] px-1.5 py-0">{samNotices.length}</Badge>
+              </TabsTrigger>
+            </TabsList>
+          </div>
+
+          {/* ── Activity Tab ── */}
+          <TabsContent value="activity" className="flex-1 m-0 overflow-hidden">
+            <ScrollArea className="h-full">
+              <div className="p-6 max-w-4xl">
+                {contactData.activities.length === 0 ? (
+                  <p className="text-sm text-muted-foreground py-8 text-center">No activity recorded.</p>
+                ) : (
                   <div className="relative">
-                    <div className="h-6 w-6 rounded-full bg-navy/10 flex items-center justify-center">
-                      <div className="h-2 w-2 rounded-full bg-navy" />
-                    </div>
-                  </div>
-                  <div className="flex-1 pb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm text-muted-foreground">
-                        {activity.date.toLocaleDateString()}
-                      </span>
-                      <Badge variant="secondary" className="text-xs">{activity.role}</Badge>
-                    </div>
-                    <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
-                      <CardContent className="pt-4">
-                        <div className="space-y-2">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <div className="font-medium">{activity.award["Award ID"]}</div>
-                              <div className="text-sm text-muted-foreground">
-                                {activity.award["Recipient Name"]}
-                              </div>
+                    {/* Timeline line */}
+                    <div className="absolute left-[72px] top-0 bottom-0 w-px bg-border" />
+
+                    {contactData.activities.map((activity, index) => (
+                      <div key={index} className="flex gap-4 mb-6 relative">
+                        {/* Time label */}
+                        <div className="w-[60px] shrink-0 pt-1 text-right">
+                          <span className="text-xs text-muted-foreground font-medium">
+                            {timeAgo(activity.date)}
+                          </span>
+                        </div>
+
+                        {/* Dot */}
+                        <div className="relative z-10 shrink-0 mt-1.5">
+                          <div className="h-3 w-3 rounded-full bg-primary/80 ring-2 ring-background" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs text-muted-foreground mb-1.5">
+                            Seen as a Point of Contact for a Federal Contract Award
+                          </p>
+                          <div className="rounded-lg border border-border bg-card p-3.5 hover:bg-accent/30 transition-colors cursor-pointer">
+                            <div className="flex items-start justify-between gap-2 mb-1">
+                              <span className="text-sm font-semibold text-primary truncate">
+                                {activity.award["Award Description"]?.slice(0, 80) || activity.award["Award ID"]}
+                              </span>
+                              <Badge variant="outline" className="shrink-0 text-[10px]">
+                                ${(activity.award["Awarded$"] / 1000).toFixed(0)}K
+                              </Badge>
                             </div>
-                            <Badge variant="outline">
-                              ${(activity.award["Awarded$"] / 1000).toFixed(0)}K
-                            </Badge>
-                          </div>
-                          <Separator />
-                          <div className="text-sm">
-                            <span className="text-muted-foreground">Description: </span>
-                            <span className="line-clamp-2">{activity.award["Award Description"]}</span>
-                          </div>
-                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                            <span>{activity.award["Funding Office Name"]}</span>
-                            <span>•</span>
-                            <span>{activity.award["Award Type"]}</span>
+                            <p className="text-xs text-muted-foreground line-clamp-2">
+                              {activity.award["Award Description"]
+                                ? `This is a ${activity.award["Award Type"]?.toLowerCase() || "contract"} award to ${activity.award["Recipient Name"]}. ${activity.award["Award Description"].slice(0, 150)}...`
+                                : `Award ${activity.award["Award ID"]} to ${activity.award["Recipient Name"]}`}
+                            </p>
+                            <div className="flex gap-3 mt-2 text-[10px] text-muted-foreground">
+                              <span>{activity.award["Funding Office Name"]}</span>
+                              <span>•</span>
+                              <span>{activity.award["Award Type"]}</span>
+                              <span>•</span>
+                              <span>{activity.role}</span>
+                            </div>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    ))}
                   </div>
-                </div>
+                )}
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            </ScrollArea>
+          </TabsContent>
+
+          {/* ── Awards Tab ── */}
+          <TabsContent value="awards" className="flex-1 m-0 overflow-hidden">
+            <ScrollArea className="h-full">
+              <div className="p-6">
+                <AwardTable awards={rows} />
+              </div>
+            </ScrollArea>
+          </TabsContent>
+
+          {/* ── SAM.gov Tab ── */}
+          <TabsContent value="sam" className="flex-1 m-0 overflow-hidden">
+            <ScrollArea className="h-full">
+              <div className="p-6 max-w-4xl space-y-3">
+                <div className="flex items-center gap-2 mb-4">
+                  <Radio className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-medium">Active SAM.gov Notices</span>
+                  <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
+                    Sourced from SAM.gov
+                  </Badge>
+                </div>
+
+                {samLoading ? (
+                  <div className="space-y-3">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <Skeleton key={i} className="h-20 w-full" />
+                    ))}
+                  </div>
+                ) : samNotices.length === 0 ? (
+                  <p className="text-sm text-muted-foreground py-8 text-center">
+                    No active SAM.gov notices found for this contact.
+                  </p>
+                ) : (
+                  samNotices.map((notice) => (
+                    <div
+                      key={notice.notice_id}
+                      className="rounded-lg border border-border bg-card p-3.5 hover:bg-accent/30 transition-colors"
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <span className="text-sm font-semibold text-primary">
+                          {notice.opportunity_title}
+                        </span>
+                        <Badge variant="secondary" className="text-[10px] shrink-0">
+                          {notice.opportunity_type}
+                        </Badge>
+                      </div>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                        <span>{notice.contracting_office}</span>
+                        {notice.psc && <span>PSC: {notice.psc}</span>}
+                        {notice.set_aside && notice.set_aside !== "No Set aside used" && (
+                          <span>{notice.set_aside}</span>
+                        )}
+                      </div>
+                      <div className="flex gap-4 mt-1.5 text-[10px] text-muted-foreground">
+                        {notice.published_date && <span>Published: {notice.published_date}</span>}
+                        {notice.response_date && <span>Response Due: {notice.response_date}</span>}
+                        <span className="font-mono opacity-50">{notice.notice_id}</span>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </ScrollArea>
+          </TabsContent>
+        </Tabs>
+      </main>
     </div>
   );
 };
+
+/* ─── Sidebar Metadata Field ─── */
+function MetadataField({
+  icon: Icon,
+  label,
+  value,
+  mono,
+}: {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  mono?: boolean;
+}) {
+  return (
+    <div>
+      <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">{label}</p>
+      <div className="flex items-center gap-1.5">
+        <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+        <span className={`text-xs text-foreground truncate ${mono ? "font-mono" : ""}`}>{value}</span>
+      </div>
+    </div>
+  );
+}
 
 export default ContactDetail;
