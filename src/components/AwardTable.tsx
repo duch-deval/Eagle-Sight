@@ -344,6 +344,7 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
             No records found matching your criteria.
           </div>
         )}
+        </div>
       </div>
       
       {/* FOOTER */}
