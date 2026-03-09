@@ -60,7 +60,7 @@ const PointsOfContact = () => {
           supabase
             .from("sam_notices")
             .select("poc_email, published_date")
-            .order("published_date", { ascending: false }),
+            .order("loaded_at", { ascending: false }),
         ]);
 
         const contactRows: any[] = contactsResult as any[];

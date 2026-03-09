@@ -296,7 +296,7 @@ const TreemapChart = () => {
 
       rows.forEach(r => {
         const officeCode = r.funding_office_code?.trim() || "Unknown";
-        const fsc = (r.fsc || "Unknown FSC").split(" ")[0].trim();
+        const fsc = (r.fsc || "Unknown FSC").split(":")[0].trim();
         const recipient = r.recipient_name?.trim() || "Unknown Recipient";
         const awardId = r.award_id?.trim() || "Unknown Award";
         const amount = Number(r.awarded_amount);
