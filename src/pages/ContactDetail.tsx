@@ -315,14 +315,14 @@ const ContactDetail = () => {
 
         {/* Avatar + Name */}
         <div className="px-6 pt-4 pb-5 text-center">
-          <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-primary/30">
-            <AvatarFallback className="bg-primary/10 text-primary text-xl font-bold">
+          <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-sidebar-foreground/20">
+            <AvatarFallback className="bg-sidebar-accent text-sidebar-foreground text-xl font-bold">
               {initials}
             </AvatarFallback>
           </Avatar>
-          <h1 className="text-lg font-bold text-foreground leading-tight">{contactName}</h1>
+          <h1 className="text-lg font-bold text-sidebar-foreground leading-tight">{contactName}</h1>
           {contactData.lastActive && (
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs text-sidebar-foreground/50 mt-1">
               Last Active {contactData.lastActive.toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "2-digit" })}
             </p>
           )}
