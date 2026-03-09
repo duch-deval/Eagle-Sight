@@ -365,7 +365,7 @@ const ContactDetail = () => {
           </div>
         </div>
 
-        <Separator />
+        <Separator className="bg-sidebar-border" />
 
         {/* Similar Contacts */}
         <div className="px-5 py-4 flex-1">
