@@ -3,7 +3,7 @@ import { useMemo, useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
+import { Separator } from "@/components/ui/separator";
 import AwardTable from "@/components/AwardTable";
 import {
   ArrowLeft,
@@ -14,6 +14,7 @@ import {
   FileText,
   Shield,
   DollarSign,
+  Radio,
 } from "lucide-react";
 import supabase from "@/lib/supabaseClient";
 
@@ -44,18 +45,31 @@ interface Activity {
   award: AwardRow;
 }
 
+// NEW
+interface SamNotice {
+  notice_id: string;
+  opportunity_title: string;
+  opportunity_type: string;
+  contracting_office: string;
+  psc: string | null;
+  set_aside: string | null;
+  response_date: string | null;
+  published_date: string | null;
+}
+
 const ContactDetail = () => {
   const { email } = useParams<{ email: string }>();
   const navigate = useNavigate();
   const decodedEmail = decodeURIComponent(email || "").trim().toLowerCase();
   const [rows, setRows] = useState<AwardRow[]>([]);
   const [loading, setLoading] = useState(true);
+  // NEW
+  const [samNotices, setSamNotices] = useState<SamNotice[]>([]);
+  const [samLoading, setSamLoading] = useState(true);
 
   useEffect(() => {
     const fetchContactAwards = async () => {
       setLoading(true);
-
-      // Get all award IDs for this contact from the three tables
       const [preparedRes, approvedRes, modifiedRes] = await Promise.all([
         supabase
           .from("prepared_user_contacts")
@@ -77,46 +91,24 @@ const ContactDetail = () => {
         return;
       }
 
-      // Combine all award IDs (deduplicate)
       const awardIds = new Set<string>();
       preparedRes.data?.forEach(r => awardIds.add(r.award_id));
       approvedRes.data?.forEach(r => awardIds.add(r.award_id));
       modifiedRes.data?.forEach(r => awardIds.add(r.award_id));
-
-      console.log(`âœ… Found ${awardIds.size} unique awards for ${decodedEmail}`);
 
       if (awardIds.size === 0) {
         setLoading(false);
         return;
       }
 
-      // Fetch full award details for these award IDs
       const { data: awardsData, error: awardsError } = await supabase
         .from("awards")
         .select(`
-          award_id,
-          solicitation_id,
-          solicitation_procedures,
-          competition_type,
-          offers_received,
-          contract_pricing_type,
-          set_aside_type,
-          funding_office_name,
-          fsc,
-          naics,
-          funding_agency,
-          funding_sub_agency,
-          award_type,
-          pop_start_date,
-          pop_end_date,
-          last_modified_date,
-          recipient_name,
-          award_description,
-          awarded_amount,
-          prepared_user,
-          approved_by,
-          last_modified_by,
-          award_date
+          award_id, solicitation_id, solicitation_procedures, competition_type,
+          offers_received, contract_pricing_type, set_aside_type, funding_office_name,
+          fsc, naics, funding_agency, funding_sub_agency, award_type, pop_start_date,
+          pop_end_date, last_modified_date, recipient_name, award_description,
+          awarded_amount, prepared_user, approved_by, last_modified_by, award_date
         `)
         .in("award_id", Array.from(awardIds));
 
@@ -125,8 +117,6 @@ const ContactDetail = () => {
         setLoading(false);
         return;
       }
-
-      console.log(`âœ… Loaded ${awardsData?.length} award details`);
 
       const mappedRows = awardsData.map((r: any) => ({
         "Award ID": r.award_id,
@@ -153,7 +143,26 @@ const ContactDetail = () => {
       setLoading(false);
     };
 
+    // NEW — fetch SAM notices for this contact
+    const fetchSamNotices = async () => {
+      setSamLoading(true);
+      const { data, error } = await supabase
+        .from("sam_notices")
+        .select("notice_id, opportunity_title, opportunity_type, contracting_office, psc, set_aside, response_date, published_date")
+        .eq("poc_email", decodedEmail)
+        .order("published_date", { ascending: false })
+        .limit(25);
+
+      if (error) {
+        console.error("Error fetching SAM notices:", error);
+      } else {
+        setSamNotices(data || []);
+      }
+      setSamLoading(false);
+    };
+
     fetchContactAwards();
+    fetchSamNotices(); // NEW
   }, [decodedEmail]);
 
   const contactData = useMemo(() => {
@@ -172,11 +181,9 @@ const ContactDetail = () => {
 
       emailFields.forEach(({ email: fieldEmail, role }) => {
         if (!fieldEmail || fieldEmail === "nan" || fieldEmail === "none") return;
-
         if (fieldEmail === decodedEmail) {
           roles.add(role);
-          if (award["Funding Office Name"])
-            fundingOffices.add(award["Funding Office Name"]);
+          if (award["Funding Office Name"]) fundingOffices.add(award["Funding Office Name"]);
           if (award["Funding Agency"]) agencies.add(award["Funding Agency"]);
           totalValue += award["Awarded$"];
           activities.push({
@@ -201,21 +208,13 @@ const ContactDetail = () => {
   }, [decodedEmail, rows]);
 
   if (loading) {
-    return (
-      <div className="p-6">
-        <p>Loading contact details...</p>
-      </div>
-    );
+    return <div className="p-6"><p>Loading contact details...</p></div>;
   }
 
   if (!contactData.activities.length) {
     return (
       <div className="p-6">
-        <Button
-          variant="ghost"
-          onClick={() => navigate("/points-of-contact")}
-          className="mb-4"
-        >
+        <Button variant="ghost" onClick={() => navigate("/points-of-contact")} className="mb-4">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Contacts
         </Button>
@@ -230,11 +229,7 @@ const ContactDetail = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <Button
-        variant="ghost"
-        onClick={() => navigate("/points-of-contact")}
-        className="mb-2"
-      >
+      <Button variant="ghost" onClick={() => navigate("/points-of-contact")} className="mb-2">
         <ArrowLeft className="h-4 w-4 mr-2" />
         All Contacts
       </Button>
@@ -256,15 +251,14 @@ const ContactDetail = () => {
             {contactData.lastActive && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                 <Calendar className="h-4 w-4" />
-                <span>
-                  Last Active: {contactData.lastActive.toLocaleDateString()}
-                </span>
+                <span>Last Active: {contactData.lastActive.toLocaleDateString()}</span>
               </div>
             )}
           </div>
         </div>
       </div>
 
+      {/* Awards Table */}
       <Card>
         <CardHeader>
           <CardTitle>Awards Linked to This Contact</CardTitle>
@@ -283,14 +277,11 @@ const ContactDetail = () => {
           <CardContent>
             <div className="flex flex-wrap gap-1">
               {contactData.roles.map((role) => (
-                <Badge key={role} variant="secondary">
-                  {role}
-                </Badge>
+                <Badge key={role} variant="secondary">{role}</Badge>
               ))}
             </div>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium">Total Awards</CardTitle>
@@ -298,13 +289,10 @@ const ContactDetail = () => {
           <CardContent>
             <div className="flex items-center gap-2">
               <FileText className="h-5 w-5 text-muted-foreground" />
-              <span className="text-2xl font-bold">
-                {contactData.activities.length}
-              </span>
+              <span className="text-2xl font-bold">{contactData.activities.length}</span>
             </div>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium">Total Value</CardTitle>
@@ -318,7 +306,6 @@ const ContactDetail = () => {
             </div>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium">Agencies</CardTitle>
@@ -326,15 +313,13 @@ const ContactDetail = () => {
           <CardContent>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-muted-foreground" />
-              <span className="text-2xl font-bold">
-                {contactData.agencies.length}
-              </span>
+              <span className="text-2xl font-bold">{contactData.agencies.length}</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Offices */}
+      {/* Funding Offices */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -345,166 +330,118 @@ const ContactDetail = () => {
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {contactData.fundingOffices.map((office) => (
-              <Badge key={office} variant="outline">
-                {office}
-              </Badge>
+              <Badge key={office} variant="outline">{office}</Badge>
             ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Activity Stream - Blackboard Style */}
-      <Card className="overflow-hidden border-0 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-700 dark:from-slate-900 dark:to-slate-800 text-white py-4">
-          <CardTitle className="text-lg font-semibold flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Activity Stream
+      {/* NEW — SAM.gov Active Notices */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Radio className="h-5 w-5 text-blue-500" />
+            Active SAM.gov Notices
+            <Badge variant="outline" className="ml-auto text-xs font-normal text-muted-foreground">
+              Sourced from SAM.gov — opportunities only, not confirmed awards
+            </Badge>
           </CardTitle>
         </CardHeader>
-        <CardContent className="p-0 bg-slate-50 dark:bg-slate-900">
-          <div className="activity-stream">
-            {(() => {
-              const now = new Date();
-              const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-              const yesterday = new Date(today.getTime() - 86400000);
-              const lastWeek = new Date(today.getTime() - 7 * 86400000);
-              const lastMonth = new Date(today.getTime() - 30 * 86400000);
+        <CardContent>
+          {samLoading ? (
+            <p className="text-sm text-muted-foreground">Loading notices...</p>
+          ) : samNotices.length === 0 ? (
+            <p className="text-sm text-muted-foreground">
+              No active SAM.gov notices found for this contact in the last 90 days.
+            </p>
+          ) : (
+            <div className="space-y-3">
+              {samNotices.map((notice) => (
+                <div
+                  key={notice.notice_id}
+                  className="flex flex-col gap-1 p-3 rounded-md border bg-muted/30"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="font-medium text-sm">{notice.opportunity_title}</span>
+                    <Badge variant="secondary" className="text-xs shrink-0">
+                      {notice.opportunity_type}
+                    </Badge>
+                  </div>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                    <span>{notice.contracting_office}</span>
+                    {notice.psc && <span>PSC: {notice.psc}</span>}
+                    {notice.set_aside && notice.set_aside !== "No Set aside used" && (
+                      <span>{notice.set_aside}</span>
+                    )}
+                  </div>
+                  <div className="flex gap-4 text-xs text-muted-foreground">
+                    {notice.published_date && <span>Published: {notice.published_date}</span>}
+                    {notice.response_date && <span>Response Due: {notice.response_date}</span>}
+                    <span className="font-mono text-muted-foreground/60">{notice.notice_id}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
-              const groups: { title: string; items: typeof contactData.activities }[] = [];
-              
-              const todayItems = contactData.activities.filter(a => a.date >= today);
-              const yesterdayItems = contactData.activities.filter(a => a.date >= yesterday && a.date < today);
-              const lastWeekItems = contactData.activities.filter(a => a.date >= lastWeek && a.date < yesterday);
-              const lastMonthItems = contactData.activities.filter(a => a.date >= lastMonth && a.date < lastWeek);
-              const olderItems = contactData.activities.filter(a => a.date < lastMonth);
-
-              if (todayItems.length) groups.push({ title: "Today", items: todayItems });
-              if (yesterdayItems.length) groups.push({ title: "Yesterday", items: yesterdayItems });
-              if (lastWeekItems.length) groups.push({ title: "Last 7 Days", items: lastWeekItems });
-              if (lastMonthItems.length) groups.push({ title: "Last 30 Days", items: lastMonthItems });
-              if (olderItems.length) groups.push({ title: "Older", items: olderItems });
-
-              const getRoleIcon = (role: string) => {
-                switch (role) {
-                  case "Prepared":
-                    return (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14,2 14,8 20,8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10,9 9,9 8,9"/>
-                      </svg>
-                    );
-                  case "Approved":
-                    return (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22,4 12,14.01 9,11.01"/>
-                      </svg>
-                    );
-                  case "Modified":
-                    return (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                      </svg>
-                    );
-                  default:
-                    return <FileText className="w-5 h-5" />;
-                }
-              };
-
-              const getRoleColor = (role: string) => {
-                switch (role) {
-                  case "Prepared": return "bg-blue-500";
-                  case "Approved": return "bg-emerald-500";
-                  case "Modified": return "bg-amber-500";
-                  default: return "bg-slate-500";
-                }
-              };
-
-              return groups.map((group, groupIndex) => (
-                <div key={groupIndex} className="activity-group">
-                  <h2 className="activity-group-title px-5 py-3 text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-10">
-                    {group.title}
-                  </h2>
-                  <ul className="activity-feed">
-                    {group.items.map((activity, index) => (
-                      <li key={index} className="stream-item-container border-b border-slate-200 dark:border-slate-700 last:border-b-0">
-                        <div className="stream-item bg-white dark:bg-slate-800/50 hover:bg-blue-50 dark:hover:bg-slate-800 transition-all duration-200 cursor-pointer">
-                          <div className="stream-item-contents flex">
-                            {/* Left color strip */}
-                            <div className={`w-1 flex-shrink-0 ${getRoleColor(activity.role)}`} />
-                            
-                            {/* Icon */}
-                            <div className={`flex-shrink-0 w-12 h-full flex items-start justify-center pt-4 ${getRoleColor(activity.role)} bg-opacity-10`}>
-                              <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${getRoleColor(activity.role)} text-white shadow-sm`}>
-                                {getRoleIcon(activity.role)}
+      {/* Activity Timeline */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Activity Timeline</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {contactData.activities.map((activity, index) => (
+              <div key={index} className="relative">
+                {index !== contactData.activities.length - 1 && (
+                  <div className="absolute left-3 top-8 bottom-0 w-0.5 bg-border" />
+                )}
+                <div className="flex gap-4">
+                  <div className="relative">
+                    <div className="h-6 w-6 rounded-full bg-navy/10 flex items-center justify-center">
+                      <div className="h-2 w-2 rounded-full bg-navy" />
+                    </div>
+                  </div>
+                  <div className="flex-1 pb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-sm text-muted-foreground">
+                        {activity.date.toLocaleDateString()}
+                      </span>
+                      <Badge variant="secondary" className="text-xs">{activity.role}</Badge>
+                    </div>
+                    <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
+                      <CardContent className="pt-4">
+                        <div className="space-y-2">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <div className="font-medium">{activity.award["Award ID"]}</div>
+                              <div className="text-sm text-muted-foreground">
+                                {activity.award["Recipient Name"]}
                               </div>
                             </div>
-
-                            {/* Details */}
-                            <div className="element-details flex-1 min-w-0 p-4">
-                              {/* Top row: Timestamp + Role Badge */}
-                              <div className="flex items-center justify-between mb-2">
-                                <div className="timestamp flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
-                                  <span className="date font-medium">{activity.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                                  <span className="time">{activity.date.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>
-                                </div>
-                                <Badge variant="secondary" className="text-[10px] uppercase tracking-wider font-bold">
-                                  {activity.role}
-                                </Badge>
-                              </div>
-
-                              {/* Context - Office link */}
-                              <div className="context text-xs text-blue-600 dark:text-blue-400 font-medium hover:underline mb-1.5">
-                                {activity.award["Funding Office Name"] || activity.award["Funding Agency"] || "Unknown Office"}
-                              </div>
-
-                              {/* Name/Title - Award ID */}
-                              <div className="name text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">
-                                {activity.award["Award ID"]}
-                              </div>
-
-                              {/* Content/Description */}
-                              <div className="content">
-                                <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-3">
-                                  {activity.award["Award Description"]}
-                                </p>
-                                
-                                {/* Meta info row */}
-                                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-                                  <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-                                    <Building2 className="h-3.5 w-3.5" />
-                                    <span className="truncate max-w-[200px]">{activity.award["Recipient Name"]}</span>
-                                  </span>
-                                  <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded">
-                                    ${(activity.award["Awarded$"] / 1000).toLocaleString()}K
-                                  </span>
-                                  {activity.award["Award Type"] && (
-                                    <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-[10px] uppercase tracking-wide text-slate-600 dark:text-slate-300 font-medium">
-                                      {activity.award["Award Type"]}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
+                            <Badge variant="outline">
+                              ${(activity.award["Awarded$"] / 1000).toFixed(0)}K
+                            </Badge>
+                          </div>
+                          <Separator />
+                          <div className="text-sm">
+                            <span className="text-muted-foreground">Description: </span>
+                            <span className="line-clamp-2">{activity.award["Award Description"]}</span>
+                          </div>
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                            <span>{activity.award["Funding Office Name"]}</span>
+                            <span>•</span>
+                            <span>{activity.award["Award Type"]}</span>
                           </div>
                         </div>
-                      </li>
-                    ))}
-                  </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
-              ));
-            })()}
-          </div>
-          
-          {/* Footer */}
-          <div className="bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 px-5 py-3 text-center">
-            <span className="text-xs text-slate-500 dark:text-slate-400">
-              Showing {contactData.activities.length} activities
-            </span>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
