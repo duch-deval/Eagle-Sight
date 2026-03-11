@@ -63,20 +63,20 @@ const officeDictionary: Record<string, string> = {
 };
 
 const freshColors = [
-  "hsl(142 76% 36%)", "hsl(346 77% 49%)", "hsl(38 92% 50%)",
-  "hsl(262 83% 58%)", "hsl(188 94% 42%)", "hsl(330 81% 60%)",
-  "hsl(239 84% 67%)", "hsl(173 58% 39%)", "hsl(25 95% 53%)",
-  "hsl(291 47% 51%)", "hsl(217 91% 59%)"
+  "hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)",
+  "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)",
+  "hsl(208 28% 58%)", "hsl(218 38% 32%)", "hsl(206 30% 52%)",
+  "hsl(202 22% 68%)", "hsl(195 20% 74%)"
 ];
 
 const statusColors: Record<string, string> = {
-  "1-14": "#ef4444",
-  "15-29": "#d4592b",
-  "30-44": "#eab308",
-  "45-60": "#00b9ff",
-  ">60": "#50af70",
-  Ended: "#5b5b5bff",
-  Unknown: "#6b7280"
+  "1-14": "hsl(0 55% 45%)",
+  "15-29": "hsl(18 50% 42%)",
+  "30-44": "hsl(40 45% 45%)",
+  "45-60": "hsl(205 40% 45%)",
+  ">60": "hsl(160 35% 38%)",
+  Ended: "hsl(210 8% 40%)",
+  Unknown: "hsl(210 10% 50%)"
 };
 
 // ============================================
@@ -230,7 +230,7 @@ const SetAsideChart = ({ rows }: { rows: any[] }) => {
               {data.map((entry, idx) => (
                 <Cell
                   key={idx}
-                  fill={["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#6366F1"][idx % 6]}
+                  fill={["hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)", "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)"][idx % 6]}
                 />
               ))}
             </Pie>
@@ -538,9 +538,21 @@ const TreemapChart = () => {
                           width={width}
                           height={height}
                           fill={fill}
-                          stroke="hsl(var(--border))"
+                          stroke="hsl(var(--background))"
                           strokeWidth={2}
-                          className="hover:opacity-90 transition-opacity"
+                          rx={3}
+                          className="hover:opacity-85 transition-opacity"
+                        />
+                        {/* Subtle inner highlight for depth */}
+                        <rect
+                          x={x + 1}
+                          y={y + 1}
+                          width={Math.max(0, width - 2)}
+                          height={Math.max(0, height - 2)}
+                          fill="none"
+                          stroke="hsla(0,0%,100%,0.08)"
+                          strokeWidth={1}
+                          rx={2}
                         />
                         {width > 40 && height > 20 && (
                           <>
@@ -548,12 +560,10 @@ const TreemapChart = () => {
                               x={x + width / 2}
                               y={y + height / 2 - 5}
                               textAnchor="middle"
-                              fill="white"
-                              stroke="black"
-                              strokeWidth={0.8}
-                              paintOrder="stroke"
+                              fill="hsla(0,0%,100%,0.95)"
                               fontSize={fontSize}
                               fontWeight="600"
+                              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
                             >
                               {name}
                             </text>
@@ -561,11 +571,10 @@ const TreemapChart = () => {
                               x={x + width / 2}
                               y={y + height / 2 + 10}
                               textAnchor="middle"
-                              fill="white"
-                              stroke="black"
-                              strokeWidth={0.8}
-                              paintOrder="stroke"
+                              fill="hsla(0,0%,100%,0.75)"
                               fontSize={fontSize - 2}
+                              fontWeight="400"
+                              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
                             >
                               {typeof size === "number" ? formatCurrency(size) : "—"}
                             </text>

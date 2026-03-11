@@ -37,17 +37,17 @@ interface FundingRow {
   [fscCode: string]: number | string | undefined;
 }
 const colors = [
-  "hsl(142 76% 36%)", // green
-  "hsl(346 77% 49%)", // red
-  "hsl(38 92% 50%)",  // yellow
-  "hsl(262 83% 58%)", // purple
-  "hsl(188 94% 42%)", // teal
-  "hsl(330 81% 60%)", // pink
-  "hsl(239 84% 67%)", // blue
-  "hsl(173 58% 39%)", // green teal
-  "hsl(25 95% 53%)",  // orange
-  "hsl(291 47% 51%)", // violet
-  "hsl(217 91% 59%)", // bright blue
+  "hsl(215 45% 28%)",  // deep navy
+  "hsl(210 35% 42%)",  // steel blue
+  "hsl(205 30% 55%)",  // slate blue
+  "hsl(200 25% 65%)",  // muted sky
+  "hsl(195 20% 74%)",  // soft blue-gray
+  "hsl(220 40% 35%)",  // dark indigo
+  "hsl(212 32% 48%)",  // medium navy
+  "hsl(208 28% 58%)",  // dusty blue
+  "hsl(202 22% 68%)",  // light steel
+  "hsl(218 38% 32%)",  // charcoal navy
+  "hsl(206 30% 52%)",  // mid slate
 ];
 
 
