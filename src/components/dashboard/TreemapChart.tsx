@@ -63,10 +63,10 @@ const officeDictionary: Record<string, string> = {
 };
 
 const freshColors = [
-  "hsl(142 76% 36%)", "hsl(346 77% 49%)", "hsl(38 92% 50%)",
-  "hsl(262 83% 58%)", "hsl(188 94% 42%)", "hsl(330 81% 60%)",
-  "hsl(239 84% 67%)", "hsl(173 58% 39%)", "hsl(25 95% 53%)",
-  "hsl(291 47% 51%)", "hsl(217 91% 59%)"
+  "hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)",
+  "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)",
+  "hsl(208 28% 58%)", "hsl(218 38% 32%)", "hsl(206 30% 52%)",
+  "hsl(202 22% 68%)", "hsl(195 20% 74%)"
 ];
 
 const statusColors: Record<string, string> = {
