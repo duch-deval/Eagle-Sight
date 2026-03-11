@@ -174,7 +174,7 @@ const PointsOfContact = () => {
 
       <Card>
         <CardHeader>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Search className="h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search by email or funding office..."
@@ -182,7 +182,19 @@ const PointsOfContact = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="max-w-md"
             />
-            <Button variant="outline" size="sm" onClick={() => setSearchTerm("")}>
+            <Select value={samFilter} onValueChange={setSamFilter}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="SAM Activity" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Activity</SelectItem>
+                <SelectItem value="yesterday">Yesterday</SelectItem>
+                <SelectItem value="3days">Last 3 Days</SelectItem>
+                <SelectItem value="7days">Last 7 Days</SelectItem>
+                <SelectItem value="30days">Last Month</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); }}>
               Clear
             </Button>
           </div>
