@@ -28,7 +28,7 @@ const mainItems = [
   { title: "Export Data", url: "/export", icon: Download },
   { title: "Watch List", url: "/AwardWatchlist", icon: FolderOpen },
   { title: "Points of Contact", url: "/points-of-contact", icon: FileText },
-  { title: "Recipient Analysis", url: "/recipient-analysis", icon: Users },
+  { title: "Competitor Analysis", url: "/recipient-analysis", icon: Users },
 ];
 
 const platformItems = [

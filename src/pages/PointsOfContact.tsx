@@ -166,7 +166,7 @@ const PointsOfContact = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Email</TableHead>
-                    <TableHead>Roles</TableHead>
+                    
                     <TableHead>Funding Offices</TableHead>
                     <TableHead>
                       <span className="flex items-center gap-1">
@@ -187,13 +187,6 @@ const PointsOfContact = () => {
                       <TableCell className="font-medium">
                         <User className="h-4 w-4 text-muted-foreground inline mr-1" />
                         {c.email}
-                      </TableCell>
-                      <TableCell>
-                        {Array.from(c.roles).map((r) => (
-                          <Badge key={r} variant="secondary" className="mr-1 text-xs">
-                            {r}
-                          </Badge>
-                        ))}
                       </TableCell>
                       <TableCell className="text-sm">
                         {c.fundingOffices.length > 0 ? (
