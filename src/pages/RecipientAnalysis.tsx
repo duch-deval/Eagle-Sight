@@ -113,7 +113,7 @@ const RecipientAnalysis = () => {
   );
 
   return (
-    <div className="p-4 sm:p-6 space-y-6">
+    <div className="p-4 sm:p-6 flex flex-col h-screen gap-6">
       <SectionHeader
         title="Recipient Analysis"
       />

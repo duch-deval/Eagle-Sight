@@ -84,7 +84,7 @@ const RecipientAwards = () => {
   );
 
   return (
-    <div className="p-4 sm:p-6 space-y-6">
+    <div className="p-4 sm:p-6 flex flex-col h-screen gap-6">
       {/* Back button */}
       <Button
         variant="outline"
@@ -155,7 +155,9 @@ const RecipientAwards = () => {
 
       {/* Award Table */}
       {!loading && !error && awards.length > 0 && (
-        <AwardTable awards={awards} />
+        <div className="flex-1 min-h-0">
+          <AwardTable awards={awards} />
+        </div>
       )}
     </div>
   );

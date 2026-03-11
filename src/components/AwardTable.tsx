@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { ArrowUpDown, Search, Filter, X, Check } from "lucide-react";
 
 // ============================================
@@ -45,7 +45,6 @@ const formatCurrency = (value: number) =>
     maximumFractionDigits: 2,
   }).format(value);
 
-// Handles both display keys ("Award ID") and db keys ("award_id")
 const getValue = (row: any, displayKey: string, dbKey: string) => {
   return row[displayKey] ?? row[dbKey] ?? null;
 };
@@ -67,7 +66,51 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: "asc" | "desc" } | null>(null);
 
-  // Normalize data to handle both formats
+  const tableContainerRef = useRef<HTMLDivElement>(null);
+  const mirrorScrollRef = useRef<HTMLDivElement>(null);
+  const mirrorInnerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = tableContainerRef.current;
+    const mirror = mirrorScrollRef.current;
+    const mirrorInner = mirrorInnerRef.current;
+    if (!container || !mirror || !mirrorInner) return;
+
+    const syncWidth = () => {
+      mirrorInner.style.width = `${container.scrollWidth}px`;
+    };
+    syncWidth();
+
+    const ro = new ResizeObserver(syncWidth);
+    ro.observe(container);
+
+    let ignoreContainerScroll = false;
+    let ignoreMirrorScroll = false;
+
+    const onContainerScroll = () => {
+      if (ignoreContainerScroll) return;
+      ignoreMirrorScroll = true;
+      mirror.scrollLeft = container.scrollLeft;
+      requestAnimationFrame(() => { ignoreMirrorScroll = false; });
+    };
+
+    const onMirrorScroll = () => {
+      if (ignoreMirrorScroll) return;
+      ignoreContainerScroll = true;
+      container.scrollLeft = mirror.scrollLeft;
+      requestAnimationFrame(() => { ignoreContainerScroll = false; });
+    };
+
+    container.addEventListener("scroll", onContainerScroll);
+    mirror.addEventListener("scroll", onMirrorScroll);
+
+    return () => {
+      ro.disconnect();
+      container.removeEventListener("scroll", onContainerScroll);
+      mirror.removeEventListener("scroll", onMirrorScroll);
+    };
+  }, []);
+
   const normalizedAwards = useMemo(() => {
     return awards.map((row) => {
       const popStart = getValue(row, "PoP Start Date", "pop_start_date");
@@ -95,7 +138,6 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
     });
   }, [awards]);
 
-  // Unique Set Aside values for filter dropdown
   const setAsideOptions = useMemo(() => {
     const vals = new Set<string>();
     normalizedAwards.forEach((a) => {
@@ -104,7 +146,6 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
     return Array.from(vals).sort();
   }, [normalizedAwards]);
 
-  // Filter + Sort
   const filteredData = useMemo(() => {
     let data = normalizedAwards;
 
@@ -150,7 +191,6 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
     });
   };
 
-  // Header cell component
   const HeaderCell = ({
     label,
     sortKey,
@@ -176,11 +216,10 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
   );
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm rounded-lg overflow-hidden">
+    <div className="flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm rounded-lg overflow-hidden">
       {/* TOOLBAR */}
       <div className="p-3 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between bg-slate-50/30 dark:bg-slate-800/30 flex-wrap gap-2">
         <div className="flex items-center gap-3 flex-1 min-w-[300px]">
-          {/* Search Input */}
           <div className="relative w-64">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
             <input
@@ -192,7 +231,6 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
             />
           </div>
 
-          {/* Set Aside Filter Dropdown */}
           <div className="relative">
             <button
               className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border rounded-sm transition-colors whitespace-nowrap ${
@@ -238,7 +276,6 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
           </div>
         </div>
 
-        {/* Status Legend */}
         <div className="flex items-center gap-4 text-[10px] font-medium text-slate-400">
           {Object.entries(statusColors).map(([label, color]) => (
             <div key={label} className="flex items-center gap-1.5">
@@ -249,10 +286,23 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
         </div>
       </div>
 
+      {/* MIRROR SCROLLBAR - pinned above footer, synced with table */}
+      <div
+        ref={mirrorScrollRef}
+        className="overflow-x-auto overflow-y-hidden border-b border-slate-200 dark:border-slate-700"
+        style={{ height: "12px" }}
+      >
+        <div ref={mirrorInnerRef} style={{ height: "1px" }} />
+      </div>
+
       {/* TABLE */}
-      <div className="flex-1 min-h-0 overflow-x-auto">
-        <div className="h-full overflow-y-auto min-w-fit">
-          <table className="min-w-[1400px] border-collapse">
+      <div
+        ref={tableContainerRef}
+        className="overflow-auto"
+        style={{ maxHeight: "80vh" }}
+      >
+        <div className="min-w-[1400px]">
+          <table className="w-full border-collapse">
             <thead className="sticky top-0 z-10 bg-white dark:bg-slate-900 shadow-sm">
               <tr>
                 <th className="w-1 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky left-0 z-20"></th>
@@ -282,11 +332,9 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
                     className="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-xs cursor-pointer"
                     onDoubleClick={() => onRowDoubleClick?.(row._original)}
                   >
-                    {/* Status Indicator Strip (Sticky) */}
                     <td className="w-1 p-0 relative sticky left-0 z-10 bg-white dark:bg-slate-900 group-hover:bg-slate-50 dark:group-hover:bg-slate-800/50">
                       <div className="absolute inset-y-0 left-0 w-1" style={{ backgroundColor: statusColor }}></div>
                     </td>
-
                     <td className="px-4 py-3 font-mono text-slate-900 dark:text-slate-100 font-medium whitespace-nowrap">
                       {row.awardId}
                     </td>
@@ -296,23 +344,14 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
                     <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">
                       {row.awardDate ? new Date(row.awardDate).toLocaleDateString() : "—"}
                     </td>
-                    <td
-                      className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-200 truncate max-w-[12rem]"
-                      title={row.recipient}
-                    >
+                    <td className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-200 truncate max-w-[12rem]" title={row.recipient}>
                       {row.recipient}
                     </td>
-                    <td
-                      className="px-4 py-3 text-slate-600 dark:text-slate-400 truncate max-w-[16rem]"
-                      title={row.description}
-                    >
+                    <td className="px-4 py-3 text-slate-600 dark:text-slate-400 truncate max-w-[16rem]" title={row.description}>
                       {row.description}
                     </td>
                     <td className="px-4 py-3 text-slate-500 dark:text-slate-400 font-mono">{row.fsc}</td>
-                    <td
-                      className="px-4 py-3 text-slate-500 dark:text-slate-400 truncate max-w-[10rem]"
-                      title={row.setAside}
-                    >
+                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 truncate max-w-[10rem]" title={row.setAside}>
                       {row.setAside || "—"}
                     </td>
                     <td className="px-4 py-3 text-right font-mono font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap">
@@ -322,9 +361,7 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
                       {typeof row.popDuration === "number" ? `${row.popDuration} days` : row.popDuration}
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span
-                        className={`font-mono font-bold ${row.daysLeft !== null && row.daysLeft < 30 ? "text-red-600" : "text-slate-600 dark:text-slate-300"}`}
-                      >
+                      <span className={`font-mono font-bold ${row.daysLeft !== null && row.daysLeft < 30 ? "text-red-600" : "text-slate-600 dark:text-slate-300"}`}>
                         {row.daysLeft !== null ? row.daysLeft : "—"}
                       </span>
                     </td>
@@ -337,15 +374,9 @@ export const AwardTable = ({ awards, onRowDoubleClick }: AwardTableProps) => {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center text-slate-500 dark:text-slate-400">{row.offers || "—"}</td>
-                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                      {row.preparedUser || "—"}
-                    </td>
-                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                      {row.approvedBy || "—"}
-                    </td>
-                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                      {row.lastModifiedBy || "—"}
-                    </td>
+                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">{row.preparedUser || "—"}</td>
+                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">{row.approvedBy || "—"}</td>
+                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">{row.lastModifiedBy || "—"}</td>
                   </tr>
                 );
               })}
