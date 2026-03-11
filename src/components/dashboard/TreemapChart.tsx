@@ -442,7 +442,7 @@ const TreemapChart = () => {
   };
 
   // Recipient filter
-  let filteredChildren = currentNode?.children ?? [];
+  let filteredChildren = [...(currentNode?.children ?? [])].sort((a, b) => b.size - a.size);
   if (currentNode?.level === 3 && recipientSearch) {
     filteredChildren = filteredChildren.filter((child) =>
       child.name.toLowerCase().includes(recipientSearch.toLowerCase())
