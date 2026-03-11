@@ -32,6 +32,7 @@ const PointsOfContact = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [samFilter, setSamFilter] = useState("all");
+  const [platformFilter, setPlatformFilter] = useState("all");
   const [contacts, setContacts] = useState<ContactInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -132,6 +133,12 @@ const PointsOfContact = () => {
     loadContacts();
   }, []);
 
+  const allPlatforms = useMemo(() => {
+    const set = new Set<string>();
+    contacts.forEach(c => c.platforms.forEach(p => set.add(p)));
+    return Array.from(set).sort();
+  }, [contacts]);
+
   const filteredContacts = useMemo(() => {
     const now = Date.now();
     const dayMs = 1000 * 60 * 60 * 24;
@@ -155,9 +162,10 @@ const PointsOfContact = () => {
         if (!c.lastSamActivity) return false;
         if (now - c.lastSamActivity.getTime() > cutoff) return false;
       }
+      if (platformFilter !== "all" && !c.platforms.includes(platformFilter)) return false;
       return true;
     });
-  }, [contacts, searchTerm, samFilter]);
+  }, [contacts, searchTerm, samFilter, platformFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
@@ -166,7 +174,7 @@ const PointsOfContact = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, samFilter]);
+  }, [searchTerm, samFilter, platformFilter]);
 
   return (
     <div className="p-6 space-y-6">
@@ -205,7 +213,18 @@ const PointsOfContact = () => {
                 <SelectItem value="30days">Last Month</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); }}>
+            <Select value={platformFilter} onValueChange={setPlatformFilter}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="Platform" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Platforms</SelectItem>
+                {allPlatforms.map(p => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); }}>
               Clear
             </Button>
           </div>
