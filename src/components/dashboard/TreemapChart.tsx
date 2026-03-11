@@ -63,10 +63,10 @@ const officeDictionary: Record<string, string> = {
 };
 
 const freshColors = [
-  "hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)",
-  "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)",
-  "hsl(208 28% 58%)", "hsl(218 38% 32%)", "hsl(206 30% 52%)",
-  "hsl(202 22% 68%)", "hsl(195 20% 74%)"
+  "hsl(210 40% 45%)", "hsl(160 30% 45%)", "hsl(35 40% 52%)",
+  "hsl(260 25% 50%)", "hsl(190 30% 48%)", "hsl(340 28% 50%)",
+  "hsl(225 30% 52%)", "hsl(170 25% 44%)", "hsl(20 35% 50%)",
+  "hsl(280 20% 48%)", "hsl(200 28% 50%)"
 ];
 
 const statusColors: Record<string, string> = {
@@ -230,7 +230,7 @@ const SetAsideChart = ({ rows }: { rows: any[] }) => {
               {data.map((entry, idx) => (
                 <Cell
                   key={idx}
-                  fill={["hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)", "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)"][idx % 6]}
+                  fill={["hsl(210 40% 45%)", "hsl(160 30% 45%)", "hsl(35 40% 52%)", "hsl(260 25% 50%)", "hsl(190 30% 48%)", "hsl(340 28% 50%)"][idx % 6]}
                 />
               ))}
             </Pie>
