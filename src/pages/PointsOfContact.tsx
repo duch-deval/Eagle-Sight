@@ -140,6 +140,12 @@ const PointsOfContact = () => {
     return Array.from(set).sort();
   }, [contacts]);
 
+  const allOffices = useMemo(() => {
+    const set = new Set<string>();
+    contacts.forEach(c => c.fundingOffices.forEach(o => set.add(o)));
+    return Array.from(set).sort();
+  }, [contacts]);
+
   const filteredContacts = useMemo(() => {
     const now = Date.now();
     const dayMs = 1000 * 60 * 60 * 24;
