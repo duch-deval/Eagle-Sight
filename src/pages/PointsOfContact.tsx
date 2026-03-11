@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Search, User, ChevronLeft, ChevronRight, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import supabase from "@/lib/supabaseClient";
 
 interface ContactInfo {
@@ -30,6 +31,7 @@ function formatRelativeDate(date: Date | null): string {
 const PointsOfContact = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
+  const [samFilter, setSamFilter] = useState("all");
   const [contacts, setContacts] = useState<ContactInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -131,13 +133,31 @@ const PointsOfContact = () => {
   }, []);
 
   const filteredContacts = useMemo(() => {
-    return contacts.filter((c) =>
-      c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.fundingOffices.some(office =>
-        office.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
-  }, [contacts, searchTerm]);
+    const now = Date.now();
+    const dayMs = 1000 * 60 * 60 * 24;
+    const samCutoff: Record<string, number | null> = {
+      all: null,
+      yesterday: 1 * dayMs,
+      "3days": 3 * dayMs,
+      "7days": 7 * dayMs,
+      "30days": 30 * dayMs,
+    };
+    const cutoff = samCutoff[samFilter];
+
+    return contacts.filter((c) => {
+      const matchesSearch =
+        c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        c.fundingOffices.some(office =>
+          office.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      if (!matchesSearch) return false;
+      if (cutoff != null) {
+        if (!c.lastSamActivity) return false;
+        if (now - c.lastSamActivity.getTime() > cutoff) return false;
+      }
+      return true;
+    });
+  }, [contacts, searchTerm, samFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
@@ -146,7 +166,7 @@ const PointsOfContact = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm]);
+  }, [searchTerm, samFilter]);
 
   return (
     <div className="p-6 space-y-6">
@@ -165,7 +185,7 @@ const PointsOfContact = () => {
 
       <Card>
         <CardHeader>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Search className="h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search by email or funding office..."
@@ -173,7 +193,19 @@ const PointsOfContact = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="max-w-md"
             />
-            <Button variant="outline" size="sm" onClick={() => setSearchTerm("")}>
+            <Select value={samFilter} onValueChange={setSamFilter}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="SAM Activity" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Activity</SelectItem>
+                <SelectItem value="yesterday">Yesterday</SelectItem>
+                <SelectItem value="3days">Last 3 Days</SelectItem>
+                <SelectItem value="7days">Last 7 Days</SelectItem>
+                <SelectItem value="30days">Last Month</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); }}>
               Clear
             </Button>
           </div>
