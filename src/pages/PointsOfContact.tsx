@@ -14,6 +14,7 @@ interface ContactInfo {
   awardCount: number;
   fundingOffices: string[];
   lastSamActivity: Date | null;
+  platforms: string[];
 }
 
 function formatRelativeDate(date: Date | null): string {
@@ -39,7 +40,7 @@ const PointsOfContact = () => {
       setLoading(true);
 
       try {
-        const [contactsResult, samResult] = await Promise.all([
+        const [contactsResult, samResult, platformResult] = await Promise.all([
           (async () => {
             let allData: any[] = [];
             let from = 0;
@@ -72,10 +73,12 @@ const PointsOfContact = () => {
             }
             return { data: allSam, error: null };
           })(),
+          supabase.from("platform_contacts").select("email, platform_id"),
         ]);
 
         const contactRows: any[] = contactsResult as any[];
         const samRows: any[] = samResult.error ? [] : (samResult.data || []);
+        const platformRows: any[] = platformResult.error ? [] : (platformResult.data || []);
 
         const samActivityMap = new Map<string, Date>();
         for (const row of samRows) {
@@ -90,12 +93,21 @@ const PointsOfContact = () => {
           }
         }
 
+        const platformMap = new Map<string, string[]>();
+        for (const row of platformRows) {
+          if (!row.email) continue;
+          const key = row.email.toLowerCase();
+          if (!platformMap.has(key)) platformMap.set(key, []);
+          platformMap.get(key)!.push(row.platform_id.toUpperCase());
+        }
+
         const contactsArray: ContactInfo[] = contactRows.map(row => ({
           email: row.email,
           roles: new Set(row.roles),
           awardCount: row.total_awards,
           fundingOffices: row.funding_offices || [],
           lastSamActivity: samActivityMap.get(row.email?.toLowerCase()) || null,
+          platforms: platformMap.get(row.email?.toLowerCase()) || [],
         }));
 
         contactsArray.sort((a, b) => {
@@ -107,7 +119,6 @@ const PointsOfContact = () => {
           return b.awardCount - a.awardCount;
         });
 
-        console.log(`✅ Loaded ${contactsArray.length} contacts, ${samActivityMap.size} with SAM activity`);
         setContacts(contactsArray);
       } catch (err) {
         console.error("Error loading contacts:", err);
@@ -178,7 +189,6 @@ const PointsOfContact = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Email</TableHead>
-                    
                     <TableHead>Funding Offices</TableHead>
                     <TableHead>
                       <span className="flex items-center gap-1">
@@ -197,8 +207,25 @@ const PointsOfContact = () => {
                       onClick={() => navigate(`/points-of-contact/${encodeURIComponent(c.email)}`)}
                     >
                       <TableCell className="font-medium">
-                        <User className="h-4 w-4 text-muted-foreground inline mr-1" />
-                        {c.email}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span>
+                            <User className="h-4 w-4 text-muted-foreground inline mr-1" />
+                            {c.email}
+                          </span>
+                          {c.platforms.length > 0 && (
+                            <span className="inline-flex gap-1 flex-wrap">
+                              {c.platforms.map(p => (
+                                <Badge
+                                  key={p}
+                                  variant="outline"
+                                  className="text-[10px] px-1.5 py-0 border-blue-500 text-blue-600 font-mono"
+                                >
+                                  {p}
+                                </Badge>
+                              ))}
+                            </span>
+                          )}
+                        </div>
                       </TableCell>
                       <TableCell className="text-sm">
                         {c.fundingOffices.length > 0 ? (
