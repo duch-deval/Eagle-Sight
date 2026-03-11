@@ -232,7 +232,18 @@ const PointsOfContact = () => {
                 ))}
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); }}>
+            <Select value={officeFilter} onValueChange={setOfficeFilter}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Funding Office" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Offices</SelectItem>
+                {allOffices.map(o => (
+                  <SelectItem key={o} value={o}>{o}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); setOfficeFilter("all"); }}>
               Clear
             </Button>
           </div>
