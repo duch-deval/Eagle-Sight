@@ -166,7 +166,7 @@ const PointsOfContact = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Email</TableHead>
-                    <TableHead>Roles</TableHead>
+                    
                     <TableHead>Funding Offices</TableHead>
                     <TableHead>
                       <span className="flex items-center gap-1">
