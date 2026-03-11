@@ -57,10 +57,21 @@ const PointsOfContact = () => {
             }
             return allData;
           })(),
-          supabase
-            .from("sam_notices")
-            .select("poc_email, published_date")
-            .order("loaded_at", { ascending: false }),
+          (async () => {
+            let allSam: any[] = [];
+            let from = 0;
+            const batchSize = 1000;
+            while (true) {
+              const { data, error } = await supabase
+                .rpc("get_sam_activity_by_email")
+                .range(from, from + batchSize - 1);
+              if (error || !data || data.length === 0) break;
+              allSam = allSam.concat(data);
+              if (data.length < batchSize) break;
+              from += batchSize;
+            }
+            return { data: allSam, error: null };
+          })(),
         ]);
 
         const contactRows: any[] = contactsResult as any[];
@@ -70,8 +81,9 @@ const PointsOfContact = () => {
         for (const row of samRows) {
           if (!row.poc_email) continue;
           const emailKey = row.poc_email.toLowerCase();
-          if (!samActivityMap.has(emailKey) && row.published_date) {
-            const parsed = new Date(row.published_date);
+          if (!samActivityMap.has(emailKey) && row.last_activity) {
+            const [year, month, day] = row.last_activity.split("-").map(Number);
+            const parsed = new Date(year, month - 1, day);
             if (!isNaN(parsed.getTime())) {
               samActivityMap.set(emailKey, parsed);
             }

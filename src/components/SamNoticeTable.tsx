@@ -75,6 +75,7 @@ export interface SamNoticeRow {
   published_date: string | null;
   poc_name: string | null;
   poc_email: string | null;
+  ui_link?: string | null;
 }
 
 interface SamNoticeTableProps {
@@ -109,6 +110,7 @@ export const SamNoticeTable = ({ notices }: SamNoticeTableProps) => {
         publishedDate:    row.published_date,
         pocName:          row.poc_name || "—",
         pocEmail:         row.poc_email || "—",
+        uiLink:           row.ui_link || null,
         daysLeft,
         deadlineStatus:   status,
       };
@@ -280,7 +282,6 @@ export const SamNoticeTable = ({ notices }: SamNoticeTableProps) => {
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
             {filteredData.map((row, idx) => {
               const deadlineColor = deadlineColors[row.deadlineStatus] || deadlineColors["No Date"];
-              const typeColor = opportunityTypeColors[row.type] || "#6b7280";
               return (
                 <tr
                   key={idx}
@@ -292,7 +293,19 @@ export const SamNoticeTable = ({ notices }: SamNoticeTableProps) => {
                   </td>
 
                   <td className="px-4 py-3 font-mono text-slate-900 dark:text-slate-100 font-medium whitespace-nowrap">
-                    {row.noticeId}
+                    {row.uiLink ? (
+                      <a
+                        href={row.uiLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {row.noticeId}
+                      </a>
+                    ) : (
+                      row.noticeId
+                    )}
                   </td>
                   <td className="px-4 py-3 text-slate-500 dark:text-slate-400 whitespace-nowrap">
                     {formatPublishedDate(row.publishedDate)}

@@ -150,7 +150,7 @@ const ContactDetail = () => {
       setSamLoading(true);
       const { data, error } = await supabase
         .from("sam_notices")
-        .select("notice_id, opportunity_title, opportunity_type, contracting_office, sub_tier_name, aac_code, psc, naics, set_aside, response_date, published_date, poc_name, poc_email")
+        .select("notice_id, opportunity_title, opportunity_type, contracting_office, sub_tier_name, aac_code, psc, naics, set_aside, response_date, published_date, poc_name, poc_email, ui_link")
         .eq("poc_email", decodedEmail)
         .order("loaded_at", { ascending: false })
         .limit(25);
