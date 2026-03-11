@@ -230,7 +230,7 @@ const SetAsideChart = ({ rows }: { rows: any[] }) => {
               {data.map((entry, idx) => (
                 <Cell
                   key={idx}
-                  fill={["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#6366F1"][idx % 6]}
+                  fill={["hsl(215 45% 28%)", "hsl(210 35% 42%)", "hsl(205 30% 55%)", "hsl(200 25% 65%)", "hsl(220 40% 35%)", "hsl(212 32% 48%)"][idx % 6]}
                 />
               ))}
             </Pie>
