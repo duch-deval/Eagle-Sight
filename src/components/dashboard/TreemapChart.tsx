@@ -538,9 +538,21 @@ const TreemapChart = () => {
                           width={width}
                           height={height}
                           fill={fill}
-                          stroke="hsl(var(--border))"
+                          stroke="hsl(var(--background))"
                           strokeWidth={2}
-                          className="hover:opacity-90 transition-opacity"
+                          rx={3}
+                          className="hover:opacity-85 transition-opacity"
+                        />
+                        {/* Subtle inner highlight for depth */}
+                        <rect
+                          x={x + 1}
+                          y={y + 1}
+                          width={Math.max(0, width - 2)}
+                          height={Math.max(0, height - 2)}
+                          fill="none"
+                          stroke="hsla(0,0%,100%,0.08)"
+                          strokeWidth={1}
+                          rx={2}
                         />
                         {width > 40 && height > 20 && (
                           <>
@@ -548,12 +560,10 @@ const TreemapChart = () => {
                               x={x + width / 2}
                               y={y + height / 2 - 5}
                               textAnchor="middle"
-                              fill="white"
-                              stroke="black"
-                              strokeWidth={0.8}
-                              paintOrder="stroke"
+                              fill="hsla(0,0%,100%,0.95)"
                               fontSize={fontSize}
                               fontWeight="600"
+                              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
                             >
                               {name}
                             </text>
@@ -561,11 +571,10 @@ const TreemapChart = () => {
                               x={x + width / 2}
                               y={y + height / 2 + 10}
                               textAnchor="middle"
-                              fill="white"
-                              stroke="black"
-                              strokeWidth={0.8}
-                              paintOrder="stroke"
+                              fill="hsla(0,0%,100%,0.75)"
                               fontSize={fontSize - 2}
+                              fontWeight="400"
+                              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
                             >
                               {typeof size === "number" ? formatCurrency(size) : "—"}
                             </text>
