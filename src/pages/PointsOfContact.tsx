@@ -133,6 +133,12 @@ const PointsOfContact = () => {
     loadContacts();
   }, []);
 
+  const allPlatforms = useMemo(() => {
+    const set = new Set<string>();
+    contacts.forEach(c => c.platforms.forEach(p => set.add(p)));
+    return Array.from(set).sort();
+  }, [contacts]);
+
   const filteredContacts = useMemo(() => {
     const now = Date.now();
     const dayMs = 1000 * 60 * 60 * 24;
@@ -156,9 +162,10 @@ const PointsOfContact = () => {
         if (!c.lastSamActivity) return false;
         if (now - c.lastSamActivity.getTime() > cutoff) return false;
       }
+      if (platformFilter !== "all" && !c.platforms.includes(platformFilter)) return false;
       return true;
     });
-  }, [contacts, searchTerm, samFilter]);
+  }, [contacts, searchTerm, samFilter, platformFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
