@@ -170,9 +170,10 @@ const PointsOfContact = () => {
         if (now - c.lastSamActivity.getTime() > cutoff) return false;
       }
       if (platformFilter !== "all" && !c.platforms.includes(platformFilter)) return false;
+      if (officeFilter !== "all" && !c.fundingOffices.includes(officeFilter)) return false;
       return true;
     });
-  }, [contacts, searchTerm, samFilter, platformFilter]);
+  }, [contacts, searchTerm, samFilter, platformFilter, officeFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
