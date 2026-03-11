@@ -32,6 +32,7 @@ const PointsOfContact = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [samFilter, setSamFilter] = useState("all");
+  const [platformFilter, setPlatformFilter] = useState("all");
   const [contacts, setContacts] = useState<ContactInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
