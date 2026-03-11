@@ -122,13 +122,31 @@ const PointsOfContact = () => {
   }, []);
 
   const filteredContacts = useMemo(() => {
-    return contacts.filter((c) =>
-      c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.fundingOffices.some(office =>
-        office.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
-  }, [contacts, searchTerm]);
+    const now = Date.now();
+    const dayMs = 1000 * 60 * 60 * 24;
+    const samCutoff: Record<string, number | null> = {
+      all: null,
+      yesterday: 1 * dayMs,
+      "3days": 3 * dayMs,
+      "7days": 7 * dayMs,
+      "30days": 30 * dayMs,
+    };
+    const cutoff = samCutoff[samFilter];
+
+    return contacts.filter((c) => {
+      const matchesSearch =
+        c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        c.fundingOffices.some(office =>
+          office.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      if (!matchesSearch) return false;
+      if (cutoff != null) {
+        if (!c.lastSamActivity) return false;
+        if (now - c.lastSamActivity.getTime() > cutoff) return false;
+      }
+      return true;
+    });
+  }, [contacts, searchTerm, samFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
