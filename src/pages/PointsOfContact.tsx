@@ -213,7 +213,18 @@ const PointsOfContact = () => {
                 <SelectItem value="30days">Last Month</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); }}>
+            <Select value={platformFilter} onValueChange={setPlatformFilter}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="Platform" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Platforms</SelectItem>
+                {allPlatforms.map(p => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); }}>
               Clear
             </Button>
           </div>
