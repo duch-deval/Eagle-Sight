@@ -155,7 +155,7 @@ const PointsOfContact = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm]);
+  }, [searchTerm, samFilter]);
 
   return (
     <div className="p-6 space-y-6">
