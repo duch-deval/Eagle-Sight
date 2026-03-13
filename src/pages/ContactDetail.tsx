@@ -16,6 +16,7 @@ import {
   Shield,
   Radio,
   Briefcase,
+  Phone,
 } from "lucide-react";
 import supabase from "@/lib/supabaseClient";
 
@@ -51,6 +52,11 @@ interface SimilarContact {
   total_awards: number;
 }
 
+interface ContactProfile {
+  pocName: string | null;
+  pocPhone: string | null;
+}
+
 function timeAgo(date: Date): string {
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
@@ -71,42 +77,41 @@ const ContactDetail = () => {
   const { email } = useParams<{ email: string }>();
   const navigate = useNavigate();
   const decodedEmail = decodeURIComponent(email || "").trim().toLowerCase();
-  const [rows, setRows] = useState<AwardRow[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [samNotices, setSamNotices] = useState<SamNoticeRow[]>([]);
-  const [samLoading, setSamLoading] = useState(true);
-  const [similarContacts, setSimilarContacts] = useState<SimilarContact[]>([]);
 
+  const [rows, setRows]                       = useState<AwardRow[]>([]);
+  const [loading, setLoading]                 = useState(true);
+  const [samNotices, setSamNotices]           = useState<SamNoticeRow[]>([]);
+  const [samLoading, setSamLoading]           = useState(true);
+  const [similarContacts, setSimilarContacts] = useState<SimilarContact[]>([]);
+  const [contactProfile, setContactProfile]   = useState<ContactProfile>({ pocName: null, pocPhone: null });
+
+  // ── Fetch awards + SAM notices + profile ──────────────────────────────────
   useEffect(() => {
     const fetchContactAwards = async () => {
       setLoading(true);
+
       const [preparedRes, approvedRes, modifiedRes] = await Promise.all([
-        supabase
-          .from("prepared_user_contacts")
-          .select("award_id")
-          .eq("prepared_user", decodedEmail),
-        supabase
-          .from("approved_by_contacts")
-          .select("award_id")
-          .eq("approved_by", decodedEmail),
-        supabase
-          .from("last_modified_by_contacts")
-          .select("award_id")
-          .eq("last_modified_by", decodedEmail),
+        supabase.from("prepared_user_contacts").select("award_id").eq("prepared_user", decodedEmail),
+        supabase.from("approved_by_contacts").select("award_id").eq("approved_by", decodedEmail),
+        supabase.from("last_modified_by_contacts").select("award_id").eq("last_modified_by", decodedEmail),
       ]);
+
       if (preparedRes.error || approvedRes.error || modifiedRes.error) {
         console.error("Error fetching contact awards:", preparedRes.error || approvedRes.error || modifiedRes.error);
         setLoading(false);
         return;
       }
+
       const awardIds = new Set<string>();
       preparedRes.data?.forEach(r => awardIds.add(r.award_id));
       approvedRes.data?.forEach(r => awardIds.add(r.award_id));
       modifiedRes.data?.forEach(r => awardIds.add(r.award_id));
+
       if (awardIds.size === 0) {
         setLoading(false);
         return;
       }
+
       const { data: awardsData, error: awardsError } = await supabase
         .from("awards")
         .select(`
@@ -117,31 +122,34 @@ const ContactDetail = () => {
           awarded_amount, prepared_user, approved_by, last_modified_by, award_date
         `)
         .in("award_id", Array.from(awardIds));
+
       if (awardsError) {
         console.error("Error fetching award details:", awardsError);
         setLoading(false);
         return;
       }
+
       const mappedRows = awardsData.map((r: any) => ({
-        "Award ID": r.award_id,
-        "Solicitation ID": r.solicitation_id,
-        "Award Date": r.award_date,
-        "Award Description": r.award_description,
-        "Recipient Name": r.recipient_name,
-        "Set Aside Type": r.set_aside_type,
-        "FSC": r.fsc,
-        "Awarded$": Number(r.awarded_amount) || 0,
-        "PoP Start Date": r.pop_start_date,
-        "PoP End Date": r.pop_end_date,
-        "Offers Received": r.offers_received,
-        "Prepared_User": r.prepared_user?.trim().toLowerCase() ?? null,
-        "Approved_By": r.approved_by?.trim().toLowerCase() ?? null,
-        "Last_Modified_By": r.last_modified_by?.trim().toLowerCase() ?? null,
+        "Award ID":            r.award_id,
+        "Solicitation ID":     r.solicitation_id,
+        "Award Date":          r.award_date,
+        "Award Description":   r.award_description,
+        "Recipient Name":      r.recipient_name,
+        "Set Aside Type":      r.set_aside_type,
+        "FSC":                 r.fsc,
+        "Awarded$":            Number(r.awarded_amount) || 0,
+        "PoP Start Date":      r.pop_start_date,
+        "PoP End Date":        r.pop_end_date,
+        "Offers Received":     r.offers_received,
+        "Prepared_User":       r.prepared_user?.trim().toLowerCase() ?? null,
+        "Approved_By":         r.approved_by?.trim().toLowerCase() ?? null,
+        "Last_Modified_By":    r.last_modified_by?.trim().toLowerCase() ?? null,
         "Funding Office Name": r.funding_office_name,
-        "Funding Agency": r.funding_agency,
-        "Award Type": r.award_type,
-        "Last Modified Date": r.last_modified_date,
+        "Funding Agency":      r.funding_agency,
+        "Award Type":          r.award_type,
+        "Last Modified Date":  r.last_modified_date,
       }));
+
       setRows(mappedRows);
       setLoading(false);
     };
@@ -154,22 +162,33 @@ const ContactDetail = () => {
         .eq("poc_email", decodedEmail)
         .order("loaded_at", { ascending: false })
         .limit(25);
-      if (error) {
-        console.error("Error fetching SAM notices:", error);
-      } else {
-        setSamNotices(data || []);
-      }
+      if (error) console.error("Error fetching SAM notices:", error);
+      else setSamNotices(data || []);
       setSamLoading(false);
+    };
+
+    const fetchProfile = async () => {
+      const { data } = await supabase
+        .from("contact_summary")
+        .select("poc_name, poc_phone")
+        .eq("email", decodedEmail)
+        .single();
+      if (data) {
+        setContactProfile({ pocName: data.poc_name ?? null, pocPhone: data.poc_phone ?? null });
+      }
     };
 
     fetchContactAwards();
     fetchSamNotices();
+    fetchProfile();
   }, [decodedEmail]);
 
+  // ── Fetch similar contacts once awards load ────────────────────────────────
   useEffect(() => {
     if (rows.length === 0) return;
     const firstOffice = rows.find(r => r["Funding Office Name"])?.["Funding Office Name"];
     if (!firstOffice) return;
+
     const fetchSimilar = async () => {
       const { data, error } = await supabase
         .from("contact_summary")
@@ -185,24 +204,26 @@ const ContactDetail = () => {
     fetchSimilar();
   }, [rows, decodedEmail]);
 
+  // ── Derived contact data ───────────────────────────────────────────────────
   const contactData = useMemo(() => {
     const activities: Activity[] = [];
     const roles = new Set<string>();
     const fundingOffices = new Set<string>();
     const agencies = new Set<string>();
     let totalValue = 0;
+
     rows.forEach((award) => {
       const emailFields = [
-        { email: award.Prepared_User, role: "Prepared" },
-        { email: award.Approved_By, role: "Approved" },
-        { email: award.Last_Modified_By, role: "Modified" },
+        { email: award.Prepared_User,       role: "Prepared" },
+        { email: award.Approved_By,         role: "Approved" },
+        { email: award["Last_Modified_By"], role: "Modified" },
       ];
       emailFields.forEach(({ email: fieldEmail, role }) => {
         if (!fieldEmail || fieldEmail === "nan" || fieldEmail === "none") return;
         if (fieldEmail === decodedEmail) {
           roles.add(role);
           if (award["Funding Office Name"]) fundingOffices.add(award["Funding Office Name"]);
-          if (award["Funding Agency"]) agencies.add(award["Funding Agency"]);
+          if (award["Funding Agency"])      agencies.add(award["Funding Agency"]);
           totalValue += award["Awarded$"];
           activities.push({
             date: new Date(award["Last Modified Date"] || award["Award Date"]),
@@ -212,21 +233,30 @@ const ContactDetail = () => {
         }
       });
     });
+
     activities.sort((a, b) => b.date.getTime() - a.date.getTime());
+
     return {
-      roles: Array.from(roles),
+      roles:          Array.from(roles),
       fundingOffices: Array.from(fundingOffices),
-      agencies: Array.from(agencies),
+      agencies:       Array.from(agencies),
       activities,
       totalValue,
-      lastActive: activities[0]?.date,
+      lastActive:     activities[0]?.date,
     };
   }, [decodedEmail, rows]);
 
-  const contactName = decodedEmail
-    .split("@")[0]
-    .replace(/[._]/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  // ── Display name: poc_name wins, else derive from email ───────────────────
+  const contactName = contactProfile.pocName
+    ? contactProfile.pocName
+        .split(" ")
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ")
+    : decodedEmail
+        .split("@")[0]
+        .replace(/[._]/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
   const initials = contactName
     .split(" ")
     .slice(0, 2)
@@ -234,6 +264,7 @@ const ContactDetail = () => {
     .join("")
     .toUpperCase();
 
+  // ── Loading skeleton ───────────────────────────────────────────────────────
   if (loading) {
     return (
       <div className="flex h-full">
@@ -271,7 +302,8 @@ const ContactDetail = () => {
 
   return (
     <div className="flex h-[calc(100vh-3rem)] overflow-hidden">
-      {/* LEFT SIDEBAR */}
+
+      {/* ── LEFT SIDEBAR ── */}
       <aside className="w-[280px] shrink-0 border-r border-border bg-sidebar flex flex-col overflow-y-auto">
         <div className="px-4 pt-4">
           <Button
@@ -284,6 +316,8 @@ const ContactDetail = () => {
             All Contacts
           </Button>
         </div>
+
+        {/* Avatar + name */}
         <div className="px-6 pt-4 pb-5 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-3 border-2 border-sidebar-foreground/20">
             <AvatarFallback className="bg-sidebar-accent text-sidebar-foreground text-xl font-bold">
@@ -297,11 +331,18 @@ const ContactDetail = () => {
             </p>
           )}
         </div>
+
         <Separator className="bg-sidebar-border" />
+
+        {/* Metadata fields */}
         <div className="px-5 py-4 space-y-4 text-sm">
-          <MetadataField icon={Building2} label="Organization" value={contactData.agencies[0] || "Not listed"} />
-          <MetadataField icon={Shield} label="Contact Types" value="Federal" />
-          <MetadataField icon={Mail} label="Email" value={decodedEmail} mono />
+          <MetadataField icon={Building2} label="Organization"  value={contactData.agencies[0] || "Not listed"} />
+          <MetadataField icon={Shield}    label="Contact Types" value="Federal" />
+          <MetadataField icon={Mail}      label="Email"         value={decodedEmail} mono />
+          {/* Phone — only shown when available from SAM.gov POC data */}
+          {contactProfile.pocPhone && (
+            <MetadataField icon={Phone} label="Phone" value={contactProfile.pocPhone} mono />
+          )}
           <MetadataField
             icon={Briefcase}
             label="Role"
@@ -313,7 +354,10 @@ const ContactDetail = () => {
             value={contactData.fundingOffices[0] || "Not listed"}
           />
         </div>
+
         <Separator className="bg-sidebar-border" />
+
+        {/* Counts */}
         <div className="px-5 py-4 space-y-2">
           <div className="flex items-center justify-between rounded-md bg-sidebar-accent px-3 py-2">
             <span className="text-xs font-medium text-sidebar-foreground">Award POC</span>
@@ -328,7 +372,10 @@ const ContactDetail = () => {
             </Badge>
           </div>
         </div>
+
         <Separator className="bg-sidebar-border" />
+
+        {/* Similar contacts */}
         <div className="px-5 py-4 flex-1">
           <h3 className="text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider mb-3">
             Similar Contacts
@@ -365,7 +412,7 @@ const ContactDetail = () => {
         </div>
       </aside>
 
-      {/* MAIN CONTENT */}
+      {/* ── MAIN CONTENT ── */}
       <main className="flex-1 flex flex-col overflow-hidden">
         <Tabs defaultValue="activity" className="flex flex-col h-full">
           <div className="border-b border-border bg-card px-6 pt-2">
@@ -393,7 +440,7 @@ const ContactDetail = () => {
             </TabsList>
           </div>
 
-           {/* Activity Tab */}
+          {/* Activity Tab */}
           <TabsContent value="activity" className="flex-1 m-0 overflow-hidden">
             <ScrollArea className="h-full">
               <div className="p-6 max-w-4xl">
@@ -411,9 +458,7 @@ const ContactDetail = () => {
                   <div className="relative">
                     <div className="absolute left-[72px] top-0 bottom-0 w-px bg-border" />
                     {samNotices.map((notice, index) => {
-                      const pubDate = notice.published_date
-                        ? new Date(notice.published_date)
-                        : null;
+                      const pubDate = notice.published_date ? new Date(notice.published_date) : null;
                       return (
                         <div key={notice.notice_id || index} className="flex gap-4 mb-6 relative">
                           <div className="w-[60px] shrink-0 pt-1 text-right">
@@ -449,6 +494,16 @@ const ContactDetail = () => {
                                 {notice.response_date && <span>Response Due: {notice.response_date}</span>}
                                 <span className="font-mono opacity-50">{notice.notice_id}</span>
                               </div>
+                              {notice.ui_link && (
+                                <a
+                                  href={notice.ui_link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-[10px] text-blue-600 hover:underline mt-1.5 inline-block"
+                                >
+                                  View on SAM.gov →
+                                </a>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -491,6 +546,7 @@ const ContactDetail = () => {
   );
 };
 
+// ── MetadataField helper component ────────────────────────────────────────────
 function MetadataField({
   icon: Icon,
   label,

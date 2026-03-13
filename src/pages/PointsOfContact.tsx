@@ -11,11 +11,10 @@ import supabase from "@/lib/supabaseClient";
 
 interface ContactInfo {
   email: string;
+  pocName: string | null;
   roles: Set<string>;
   awardCount: number;
   fundingOffices: string[];
-  lastSamActivity: Date | null;
-  platforms: string[];
 }
 
 function formatRelativeDate(date: Date | null): string {
@@ -52,7 +51,7 @@ const PointsOfContact = () => {
             while (true) {
               const { data, error } = await supabase
                 .from("contact_summary")
-                .select("email, roles, total_awards, funding_offices")
+                .select("email, poc_name, roles, total_awards, funding_offices")
                 .range(from, from + batchSize - 1);
               if (error) throw error;
               if (!data || data.length === 0) break;
@@ -107,6 +106,7 @@ const PointsOfContact = () => {
 
         const contactsArray: ContactInfo[] = contactRows.map(row => ({
           email: row.email,
+          pocName: row.poc_name ?? null,
           roles: new Set(row.roles),
           awardCount: row.total_awards,
           fundingOffices: row.funding_offices || [],
@@ -161,6 +161,7 @@ const PointsOfContact = () => {
     return contacts.filter((c) => {
       const matchesSearch =
         c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (c.pocName ?? "").toLowerCase().includes(searchTerm.toLowerCase()) ||
         c.fundingOffices.some(office =>
           office.toLowerCase().includes(searchTerm.toLowerCase())
         );
@@ -280,7 +281,14 @@ const PointsOfContact = () => {
                         <div className="flex items-center gap-2 flex-wrap">
                           <span>
                             <User className="h-4 w-4 text-muted-foreground inline mr-1" />
-                            {c.email}
+                            {c.pocName ? (
+                              <span>
+                                {c.pocName}
+                                <span className="block text-xs text-muted-foreground font-normal">{c.email}</span>
+                              </span>
+                            ) : (
+                              c.email
+                            )}
                           </span>
                           {c.platforms.length > 0 && (
                             <span className="inline-flex gap-1 flex-wrap">
