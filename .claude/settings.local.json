@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"/Users/huydang/Library/CloudStorage/OneDrive-DevalCorporation/Desktop/DLS PLI/astra/Eagle-Sight\" && npx tsc --noEmit src/components/SamNoticeTable.tsx 2>&1 | head -50)",
+      "Bash(cd \"/Users/huydang/Library/CloudStorage/OneDrive-DevalCorporation/Desktop/DLS PLI/astra/Eagle-Sight\" && sed -n '294p' src/components/SamNoticeTable.tsx | xxd | head -5)",
+      "Bash(cd \"/Users/huydang/Library/CloudStorage/OneDrive-DevalCorporation/Desktop/DLS PLI/astra/Eagle-Sight\" && sed -n '294p' src/components/SamNoticeTable.tsx | xxd)"
+    ]
+  }
+}
