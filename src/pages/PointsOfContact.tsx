@@ -33,6 +33,7 @@ const PointsOfContact = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [samFilter, setSamFilter] = useState("all");
   const [platformFilter, setPlatformFilter] = useState("all");
+  const [officeFilter, setOfficeFilter] = useState("all");
   const [contacts, setContacts] = useState<ContactInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -139,6 +140,12 @@ const PointsOfContact = () => {
     return Array.from(set).sort();
   }, [contacts]);
 
+  const allOffices = useMemo(() => {
+    const set = new Set<string>();
+    contacts.forEach(c => c.fundingOffices.forEach(o => set.add(o)));
+    return Array.from(set).sort();
+  }, [contacts]);
+
   const filteredContacts = useMemo(() => {
     const now = Date.now();
     const dayMs = 1000 * 60 * 60 * 24;
@@ -163,9 +170,10 @@ const PointsOfContact = () => {
         if (now - c.lastSamActivity.getTime() > cutoff) return false;
       }
       if (platformFilter !== "all" && !c.platforms.includes(platformFilter)) return false;
+      if (officeFilter !== "all" && !c.fundingOffices.includes(officeFilter)) return false;
       return true;
     });
-  }, [contacts, searchTerm, samFilter, platformFilter]);
+  }, [contacts, searchTerm, samFilter, platformFilter, officeFilter]);
 
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
   const startIndex = (currentPage - 1) * contactsPerPage;
@@ -174,7 +182,7 @@ const PointsOfContact = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, samFilter, platformFilter]);
+  }, [searchTerm, samFilter, platformFilter, officeFilter]);
 
   return (
     <div className="p-6 space-y-6">
@@ -224,7 +232,18 @@ const PointsOfContact = () => {
                 ))}
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); }}>
+            <Select value={officeFilter} onValueChange={setOfficeFilter}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Funding Office" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Offices</SelectItem>
+                {allOffices.map(o => (
+                  <SelectItem key={o} value={o}>{o}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => { setSearchTerm(""); setSamFilter("all"); setPlatformFilter("all"); setOfficeFilter("all"); }}>
               Clear
             </Button>
           </div>
